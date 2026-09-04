@@ -1,0 +1,547 @@
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones, Info, Sparkles, Zap, Lock, Eye, Copy, Clock, Tag } from 'lucide-react';
+import { ProductVariant } from '../types';
+import { PRODUCT_VARIANTS, CHECKOUT_URL } from '../data';
+import { redirectToCheckout } from '../utils/checkout';
+
+interface ProductSectionProps {
+  selectedVariant: ProductVariant;
+  onSelectVariant: (variant: ProductVariant) => void;
+  onAddToCart: (variant: ProductVariant, quantity: number, selectedAccessories: any[]) => void;
+}
+
+export const ProductSection: React.FC<ProductSectionProps> = ({
+  selectedVariant,
+  onSelectVariant,
+  onAddToCart
+}) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [copiedCoupon, setCopiedCoupon] = useState(false);
+  const [activeTab, setActiveTab] = useState<'desc' | 'specs' | 'shipping' | 'warranty'>('desc');
+  const [viewersCount] = useState(42);
+
+  // Reset image index when variant changes if out of bounds
+  useEffect(() => {
+    if (currentImageIndex >= selectedVariant.images.length) {
+      setCurrentImageIndex(0);
+    }
+  }, [selectedVariant]);
+
+  // Countdown timer for Flash Sale
+  const [timeLeft, setTimeLeft] = useState({ hours: 7, minutes: 34, seconds: 18 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: 59, seconds: 59 };
+        if (prev.hours > 0) return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        return { hours: 12, minutes: 0, seconds: 0 };
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? selectedVariant.images.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev === selectedVariant.images.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleCopyCoupon = () => {
+    navigator.clipboard.writeText(selectedVariant.couponCode || 'BTSX25');
+    setCopiedCoupon(true);
+    setTimeout(() => setCopiedCoupon(false), 2500);
+  };
+
+  const handleDirectCheckout = () => {
+    redirectToCheckout(selectedVariant.checkoutUrl);
+  };
+
+  const handleVariantSelect = (variant: ProductVariant) => {
+    onSelectVariant(variant);
+    setCurrentImageIndex(0);
+  };
+
+  const pad = (n: number) => n.toString().padStart(2, '0');
+  const discountPercent = Math.round(((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100);
+  const klarnaInstallment = (selectedVariant.price / 3).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  return (
+    <section id="MainContent" className="py-6 sm:py-10 max-w-[1520px] mx-auto px-4 sm:px-8 lg:px-12">
+      {/* Breadcrumb */}
+      <div className="mb-4 text-[13px] text-gray-500 flex items-center gap-2">
+        <a href="#MainContent" className="hover:text-gray-900 transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="#MainContent" className="hover:text-gray-900 transition-colors">Jets de natation</a>
+        <span>/</span>
+        <span className="text-gray-900 font-medium">{selectedVariant.name}</span>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-14 items-start">
+        {/* Left Column: Image Gallery */}
+        <div className="w-full lg:w-1/2 lg:max-w-[680px] lg:sticky lg:top-[96px]">
+          {/* Main preview */}
+          <div className="relative w-full aspect-square bg-[#F5F6F8] rounded-sm overflow-hidden group shadow-xs border border-gray-200">
+            <img
+              src={selectedVariant.images[currentImageIndex] || selectedVariant.images[0]}
+              alt={selectedVariant.name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+
+            {/* Live badge */}
+            <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-sm text-[11px] sm:text-[12px] font-semibold text-gray-800 shadow-xs border border-gray-200">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>En stock — Expédié sous 24h</span>
+            </div>
+
+            {/* Discount tag badge on image */}
+            <div className="absolute top-3 right-3 bg-red-600 text-white font-extrabold text-[11px] sm:text-[12px] tracking-wide px-2.5 py-1 rounded-sm shadow-xs">
+              -{discountPercent}% DE RÉDUCTION
+            </div>
+
+            {/* Slider arrows */}
+            <button
+              onClick={handlePrevImage}
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-sm bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+              aria-label="Image précédente"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNextImage}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-sm bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+              aria-label="Image suivante"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            {/* Image counter */}
+            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-white px-2 py-0.5 rounded-sm text-[11px] font-medium">
+              {currentImageIndex + 1} / {selectedVariant.images.length}
+            </div>
+          </div>
+
+          {/* Thumbnails Row */}
+          <div className="mt-3 flex gap-2 overflow-x-auto no-scrollbar py-1">
+            {selectedVariant.images.map((img, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentImageIndex(idx)}
+                className={`w-[60px] sm:w-[72px] aspect-square rounded-sm overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                  currentImageIndex === idx
+                    ? 'border-[#0071E3] shadow-xs'
+                    : 'border-gray-200 hover:border-gray-400 opacity-70 hover:opacity-100'
+                }`}
+              >
+                <img src={img} alt={`Aperçu ${idx + 1}`} className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column: Product Details & Purchase Form */}
+        <div className="w-full lg:w-1/2 space-y-4">
+          {/* Brand & SKU Header */}
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-[12px] sm:text-[13px] font-bold text-[#0071E3] tracking-wider uppercase">
+              iGarden Official Store France
+            </span>
+            <span className="text-[11px] sm:text-[12px] text-gray-500 font-mono">
+              SKU: {selectedVariant.sku}
+            </span>
+          </div>
+
+          {/* Product Title */}
+          <h1 className="text-[24px] sm:text-[32px] font-black text-gray-950 leading-tight font-['Figtree'] break-words">
+            {selectedVariant.name}
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-[13px] sm:text-[15px] text-gray-600 font-medium leading-relaxed">
+            {selectedVariant.subtitle}
+          </p>
+
+          {/* Rating & Live viewing indicator */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-gray-200">
+            <div className="flex items-center gap-2">
+              <div className="flex text-[#00b67a]">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#00b67a]" />
+                ))}
+              </div>
+              <span className="text-[13px] font-extrabold text-gray-900">4.8 / 5</span>
+              <a href="#customer-reviews" className="text-[13px] text-gray-500 hover:text-[#0071E3] underline underline-offset-2">
+                (128 avis vérifiés)
+              </a>
+            </div>
+            <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] text-gray-700 font-medium bg-amber-50 px-2.5 py-1 rounded-sm border border-amber-200/60 w-fit">
+              <Eye className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+              <span><strong>{viewersCount} personnes</strong> regardent cette offre</span>
+            </div>
+          </div>
+
+          {/* Flash Sale Banner & Countdown */}
+          <div className="p-3 rounded-sm bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-xs flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5 font-bold text-[12px] sm:text-[13px] text-center sm:text-left">
+              <span>⚡</span>
+              <span>VENTE FLASH : ÉCONOMISEZ {selectedVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</span>
+            </div>
+            <div className="flex items-center gap-1 text-[12px] font-mono">
+              <Clock className="w-3.5 h-3.5 shrink-0" />
+              <span className="font-bold text-[11px]">Fin :</span>
+              <span className="bg-black/30 px-1 py-0.5 rounded-xs font-bold">{pad(timeLeft.hours)}h</span>:
+              <span className="bg-black/30 px-1 py-0.5 rounded-xs font-bold">{pad(timeLeft.minutes)}m</span>:
+              <span className="bg-black/30 px-1 py-0.5 rounded-xs font-bold">{pad(timeLeft.seconds)}s</span>
+            </div>
+          </div>
+
+          {/* Price Block */}
+          <div className="p-4 sm:p-5 rounded-sm bg-[#F8FAFC] border border-slate-200 space-y-3">
+            <div className="flex flex-wrap items-baseline gap-2.5">
+              <span className="text-[30px] sm:text-[40px] font-black text-gray-950 tracking-tight leading-none">
+                {selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+              </span>
+              <span className="text-[17px] sm:text-[20px] font-medium text-gray-400 line-through">
+                {selectedVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+              </span>
+              <span className="px-2.5 py-0.5 rounded-sm bg-emerald-600 text-white text-[12px] font-bold shadow-xs">
+                -{discountPercent}% (Économie {selectedVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €)
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px] text-gray-700">
+              <span className="flex items-center gap-1 font-semibold text-emerald-700">
+                <Check className="w-3.5 h-3.5" /> Taxes incluses
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1 font-semibold text-emerald-700">
+                <Truck className="w-3.5 h-3.5" /> Livraison Colissimo Offerte
+              </span>
+            </div>
+
+            {/* Klarna / 3x payment info */}
+            <div className="pt-2 border-t border-slate-200/80 flex items-center justify-between text-[12px] sm:text-[13px] text-gray-700">
+              <span>Payez en <strong>3x {klarnaInstallment} € sans frais</strong></span>
+              <span className="px-2 py-0.5 rounded-sm bg-[#FFA8CD] text-[#0B051D] font-bold text-[11px]">Klarna</span>
+            </div>
+          </div>
+
+          {/* Coupon Code Voucher Card */}
+          <div className="p-3 rounded-sm border border-dashed border-blue-300 bg-blue-50/70 flex items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-8 h-8 rounded-sm bg-[#0071E3] text-white flex items-center justify-center shrink-0">
+                <Tag className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <span className="font-extrabold text-[13px] text-gray-900 tracking-wide font-mono">
+                    Code : {selectedVariant.couponCode || 'BTSX25'}
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded-sm">
+                    -{selectedVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} € appliqué
+                  </span>
+                </div>
+                <p className="text-[11px] text-gray-500 truncate">Remise déjà calculée dans le tarif affiché</p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleCopyCoupon}
+              className="px-3 py-1.5 rounded-sm bg-white hover:bg-gray-100 border border-blue-200 text-[#0071E3] text-[12px] font-bold transition-colors flex items-center gap-1 shrink-0 cursor-pointer shadow-xs"
+            >
+              {copiedCoupon ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-green-600" />
+                  <span>Copié !</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>Copier</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* 3 Variants Selection Grid */}
+          <div className="space-y-2.5">
+            <div className="flex items-center justify-between">
+              <label className="block text-[13px] font-bold text-gray-900">
+                Choisissez votre modèle :
+              </label>
+              <span className="text-[11px] text-[#0071E3] font-medium">3 configurations disponibles</span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2.5">
+              {PRODUCT_VARIANTS.map((variant) => {
+                const isSelected = selectedVariant.id === variant.id;
+                return (
+                  <div
+                    key={variant.id}
+                    onClick={() => handleVariantSelect(variant)}
+                    className={`p-3.5 rounded-sm border-2 transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                      isSelected
+                        ? 'border-[#0071E3] bg-blue-50/40 shadow-xs'
+                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                    }`}
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`font-extrabold text-[14px] sm:text-[15px] ${isSelected ? 'text-gray-950' : 'text-gray-800'}`}>
+                          {variant.shortName}
+                        </span>
+                        <span className="text-[10px] sm:text-[11px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-sm">
+                          {variant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                        </span>
+                        <span className="text-[11px] text-gray-400 line-through">
+                          {variant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-[12px] text-gray-600 mt-1">
+                        {variant.specsSummary}
+                      </p>
+                    </div>
+
+                    <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                      isSelected
+                        ? 'bg-[#0071E3] border-[#0071E3] text-white'
+                        : 'border-gray-300 bg-white'
+                    }`}>
+                      {isSelected && <Check className="w-3.5 h-3.5" />}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Key specs highlight */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
+              <span className="text-[11px] text-gray-500 block">Puissance</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.power}</span>
+            </div>
+            <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
+              <span className="text-[11px] text-gray-500 block">Débit d'eau</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.flowRate}</span>
+            </div>
+            <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
+              <span className="text-[11px] text-gray-500 block">Vitesse max</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.speed}</span>
+            </div>
+            <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
+              <span className="text-[11px] text-gray-500 block">Autonomie</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.batteryLife}</span>
+            </div>
+          </div>
+
+          {/* Quantity and Purchase Action Area */}
+          <div className="space-y-2.5 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+              {/* Quantity selector */}
+              <div className="flex items-center justify-between sm:justify-center border border-gray-300 rounded-sm bg-white h-12 px-3 sm:px-1 shrink-0">
+                <span className="text-[12px] font-semibold text-gray-500 sm:hidden">Quantité :</span>
+                <div className="flex items-center">
+                  <button
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    className="w-9 h-9 flex items-center justify-center hover:bg-gray-100 text-gray-700 font-bold text-[18px] cursor-pointer rounded-sm"
+                    aria-label="Diminuer la quantité"
+                  >
+                    -
+                  </button>
+                  <span className="w-10 text-center text-[15px] font-bold text-gray-900">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => setQuantity((q) => q + 1)}
+                    className="w-9 h-9 flex items-center justify-center hover:bg-gray-100 text-gray-700 font-bold text-[18px] cursor-pointer rounded-sm"
+                    aria-label="Augmenter la quantité"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              {/* Direct Checkout Buy Button (Primary Action) */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleDirectCheckout();
+                }}
+                className="flex-1 h-12 px-4 rounded-sm bg-[#0071E3] hover:bg-blue-700 text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide shadow-sm hover:shadow transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase active:bg-blue-800 text-center"
+              >
+                <Lock className="w-4 h-4 shrink-0" />
+                <span className="truncate">COMMANDER MAINTENANT • {(selectedVariant.price * quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</span>
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </button>
+            </div>
+
+            {/* Add to Cart secondary button */}
+            <button
+              onClick={() => onAddToCart(selectedVariant, quantity, [])}
+              className="w-full h-12 px-4 rounded-sm border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 font-bold text-[14px] sm:text-[15px] transition-colors cursor-pointer flex items-center justify-center text-center uppercase tracking-wide"
+            >
+              Ajouter au panier
+            </button>
+
+            <p className="text-center text-[11px] sm:text-[12px] text-gray-500 flex items-center justify-center gap-1.5 pt-0.5">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Paiement SSL sécurisé via Shopify • Satisfait ou remboursé 30 jours</span>
+            </p>
+          </div>
+
+          {/* Reassurance Grid */}
+          <div className="bg-[#F8FBFF] p-3.5 sm:p-4 rounded-sm border border-blue-100 space-y-3">
+            <div className="grid grid-cols-2 gap-2.5 text-[12px] sm:text-[13px] font-semibold text-gray-800">
+              <div className="flex items-center gap-2">
+                <Truck className="w-4 h-4 text-[#0071E3] shrink-0" />
+                <span>Livraison Colissimo Gratuite</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#0071E3] shrink-0" />
+                <span>Garantie Fabricant 2 ans</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <RotateCcw className="w-4 h-4 text-[#0071E3] shrink-0" />
+                <span>Retours gratuits 30 jours</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Headphones className="w-4 h-4 text-[#0071E3] shrink-0" />
+                <span>Support francophone 7j/7</span>
+              </div>
+            </div>
+
+            {/* Payment badges */}
+            <div className="pt-2 border-t border-blue-100 flex flex-wrap items-center justify-between gap-2">
+              <span className="text-[11px] font-bold text-gray-500">Moyens de paiement acceptés :</span>
+              <div className="flex flex-wrap items-center gap-1.5">
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/visa_48x48.svg?v=1772161676" alt="Visa" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/MasterCard_48x48.svg?v=1772161120" alt="MasterCard" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/paypal_48x48.svg?v=1772161193" alt="PayPal" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/applepay_48x48.svg?v=1772160097" alt="Apple Pay" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/google_pay_c8e18dbb-5c0f-49ab-b000-1c88465e36c9_48x48.svg?v=1776049893" alt="Google Pay" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/klarna_48x48.svg?v=1772160095" alt="Klarna" />
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Information Tabs / Accordion */}
+          <div className="rounded-sm border border-gray-200 overflow-hidden bg-white">
+            <div className="grid grid-cols-4 border-b border-gray-200 bg-gray-50">
+              <button
+                onClick={() => setActiveTab('desc')}
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
+                  activeTab === 'desc'
+                    ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Description
+              </button>
+              <button
+                onClick={() => setActiveTab('specs')}
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
+                  activeTab === 'specs'
+                    ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Spécifications
+              </button>
+              <button
+                onClick={() => setActiveTab('shipping')}
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
+                  activeTab === 'shipping'
+                    ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Livraison
+              </button>
+              <button
+                onClick={() => setActiveTab('warranty')}
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
+                  activeTab === 'warranty'
+                    ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Garantie
+              </button>
+            </div>
+
+            <div className="p-4 sm:p-5 text-[14px] text-gray-700 leading-relaxed">
+              {activeTab === 'desc' && (
+                <div className="space-y-2.5">
+                  <p className="font-medium text-gray-900">
+                    Transformez n'importe quelle piscine en couloir de nage sans travaux de plomberie ni raccordement lourd.
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>Nage continue à contre-courant :</strong> Débit puissant et constant de {selectedVariant.flowRate} grâce au moteur Inverter PMSM.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>Installation sans travaux en 2 minutes :</strong> Se fixe solidement et directement sur la margelle de votre piscine hors-sol ou enterrée.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>Pack batterie amovible sécurisé :</strong> Basse tension sans danger, étanchéité IP65/IP68 certifiée, sans câble relié au secteur dans l'eau.</span>
+                    </li>
+                  </ul>
+                </div>
+              )}
+
+              {activeTab === 'specs' && (
+                <div className="space-y-2">
+                  <div className="flex justify-between py-1.5 border-b border-gray-100">
+                    <span className="text-gray-500">Puissance</span>
+                    <span className="font-bold text-gray-900">{selectedVariant.power}</span>
+                  </div>
+                  <div className="flex justify-between py-1.5 border-b border-gray-100">
+                    <span className="text-gray-500">Débit maximal</span>
+                    <span className="font-bold text-gray-900">{selectedVariant.flowRate}</span>
+                  </div>
+                  <div className="flex justify-between py-1.5 border-b border-gray-100">
+                    <span className="text-gray-500">Vitesse d'écoulement</span>
+                    <span className="font-bold text-gray-900">{selectedVariant.speed}</span>
+                  </div>
+                  <div className="flex justify-between py-1.5 border-b border-gray-100">
+                    <span className="text-gray-500">Autonomie moyenne</span>
+                    <span className="font-bold text-gray-900">{selectedVariant.batteryLife}</span>
+                  </div>
+                  <div className="flex justify-between py-1.5">
+                    <span className="text-gray-500">Étanchéité</span>
+                    <span className="font-bold text-gray-900">Norme IP68</span>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'shipping' && (
+                <div className="space-y-2">
+                  <p><strong>Expédition rapide :</strong> Votre commande est préparée et expédiée sous 24h ouvrées.</p>
+                  <p><strong>Transporteur :</strong> Colissimo Suivi avec remise contre signature à domicile.</p>
+                  <p><strong>Délai moyen de livraison :</strong> 2 à 4 jours ouvrés en France métropolitaine, Belgique et Suisse.</p>
+                </div>
+              )}
+
+              {activeTab === 'warranty' && (
+                <div className="space-y-2">
+                  <p><strong>Garantie constructeur 2 ans :</strong> Pièces et main d'œuvre prises en charge par le SAV officiel iGarden.</p>
+                  <p><strong>Période d'essai 30 jours :</strong> Si vous n'êtes pas 100% satisfait, vous pouvez retourner le produit sans justification.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
