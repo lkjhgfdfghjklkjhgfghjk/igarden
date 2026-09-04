@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones, Info, Sparkles, Zap, Lock, Eye, Copy, Clock, Tag } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones, Info, Sparkles, Zap, Lock, Eye, Clock } from 'lucide-react';
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS, CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
@@ -17,7 +17,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [copiedCoupon, setCopiedCoupon] = useState(false);
   const [activeTab, setActiveTab] = useState<'desc' | 'specs' | 'shipping' | 'warranty'>('desc');
   const [viewersCount] = useState(42);
 
@@ -49,12 +48,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
 
   const handleNextImage = () => {
     setCurrentImageIndex((prev) => (prev === selectedVariant.images.length - 1 ? 0 : prev + 1));
-  };
-
-  const handleCopyCoupon = () => {
-    navigator.clipboard.writeText(selectedVariant.couponCode || 'BTSX25');
-    setCopiedCoupon(true);
-    setTimeout(() => setCopiedCoupon(false), 2500);
   };
 
   const handleDirectCheckout = () => {
@@ -228,43 +221,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               <span>Payez en <strong>3x {klarnaInstallment} € sans frais</strong></span>
               <span className="px-2 py-0.5 rounded-sm bg-[#FFA8CD] text-[#0B051D] font-bold text-[11px]">Klarna</span>
             </div>
-          </div>
-
-          {/* Coupon Code Voucher Card */}
-          <div className="p-3 rounded-sm border border-dashed border-blue-300 bg-blue-50/70 flex items-center justify-between gap-2.5">
-            <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-8 h-8 rounded-sm bg-[#0071E3] text-white flex items-center justify-center shrink-0">
-                <Tag className="w-4 h-4" />
-              </div>
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="font-extrabold text-[13px] text-gray-900 tracking-wide font-mono">
-                    Code : {selectedVariant.couponCode || 'BTSX25'}
-                  </span>
-                  <span className="text-[10px] sm:text-[11px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.2 rounded-sm">
-                    -{selectedVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} € appliqué
-                  </span>
-                </div>
-                <p className="text-[11px] text-gray-500 truncate">Remise déjà calculée dans le tarif affiché</p>
-              </div>
-            </div>
-
-            <button
-              onClick={handleCopyCoupon}
-              className="px-3 py-1.5 rounded-sm bg-white hover:bg-gray-100 border border-blue-200 text-[#0071E3] text-[12px] font-bold transition-colors flex items-center gap-1 shrink-0 cursor-pointer shadow-xs"
-            >
-              {copiedCoupon ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-green-600" />
-                  <span>Copié !</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>Copier</span>
-                </>
-              )}
-            </button>
           </div>
 
           {/* 3 Variants Selection Grid */}
