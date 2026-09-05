@@ -1,6 +1,6 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://igardemm.myshopify.com/checkouts/cn/hWNGJRtOzMpcdClnzgXIpLso/fr-fr?_r=AQABpqACQ6Kq0wc76C6C-yzW_q0-g6820hQRkRZBItuktqY&auto_redirect=false&edge_redirect=true&preview_theme_id=205072925017&skip_shop_pay=true&_su_rec=Qb_dCTK-qjuB89MNUgBOZjmNh_ryTWXpbN20n36WJ1z-Y3tm6koSkm8sBq3fsoRKkcP6EMbRJs8Z6QRMLEEVkxYC8kvKZYERRuUajDydbe9DZpNcOUleP9wF4qvOVzLiXnYOUSsQQ19aJ-lNTWeeqfDsOBiCL0ul3fSng9kcYSK3m6UKf3CD3MGyqOZySQsB5ywdKom9euV3p_w7mAAbEJ2ILyFY";
+export const CHECKOUT_URL = "https://braceletot.myshopify.com/checkouts/cn/hWNGSsjSAipgaprUHYmlqFUo/fr-fr?_r=AQABXKdh5f3ZQ2o51Cp83Hm3f2v-M4JipKVj1QCEDNlw9Yk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
@@ -14,7 +14,7 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     discountAmount: 190.00,
     couponCode: "BTSX25",
     couponOff: "€190,00",
-    checkoutUrl: "https://igardemm.myshopify.com/checkouts/cn/hWNGJS5EY4YChGZQhdwDZMzi/fr-fr?_r=AQABbMdB-z4XqXea3E61dBwH9USJk79RPrEqlpPUivnpWKU&auto_redirect=false&edge_redirect=true&preview_theme_id=205072925017&skip_shop_pay=true&_su_rec=6AcQD-OBYA1FiSW-ZVTrXkfjOBJGwWIQVJ9FhJemh9WMhvxhIWwhs5NAPZnstldgH3_jdQGRiWj34dulP07ulGDQwjReAccqm06Pu5abmKUA783py7JqqkP7fspgGyI7FhKh1BpPpIvT9knFZ_24vBYvLFIbVhtWXNsya-uzwwJPGuB2cqw5TPA2M3FtrTwXoIiQcePzCt0sItUZYqpeOGQHhydY",
+    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsjSAipgaprUHYmlqFUo/fr-fr?_r=AQABXKdh5f3ZQ2o51Cp83Hm3f2v-M4JipKVj1QCEDNlw9Yk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
     specsSummary: "Puissance : 400W | Débit 180 m³/h (790 GPM) | Vitesse max : 0,9 m/s",
     power: "400W",
     speed: "0,9 m/s",
@@ -46,7 +46,7 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     discountAmount: 230.00,
     couponCode: "BTSX30",
     couponOff: "€230,00",
-    checkoutUrl: "https://igardemm.myshopify.com/checkouts/cn/hWNGJRtOzMpcdClnzgXIpLso/fr-fr?_r=AQABpqACQ6Kq0wc76C6C-yzW_q0-g6820hQRkRZBItuktqY&auto_redirect=false&edge_redirect=true&preview_theme_id=205072925017&skip_shop_pay=true&_su_rec=Qb_dCTK-qjuB89MNUgBOZjmNh_ryTWXpbN20n36WJ1z-Y3tm6koSkm8sBq3fsoRKkcP6EMbRJs8Z6QRMLEEVkxYC8kvKZYERRuUajDydbe9DZpNcOUleP9wF4qvOVzLiXnYOUSsQQ19aJ-lNTWeeqfDsOBiCL0ul3fSng9kcYSK3m6UKf3CD3MGyqOZySQsB5ywdKom9euV3p_w7mAAbEJ2ILyFY",
+    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsuPbQDjYgX4tE1Y1z8c/fr-fr?_r=AQABMjkLTJ9IyLICEfqNpvU4Ipe2d07Dz-b1TtaB9nM97wY&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
     specsSummary: "Puissance : 600W | Débit 240 m³/h (1050 GPM) | Vitesse max : 1,2 m/s",
     power: "600W",
     speed: "1,2 m/s",
@@ -73,7 +73,7 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     discountAmount: 250.00,
     couponCode: "BTSX35",
     couponOff: "€250,00",
-    checkoutUrl: "https://igardemm.myshopify.com/checkouts/cn/hWNGJRksYnAusAn1MOWFulTG/fr-fr?_r=AQABGTW05aOi4ZUr75adsDyOnMOOXSWMcNb6ZUD99aYCgNI&auto_redirect=false&edge_redirect=true&preview_theme_id=205072925017&skip_shop_pay=true&_su_rec=yb9zm25ByXV-d7VnEWonUCNcmxIDFoJotH0IjirUFR-u_7eGkgIVO0rBMCtV0fSBF9CgkSIpf9EO6zfELDc8ScR4UVBkVE-qzlDsXyJ3idMEkk4Cutw8vEFqq6J_A7bBojM7gOFvNeJa0YHq4tO70PVuMHMpN1OCxe4im1J62ej7B9H4eh5xrNjY5BEalUTSEgSRsqDH7raH0ULLU0YG5cxTgskJ",
+    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
     specsSummary: "Puissance : 1000W | Débit 320 m³/h (1400 GPM) | Vitesse max : 1,5 m/s",
     power: "1000W",
     speed: "1,5 m/s",
