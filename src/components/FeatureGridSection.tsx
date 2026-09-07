@@ -51,9 +51,9 @@ export const FeatureGridSection: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
             <div className="absolute top-6 left-6 right-6 text-white">
-              <h3 className="text-[22px] sm:text-[28px] font-bold mb-2">Meilleur débit d'eau de sa catégorie</h3>
+              <h3 className="text-[22px] sm:text-[28px] font-bold mb-2">1 000 W de puissance premium</h3>
               <p className="text-[15px] sm:text-[17px] text-white/90 leading-relaxed max-w-[500px]">
-                Alimenté par notre moteur PMSM et notre technologie AI Inverter pour une constance absolue.
+                Alimenté par notre moteur synchrone haute performance et notre technologie Inverter pour une constance absolue.
               </p>
             </div>
           </div>
@@ -67,9 +67,9 @@ export const FeatureGridSection: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
             <div className="absolute top-6 left-6 right-6 text-white">
-              <h3 className="text-[22px] sm:text-[26px] font-bold mb-2">Ajustement universel</h3>
+              <h3 className="text-[22px] sm:text-[26px] font-bold mb-2">Compatibilité universelle</h3>
               <p className="text-[14px] sm:text-[16px] text-white/90">
-                Piscine rectangulaire, hors terre, forme libre et bien plus encore.
+                Compatible avec toutes les piscines (hors-sol, coque, maçonnée ou tubulaire).
               </p>
             </div>
           </div>
@@ -113,8 +113,8 @@ export const FeatureGridSection: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
               <div className="absolute top-5 left-5 right-5 text-white">
-                <h3 className="text-[20px] font-bold mb-1">Pack batterie amovible</h3>
-                <p className="text-[13px] text-white/90">Autonomie de 0,7 h à 5 h selon la vitesse et la batterie</p>
+                <h3 className="text-[20px] font-bold mb-1">Grande autonomie continue</h3>
+                <p className="text-[13px] text-white/90">6 à 10 heures d'autonomie à pleine puissance sans recharge constante</p>
               </div>
             </div>
           </div>

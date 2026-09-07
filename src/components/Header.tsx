@@ -457,7 +457,7 @@ export const Header: React.FC<HeaderProps> = ({
                     />
                     <div>
                       <p className="font-bold text-[14px] text-gray-900">iGarden Swim Jet Série X</p>
-                      <p className="text-[12px] text-[#0071E3] font-semibold">229,90 € (Offre -50%)</p>
+                      <p className="text-[12px] text-[#0071E3] font-semibold">209,00 € (Offre -50%)</p>
                     </div>
                   </div>
                 </div>

@@ -223,55 +223,36 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             </div>
           </div>
 
-          {/* 3 Variants Selection Grid */}
+          {/* Single Variant Presentation Card */}
           <div className="space-y-2.5">
             <div className="flex items-center justify-between">
               <label className="block text-[13px] font-bold text-gray-900">
-                Choisissez votre modèle :
+                Configuration du modèle :
               </label>
-              <span className="text-[11px] text-[#0071E3] font-medium">3 configurations disponibles</span>
+              <span className="text-[11px] text-[#0071E3] font-bold">Modèle unique 1 000 W</span>
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5">
-              {PRODUCT_VARIANTS.map((variant) => {
-                const isSelected = selectedVariant.id === variant.id;
-                return (
-                  <div
-                    key={variant.id}
-                    onClick={() => handleVariantSelect(variant)}
-                    className={`p-3.5 rounded-sm border-2 transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                      isSelected
-                        ? 'border-[#0071E3] bg-blue-50/40 shadow-xs'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
-                    }`}
-                  >
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className={`font-extrabold text-[14px] sm:text-[15px] ${isSelected ? 'text-gray-950' : 'text-gray-800'}`}>
-                          {variant.shortName}
-                        </span>
-                        <span className="text-[10px] sm:text-[11px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-sm">
-                          {variant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
-                        </span>
-                        <span className="text-[11px] text-gray-400 line-through">
-                          {variant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
-                        </span>
-                      </div>
-                      <p className="text-[11px] sm:text-[12px] text-gray-600 mt-1">
-                        {variant.specsSummary}
-                      </p>
-                    </div>
+            <div className="p-3.5 rounded-sm border-2 border-[#0071E3] bg-blue-50/40 shadow-xs flex items-center justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-extrabold text-[14px] sm:text-[15px] text-gray-950">
+                    {selectedVariant.shortName}
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-sm">
+                    {selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                  </span>
+                  <span className="text-[11px] text-gray-400 line-through">
+                    {selectedVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                  </span>
+                </div>
+                <p className="text-[11px] sm:text-[12px] text-gray-600 mt-1">
+                  {selectedVariant.specsSummary}
+                </p>
+              </div>
 
-                    <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
-                      isSelected
-                        ? 'bg-[#0071E3] border-[#0071E3] text-white'
-                        : 'border-gray-300 bg-white'
-                    }`}>
-                      {isSelected && <Check className="w-3.5 h-3.5" />}
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="w-5 h-5 rounded-full bg-[#0071E3] text-white flex items-center justify-center shrink-0">
+                <Check className="w-3.5 h-3.5" />
+              </div>
             </div>
           </div>
 
@@ -436,20 +417,24 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               {activeTab === 'desc' && (
                 <div className="space-y-2.5">
                   <p className="font-medium text-gray-900">
-                    Transformez n'importe quelle piscine en couloir de nage sans travaux de plomberie ni raccordement lourd.
+                    Transformez n'importe quelle piscine en véritable couloir de nage sans travaux de plomberie ni raccordement lourd. Une solution universelle et polyvalente pour votre piscine.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
-                      <span><strong>Nage continue à contre-courant :</strong> Débit puissant et constant de {selectedVariant.flowRate} grâce au moteur Inverter PMSM.</span>
+                      <span><strong>1 000 W de puissance premium :</strong> Profitez d'une expérience de nage à contre-courant fluide et dynamique grâce au moteur Brushless haute performance.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
-                      <span><strong>Installation sans travaux en 2 minutes :</strong> Se fixe solidement et directement sur la margelle de votre piscine hors-sol ou enterrée.</span>
+                      <span><strong>6 à 10 heures d'autonomie à pleine puissance :</strong> Profitez de longues séances de nage sans recharge constante grâce au pack batterie Lithium haute densité.</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
-                      <span><strong>Pack batterie amovible sécurisé :</strong> Basse tension sans danger, étanchéité IP65/IP68 certifiée, sans câble relié au secteur dans l'eau.</span>
+                      <span><strong>Compatible avec toutes les piscines :</strong> Fixation universelle instantanée sans perçage pour piscines tubulaires, coques, bois ou maçonnées.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>Praticité & sécurité totale :</strong> Basse tension sans danger dans l'eau, étanchéité IP68 intégrale, télécommande sans fil et roulettes de transport ergonomiques.</span>
                     </li>
                   </ul>
                 </div>
@@ -459,23 +444,23 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 <div className="space-y-2">
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
                     <span className="text-gray-500">Puissance</span>
-                    <span className="font-bold text-gray-900">{selectedVariant.power}</span>
+                    <span className="font-bold text-gray-900">1 000 W de puissance</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
-                    <span className="text-gray-500">Débit maximal</span>
-                    <span className="font-bold text-gray-900">{selectedVariant.flowRate}</span>
+                    <span className="text-gray-500">Autonomie certifiée</span>
+                    <span className="font-bold text-gray-900">6 à 10 heures d'autonomie à pleine puissance</span>
+                  </div>
+                  <div className="flex justify-between py-1.5 border-b border-gray-100">
+                    <span className="text-gray-500">Compatibilité bassins</span>
+                    <span className="font-bold text-gray-900">Compatible avec toutes les piscines</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
                     <span className="text-gray-500">Vitesse d'écoulement</span>
-                    <span className="font-bold text-gray-900">{selectedVariant.speed}</span>
-                  </div>
-                  <div className="flex justify-between py-1.5 border-b border-gray-100">
-                    <span className="text-gray-500">Autonomie moyenne</span>
-                    <span className="font-bold text-gray-900">{selectedVariant.batteryLife}</span>
+                    <span className="font-bold text-gray-900">Jusqu'à 1,5 m/s (réglage progressif sans fil)</span>
                   </div>
                   <div className="flex justify-between py-1.5">
-                    <span className="text-gray-500">Étanchéité</span>
-                    <span className="font-bold text-gray-900">Norme IP68</span>
+                    <span className="text-gray-500">Étanchéité & Sécurité</span>
+                    <span className="font-bold text-gray-900">Norme IP68 submersible intégrale</span>
                   </div>
                 </div>
               )}

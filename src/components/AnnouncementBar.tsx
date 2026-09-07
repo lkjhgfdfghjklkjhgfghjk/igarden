@@ -11,8 +11,8 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onOpenCountryD
       <div className="max-w-[1500px] mx-auto flex items-center justify-between">
         <div className="w-full text-center sm:text-left sm:w-auto font-semibold text-gray-800 flex items-center justify-center sm:justify-start gap-1.5 leading-snug">
           <Sparkles className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
-          <span className="hidden sm:inline">Offre Spéciale France : Jet de natation X AIR à 189,00 € • Livraison Colissimo Offerte • Garantie 2 ans</span>
-          <span className="sm:hidden">Offre France : Jet X AIR à <strong>189,00 €</strong> • Livraison Colissimo Offerte</span>
+          <span className="hidden sm:inline">Offre Spéciale France : Jet de natation Swim Jet (1 000 W) à 209,00 € • Livraison Colissimo Offerte • Garantie 2 ans</span>
+          <span className="sm:hidden">Offre France : Swim Jet (1 000 W) à <strong>209,00 €</strong> • Livraison Colissimo Offerte</span>
         </div>
         <button
           onClick={onOpenCountryDialog}

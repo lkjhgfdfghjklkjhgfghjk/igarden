@@ -44,7 +44,7 @@ export const JudgeMeReviews: React.FC = () => {
       title: reviewTitle || "Avis vérifié",
       content: reviewBody,
       verified: true,
-      productVariant: "X AIR (X25-P15)"
+      productVariant: "Swim Jet — 1 000 W"
     };
 
     setAllReviews([newReview, ...allReviews]);
@@ -308,7 +308,7 @@ export const JudgeMeReviews: React.FC = () => {
             {formStep === 1 && (
               <div className="space-y-6 text-center py-2">
                 <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">
-                  Comment évalueriez-vous votre iGarden X AIR ?
+                  Comment évalueriez-vous votre iGarden Swim Jet (1 000 W) ?
                 </h3>
                 <p className="text-[13px] sm:text-[14px] text-gray-500">
                   Partagez votre retour d'expérience avec les autres passionnés de natation.

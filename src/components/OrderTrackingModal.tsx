@@ -138,14 +138,14 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
               <div className="flex items-center gap-3 p-3 bg-white rounded-sm border border-gray-200">
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732"
-                  alt="Jet de natation X AIR"
+                  alt="Swim Jet — 1 000 W"
                   className="w-12 h-12 object-cover rounded-sm bg-gray-50 border border-gray-200 shrink-0"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="font-bold text-[13px] sm:text-[14px] text-gray-900 truncate">
-                    Jet de natation portable iGarden X AIR (X25-P5)
+                    Swim Jet — 1 000 W (Compatible avec toutes les piscines)
                   </p>
-                  <p className="text-[12px] text-gray-500">Qté: 1 • 189,00 € • Livraison Colissimo Offerte</p>
+                  <p className="text-[12px] text-gray-500">Qté: 1 • 209,00 € • Livraison Colissimo Offerte</p>
                 </div>
               </div>
 

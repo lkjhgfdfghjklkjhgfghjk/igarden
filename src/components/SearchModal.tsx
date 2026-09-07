@@ -13,7 +13,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
   if (!isOpen) return null;
 
   const hotSearches = [
-    { text: "Jet de nage X AIR (X25-P5)", hot: true },
+    { text: "Jet de natation Swim Jet 1 000 W", hot: true },
     { text: "Fixation sans perçage", hot: true },
     { text: "Batterie étanche IP68", hot: true },
     { text: "Accessoires & Sac à dos", hot: false }
@@ -21,9 +21,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
 
   const recommendations = [
     {
-      title: "Jet de natation portable iGarden X AIR (X25-P5)",
-      price: "189,00 €",
-      originalPrice: "379,00 €",
+      title: "Jet de natation portable Swim Jet — 1 000 W",
+      price: "209,00 €",
+      originalPrice: "418,00 €",
       image: "https://eu.store.igarden.ai/cdn/shop/files/1200_x_1200_1_549cfcd1-014d-4f4b-a0b7-589f37292f31.png?v=1776675064&width=320"
     },
     {

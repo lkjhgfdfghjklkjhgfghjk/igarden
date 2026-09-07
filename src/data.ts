@@ -1,25 +1,25 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://braceletot.myshopify.com/checkouts/cn/hWNGSsjSAipgaprUHYmlqFUo/fr-fr?_r=AQABXKdh5f3ZQ2o51Cp83Hm3f2v-M4JipKVj1QCEDNlw9Yk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true";
+export const CHECKOUT_URL = "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
-    id: "47852237422810",
-    sku: "SJD-X25P15-FR",
-    name: "Jet de natation portable iGarden X AIR (X25-P15)",
-    shortName: "X AIR (X25-P15)",
-    subtitle: "Système de nage à contre-courant portable & universel",
-    price: 189.00,
-    originalPrice: 379.00,
-    discountAmount: 190.00,
-    couponCode: "BTSX25",
-    couponOff: "€190,00",
-    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsjSAipgaprUHYmlqFUo/fr-fr?_r=AQABXKdh5f3ZQ2o51Cp83Hm3f2v-M4JipKVj1QCEDNlw9Yk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
-    specsSummary: "Puissance : 400W | Débit 180 m³/h (790 GPM) | Vitesse max : 0,9 m/s",
-    power: "400W",
-    speed: "0,9 m/s",
-    batteryLife: "0,7 ~ 2,5 heures",
-    flowRate: "180 m³/heure",
+    id: "swim-jet-1000w",
+    sku: "SJD-1000W-UNIV-FR",
+    name: "Jet de natation portable iGarden Swim Jet — 1 000 W",
+    shortName: "Swim Jet — 1 000 W",
+    subtitle: "Système de nage à contre-courant universel et polyvalent — Compatible avec toutes les piscines",
+    price: 209.00,
+    originalPrice: 418.00,
+    discountAmount: 209.00,
+    couponCode: "SWIMJET",
+    couponOff: "€209,00",
+    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
+    specsSummary: "1 000 W de puissance | 6 à 10 h d'autonomie à pleine puissance | Compatible avec toutes les piscines",
+    power: "1 000 W",
+    speed: "1,5 m/s",
+    batteryLife: "6 à 10 heures",
+    flowRate: "Flux laminaire haute puissance",
     images: [
       "https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732",
       "https://eu.store.igarden.ai/cdn/shop/files/2-FR_678d7fd7-7477-4c54-af51-84fb9fb6b017.png?v=1782461722",
@@ -33,59 +33,6 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
       "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_3.jpg?v=1780570719",
       "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_4.jpg?v=1780570719",
       "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_2.jpg?v=1780570720"
-    ]
-  },
-  {
-    id: "47852237455578",
-    sku: "SJD-X30P30-FR",
-    name: "Jet de natation portable iGarden X (X30-P30)",
-    shortName: "X (X30-P30)",
-    subtitle: "Système de nage à contre-courant haute performance pour entraînement régulier",
-    price: 229.00,
-    originalPrice: 459.00,
-    discountAmount: 230.00,
-    couponCode: "BTSX30",
-    couponOff: "€230,00",
-    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsuPbQDjYgX4tE1Y1z8c/fr-fr?_r=AQABMjkLTJ9IyLICEfqNpvU4Ipe2d07Dz-b1TtaB9nM97wY&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
-    specsSummary: "Puissance : 600W | Débit 240 m³/h (1050 GPM) | Vitesse max : 1,2 m/s",
-    power: "600W",
-    speed: "1,2 m/s",
-    batteryLife: "1,0 ~ 3,5 heures",
-    flowRate: "240 m³/heure",
-    images: [
-      "https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732",
-      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_1.jpg?v=1780570719",
-      "https://eu.store.igarden.ai/cdn/shop/files/2-FR_678d7fd7-7477-4c54-af51-84fb9fb6b017.png?v=1782461722",
-      "https://eu.store.igarden.ai/cdn/shop/files/3-FR_8a800e11-2d34-4c21-9ad0-0dc7085c7d01.png?v=1782461729",
-      "https://eu.store.igarden.ai/cdn/shop/files/4-FR_542fc470-0971-4ab4-b0d7-5c7a2134836d.png?v=1782461740",
-      "https://eu.store.igarden.ai/cdn/shop/files/7-FR_b986d06c-32a6-4909-88b3-0b15e18b0dc0.png?v=1782461714",
-      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_2.jpg?v=1780570720"
-    ]
-  },
-  {
-    id: "47852237488346",
-    sku: "SJD-X35P30-FR",
-    name: "Jet de natation portable iGarden X PRO (X35-P30)",
-    shortName: "X PRO (X35-P30)",
-    subtitle: "Système de nage à contre-courant ultra-puissant niveau compétition & athlètes",
-    price: 249.00,
-    originalPrice: 499.00,
-    discountAmount: 250.00,
-    couponCode: "BTSX35",
-    couponOff: "€250,00",
-    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
-    specsSummary: "Puissance : 1000W | Débit 320 m³/h (1400 GPM) | Vitesse max : 1,5 m/s",
-    power: "1000W",
-    speed: "1,5 m/s",
-    batteryLife: "1,5 ~ 5,0 heures",
-    flowRate: "320 m³/heure",
-    images: [
-      "https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732",
-      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_4.jpg?v=1780570719",
-      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_3.jpg?v=1780570719",
-      "https://eu.store.igarden.ai/cdn/shop/files/5-FR_b4c2552b-97f0-4e34-bfa3-d688835edacb.png?v=1782461748",
-      "https://eu.store.igarden.ai/cdn/shop/files/6-FR_916100ee-5d82-4f74-910f-8d281145ba32.png?v=1782461731",
-      "https://eu.store.igarden.ai/cdn/shop/files/8-FR_10291cf6-102d-4229-8bca-a3406705dc1d.png?v=1782461726"
     ]
   }
 ];
@@ -308,7 +255,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Bluffé par la puissance et le silence du moteur",
     content: "Reçu en 48h par Colissimo dans le Var. Installé sur notre piscine tubulaire Intex de 4x2m en 1 minute chrono sans aucun outil. Le courant est remarquablement linéaire et stable, on nage en continu sans jamais toucher les parois. Mes séances de 45 minutes le matin sont désormais un pur bonheur !",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-2",
@@ -316,9 +263,9 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     rating: 5,
     date: "19/08/2026",
     title: "Une vraie révolution pour notre petite piscine à Bordeaux",
-    content: "Nous hésitions avec un système de nage encastré à plus de 4 000 €, mais pour 229,90 € cet appareil fait exactement le même travail sans aucun chantier. La télécommande sans fil est très pratique pour doser l'effort. Les enfants s'amusent aussi comme des fous avec le courant.",
+    content: "Nous hésitions avec un système de nage encastré à plus de 4 000 €, mais pour 209,00 € cet appareil fait exactement le même travail sans aucun chantier. La télécommande sans fil est très pratique pour doser l'effort. Les enfants s'amusent aussi comme des fous avec le courant.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-3",
@@ -326,9 +273,9 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     rating: 5,
     date: "16/08/2026",
     title: "Idéal pour l'entraînement triathlon",
-    content: "En tant que triathlète amateur, nager dans un bassin de 6 mètres était frustrant. Avec le X AIR, le contre-courant offre une résistance idéale pour travailler le gainage et l'endurance en crawl. La batterie au lithium tient facilement 3 bonnes séances intensives.",
+    content: "En tant que triathlète amateur, nager dans un bassin de 6 mètres était frustrant. Avec le Swim Jet 1 000 W, le contre-courant offre une résistance idéale pour travailler le gainage et l'endurance en crawl. La batterie au lithium tient facilement plusieurs bonnes séances intensives.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-4",
@@ -338,7 +285,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Très simple à installer et sécurisant",
     content: "J'avais peur pour la fixation sur notre margelle en bois composite mais la pince réglable serre fermement et ne laisse aucune trace. C'est du solide, étanche IP68, et rassurant car il n'y a pas de 220V qui trempe dans l'eau. Bravo !",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-5",
@@ -348,7 +295,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Parfait pour la rééducation du dos",
     content: "Mon kiné m'a conseillé la natation quotidienne. Avec ce jet portable, je fais ma brasse et mes étirements tous les jours chez moi sans aller au complexe municipal bondé. Emballage soigné et notice en français claire.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-6",
@@ -358,7 +305,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Livraison ultra rapide et produit haut de gamme",
     content: "Commandé mardi matin, livré jeudi midi en Bretagne. Tout était bien calé dans le carton. La finition en polymère haute résistance inspire confiance. On a nagé tout le week-end, rien à redire, ça vaut largement son prix !",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-7",
@@ -368,7 +315,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Très bon produit, courant très agréable",
     content: "Courant large et régulier, pas de remous chaotiques désagréables. La puissance est très bien étagée. Seul petit bémol : le poids du boîtier batterie quand on le transporte, mais les roulettes intégrées facilitent bien le déplacement.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-8",
@@ -378,7 +325,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Testé sur piscine coque polyester : Impeccable !",
     content: "S'adapte sans problème sur notre margelle arrondie en pierre reconstituée. Le réglage de profondeur permet d'ajuster le flux pile au niveau du torse. Ma femme et moi sommes conquis par la fluidité de nage.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-9",
@@ -388,7 +335,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Excellent SAV et conseils personnalisés",
     content: "J'avais une question sur l'hivernage avant de passer commande, le service client par chat m'a répondu en 5 minutes avec toutes les explications en français. Reçu rapidement et déjà adopté par toute la famille.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-10",
@@ -398,17 +345,17 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Adieu les virages toutes les 3 brasses",
     content: "Dans notre piscine de 4m de long, faire des allers-retours était lassant. Maintenant on nage 20 minutes d'affilée en fixant un point sans jamais s'arrêter. C'est une vraie transformation !",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-11",
     author: "Antoine Mercier",
     rating: 5,
     date: "24/07/2026",
-    title: "Rapport qualité/prix exceptionnel à 229,90 €",
+    title: "Rapport qualité/prix exceptionnel à 209,00 €",
     content: "À ce prix avec la promo, c'est une affaire en or comparé aux pompes de nage traditionnelles qui demandent des tuyauteries sous dalle et des milliers d'euros de plomberie. Fonctionne dès le déballage.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-12",
@@ -418,7 +365,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Très silencieux et doux pour les articulations",
     content: "Le bruit est minime, on entend surtout le clapotis naturel de l'eau. Parfait pour nager tôt le matin sans réveiller le voisinage. Je recommande les yeux fermés.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-13",
@@ -428,7 +375,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Plaisir quotidien pour toute la maison",
     content: "La fixation se monte et se démonte en un clin d'œil quand on veut ranger le jet pour la nuit. La qualité de fabrication est digne d'une grande marque.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-14",
@@ -438,7 +385,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Superbe expérience d'achat",
     content: "Paiement sécurisé rapide, colis bien protégé et suivi en temps réel. Le produit correspond exactement aux vidéos démonstratives. Merci iGarden France !",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-15",
@@ -446,9 +393,9 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     rating: 4,
     date: "12/07/2026",
     title: "Très bon équipement, nage fluide",
-    content: "Courant puissant, vitesse 0,9 m/s largement suffisante pour un bon rythme cardiaque. Très satisfait de mon achat pour la saison estivale.",
+    content: "Courant puissant, vitesse 1,5 m/s réglable et largement suffisante pour un bon rythme cardiaque. Très satisfait de mon achat pour la saison estivale.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-16",
@@ -458,7 +405,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Nos vacances d'été transformées dans le jardin",
     content: "On a passé l'été à nager à la maison avec les enfants. Le système est tellement intuitif que même les plus jeunes savent l'allumer en toute sécurité.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-17",
@@ -468,7 +415,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Fini les abonnements de piscine municipale",
     content: "Rentabilisé en un été ! Nager chez soi quand on veut, sans horaires imposés ni chlore agressif des bassins publics. Une vraie bouffée d'oxygène.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-18",
@@ -478,7 +425,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Facile à manipuler même pour une personne seule",
     content: "J'avais peur que ce soit trop lourd à manipuler mais le format valise à roulettes est vraiment bien pensé. Je le range au garage après chaque utilisation sans effort.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-19",
@@ -488,7 +435,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Efficacité redoutable sur piscine semi-enterrée bois",
     content: "Installé sur les madriers de notre piscine en pin traité, la pince ne glisse pas d'un millimètre grâce aux patins en caoutchouc renforcé. Rien à redire.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   },
   {
     id: "rev-20",
@@ -498,6 +445,6 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     title: "Garantie 2 ans rassurante et produit au top",
     content: "Belle conception, étanchéité irréprochable et SAV joignable en direct. C'est le meilleur investissement qu'on ait fait pour notre extérieur depuis des années.",
     verified: true,
-    productVariant: "X AIR (X25-P15)"
+    productVariant: "Swim Jet — 1 000 W"
   }
 ];

@@ -26,7 +26,7 @@ export const TechnologySection: React.FC = () => {
             Meilleur débit d'eau de sa catégorie
           </h2>
           <span className="text-[16px] sm:text-[20px] font-semibold text-gray-500">
-            Rythme maximum 1,2 m/s
+            1 000 W de puissance — Compatible avec toutes les piscines
           </span>
         </div>
 

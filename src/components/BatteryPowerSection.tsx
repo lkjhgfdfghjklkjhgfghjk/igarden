@@ -38,10 +38,10 @@ export const BatteryPowerSection: React.FC = () => {
             <div className="space-y-4">
               <div className="border-l-3 border-[#0071E3] pl-4">
                 <p className="font-bold text-[18px] text-[#0071E3] mb-1">
-                  Autonomie continue : 0,7 h à 5,0 h
+                  6 à 10 heures d'autonomie à pleine puissance
                 </p>
                 <p className="text-[14px] text-gray-600 m-0">
-                  Autonomie optimisée selon le pack batterie choisi (P5, P15, P30) et l'intensité de nage sélectionnée.
+                  Jusqu'à 10 heures d'autonomie pour profiter de longues séances de nage intensives sans recharge constante avec le moteur 1 000 W.
                 </p>
               </div>
 
