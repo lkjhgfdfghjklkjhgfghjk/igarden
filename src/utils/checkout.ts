@@ -1,4 +1,5 @@
 import { CHECKOUT_URL } from '../data';
+import { trackTikTokInitiateCheckout } from './tiktokPixel';
 
 let isNavigating = false;
 
@@ -17,6 +18,9 @@ export const redirectToCheckout = (url?: string) => {
     isNavigating = false;
   }, 2000);
 
+  // Trigger TikTok InitiateCheckout event on explicit user buy click
+  trackTikTokInitiateCheckout();
+
   // Check if running inside an iframe (like development preview environments)
   let isIframe = false;
   try {
@@ -29,8 +33,10 @@ export const redirectToCheckout = (url?: string) => {
     // In iframe preview, open exactly one new tab
     window.open(targetUrl, '_blank', 'noopener,noreferrer');
   } else {
-    // In regular standalone browser window, directly navigate the current window to checkout
-    window.location.href = targetUrl;
+    // In regular standalone browser window, allow 150ms for TikTok beacon/fetch dispatch then navigate
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 150);
   }
 };
 

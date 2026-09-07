@@ -31,6 +31,7 @@ import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
+import { trackTikTokViewContent, trackTikTokAddToCart } from './utils/tiktokPixel';
 
 export const PRODUCT_ROUTE = '/products/jet-de-natation-portable-igarden-x';
 
@@ -54,6 +55,12 @@ export default function App() {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
   const [currentCountry, setCurrentCountry] = useState('FR');
+
+  React.useEffect(() => {
+    if (currentPage === 'product') {
+      trackTikTokViewContent();
+    }
+  }, [currentPage]);
 
   React.useEffect(() => {
     const handlePopState = () => {
@@ -90,6 +97,9 @@ export default function App() {
     quantity: number,
     _selectedAccessories: { acc: AccessoryOption; qty: number; variantId?: string }[] = []
   ) => {
+    // Fire TikTok Pixel AddToCart event
+    trackTikTokAddToCart();
+
     const newItems = [...cartItems];
 
     // Add or update main product
