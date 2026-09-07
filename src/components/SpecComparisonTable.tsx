@@ -2,6 +2,7 @@ import React from 'react';
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokSpecificationsInteraction } from '../utils/tiktokPixel';
 import { Check, Zap, ArrowRight, Shield, Award, Sparkles, Lock } from 'lucide-react';
 
 interface SpecComparisonTableProps {
@@ -242,7 +243,10 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
         </div>
 
         {/* Detailed Technical Specifications Table */}
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+        <div 
+          onClick={trackTikTokSpecificationsInteraction}
+          className="max-w-4xl mx-auto bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm"
+        >
           {/* Table Header Info Bar */}
           <div className="bg-gray-900 text-white px-5 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>

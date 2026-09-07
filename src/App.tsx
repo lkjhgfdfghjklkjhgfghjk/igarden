@@ -31,7 +31,12 @@ import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
-import { trackTikTokViewContent, trackTikTokAddToCart } from './utils/tiktokPixel';
+import {
+  trackTikTokViewContent,
+  trackTikTokAddToCart,
+  trackTikTokViewCart,
+  setupTikTokScrollTracking
+} from './utils/tiktokPixel';
 
 export const PRODUCT_ROUTE = '/products/jet-de-natation-portable-igarden-x';
 
@@ -59,6 +64,8 @@ export default function App() {
   React.useEffect(() => {
     if (currentPage === 'product') {
       trackTikTokViewContent();
+      const cleanupScroll = setupTikTokScrollTracking();
+      return cleanupScroll;
     }
   }, [currentPage]);
 
@@ -150,7 +157,10 @@ export default function App() {
       {/* Main Header & Navigation */}
       <Header
         cartItems={cartItems}
-        onOpenCart={() => setIsCartOpen(true)}
+        onOpenCart={() => {
+          trackTikTokViewCart();
+          setIsCartOpen(true);
+        }}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenCountryDialog={() => setIsCountryOpen(true)}
         onOpenAccount={() => setIsAccountOpen(true)}

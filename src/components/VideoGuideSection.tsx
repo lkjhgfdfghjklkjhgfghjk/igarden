@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Play, X } from 'lucide-react';
+import { trackTikTokVideoStart } from '../utils/tiktokPixel';
 
 export const VideoGuideSection: React.FC = () => {
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
@@ -47,7 +48,10 @@ export const VideoGuideSection: React.FC = () => {
                 </div>
               ) : (
                 <div
-                  onClick={() => setPlayingVideoId(g.id)}
+                  onClick={() => {
+                    trackTikTokVideoStart();
+                    setPlayingVideoId(g.id);
+                  }}
                   className="relative aspect-video w-full bg-black overflow-hidden cursor-pointer group"
                 >
                   <img src={g.poster} alt={g.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

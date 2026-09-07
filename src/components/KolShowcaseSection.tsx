@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, X, ArrowLeft, ArrowRight } from 'lucide-react';
 import { KOL_VIDEOS } from '../data';
+import { trackTikTokVideoStart } from '../utils/tiktokPixel';
 
 // Helper to safely parse and normalize any video URL (MP4, YouTube, Vimeo, etc.)
 function getVideoEmbedInfo(url: string, videoType?: string) {
@@ -79,7 +80,10 @@ export const KolShowcaseSection: React.FC = () => {
           {KOL_VIDEOS.map((item, idx) => (
             <div
               key={item.id}
-              onClick={() => setActiveVideoIndex(idx)}
+              onClick={() => {
+                trackTikTokVideoStart();
+                setActiveVideoIndex(idx);
+              }}
               className="bg-[#FAFAFA] hover:bg-[#F3F4F6] rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 group cursor-pointer border border-gray-200/70 flex flex-col justify-between"
             >
               {/* Thumbnail with Play Icon */}

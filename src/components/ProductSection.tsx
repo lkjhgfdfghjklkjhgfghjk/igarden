@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck,
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS, CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokGalleryInteraction, trackTikTokSpecificationsInteraction } from '../utils/tiktokPixel';
 
 interface ProductSectionProps {
   selectedVariant: ProductVariant;
@@ -43,10 +44,12 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   }, []);
 
   const handlePrevImage = () => {
+    trackTikTokGalleryInteraction();
     setCurrentImageIndex((prev) => (prev === 0 ? selectedVariant.images.length - 1 : prev - 1));
   };
 
   const handleNextImage = () => {
+    trackTikTokGalleryInteraction();
     setCurrentImageIndex((prev) => (prev === selectedVariant.images.length - 1 ? 0 : prev + 1));
   };
 
@@ -123,7 +126,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             {selectedVariant.images.map((img, idx) => (
               <button
                 key={idx}
-                onClick={() => setCurrentImageIndex(idx)}
+                onClick={() => {
+                  trackTikTokGalleryInteraction();
+                  setCurrentImageIndex(idx);
+                }}
                 className={`w-[60px] sm:w-[72px] aspect-square rounded-sm overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
                   currentImageIndex === idx
                     ? 'border-[#0071E3] shadow-xs'
@@ -372,7 +378,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="rounded-sm border border-gray-200 overflow-hidden bg-white">
             <div className="grid grid-cols-4 border-b border-gray-200 bg-gray-50">
               <button
-                onClick={() => setActiveTab('desc')}
+                onClick={() => {
+                  trackTikTokSpecificationsInteraction();
+                  setActiveTab('desc');
+                }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'desc'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
@@ -382,7 +391,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 Description
               </button>
               <button
-                onClick={() => setActiveTab('specs')}
+                onClick={() => {
+                  trackTikTokSpecificationsInteraction();
+                  setActiveTab('specs');
+                }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'specs'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
@@ -392,7 +404,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 Spécifications
               </button>
               <button
-                onClick={() => setActiveTab('shipping')}
+                onClick={() => {
+                  trackTikTokSpecificationsInteraction();
+                  setActiveTab('shipping');
+                }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'shipping'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
@@ -402,7 +417,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 Livraison
               </button>
               <button
-                onClick={() => setActiveTab('warranty')}
+                onClick={() => {
+                  trackTikTokSpecificationsInteraction();
+                  setActiveTab('warranty');
+                }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'warranty'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'

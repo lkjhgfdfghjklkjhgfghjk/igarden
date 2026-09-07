@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Star, X, Check, ThumbsUp, Filter, MessageSquare, ChevronDown } from 'lucide-react';
 import { UserReview } from '../types';
 import { NATIVE_FRENCH_REVIEWS } from '../data';
+import { trackTikTokReviewsInteraction } from '../utils/tiktokPixel';
 
 export const JudgeMeReviews: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,12 +24,14 @@ export const JudgeMeReviews: React.FC = () => {
   const [votedReviews, setVotedReviews] = useState<Record<string, boolean>>({});
 
   const handleVoteHelpful = (id: string) => {
+    trackTikTokReviewsInteraction();
     if (votedReviews[id]) return;
     setHelpfulCounts(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
     setVotedReviews(prev => ({ ...prev, [id]: true }));
   };
 
   const handleLoadMore = () => {
+    trackTikTokReviewsInteraction();
     setVisibleCount(prev => Math.min(prev + 4, allReviews.length));
   };
 
@@ -142,7 +145,10 @@ export const JudgeMeReviews: React.FC = () => {
             <div className="flex flex-col items-center sm:items-end gap-2.5 w-full sm:w-auto">
               <button
                 id="btn-write-review"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => {
+                  trackTikTokReviewsInteraction();
+                  setIsModalOpen(true);
+                }}
                 className="w-full sm:w-auto px-6 py-3 rounded-sm bg-[#0071E3] hover:bg-[#005bb5] text-white font-bold text-[14px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase"
               >
                 <MessageSquare className="w-4 h-4" />
