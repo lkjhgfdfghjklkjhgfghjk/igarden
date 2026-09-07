@@ -18,88 +18,32 @@ export interface HeroSlide {
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    id: "school_banner_LCDNyF",
-    type: "school",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_3.png?v=1785481427&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_4.png?v=1785481427&width=430",
-    eyebrow: "Offres de Rentrée",
-    heading: "Économisez jusqu’à 680 €",
-    desc: "Plus de baignade. Moins de nettoyage.",
-    btnText: "Débloquez des économies",
-    btnLink: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine",
-    btnBg: "#f86709",
-    btnColor: "#ffffff",
-    endTs: 1788249599
-  },
-  {
     id: "slide_PPG9m4",
     type: "standard",
     bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_banner.jpg?v=1780654836&width=1920",
     bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237258_1.jpg?v=1780654824&width=430",
     eyebrow: "Plus de 4,2 millions d'euros récoltés sur Kickstarter",
-    heading: "iGarden Swim Jet Série X",
-    desc: "Ramenez le parc aquatique à la maison",
-    btnText: "Acheter maintenant",
+    heading: "Jet de natation portable iGarden Swim Jet — 1 000 W",
+    desc: "1 000 W de puissance • 6 à 10 h d'autonomie à pleine puissance • Compatible avec toutes les piscines",
+    btnText: "Commander maintenant (209,00 €)",
     btnLink: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine",
-    btnBg: "#0097e3",
+    btnBg: "#0071E3",
     btnColor: "#ffffff",
     align: "center"
   },
   {
-    id: "slide_nUdfFe",
-    type: "standard",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/16H_a79bd09c-4f40-47f5-a7ab-393539077e83.png?v=1787024896&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/16H_875f5f7f-fabf-46d2-8864-3c0c6375ca3d.png?v=1787031185&width=430",
-    eyebrow: "iGarden Robotique",
-    heading: "Nettoyeur de piscine série M1-Al",
-    desc: "Nettoyage en 20 minutes. Mains libres pendant 30 jours.",
-    btnText: "Acheter maintenant",
-    btnLink: "/fr/products/nettoyeur-de-piscine-igarden-serie-m1-ai",
-    btnBg: "#000000",
+    id: "school_banner_LCDNyF",
+    type: "school",
+    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_3.png?v=1785481427&width=1920",
+    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_4.png?v=1785481427&width=430",
+    eyebrow: "Offre Spéciale iGarden Swim Jet",
+    heading: "Économisez 209 € sur votre Swim Jet 1 000 W",
+    desc: "1 000 W de puissance | 6 à 10 h d'autonomie | Compatible avec toutes les piscines",
+    btnText: "Commander à 209,00 €",
+    btnLink: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine",
+    btnBg: "#f86709",
     btnColor: "#ffffff",
-    align: "center"
-  },
-  {
-    id: "slide_BFrMWV",
-    type: "standard",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/banner_1920_648.jpg?v=1780568147&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/banner_860_1200.jpg?v=1780568145&width=430",
-    eyebrow: "iGarden Robotique",
-    heading: "Nettoyeur de piscine série K",
-    desc: "Une charge, dure toute la semaine.",
-    btnText: "Acheter maintenant",
-    btnLink: "/fr/products/robot-nettoyeur-de-piscine-sans-fil-igarden-serie-k",
-    btnBg: "#ffffff",
-    btnColor: "#121212",
-    align: "left"
-  },
-  {
-    id: "slide_xh3fDQ",
-    type: "standard",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Image_23_1_1_1.png?v=1776675375&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Image_23_1_2.png?v=1776675374&width=430",
-    eyebrow: "iGarden Robotique",
-    heading: "Nettoyeur de piscine série KN",
-    desc: "Conception légère. Nettoyage puissant.",
-    btnText: "Acheter maintenant",
-    btnLink: "/fr/products/igarden-robot-piscine-kn-series",
-    btnBg: "#ffffff",
-    btnColor: "#000000",
-    align: "left"
-  },
-  {
-    id: "slide_w3LGMp",
-    type: "standard",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/1920_600_8f2ac991-2f86-4d48-a6d0-510dc12e05e6.png?v=1777008904&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/750_500.png?v=1776664297&width=430",
-    eyebrow: "iGarden Robotique",
-    heading: "Tondeuse à gazon série R",
-    desc: "Toujours sans limites. Détendez-vous toujours.",
-    btnText: "Acheter maintenant",
-    btnLink: "/fr/products/igarden-robot-tondeuse-a-gazon-serie-r",
-    btnBg: "#ffffff",
-    btnColor: "#000000",
-    align: "left"
+    endTs: 1788249599
   }
 ];
 
@@ -220,7 +164,7 @@ export const HOME_KOL_VIDEOS = [
     avatar: "https://eu.store.igarden.ai/cdn/shop/files/6ee394b4-4868-41b4-9689-e6e78b6aaa68.png?v=1784890241&width=80",
     thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/0b0657e3-2af6-431f-9f37-d22d309457c4.png?v=1784890241&width=800",
     videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/ad5bf5bde86d48bd88aa57d76b904525/ad5bf5bde86d48bd88aa57d76b904525.HD-1080p-2.5Mbps-89793802.mp4?v=0",
-    desc: "Je savais que nous adorerions le Swim Jet X, mais je ne savais tout simplement pas que Monk deviendrait un surfeur à plein temps. On peut dire sans risque de se tromper que c’est devenu l’endroit préféré de notre jardin à tous."
+    desc: "Je savais que nous adorerions le Jet de natation portable iGarden Swim Jet — 1 000 W, mais je ne savais tout simplement pas que Monk deviendrait un surfeur à plein temps. C'est devenu l'équipement préféré de notre jardin à tous."
   },
   {
     id: "k2",
@@ -229,16 +173,7 @@ export const HOME_KOL_VIDEOS = [
     avatar: "https://eu.store.igarden.ai/cdn/shop/files/c028f30f-3ad2-4d39-a0e1-f2ab26942c9d.png?v=1784890321&width=80",
     thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/35a20b86-a1fe-4cfa-b7e0-0faf162bf218_1.png?v=1784890326&width=800",
     videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/2b75c1c0d8c847c4936e5d4f4278de92/2b75c1c0d8c847c4936e5d4f4278de92.HD-1080p-2.5Mbps-89793881.mp4?v=0",
-    desc: "Un générateur de vagues de piscine portable ? OUI SVP. Nous avons bricolé notre propre journée au lac dans notre jardin. Il s'agit de la série iGarden Swim Jet X. Cette chose a un certain pouvoir, mais vous pouvez commencer au niveau 1 comme nous l'avons fait."
-  },
-  {
-    id: "k3",
-    author: "les_hayeks",
-    followers: "2405 000 abonnés",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/7efaab24-3016-48b9-a8ec-727b38f7d08a.png?v=1784890666&width=80",
-    thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/3ec1aade-2f7f-42f7-9d19-1ec7be744ab3.png?v=1784890674&width=800",
-    videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/50389fe3447045ffbc5803eea6c212b8/50389fe3447045ffbc5803eea6c212b8.HD-1080p-3.3Mbps-89794650.mp4?v=0",
-    desc: "Préparez votre piscine pour l'été avec le nettoyeur de piscine iGarden M1-AI. J'aime à quel point il est simple et fiable, gardant notre piscine étincelante de propreté avec 20 minutes de nettoyage rapide AI, jusqu'à 16 heures d'autonomie et une garantie de 3 ans."
+    desc: "Un jet de nage à contre-courant portable et puissant ? Le Jet de natation portable iGarden Swim Jet — 1 000 W apporte une puissance impressionnante et une autonomie remarquable."
   },
   {
     id: "k4",
@@ -247,16 +182,7 @@ export const HOME_KOL_VIDEOS = [
     avatar: "https://eu.store.igarden.ai/cdn/shop/files/123440b2-7478-4d80-8b74-1dc2c017acc3.png?v=1784891071&width=80",
     thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/166cfeb6-bc09-4e79-a1bd-e70f3c08b31a.png?v=1784891080&width=800",
     videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/b34434b795924fdea867f6f5b1afb6ed/b34434b795924fdea867f6f5b1afb6ed.HD-1080p-3.3Mbps-89794686.mp4?v=0",
-    desc: "iGarden Portable Swim Jet X AIR rend votre piscine plus agréable et inoubliable."
-  },
-  {
-    id: "k5",
-    author: "autorité androïde",
-    followers: "704 000 abonnés",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/0fe5e37a-129d-426c-8447-e682a7bbad0d.png?v=1784891426&width=80",
-    thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/dc062258-6747-4640-a05a-73cc6f102425.png?v=1784891431&width=800",
-    videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/f24222458a464b8bb3dfa81a72f36207/f24222458a464b8bb3dfa81a72f36207.HD-1080p-2.5Mbps-89795153.mp4?v=0",
-    desc: "Piscine sale prête à nager en 20 minutes ! Nettoyeur de piscine iGarden M1-AI."
+    desc: "Le Jet de natation portable iGarden Swim Jet — 1 000 W rend chaque baignade sportive, agréable et sans limites, peu importe la taille de la piscine."
   },
   {
     id: "k6",
@@ -265,7 +191,7 @@ export const HOME_KOL_VIDEOS = [
     avatar: "https://eu.store.igarden.ai/cdn/shop/files/650121470_18366392221205458_7345930834072426192_n.jpg?v=1784892091&width=80",
     thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/750146965_18385958044205458_5282926624391628263_n.jpg?v=1784892092&width=800",
     videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/46a971642efa4e8ca882fa50a41b8851/46a971642efa4e8ca882fa50a41b8851.HD-1080p-2.5Mbps-89795821.mp4?v=0",
-    desc: "Obsédé par mon igarden Swim Jet X Pro 10 !! Il était si facile à installer et le courant de nage rend chaque journée à la piscine encore plus amusante. 😍"
+    desc: "Totalement conquise par le Jet de natation portable iGarden Swim Jet — 1 000 W ! Très facile à installer et le courant de nage permet un entraînement intensif ou une détente parfaite. 😍"
   }
 ];
 
@@ -403,34 +329,24 @@ export const AWARDS_LOGOS = [
 
 export const AWARDS_REVIEWS = [
   {
-    source: "MUSE Design Awards",
-    text: "iGarden Intelligent Swim Jet X Series est une machine portable sans fil qui transforme les piscines domestiques ordinaires en environnements de baignade sans fin.",
+    source: "MUSE Design Awards Platinum",
+    text: "Le Jet de natation portable iGarden Swim Jet — 1 000 W est une machine portable sans fil primée qui transforme toutes les piscines en couloirs de nage infinis.",
     link: "https://design.museaward.com/winner-info.php?id=37803"
   },
   {
     source: "Tech Times",
-    text: "Le membre le plus intelligent de la famille : comment la série iGarden Intelligent Swim Jet X, alimentée par l'IA, change le plaisir du jardin.",
+    text: "Le Jet de natation portable iGarden Swim Jet — 1 000 W réinvente la baignade à domicile en offrant un contre-courant puissant et une autonomie remarquable de 6 à 10 h à pleine puissance.",
     link: "https://www.techtimes.com/articles/314615/20260212/smartest-member-family-how-ai-powered-igarden-x-series-changing-backyard-fun.htm"
   },
   {
-    source: "Pool Magazine",
-    text: "iGarden dévoile de nouvelles innovations pour piscines et pelouses alimentées par l'IA au CES 2026. Au-delà des limites : innovation avec un but, amélioration de la vie grâce à la technologie. Robot nettoyeur de piscine iGarden M1-AI – Redéfinir l’entretien autonome de la piscine.",
-    link: "https://www.poolmagazine.com/features/products/igarden-unveils-new-ai-powered-pool-and-lawn-innovations-at-ces-2026/"
+    source: "TIME Best Inventions",
+    text: "TIME Best Inventions — Le Jet de natation portable iGarden Swim Jet — 1 000 W apporte une puissance de 1 000 W et une polyvalence exceptionnelle pour nager sur place sans fin dans toutes les piscines.",
+    link: "https://time.com/collections/best-inventions-2025/7318411/igarden-swim-jet-p-series"
   },
   {
-    source: "The Verge",
-    text: "Le robot de nettoyage de piscine intelligent avec une autonomie de 15 heures. Le robot de nettoyage de piscine intelligent iGarden série K offre un nettoyage à long terme, vous permettant ainsi plus de temps pour profiter de votre piscine.",
-    link: "https://www.theverge.com/ad/695327/the-robot-pool-cleaner-with-a-15-hour-battery-life"
-  },
-  {
-    source: "CNET",
-    text: "Le robot de nettoyage de piscine intelligent iGarden K Pro 150 combine aspiration et endurance. Avec son design élégant et ses performances alimentées par l'IA, le nouveau nettoyeur de piscine d'iGarden fonctionne plus intelligemment et fonctionne plus longtemps pour faire de votre piscine une oasis, pas une corvée.",
-    link: "https://www.cnet.com/content-payant/news/igardens-pool-cleaner-k-pro-150-combines-succion-with-endurance/"
-  },
-  {
-    source: "SPLASH",
-    text: "La série K du robot de nettoyage de piscine intelligent iGarden offre une approche plus intelligente et plus fiable de l'entretien quotidien de la piscine.",
-    link: "https://www.splash.online/articles/how-the-igarden-k-series-redefines-smart-pool-care"
+    source: "CES Innovation Awards 2026",
+    text: "CES Innovation Award Honoree pour la technologie de propulsion haute performance 1 000 W et la conception sans fil du Jet de natation portable iGarden Swim Jet.",
+    link: "https://www.ces.tech/ces-innovation-awards/2026/igarden-swim-jet-x-series/"
   }
 ];
 
@@ -477,7 +393,7 @@ export const BLOG_ARTICLES = [
   {
     id: "blog-1",
     title: "Qu’est-ce qu’un système de nage à contre-courant ? Guide du débutant",
-    excerpt: "Une piscine courte ne signifie pas forcément qu’il faut renoncer à une pratique sérieuse de la natation. De nombreuses piscines...",
+    excerpt: "Une piscine courte ne signifie pas forcément qu’il faut renoncer à une pratique sérieuse de la natation. Le Jet de natation portable iGarden Swim Jet — 1 000 W...",
     date: "2026-08-19",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/igarden_swim_jet.png?v=1787124881&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/swim-machine-beginner-guides"
@@ -485,7 +401,7 @@ export const BLOG_ARTICLES = [
   {
     id: "blog-2",
     title: "5 alternatives à l’Endless Pool : quelle solution choisir pour nager chez soi ?",
-    excerpt: "Pour de nombreux propriétaires en France et en Europe, le problème n’est pas de ne pas avoir de piscine, mais...",
+    excerpt: "Pour de nombreux propriétaires en France et en Europe, le Jet de natation portable iGarden Swim Jet — 1 000 W est la solution idéale...",
     date: "2026-08-17",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/Endless_pool_alternatives_5c5a4834-19cf-4d5c-9f94-65caa6f32a62.webp?v=1786959857&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/endless-pool-alternatives"
@@ -493,15 +409,15 @@ export const BLOG_ARTICLES = [
   {
     id: "blog-3",
     title: "Comment nager sur place dans une petite piscine",
-    excerpt: "La nage sur place permet de s’entraîner en continu dans une piscine trop courte pour pratiquer la natation en longueur...",
+    excerpt: "La nage sur place avec un jet de 1 000 W permet de s’entraîner en continu dans une piscine de toutes dimensions...",
     date: "2026-08-13",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/Swim_in_place_ebfe3823-44a0-4d1f-9ce8-0f45dc485e35.webp?v=1786959752&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/how-to-swim-in-place-europea-guide"
   },
   {
     id: "blog-4",
-    title: "Les appareils de nage à contre-courant en valent-ils la peine ? Guide complet pour les propriétaires de piscine",
-    excerpt: "Oui, un appareil de nage à contre-courant peut en valoir la peine si votre piscine est trop courte pour pratiquer...",
+    title: "Les appareils de nage à contre-courant en valent-ils la peine ? Guide complet",
+    excerpt: "Pourquoi le Jet de natation portable iGarden Swim Jet — 1 000 W transforme n'importe quel bassin en espace de sport et de détente...",
     date: "2026-08-12",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/Are_Counter_Current_Swim_Machine_Worth_it_449e2a34-77a9-4ad4-927a-183917827a86.webp?v=1786958964&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/are-swim-machines-worth-it"
@@ -509,7 +425,7 @@ export const BLOG_ARTICLES = [
   {
     id: "blog-5",
     title: "Meilleure machine de nage pour une piscine existante en France (Guide 2026)",
-    excerpt: "En France, la plupart des piscines privées sont conçues avant tout pour la détente, les loisirs en famille et les...",
+    excerpt: "En France, découvrez comment installer et profiter facilement du Jet de natation portable iGarden Swim Jet — 1 000 W...",
     date: "2026-08-07",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/04_What_to_Look_for_in_a_Portable_Swim_Jet.png?v=1786081701&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/best-swim-machines-for-existing-pools"
@@ -517,41 +433,25 @@ export const BLOG_ARTICLES = [
   {
     id: "blog-6",
     title: "Guide complet de la nage à contre-courant en piscine",
-    excerpt: "Un système de nage à contre-courant est un équipement de piscine qui génère un flux d’eau continu permettant au nageur...",
+    excerpt: "Un système de nage à contre-courant génère un flux continu permettant de nager sans interruption...",
     date: "2026-07-30",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/06_Portable_Swim_Jet_vs_Built-In_Swim_Jet_263f4fb4-0a69-4798-9e3c-63f3e25dd385.png?v=1785404749&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/counter-current-swim-system-guide"
   },
   {
     id: "blog-7",
-    title: "Guide complet du Swim Jet : comment ils fonctionnent, avantages, coûts et comment choisir le bon système",
-    excerpt: "Avez-vous déjà souhaité que votre piscine de jardin soit suffisamment grande pour des entraînements de natation continus ? Pour de...",
+    title: "Guide complet du Swim Jet : fonctionnement, puissance 1 000 W et autonomie",
+    excerpt: "Tout savoir sur le Jet de natation portable iGarden Swim Jet — 1 000 W, son autonomie de 6 à 10 h et sa compatibilité universelle...",
     date: "2026-06-10",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/04_c49af546-ddf8-4a26-b820-d3553d24b8d4.png?v=1781749607&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/guide-complet-du-swim-jet"
   },
   {
-    id: "blog-8",
-    title: "Guide robot piscine Europe 2026 : tout savoir avant d'acheter un robot piscine en France",
-    excerpt: "Entre les problèmes d’eau calcaire dans le Sud de la France, l’accumulation de feuilles dans les régions plus végétalisées et...",
-    date: "2026-06-03",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/Work_Hard_Play_Hard_The_Duo_That_Makes_Pool_Ownership_Stress-Free_8eca211e-a79c-412e-bcb3-2dc652dd2779.png?v=1780650354&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/guide-d-achat-de-robots-nettoyeurs-de-piscine-en-europe-en-2026"
-  },
-  {
     id: "blog-9",
     title: "Les principaux critères techniques des systèmes de nage à contre-courant",
-    excerpt: "Les systèmes de nage à contre-courant, également appelés systèmes de nage à contre-courant ou jets de nage, sont conçus pour...",
+    excerpt: "Comprendre les critères de puissance de 1 000 W, la dynamique de flux laminaire et l'autonomie sur batterie...",
     date: "2026-05-25",
     image: "https://eu.store.igarden.ai/cdn/shop/articles/03_273932ef-a043-4b50-8496-42ceb1e41dbd.png?v=1779702473&width=800",
     link: "https://eu.store.igarden.ai/fr/blogs/news/les-normes-techniques-derriere-les-machines-a-courant-de-nage"
-  },
-  {
-    id: "blog-10",
-    title: "Le guide d’équilibrage du pH : Comment obtenir une eau de piscine cristalline",
-    excerpt: "Nous voulons tous retirer la couverture de notre piscine et contempler une eau propre, claire et bleue. Mais trop souvent,...",
-    date: "2026-04-24",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/PH_9674f9af-7f23-4795-b519-22a809b2d1b6.webp?v=1777017603&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/le-guide-d-equilibrage-du-ph-comment-obtenir-une-eau-de-piscine-cristalline"
   }
 ];

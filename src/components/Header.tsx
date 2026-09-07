@@ -135,14 +135,14 @@ export const Header: React.FC<HeaderProps> = ({
                             />
                           </div>
                           <div>
-                            <h4 className="font-bold text-[15px] text-gray-900 text-center">iGarden Swim Jet Série X</h4>
-                            <p className="text-[#0071E3] font-bold text-[13px] text-center mt-0.5">Prime</p>
+                            <h4 className="font-bold text-[14px] text-gray-900 text-center">Jet de natation portable iGarden Swim Jet — 1 000 W</h4>
+                            <p className="text-[#0071E3] font-bold text-[13px] text-center mt-0.5">209,00 €</p>
                             <div className="flex items-center justify-center gap-1.5 text-[11px] text-gray-600 mt-2 flex-wrap">
-                              <span>AI-Powered</span>
+                              <span>1 000 W</span>
                               <span>•</span>
-                              <span>Portable 2-in-1</span>
+                              <span>6 à 10 h d'autonomie</span>
                               <span>•</span>
-                              <span>10h Max</span>
+                              <span>Toutes piscines</span>
                             </div>
                           </div>
                         </div>

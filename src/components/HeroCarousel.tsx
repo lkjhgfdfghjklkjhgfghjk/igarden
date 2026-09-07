@@ -81,18 +81,18 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                     />
                     <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between text-white text-left">
                       <p className="text-[13px] md:text-[15px] font-bold uppercase tracking-wider text-white/90">
-                        Offres de Rentrée
+                        Offre Spéciale Swim Jet
                       </p>
                       <div className="flex items-baseline gap-2">
                         <span className="text-[12px] md:text-[14px] font-bold leading-tight uppercase">
-                          Économisez<br />jusqu’à
+                          Prix<br />Spécial
                         </span>
                         <span className="text-[36px] md:text-[54px] font-extrabold leading-none tracking-tight">
-                          €680
+                          209 €
                         </span>
                       </div>
                       <p className="text-[12px] md:text-[14px] font-medium text-white/90">
-                        Plus de baignade. Moins de nettoyage.
+                        1 000 W de puissance • 6 à 10 h d'autonomie
                       </p>
                     </div>
                   </div>
@@ -133,7 +133,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                     onClick={onNavigateToProduct}
                     className="px-8 py-3.5 bg-[#f86709] hover:bg-[#d55807] text-white font-extrabold text-[15px] md:text-[17px] rounded-sm tracking-wide shadow-lg transition-all cursor-pointer uppercase"
                   >
-                    Débloquez des économies
+                    Commander à 209,00 €
                   </button>
                 </div>
               </div>
