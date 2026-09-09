@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, X, ArrowLeft, ArrowRight } from 'lucide-react';
-import { HOME_KOL_VIDEOS } from '../homeData';
+import { getHomeKolVideos } from '../homeData';
+import { useI18n } from '../i18n/I18nContext';
 
 // Helper to safely parse and normalize any video URL (MP4, YouTube, Vimeo, etc.)
 function getVideoEmbedInfo(url: string) {
@@ -33,6 +34,8 @@ function getVideoEmbedInfo(url: string) {
 
 export const HomeKolShowcase: React.FC = () => {
   const [activeVideoIndex, setActiveVideoIndex] = useState<number | null>(null);
+  const { t } = useI18n();
+  const kolVideos = getHomeKolVideos(t);
 
   // Keyboard navigation for modal
   useEffect(() => {
@@ -42,17 +45,17 @@ export const HomeKolShowcase: React.FC = () => {
       if (e.key === 'Escape') {
         setActiveVideoIndex(null);
       } else if (e.key === 'ArrowLeft') {
-        setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : HOME_KOL_VIDEOS.length - 1));
+        setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : kolVideos.length - 1));
       } else if (e.key === 'ArrowRight') {
-        setActiveVideoIndex((prev) => (prev !== null && prev < HOME_KOL_VIDEOS.length - 1 ? prev + 1 : 0));
+        setActiveVideoIndex((prev) => (prev !== null && prev < kolVideos.length - 1 ? prev + 1 : 0));
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeVideoIndex]);
+  }, [activeVideoIndex, kolVideos.length]);
 
-  const currentVideo = activeVideoIndex !== null ? HOME_KOL_VIDEOS[activeVideoIndex] : null;
+  const currentVideo = activeVideoIndex !== null ? kolVideos[activeVideoIndex] : null;
   const currentVideoInfo = currentVideo ? getVideoEmbedInfo(currentVideo.videoUrl) : null;
 
   return (
@@ -60,17 +63,17 @@ export const HomeKolShowcase: React.FC = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-14">
-          <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight font-['Figtree']">
-            Apprécié par les vrais utilisateurs
+          <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight">
+            {t.home?.kol?.sectionTitle || "Apprécié par les vrais utilisateurs"}
           </h2>
           <p className="mt-2.5 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Découvrez tous les retours d'expérience et démonstrations authentiques de notre communauté avec les appareils iGarden.
+            {t.home?.kol?.sectionSubtitle || "Découvrez tous les retours d'expérience et démonstrations authentiques de notre communauté avec les appareils iGarden."}
           </p>
         </div>
 
-        {/* All Videos Grid - All Available at once without needing arrow clicks */}
+        {/* All Videos Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {HOME_KOL_VIDEOS.map((kol, idx) => (
+          {kolVideos.map((kol, idx) => (
             <div
               key={kol.id}
               onClick={() => setActiveVideoIndex(idx)}
@@ -78,7 +81,7 @@ export const HomeKolShowcase: React.FC = () => {
             >
               {/* Video Thumbnail with Play Button */}
               <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full bg-black overflow-hidden">
-                <img
+                <img referrerPolicy="no-referrer"
                   src={kol.thumbnail}
                   alt={kol.author}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -93,14 +96,14 @@ export const HomeKolShowcase: React.FC = () => {
                 {/* Badge Vidéo */}
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-[11px] font-medium text-white flex items-center gap-1.5 shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                  Vidéo
+                  {t.home?.kol?.videoBadge || "Vidéo"}
                 </div>
               </div>
 
               {/* Author & Quote Info */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                 <div className="flex items-center gap-3">
-                  <img
+                  <img referrerPolicy="no-referrer"
                     src={kol.avatar}
                     alt={kol.author}
                     className="w-10 h-10 rounded-full object-cover shrink-0 border border-white shadow-xs"
@@ -135,7 +138,7 @@ export const HomeKolShowcase: React.FC = () => {
             {/* Top Bar with Author Info and Close Button */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#181818] border-b border-white/10 text-white z-20">
               <div className="flex items-center gap-3 min-w-0">
-                <img
+                <img referrerPolicy="no-referrer"
                   src={currentVideo.avatar}
                   alt={currentVideo.author}
                   className="w-9 h-9 rounded-full object-cover border border-white/20"
@@ -150,22 +153,22 @@ export const HomeKolShowcase: React.FC = () => {
                 {/* Navigation Arrows in modal */}
                 <button
                   onClick={() =>
-                    setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : HOME_KOL_VIDEOS.length - 1))
+                    setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : kolVideos.length - 1))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Vidéo précédente (Flèche gauche)"
+                  title={t.home?.kol?.prevVideoAria || "Vidéo précédente"}
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
                 <span className="text-xs text-gray-400">
-                  {(activeVideoIndex ?? 0) + 1} / {HOME_KOL_VIDEOS.length}
+                  {(activeVideoIndex ?? 0) + 1} / {kolVideos.length}
                 </span>
                 <button
                   onClick={() =>
-                    setActiveVideoIndex((prev) => (prev !== null && prev < HOME_KOL_VIDEOS.length - 1 ? prev + 1 : 0))
+                    setActiveVideoIndex((prev) => (prev !== null && prev < kolVideos.length - 1 ? prev + 1 : 0))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Vidéo suivante (Flèche droite)"
+                  title={t.home?.kol?.nextVideoAria || "Vidéo suivante"}
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -173,7 +176,7 @@ export const HomeKolShowcase: React.FC = () => {
                 <button
                   onClick={() => setActiveVideoIndex(null)}
                   className="ml-2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-                  aria-label="Fermer la vidéo"
+                  aria-label={t.home?.kol?.closeVideoAria || "Fermer la vidéo"}
                 >
                   <X className="w-4 h-4" />
                 </button>

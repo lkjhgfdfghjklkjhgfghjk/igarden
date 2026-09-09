@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { TESTIMONIALS_1 } from '../homeData';
+import { getTestimonials1 } from '../homeData';
+import { useI18n } from '../i18n/I18nContext';
 
 export const TestimonialsCarousel1: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
+  const testimonials = getTestimonials1(t);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -16,12 +19,12 @@ export const TestimonialsCarousel1: React.FC = () => {
     <section className="relative overflow-hidden py-12 sm:py-16 my-8">
       {/* Background Graphic with gradient overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <img referrerPolicy="no-referrer"
           src="https://eu.store.igarden.ai/cdn/shop/files/pc_6ce86593-e3b7-4fdb-9a10-ea0a730eb0cb_3.png?v=1784888082&width=2400"
           alt=""
           className="hidden sm:block w-full h-full object-cover"
         />
-        <img
+        <img referrerPolicy="no-referrer"
           src="https://eu.store.igarden.ai/cdn/shop/files/pc_6ce86593-e3b7-4fdb-9a10-ea0a730eb0cb_3.png?v=1784888082&width=800"
           alt=""
           className="block sm:hidden w-full h-full object-cover"
@@ -32,10 +35,10 @@ export const TestimonialsCarousel1: React.FC = () => {
         {/* Left Side: Fixed text */}
         <div className="w-full lg:w-[32%] flex flex-col justify-center shrink-0">
           <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black mb-3 md:mb-5 leading-tight">
-            Témoignage d'utilisateur
+            {t.home?.testimonials?.sectionTitle || "Témoignage d'utilisateur"}
           </h2>
           <p className="text-[14px] sm:text-[16px] md:text-[17px] text-gray-800 font-normal leading-relaxed opacity-90">
-            Nous valorisons l’expérience authentique de chaque utilisateur. Si vous l'avez déjà, nous vous invitons à partager votre ressenti d'utilisation ; si vous hésitez encore, autant jeter un œil d’abord aux vrais retours des autres acheteurs.
+            {t.home?.testimonials?.sectionSubtitle || "Nous valorisons l’expérience authentique de chaque utilisateur. Si vous l'avez déjà, nous vous invitons à partager votre ressenti d'utilisation ; si vous hésitez encore, autant jeter un œil d’abord aux vrais retours des autres acheteurs."}
           </p>
         </div>
 
@@ -46,7 +49,7 @@ export const TestimonialsCarousel1: React.FC = () => {
             className="flex items-center gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth"
             style={{ scrollSnapType: 'x mandatory' }}
           >
-            {TESTIMONIALS_1.map((item) => (
+            {testimonials.map((item) => (
               <a
                 key={item.id}
                 href={item.link}
@@ -56,7 +59,7 @@ export const TestimonialsCarousel1: React.FC = () => {
                 style={{ scrollSnapAlign: 'start' }}
               >
                 {/* Card image */}
-                <img
+                <img referrerPolicy="no-referrer"
                   src={item.image}
                   alt={item.author}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -91,14 +94,14 @@ export const TestimonialsCarousel1: React.FC = () => {
               <button
                 onClick={() => scroll('left')}
                 className="w-10 h-10 rounded-full bg-gray-200/90 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-                aria-label="Témoignage précédent"
+                aria-label={t.home?.testimonials?.prevAria || "Témoignage précédent"}
               >
                 <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
               </button>
               <button
                 onClick={() => scroll('right')}
                 className="w-10 h-10 rounded-full bg-gray-200/90 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-                aria-label="Témoignage suivant"
+                aria-label={t.home?.testimonials?.nextAria || "Témoignage suivant"}
               >
                 <ChevronRight className="w-5 h-5 stroke-[2.5]" />
               </button>

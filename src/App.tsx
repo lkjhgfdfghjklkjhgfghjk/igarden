@@ -31,6 +31,7 @@ import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
+import { useI18n } from './i18n';
 import {
   trackTikTokViewContent,
   trackTikTokAddToCart,
@@ -51,6 +52,7 @@ const getInitialPage = (): 'home' | 'product' => {
 };
 
 export default function App() {
+  const { country, setCountry } = useI18n();
   const [currentPage, setCurrentPage] = useState<'home' | 'product'>(getInitialPage);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(PRODUCT_VARIANTS[0]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -59,7 +61,6 @@ export default function App() {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-  const [currentCountry, setCurrentCountry] = useState('FR');
 
   React.useEffect(() => {
     if (currentPage === 'product') {
@@ -263,8 +264,8 @@ export default function App() {
       <CountryDialog
         isOpen={isCountryOpen}
         onClose={() => setIsCountryOpen(false)}
-        currentCountry={currentCountry}
-        onSelectCountry={setCurrentCountry}
+        currentCountry={country}
+        onSelectCountry={setCountry}
       />
 
       <AccountModal

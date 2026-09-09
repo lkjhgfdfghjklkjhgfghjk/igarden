@@ -18,14 +18,14 @@ export const ProductCardFlexM1: React.FC<ProductCardFlexM1Props> = ({ onNavigate
           className="relative w-full rounded-2xl overflow-hidden cursor-pointer shadow-sm group bg-[#f0f0f0] min-h-[290px] sm:min-h-[380px] md:min-h-[440px] flex items-center"
         >
           {/* PC Image */}
-          <img
+          <img referrerPolicy="no-referrer"
             src="https://eu.store.igarden.ai/cdn/shop/files/banner_10.png?v=1782805510&width=2000"
             alt="Robot nettoyeur de piscine iGarden série M1-AI"
             className="hidden sm:block absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-[1.01]"
             loading="lazy"
           />
           {/* Mobile Image */}
-          <img
+          <img referrerPolicy="no-referrer"
             src="https://eu.store.igarden.ai/cdn/shop/files/banner_9.png?v=1782805494&width=800"
             alt="Robot nettoyeur de piscine iGarden série M1-AI"
             className="block sm:hidden absolute inset-0 w-full h-full object-cover object-bottom"

@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { BLOG_ARTICLES } from '../homeData';
+import { getBlogArticles } from '../homeData';
+import { useI18n } from '../i18n/I18nContext';
 
 export const BlogCarouselSection: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useI18n();
+  const articles = getBlogArticles(t);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -18,7 +21,7 @@ export const BlogCarouselSection: React.FC = () => {
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-[24px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight">
-            Plongez dans iGarden News
+            {t.home?.blog?.sectionTitle || "Plongez dans iGarden News"}
           </h2>
         </div>
 
@@ -28,7 +31,7 @@ export const BlogCarouselSection: React.FC = () => {
           className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth"
           style={{ scrollSnapType: 'x mandatory' }}
         >
-          {BLOG_ARTICLES.map((article) => (
+          {articles.map((article) => (
             <a
               key={article.id}
               href={article.link}
@@ -39,7 +42,7 @@ export const BlogCarouselSection: React.FC = () => {
             >
               {/* Thumbnail */}
               <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gray-100 mb-3">
-                <img
+                <img referrerPolicy="no-referrer"
                   src={article.image}
                   alt={article.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -74,14 +77,14 @@ export const BlogCarouselSection: React.FC = () => {
             <button
               onClick={() => scroll('left')}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label="Article précédent"
+              aria-label={t.home?.blog?.prevAria || "Article précédent"}
             >
               <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
             </button>
             <button
               onClick={() => scroll('right')}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label="Article suivant"
+              aria-label={t.home?.blog?.nextAria || "Article suivant"}
             >
               <ChevronRight className="w-5 h-5 stroke-[2.5]" />
             </button>

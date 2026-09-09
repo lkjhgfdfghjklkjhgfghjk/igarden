@@ -1,6 +1,9 @@
 import React from 'react';
+import { useI18n } from '../i18n';
 
 export const ClampSetupSection: React.FC = () => {
+  const { t } = useI18n();
+
   return (
     <section className="py-16 sm:py-24 bg-[#FAFAFA]">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
@@ -21,34 +24,34 @@ export const ClampSetupSection: React.FC = () => {
           {/* Text & Steps side */}
           <div className="w-full lg:w-2/5 space-y-8">
             <h2 className="text-[28px] sm:text-[44px] font-bold text-gray-900 font-['Figtree'] leading-tight">
-              Clampez et partez en moins d'une minute
+              {t.clampSetup.title}
             </h2>
 
             <div className="space-y-6">
               <div className="border-l-4 border-[#0071E3] pl-5 space-y-1">
                 <span className="text-[#0071E3] font-bold text-[14px] uppercase tracking-wider block">
-                  Étape 01
+                  {t.clampSetup.step1Title}
                 </span>
                 <p className="text-[20px] sm:text-[26px] font-bold text-gray-900 m-0">
-                  Connectez le boîtier d'alimentation
+                  {t.clampSetup.step1Desc}
                 </p>
               </div>
 
               <div className="border-l-4 border-gray-300 hover:border-[#0071E3] pl-5 space-y-1 transition-colors">
                 <span className="text-gray-400 font-bold text-[14px] uppercase tracking-wider block">
-                  Étape 02
+                  {t.clampSetup.step2Title}
                 </span>
                 <p className="text-[20px] sm:text-[26px] font-bold text-gray-900 m-0">
-                  Fixez le jet sur la margelle
+                  {t.clampSetup.step2Desc}
                 </p>
               </div>
 
               <div className="border-l-4 border-gray-300 hover:border-[#0071E3] pl-5 space-y-1 transition-colors">
                 <span className="text-gray-400 font-bold text-[14px] uppercase tracking-wider block">
-                  Étape 03
+                  {t.clampSetup.step3Title}
                 </span>
                 <p className="text-[20px] sm:text-[26px] font-bold text-gray-900 m-0">
-                  Activez le flux et nagez
+                  {t.clampSetup.step3Desc}
                 </p>
               </div>
             </div>

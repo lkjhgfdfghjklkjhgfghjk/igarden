@@ -42,7 +42,7 @@ export const ProductCardsGridPool: React.FC<ProductCardsGridPoolProps> = ({ onNa
 
             {/* Image */}
             <div className="my-6 sm:my-8 flex items-center justify-center min-h-[160px] sm:min-h-[220px]">
-              <img
+              <img referrerPolicy="no-referrer"
                 src="https://eu.store.igarden.ai/cdn/shop/files/65D8A0F6-EF9A-45A5-BCFE-B51F285C2A572_4.png?v=1782899669&width=600"
                 alt="Robot nettoyeur de piscine iGarden série K"
                 className="max-h-[200px] sm:max-h-[260px] w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
@@ -95,7 +95,7 @@ export const ProductCardsGridPool: React.FC<ProductCardsGridPoolProps> = ({ onNa
 
             {/* Image */}
             <div className="my-6 sm:my-8 flex items-center justify-center min-h-[160px] sm:min-h-[220px]">
-              <img
+              <img referrerPolicy="no-referrer"
                 src="https://eu.store.igarden.ai/cdn/shop/files/lQLPJx05WhemDjHNE4jNE4iw0Jd3Jfxte7MJ6RxRqHqwAA_5000_5000_1.png?v=1779694578&width=600"
                 alt="Robot nettoyeur de piscine iGarden série KN"
                 className="max-h-[200px] sm:max-h-[260px] w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"

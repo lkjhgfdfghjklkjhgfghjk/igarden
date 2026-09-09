@@ -88,7 +88,7 @@ export const KolShowcaseSection: React.FC = () => {
             >
               {/* Thumbnail with Play Icon */}
               <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full bg-black overflow-hidden">
-                <img
+                <img referrerPolicy="no-referrer"
                   src={item.thumbnail}
                   alt={item.author}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -110,7 +110,7 @@ export const KolShowcaseSection: React.FC = () => {
               {/* Author Info & Quote */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                 <div className="flex items-center gap-3">
-                  <img
+                  <img referrerPolicy="no-referrer"
                     src={item.avatar}
                     alt={item.author}
                     className="w-10 h-10 rounded-full object-cover border border-gray-200"
@@ -144,7 +144,7 @@ export const KolShowcaseSection: React.FC = () => {
             {/* Header bar */}
             <div className="flex items-center justify-between px-4 py-3 bg-[#181818] border-b border-white/10 text-white z-20">
               <div className="flex items-center gap-3 min-w-0">
-                <img
+                <img referrerPolicy="no-referrer"
                   src={currentVideo.avatar}
                   alt={currentVideo.author}
                   className="w-9 h-9 rounded-full object-cover border border-white/20"

@@ -1,38 +1,37 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true";
+export const CHECKOUT_URL = "https://igardeem.myshopify.com/checkouts/cn/hWNGc6PE3YmK5157FOjESDvW/de-fr?_r=AQABPE7rd3SpH8qjQ9jgTux28IVpAZAd67MYPdC9uerHHik&preview_theme_id=204992905553";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
     id: "swim-jet-1000w",
-    sku: "SJD-1000W-UNIV-FR",
-    name: "Jet de natation portable iGarden Swim Jet — 1 000 W",
-    shortName: "Swim Jet — 1 000 W",
-    subtitle: "Système de nage à contre-courant universel et polyvalent — Compatible avec toutes les piscines",
+    sku: "SJD-1000W-UNIV-DE",
+    name: "Tragbare Gegenstromanlage iGarden Swim Jet — 1.000 W",
+    shortName: "Swim Jet — 1.000 W",
+    subtitle: "Universelles Gegenstrom-Schwimmsystem — Kompatibel mit allen Pools",
     price: 209.00,
     originalPrice: 418.00,
     discountAmount: 209.00,
     couponCode: "SWIMJET",
-    couponOff: "€209,00",
-    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
-    specsSummary: "1 000 W de puissance | 6 à 10 h d'autonomie à pleine puissance | Compatible avec toutes les piscines",
-    power: "1 000 W",
+    couponOff: "209,00 €",
+    checkoutUrl: "https://igardeem.myshopify.com/checkouts/cn/hWNGc6PE3YmK5157FOjESDvW/de-fr?_r=AQABPE7rd3SpH8qjQ9jgTux28IVpAZAd67MYPdC9uerHHik&preview_theme_id=204992905553",
+    specsSummary: "1.000 W Leistung | 6 bis 10 h Akkulaufzeit | Kompatibel mit allen Pools",
+    power: "1.000 W",
     speed: "1,5 m/s",
-    batteryLife: "6 à 10 heures",
-    flowRate: "Flux laminaire haute puissance",
+    batteryLife: "6 bis 10 Stunden",
+    flowRate: "Breite laminare Hochleistungs-Strömung",
     images: [
-      "https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732",
-      "https://eu.store.igarden.ai/cdn/shop/files/2-FR_678d7fd7-7477-4c54-af51-84fb9fb6b017.png?v=1782461722",
-      "https://eu.store.igarden.ai/cdn/shop/files/3-FR_8a800e11-2d34-4c21-9ad0-0dc7085c7d01.png?v=1782461729",
-      "https://eu.store.igarden.ai/cdn/shop/files/4-FR_542fc470-0971-4ab4-b0d7-5c7a2134836d.png?v=1782461740",
-      "https://eu.store.igarden.ai/cdn/shop/files/5-FR_b4c2552b-97f0-4e34-bfa3-d688835edacb.png?v=1782461748",
-      "https://eu.store.igarden.ai/cdn/shop/files/6-FR_916100ee-5d82-4f74-910f-8d281145ba32.png?v=1782461731",
-      "https://eu.store.igarden.ai/cdn/shop/files/7-FR_b986d06c-32a6-4909-88b3-0b15e18b0dc0.png?v=1782461714",
-      "https://eu.store.igarden.ai/cdn/shop/files/8-FR_10291cf6-102d-4229-8bca-a3406705dc1d.png?v=1782461726",
+      "https://eu.store.igarden.ai/cdn/shop/files/DE-X_12.png?v=1788838449",
+      "https://eu.store.igarden.ai/cdn/shop/files/2-DE_40d7d6ff-905b-41d5-aa2f-efee10aee0d0.png?v=1782459881",
+      "https://eu.store.igarden.ai/cdn/shop/files/3-DE_0ed24efc-9490-415d-8067-c3eaa744e48b.png?v=1782459867",
+      "https://eu.store.igarden.ai/cdn/shop/files/4-DE_56023cf4-6037-46f4-a613-8c374a66e69b.png?v=1782459891",
+      "https://eu.store.igarden.ai/cdn/shop/files/5-DE_12777650-8ac0-4c1b-8b05-44dd7baa6c0d.png?v=1782459925",
+      "https://eu.store.igarden.ai/cdn/shop/files/6-DE_e19d678a-aa54-4b83-86ad-114a53e84c56.png?v=1782459887",
+      "https://eu.store.igarden.ai/cdn/shop/files/7-DE_6f41ec4a-517f-41fb-a66e-4c511d423e19.png?v=1782459891",
+      "https://eu.store.igarden.ai/cdn/shop/files/8-DE_d9f62640-3b44-42d2-a1cb-71fcf5780901.png?v=1782459913",
       "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_1.jpg?v=1780570719",
       "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_3.jpg?v=1780570719",
-      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_4.jpg?v=1780570719",
-      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_2.jpg?v=1780570720"
+      "https://eu.store.igarden.ai/cdn/shop/files/swim-jet-x-series-in-the-real-scenes_4.jpg?v=1780570719"
     ]
   }
 ];
@@ -170,7 +169,7 @@ export const ATHLETES: Athlete[] = [
 export const PRESS_QUOTES: PressQuote[] = [
   {
     name: "Geeky Gadgets",
-    logo: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2121239268.png?crop=center&height=160&v=1787107934&width=160",
+    logo: "https://eu.store.igarden.ai/cdn/shop/files/Group_2121239268.png?crop=center&height=160&v=1787107934&width=160",
     quote: "La série X offre le même courant de qualité professionnelle que les systèmes intégrés, mais pour une fraction du coût et sans aucune construction requise."
   },
   {

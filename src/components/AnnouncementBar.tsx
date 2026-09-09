@@ -1,25 +1,30 @@
 import React from 'react';
 import { Globe, Sparkles } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 interface AnnouncementBarProps {
   onOpenCountryDialog: () => void;
 }
 
 export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onOpenCountryDialog }) => {
+  const { t, countryInfo } = useI18n();
+
   return (
     <div className="bg-[#F2F3F5] text-black text-[11px] sm:text-[13px] font-normal py-2 px-3 sm:px-8 border-b border-black/5">
       <div className="max-w-[1500px] mx-auto flex items-center justify-between">
         <div className="w-full text-center sm:text-left sm:w-auto font-semibold text-gray-800 flex items-center justify-center sm:justify-start gap-1.5 leading-snug">
           <Sparkles className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
-          <span className="hidden sm:inline">Offre Spéciale France : Jet de natation Swim Jet (1 000 W) à 209,00 € • Livraison Colissimo Offerte • Garantie 2 ans</span>
-          <span className="sm:hidden">Offre France : Swim Jet (1 000 W) à <strong>209,00 €</strong> • Livraison Colissimo Offerte</span>
+          <span className="hidden sm:inline">{t.announcement.specialOfferFull}</span>
+          <span className="sm:hidden">{t.announcement.specialOfferMobile}</span>
         </div>
         <button
           onClick={onOpenCountryDialog}
           className="hidden sm:flex items-center gap-1.5 text-black hover:text-[#0071E3] transition-colors cursor-pointer text-[12px] font-medium shrink-0 rounded-sm"
         >
           <Globe className="w-3.5 h-3.5" />
-          <span>France ( Français / € EUR )</span>
+          <span>
+            {countryInfo.name} ({countryInfo.langLabel} / {countryInfo.currencySymbol} {countryInfo.currency})
+          </span>
         </button>
       </div>
     </div>

@@ -118,7 +118,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
                   onClick={handleSelectProduct}
                   className="flex items-center gap-3 p-3 rounded-sm border border-gray-200 hover:border-gray-400 hover:shadow-xs bg-white cursor-pointer transition-all"
                 >
-                  <img
+                  <img referrerPolicy="no-referrer"
                     src={prod.image}
                     alt={prod.title}
                     className="w-14 h-14 object-cover rounded-sm bg-gray-50 shrink-0 border border-gray-100"
