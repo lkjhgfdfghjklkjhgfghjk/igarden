@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Play, X } from 'lucide-react';
-import { trackTikTokVideoStart } from '../utils/tiktokPixel';
 import { useI18n } from '../i18n';
 
 export const VideoGuideSection: React.FC = () => {
@@ -94,7 +93,6 @@ export const VideoGuideSection: React.FC = () => {
               ) : (
                 <div
                   onClick={() => {
-                    trackTikTokVideoStart();
                     setPlayingVideoId(g.id);
                   }}
                   className="relative aspect-video w-full bg-black overflow-hidden cursor-pointer group"

@@ -61,7 +61,14 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
   };
 
   const handleDirectCheckout = () => {
-    redirectToCheckout(selectedVariant.checkoutUrl);
+    // TikTok Pixel - InitiateCheckout is handled inside redirectToCheckout
+    redirectToCheckout(selectedVariant.checkoutUrl, {
+      id: selectedVariant.id,
+      name: selectedVariant.name,
+      price: selectedVariant.price,
+      currency: 'EUR',
+      quantity: 1
+    });
   };
 
   return (

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
-import { trackTikTokReviewsInteraction } from '../utils/tiktokPixel';
 import { useI18n, getLocalizedReviews } from '../i18n';
 
 export const TrustpilotWidget: React.FC = () => {
@@ -9,12 +8,10 @@ export const TrustpilotWidget: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    trackTikTokReviewsInteraction();
     setCurrentIndex((prev) => Math.max(0, prev - 1));
   };
 
   const handleNext = () => {
-    trackTikTokReviewsInteraction();
     setCurrentIndex((prev) => Math.min(reviews.length - 1, prev + 1));
   };
 

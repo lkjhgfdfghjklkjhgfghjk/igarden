@@ -1,83 +1,169 @@
-// TikTok Pixel Helper for iGarden Swim Jet
+// TikTok Pixel Tracker for iGarden Swim Jet
+// Official TikTok Pixel IDs:
+// Pixel ART #01: DAE8J73C77U47UVQGM3G
+// Pixel Germany (Alemanha): D9CN8LBC77U9058HL3Q0
+
+export const TIKTOK_PIXEL_IDS = {
+  GERMANY: 'D9CN8LBC77U9058HL3Q0',
+  ART_01: 'DAE8J73C77U47UVQGM3G'
+} as const;
+
+// Active Pixel ID for the current German store version
+export const ACTIVE_TIKTOK_PIXEL_ID = TIKTOK_PIXEL_IDS.GERMANY;
 
 declare global {
   interface Window {
+    TiktokAnalyticsObject?: string;
     ttq?: {
       track: (eventName: string, params?: Record<string, unknown>) => void;
       page: () => void;
+      load: (pixelId: string, options?: Record<string, unknown>) => void;
       [key: string]: unknown;
     };
   }
 }
 
-export const TIKTOK_PRODUCT_PAYLOAD = {
-  content_type: 'product',
-  content_id: 'jet-de-natation-portable-igarden-x',
-  content_name: 'Jet de natation portable iGarden Swim Jet',
-  quantity: 1,
-  value: 209,
+export interface TikTokProductPayload {
+  content_type: 'product';
+  content_id: string;
+  content_name: string;
+  value: number;
+  currency: string;
+  quantity?: number;
+}
+
+export interface TikTokTrackItemInput {
+  id?: string;
+  name?: string;
+  price?: number;
+  currency?: string;
+  quantity?: number;
+}
+
+const DEFAULT_PRODUCT = {
+  id: 'swim-jet-1000w',
+  name: 'Tragbare Gegenstromanlage iGarden Swim Jet — 1.000 W',
+  price: 209.00,
   currency: 'EUR'
-} as const;
+};
 
-export const TIKTOK_CONTENT_ID_PAYLOAD = {
-  content_id: 'jet-de-natation-portable-igarden-x'
-} as const;
-
+// Deduplication and debouncing state guards
+let hasTrackedPageView = false;
 let hasTrackedViewContent = false;
 let lastAddToCartTime = 0;
-let lastViewCartTime = 0;
 let lastInitiateCheckoutTime = 0;
-let lastGalleryInteractionTime = 0;
-let lastVideoStartTime = 0;
-let lastSpecsInteractionTime = 0;
-let lastReviewsInteractionTime = 0;
-let lastFaqInteractionTime = 0;
-
-let hasTrackedScroll50 = false;
-let hasTrackedScroll75 = false;
-let hasTrackedScroll90 = false;
 
 /**
- * Tracks ViewContent event when viewing the product page.
- * Deduplicated: Only triggers once per page lifecycle.
+ * Builds the sanitized TikTok product payload using real application data.
  */
-export const trackTikTokViewContent = () => {
+function buildProductPayload(item?: TikTokTrackItemInput, defaultQuantity = 1): TikTokProductPayload {
+  const contentId = item?.id || DEFAULT_PRODUCT.id;
+  const contentName = item?.name || DEFAULT_PRODUCT.name;
+  const quantity = typeof item?.quantity === 'number' && item.quantity > 0 ? item.quantity : defaultQuantity;
+  const unitPrice = typeof item?.price === 'number' && !isNaN(item.price) ? item.price : DEFAULT_PRODUCT.price;
+  const value = Number((unitPrice * quantity).toFixed(2));
+  const currency = item?.currency || 'EUR';
+
+  const payload: TikTokProductPayload = {
+    content_type: 'product',
+    content_id: contentId,
+    content_name: contentName,
+    value: value,
+    currency: currency,
+    quantity: quantity
+  };
+
+  return payload;
+}
+
+/**
+ * TikTok Pixel - PageView
+ * Fired once on real page load via the official snippet in index.html.
+ * Deduplicated: Protected against React Strict Mode and re-renders.
+ */
+export const trackTikTokPageView = () => {
+  if (typeof window === 'undefined') return;
+  if (hasTrackedPageView) return;
+  hasTrackedPageView = true;
+
+  if (window.ttq && typeof window.ttq.page === 'function') {
+    try {
+      // TikTok Pixel - PageView
+      window.ttq.page();
+    } catch (e) {
+      console.error('[TikTok Pixel] Error tracking PageView:', e);
+    }
+  }
+};
+
+/**
+ * TikTok Pixel - ViewContent
+ * Fired when the user views the product details / product section.
+ * Deduplicated: Only triggers once per product view lifecycle.
+ */
+export const trackTikTokViewContent = (item?: TikTokTrackItemInput) => {
   if (typeof window === 'undefined') return;
   if (hasTrackedViewContent) return;
-
   hasTrackedViewContent = true;
+
+  const payload = buildProductPayload(item, 1);
+  // ViewContent standard payload
+  const viewContentPayload: Record<string, unknown> = {
+    content_type: payload.content_type,
+    content_id: payload.content_id,
+    content_name: payload.content_name,
+    value: payload.value,
+    currency: payload.currency
+  };
 
   const trigger = () => {
     if (window.ttq && typeof window.ttq.track === 'function') {
-      window.ttq.track('ViewContent', { ...TIKTOK_PRODUCT_PAYLOAD });
+      try {
+        // TikTok Pixel - ViewContent
+        window.ttq.track('ViewContent', viewContentPayload);
+      } catch (e) {
+        console.error('[TikTok Pixel] Error tracking ViewContent:', e);
+      }
     }
   };
 
   if (window.ttq && typeof window.ttq.track === 'function') {
     trigger();
   } else {
-    // If pixel is still initializing, retry after a short delay
-    setTimeout(trigger, 400);
+    // If pixel is still loading in head, wait briefly
+    setTimeout(trigger, 300);
   }
 };
 
 /**
- * Tracks AddToCart event when the user clicks "Ajouter au panier".
+ * TikTok Pixel - AddToCart
+ * Fired EXCLUSIVELY when the user clicks the "In den Warenkorb" / Add to Cart button.
  * Protected against rapid double-clicks and duplication.
+ * Does NOT trigger InitiateCheckout. Does NOT trigger Purchase.
  */
-export const trackTikTokAddToCart = () => {
+export const trackTikTokAddToCart = (item?: TikTokTrackItemInput, quantity = 1) => {
   if (typeof window === 'undefined') return;
 
   const now = Date.now();
-  // Debounce rapid multiple clicks (1.5 seconds)
+  // Debounce rapid duplicate clicks within 1.5 seconds
   if (now - lastAddToCartTime < 1500) {
     return;
   }
   lastAddToCartTime = now;
 
+  const payload = buildProductPayload({ ...item, quantity }, quantity);
+
   if (window.ttq && typeof window.ttq.track === 'function') {
     try {
-      window.ttq.track('AddToCart', { ...TIKTOK_PRODUCT_PAYLOAD });
+      // TikTok Pixel - AddToCart
+      window.ttq.track('AddToCart', {
+        content_type: payload.content_type,
+        content_id: payload.content_id,
+        content_name: payload.content_name,
+        value: payload.value,
+        currency: payload.currency,
+        quantity: payload.quantity
+      });
     } catch (e) {
       console.error('[TikTok Pixel] Error tracking AddToCart:', e);
     }
@@ -85,32 +171,13 @@ export const trackTikTokAddToCart = () => {
 };
 
 /**
- * Tracks ViewCart event when the user manually opens/views the cart.
- * Protected against duplication.
- */
-export const trackTikTokViewCart = () => {
-  if (typeof window === 'undefined') return;
-
-  const now = Date.now();
-  if (now - lastViewCartTime < 1500) {
-    return;
-  }
-  lastViewCartTime = now;
-
-  if (window.ttq && typeof window.ttq.track === 'function') {
-    try {
-      window.ttq.track('ViewCart', { ...TIKTOK_PRODUCT_PAYLOAD });
-    } catch (e) {
-      console.error('[TikTok Pixel] Error tracking ViewCart:', e);
-    }
-  }
-};
-
-/**
- * Tracks InitiateCheckout event when the user clicks a checkout / direct buy button.
+ * TikTok Pixel - InitiateCheckout
+ * Fired EXCLUSIVELY when the user clicks a direct purchase or checkout button,
+ * IMMEDIATELY BEFORE redirecting to the external Shopify checkout.
  * Protected against rapid double-clicks and duplication.
+ * Does NOT trigger AddToCart. Does NOT trigger Purchase.
  */
-export const trackTikTokInitiateCheckout = () => {
+export const trackTikTokInitiateCheckout = (item?: TikTokTrackItemInput, quantity = 1) => {
   if (typeof window === 'undefined') return;
 
   const now = Date.now();
@@ -120,148 +187,21 @@ export const trackTikTokInitiateCheckout = () => {
   }
   lastInitiateCheckoutTime = now;
 
+  const payload = buildProductPayload({ ...item, quantity }, quantity);
+
   if (window.ttq && typeof window.ttq.track === 'function') {
     try {
-      window.ttq.track('InitiateCheckout', { ...TIKTOK_PRODUCT_PAYLOAD });
+      // TikTok Pixel - InitiateCheckout
+      window.ttq.track('InitiateCheckout', {
+        content_type: payload.content_type,
+        content_id: payload.content_id,
+        content_name: payload.content_name,
+        value: payload.value,
+        currency: payload.currency,
+        quantity: payload.quantity
+      });
     } catch (e) {
       console.error('[TikTok Pixel] Error tracking InitiateCheckout:', e);
     }
   }
-};
-
-/**
- * Behavioral: Tracks FAQ interactions (opening questions/accordions).
- */
-export const trackTikTokFAQInteraction = () => {
-  if (typeof window === 'undefined') return;
-
-  const now = Date.now();
-  if (now - lastFaqInteractionTime < 1000) return;
-  lastFaqInteractionTime = now;
-
-  if (window.ttq && typeof window.ttq.track === 'function') {
-    try {
-      window.ttq.track('FAQInteraction', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-    } catch (e) {
-      console.error('[TikTok Pixel] Error tracking FAQInteraction:', e);
-    }
-  }
-};
-
-/**
- * Behavioral: Tracks Reviews interactions (clicking reviews, filters, vote helpful, etc.).
- */
-export const trackTikTokReviewsInteraction = () => {
-  if (typeof window === 'undefined') return;
-
-  const now = Date.now();
-  if (now - lastReviewsInteractionTime < 1000) return;
-  lastReviewsInteractionTime = now;
-
-  if (window.ttq && typeof window.ttq.track === 'function') {
-    try {
-      window.ttq.track('ReviewsInteraction', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-    } catch (e) {
-      console.error('[TikTok Pixel] Error tracking ReviewsInteraction:', e);
-    }
-  }
-};
-
-/**
- * Behavioral: Tracks Technical Specifications interactions.
- */
-export const trackTikTokSpecificationsInteraction = () => {
-  if (typeof window === 'undefined') return;
-
-  const now = Date.now();
-  if (now - lastSpecsInteractionTime < 1000) return;
-  lastSpecsInteractionTime = now;
-
-  if (window.ttq && typeof window.ttq.track === 'function') {
-    try {
-      window.ttq.track('SpecificationsInteraction', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-    } catch (e) {
-      console.error('[TikTok Pixel] Error tracking SpecificationsInteraction:', e);
-    }
-  }
-};
-
-/**
- * Behavioral: Tracks Product Gallery interactions (changing photos, clicking thumbnails).
- */
-export const trackTikTokGalleryInteraction = () => {
-  if (typeof window === 'undefined') return;
-
-  const now = Date.now();
-  if (now - lastGalleryInteractionTime < 800) return;
-  lastGalleryInteractionTime = now;
-
-  if (window.ttq && typeof window.ttq.track === 'function') {
-    try {
-      window.ttq.track('ProductGalleryInteraction', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-    } catch (e) {
-      console.error('[TikTok Pixel] Error tracking ProductGalleryInteraction:', e);
-    }
-  }
-};
-
-/**
- * Behavioral: Tracks Video Play start.
- */
-export const trackTikTokVideoStart = () => {
-  if (typeof window === 'undefined') return;
-
-  const now = Date.now();
-  if (now - lastVideoStartTime < 1500) return;
-  lastVideoStartTime = now;
-
-  if (window.ttq && typeof window.ttq.track === 'function') {
-    try {
-      window.ttq.track('ProductVideoStart', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-    } catch (e) {
-      console.error('[TikTok Pixel] Error tracking ProductVideoStart:', e);
-    }
-  }
-};
-
-/**
- * Behavioral: Attaches scroll depth listener (50%, 75%, 90%).
- * Each threshold is fired at most once per session.
- */
-export const setupTikTokScrollTracking = () => {
-  if (typeof window === 'undefined') return () => {};
-
-  const handleScroll = () => {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    if (docHeight <= 0) return;
-
-    const scrollPos = window.scrollY;
-    const scrollPercent = (scrollPos / docHeight) * 100;
-
-    if (!hasTrackedScroll50 && scrollPercent >= 50) {
-      hasTrackedScroll50 = true;
-      if (window.ttq && typeof window.ttq.track === 'function') {
-        window.ttq.track('Scroll50', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-      }
-    }
-
-    if (!hasTrackedScroll75 && scrollPercent >= 75) {
-      hasTrackedScroll75 = true;
-      if (window.ttq && typeof window.ttq.track === 'function') {
-        window.ttq.track('Scroll75', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-      }
-    }
-
-    if (!hasTrackedScroll90 && scrollPercent >= 90) {
-      hasTrackedScroll90 = true;
-      if (window.ttq && typeof window.ttq.track === 'function') {
-        window.ttq.track('Scroll90', { ...TIKTOK_CONTENT_ID_PAYLOAD });
-      }
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  return () => {
-    window.removeEventListener('scroll', handleScroll);
-  };
 };

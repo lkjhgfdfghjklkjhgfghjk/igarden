@@ -2,7 +2,6 @@ import React from 'react';
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
-import { trackTikTokSpecificationsInteraction } from '../utils/tiktokPixel';
 import { Zap, ArrowRight, Shield, Sparkles, Lock } from 'lucide-react';
 import { useI18n } from '../i18n';
 
@@ -59,7 +58,13 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
 
   const handleSelect = (variant: ProductVariant) => {
     onSelectVariant(variant);
-    redirectToCheckout(variant.checkoutUrl);
+    redirectToCheckout(variant.checkoutUrl, {
+      id: variant.id,
+      name: variant.name,
+      price: variant.price,
+      currency: 'EUR',
+      quantity: 1
+    });
   };
 
   const discountPercent = Math.round(((currentVariant.originalPrice - currentVariant.price) / currentVariant.originalPrice) * 100);
@@ -169,7 +174,6 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
 
         {/* Detailed Technical Specifications Table */}
         <div 
-          onClick={trackTikTokSpecificationsInteraction}
           className="max-w-4xl mx-auto bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm"
         >
           {/* Table Header Info Bar */}

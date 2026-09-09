@@ -35,7 +35,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const targetCheckoutUrl = itemWithCheckout?.checkoutUrl || CHECKOUT_URL;
 
   const handleProceedToCheckout = () => {
-    redirectToCheckout(targetCheckoutUrl);
+    const mainItem = items[0];
+    const totalQty = items.reduce((sum, item) => sum + item.quantity, 0);
+    // TikTok Pixel - InitiateCheckout is handled inside redirectToCheckout
+    redirectToCheckout(targetCheckoutUrl, {
+      id: mainItem?.id || 'swim-jet-1000w',
+      name: mainItem?.title || 'Tragbare Gegenstromanlage iGarden Swim Jet — 1.000 W',
+      price: totalQty > 0 ? Number((totalPrice / totalQty).toFixed(2)) : 209.00,
+      currency: 'EUR',
+      quantity: totalQty || 1
+    });
   };
 
   return (

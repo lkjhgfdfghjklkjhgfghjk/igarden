@@ -34,9 +34,7 @@ import { PRODUCT_VARIANTS } from './data';
 import { useI18n } from './i18n';
 import {
   trackTikTokViewContent,
-  trackTikTokAddToCart,
-  trackTikTokViewCart,
-  setupTikTokScrollTracking
+  trackTikTokAddToCart
 } from './utils/tiktokPixel';
 
 export const PRODUCT_ROUTE = '/products/jet-de-natation-portable-igarden-x';
@@ -64,11 +62,15 @@ export default function App() {
 
   React.useEffect(() => {
     if (currentPage === 'product') {
-      trackTikTokViewContent();
-      const cleanupScroll = setupTikTokScrollTracking();
-      return cleanupScroll;
+      // TikTok Pixel - ViewContent
+      trackTikTokViewContent({
+        id: selectedVariant.id,
+        name: selectedVariant.name,
+        price: selectedVariant.price,
+        currency: 'EUR'
+      });
     }
-  }, [currentPage]);
+  }, [currentPage, selectedVariant.id, selectedVariant.name, selectedVariant.price]);
 
   React.useEffect(() => {
     const handlePopState = () => {
@@ -105,8 +107,14 @@ export default function App() {
     quantity: number,
     _selectedAccessories: { acc: AccessoryOption; qty: number; variantId?: string }[] = []
   ) => {
-    // Fire TikTok Pixel AddToCart event
-    trackTikTokAddToCart();
+    // TikTok Pixel - AddToCart
+    trackTikTokAddToCart({
+      id: variant.id,
+      name: variant.name,
+      price: variant.price,
+      currency: 'EUR',
+      quantity
+    }, quantity);
 
     const newItems = [...cartItems];
 
@@ -159,7 +167,6 @@ export default function App() {
       <Header
         cartItems={cartItems}
         onOpenCart={() => {
-          trackTikTokViewCart();
           setIsCartOpen(true);
         }}
         onOpenSearch={() => setIsSearchOpen(true)}

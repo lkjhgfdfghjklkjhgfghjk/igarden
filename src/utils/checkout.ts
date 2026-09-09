@@ -1,13 +1,14 @@
 import { CHECKOUT_URL } from '../data';
-import { trackTikTokInitiateCheckout } from './tiktokPixel';
+import { trackTikTokInitiateCheckout, TikTokTrackItemInput } from './tiktokPixel';
 
 let isNavigating = false;
 
 /**
  * Single-execution checkout redirect handler.
- * Guarantees that only ONE checkout instance opens per user click.
+ * Guarantees that only ONE checkout instance opens per user click,
+ * and fires TikTok InitiateCheckout BEFORE navigating.
  */
-export const redirectToCheckout = (url?: string) => {
+export const redirectToCheckout = (url?: string, item?: TikTokTrackItemInput) => {
   const targetUrl = url || CHECKOUT_URL;
   if (!targetUrl || typeof window === 'undefined') return;
 
@@ -18,8 +19,9 @@ export const redirectToCheckout = (url?: string) => {
     isNavigating = false;
   }, 2000);
 
-  // Trigger TikTok InitiateCheckout event on explicit user buy click
-  trackTikTokInitiateCheckout();
+  // TikTok Pixel - InitiateCheckout
+  // Dispatched immediately BEFORE redirecting to external checkout
+  trackTikTokInitiateCheckout(item);
 
   // Check if running inside an iframe (like development preview environments)
   let isIframe = false;
@@ -39,4 +41,3 @@ export const redirectToCheckout = (url?: string) => {
     }, 150);
   }
 };
-

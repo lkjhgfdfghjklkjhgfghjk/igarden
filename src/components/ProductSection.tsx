@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Check, Star, ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones, Lock, Eye, Clock } from 'lucide-react';
 import { ProductVariant } from '../types';
 import { redirectToCheckout } from '../utils/checkout';
-import { trackTikTokGalleryInteraction, trackTikTokSpecificationsInteraction } from '../utils/tiktokPixel';
 import { useI18n } from '../i18n';
 
 interface ProductSectionProps {
@@ -44,17 +43,22 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   }, []);
 
   const handlePrevImage = () => {
-    trackTikTokGalleryInteraction();
     setCurrentImageIndex((prev) => (prev === 0 ? selectedVariant.images.length - 1 : prev - 1));
   };
 
   const handleNextImage = () => {
-    trackTikTokGalleryInteraction();
     setCurrentImageIndex((prev) => (prev === selectedVariant.images.length - 1 ? 0 : prev + 1));
   };
 
   const handleDirectCheckout = () => {
-    redirectToCheckout(selectedVariant.checkoutUrl);
+    // Direct checkout button -> TikTok InitiateCheckout is dispatched in redirectToCheckout
+    redirectToCheckout(selectedVariant.checkoutUrl, {
+      id: selectedVariant.id,
+      name: selectedVariant.name,
+      price: selectedVariant.price,
+      currency: 'EUR',
+      quantity
+    });
   };
 
   const pad = (n: number) => n.toString().padStart(2, '0');
@@ -122,7 +126,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               <button
                 key={idx}
                 onClick={() => {
-                  trackTikTokGalleryInteraction();
                   setCurrentImageIndex(idx);
                 }}
                 className={`w-[60px] sm:w-[72px] aspect-square rounded-sm overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
@@ -375,7 +378,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             <div className="grid grid-cols-4 border-b border-gray-200 bg-gray-50">
               <button
                 onClick={() => {
-                  trackTikTokSpecificationsInteraction();
                   setActiveTab('desc');
                 }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
@@ -388,7 +390,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               </button>
               <button
                 onClick={() => {
-                  trackTikTokSpecificationsInteraction();
                   setActiveTab('specs');
                 }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
@@ -401,7 +402,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               </button>
               <button
                 onClick={() => {
-                  trackTikTokSpecificationsInteraction();
                   setActiveTab('shipping');
                 }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
@@ -414,7 +414,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               </button>
               <button
                 onClick={() => {
-                  trackTikTokSpecificationsInteraction();
                   setActiveTab('warranty');
                 }}
                 className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${

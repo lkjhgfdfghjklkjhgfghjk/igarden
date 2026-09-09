@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Star, X, Check, ThumbsUp, Filter, MessageSquare, ChevronDown } from 'lucide-react';
 import { UserReview } from '../types';
 import { getLocalizedReviews } from '../i18n/localizedData';
-import { trackTikTokReviewsInteraction } from '../utils/tiktokPixel';
 import { useI18n } from '../i18n';
 
 export const JudgeMeReviews: React.FC = () => {
@@ -31,14 +30,12 @@ export const JudgeMeReviews: React.FC = () => {
   }, [language]);
 
   const handleVoteHelpful = (id: string) => {
-    trackTikTokReviewsInteraction();
     if (votedReviews[id]) return;
     setHelpfulCounts(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
     setVotedReviews(prev => ({ ...prev, [id]: true }));
   };
 
   const handleLoadMore = () => {
-    trackTikTokReviewsInteraction();
     setVisibleCount(prev => Math.min(prev + 4, allReviews.length));
   };
 
@@ -153,7 +150,6 @@ export const JudgeMeReviews: React.FC = () => {
               <button
                 id="btn-write-review"
                 onClick={() => {
-                  trackTikTokReviewsInteraction();
                   setIsModalOpen(true);
                 }}
                 className="w-full sm:w-auto px-6 py-3 rounded-sm bg-[#0071E3] hover:bg-[#005bb5] text-white font-bold text-[14px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wide"
