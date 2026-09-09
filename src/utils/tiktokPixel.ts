@@ -8,6 +8,9 @@ export const TIKTOK_PIXEL_IDS = {
   ART_01: 'DAE8J73C77U47UVQGM3G'
 } as const;
 
+// Active Pixel ID: Pixel ART #01
+export const ACTIVE_TIKTOK_PIXEL_ID = TIKTOK_PIXEL_IDS.ART_01;
+
 declare global {
   interface Window {
     TiktokAnalyticsObject?: string;
@@ -23,8 +26,8 @@ declare global {
 
 /**
  * Resolves which TikTok Pixel ID is active for the current session.
- * Default: Pixel Alemanha ('D9CN8LBC77U9058HL3Q0')
- * Can also be switched to ART #01 via query param (?pixel=art or ?pixel=DAE8J73C77U47UVQGM3G)
+ * Default: Pixel ART #01 ('DAE8J73C77U47UVQGM3G')
+ * Can also be switched to Germany via query param (?pixel=de or ?pixel=germany or ?pixel=D9CN8LBC77U9058HL3Q0)
  * or via window.__TIKTOK_PIXEL_ID__ or localStorage.
  */
 export function getActiveTikTokPixelId(): string {
@@ -35,24 +38,22 @@ export function getActiveTikTokPixelId(): string {
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const pixelParam = urlParams.get('pixel')?.toLowerCase();
-      if (pixelParam === 'art' || pixelParam === 'art01' || pixelParam === TIKTOK_PIXEL_IDS.ART_01.toLowerCase()) {
-        return TIKTOK_PIXEL_IDS.ART_01;
-      }
       if (pixelParam === 'de' || pixelParam === 'germany' || pixelParam === TIKTOK_PIXEL_IDS.GERMANY.toLowerCase()) {
         return TIKTOK_PIXEL_IDS.GERMANY;
       }
+      if (pixelParam === 'art' || pixelParam === 'art01' || pixelParam === TIKTOK_PIXEL_IDS.ART_01.toLowerCase()) {
+        return TIKTOK_PIXEL_IDS.ART_01;
+      }
       const stored = localStorage.getItem('active_tiktok_pixel');
-      if (stored === TIKTOK_PIXEL_IDS.ART_01 || stored === TIKTOK_PIXEL_IDS.GERMANY) {
+      if (stored === TIKTOK_PIXEL_IDS.GERMANY || stored === TIKTOK_PIXEL_IDS.ART_01) {
         return stored;
       }
     } catch (_e) {
       // Ignore storage/url errors in restricted iframes
     }
   }
-  return TIKTOK_PIXEL_IDS.GERMANY;
+  return TIKTOK_PIXEL_IDS.ART_01;
 }
-
-export const ACTIVE_TIKTOK_PIXEL_ID = getActiveTikTokPixelId();
 
 export interface TikTokProductPayload {
   content_type: 'product';
