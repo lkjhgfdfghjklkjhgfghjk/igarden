@@ -1,6 +1,6 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://igardeem.myshopify.com/checkouts/cn/hWNGc6PE3YmK5157FOjESDvW/de-fr?_r=AQABPE7rd3SpH8qjQ9jgTux28IVpAZAd67MYPdC9uerHHik&preview_theme_id=204992905553";
+export const CHECKOUT_URL = "https://braceletot.myshopify.com/checkouts/cn/hWNGeH5WLZhV8oeW3GHHMX34/de-fr?_r=AQABulEUKGFCsPH57gcoAKBN0Fy52kQ6bdzasTLOeq6uvz4&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
@@ -14,7 +14,7 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     discountAmount: 209.00,
     couponCode: "SWIMJET",
     couponOff: "209,00 €",
-    checkoutUrl: "https://igardeem.myshopify.com/checkouts/cn/hWNGc6PE3YmK5157FOjESDvW/de-fr?_r=AQABPE7rd3SpH8qjQ9jgTux28IVpAZAd67MYPdC9uerHHik&preview_theme_id=204992905553",
+    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGeH5WLZhV8oeW3GHHMX34/de-fr?_r=AQABulEUKGFCsPH57gcoAKBN0Fy52kQ6bdzasTLOeq6uvz4&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
     specsSummary: "1.000 W Leistung | 6 bis 10 h Akkulaufzeit | Kompatibel mit allen Pools",
     power: "1.000 W",
     speed: "1,5 m/s",
