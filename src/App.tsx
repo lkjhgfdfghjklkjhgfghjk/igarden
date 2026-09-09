@@ -33,6 +33,7 @@ import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
 import { useI18n } from './i18n';
 import {
+  trackTikTokPageView,
   trackTikTokViewContent,
   trackTikTokAddToCart
 } from './utils/tiktokPixel';
@@ -59,6 +60,11 @@ export default function App() {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
+
+  React.useEffect(() => {
+    // TikTok Pixel - PageView
+    trackTikTokPageView();
+  }, []);
 
   React.useEffect(() => {
     if (currentPage === 'product') {

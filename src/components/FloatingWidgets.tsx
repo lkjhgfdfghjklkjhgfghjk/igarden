@@ -211,7 +211,13 @@ export const FloatingWidgets: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => {
-                      redirectToCheckout(CHECKOUT_URL);
+                      redirectToCheckout(CHECKOUT_URL, {
+                        id: 'swim-jet-1000w',
+                        name: 'Tragbare Gegenstromanlage iGarden Swim Jet — 1.000 W',
+                        price: 209.00,
+                        currency: 'EUR',
+                        quantity: 1
+                      });
                     }}
                     className="inline-block px-5 py-2.5 bg-[#0071E3] text-white text-[13px] font-bold rounded-sm shadow-xs hover:bg-blue-700 transition-colors uppercase cursor-pointer"
                   >
