@@ -1,13 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { getTrustpilotReviews } from '../homeData';
-import { useI18n } from '../i18n/I18nContext';
+import { TRUSTPILOT_REVIEWS } from '../homeData';
 
 export const TrustpilotReviewWidget: React.FC = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { t } = useI18n();
-  const reviews = getTrustpilotReviews(t);
 
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -40,16 +37,16 @@ export const TrustpilotReviewWidget: React.FC = () => {
         {/* Header with CES Laurel decoration */}
         <div className="flex flex-col items-center justify-center text-center mb-10 space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <img referrerPolicy="no-referrer"
+            <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-left_svg.png?v=1784616357&width=100"
               alt=""
               className="w-5 sm:w-8 h-auto object-contain"
               loading="lazy"
             />
             <h2 className="text-[28px] sm:text-[40px] md:text-[48px] font-extrabold text-black tracking-tight leading-none">
-              {t.home?.trustpilot?.sectionTitle || "Trustpilot Reviews"}
+              Trustpilot Review
             </h2>
-            <img referrerPolicy="no-referrer"
+            <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-right_svg.png?v=1784616357&width=100"
               alt=""
               className="w-5 sm:w-8 h-auto object-contain"
@@ -65,7 +62,7 @@ export const TrustpilotReviewWidget: React.FC = () => {
               rel="noopener noreferrer"
               className="underline hover:text-black transition-colors"
             >
-              {t.home?.trustpilot?.reviewsCount || "Avis 229"}
+              Reviews 229
             </a>
             <div className="flex items-center gap-1.5 text-gray-900 font-bold">
               <div className="flex items-center gap-0.5">
@@ -86,7 +83,7 @@ export const TrustpilotReviewWidget: React.FC = () => {
           className="flex items-stretch gap-4 sm:gap-5 overflow-x-auto pb-4 no-scrollbar scroll-smooth"
           style={{ scrollSnapType: 'x mandatory' }}
         >
-          {reviews.map((review) => (
+          {TRUSTPILOT_REVIEWS.map((review) => (
             <div
               key={review.id}
               className="flex-shrink-0 w-[290px] sm:w-[340px] bg-[#fafafa] rounded-2xl p-6 sm:p-7 flex flex-col justify-between border border-gray-100"
@@ -96,7 +93,7 @@ export const TrustpilotReviewWidget: React.FC = () => {
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
                   {review.avatar ? (
-                    <img referrerPolicy="no-referrer"
+                    <img
                       src={review.avatar}
                       alt={review.name}
                       className="w-12 h-12 rounded-full object-cover shrink-0"
@@ -141,26 +138,26 @@ export const TrustpilotReviewWidget: React.FC = () => {
         {/* Bottom Progress Controls */}
         <div className="flex items-center justify-between mt-8 pt-2">
           {/* Progress bar */}
-          <div className="w-20 h-1 bg-gray-200 rounded-full overflow-hidden relative">
+          <div className="w-16 h-1 bg-gray-200 rounded-full overflow-hidden relative">
             <div
-              className="w-8 h-full bg-black rounded-full absolute top-0 transition-transform duration-100"
+              className="absolute top-0 bottom-0 w-6 bg-black/60 rounded-full transition-transform duration-200"
               style={{ transform: `translateX(${scrollProgress}px)` }}
             />
           </div>
 
           {/* Arrows */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label={t.home?.trustpilot?.prevAria || "Avis précédent"}
+              className="w-11 h-11 rounded-full bg-[#fafafa] hover:bg-gray-200 border border-gray-200 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
+              aria-label="Avis précédent"
             >
               <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label={t.home?.trustpilot?.nextAria || "Avis suivant"}
+              className="w-11 h-11 rounded-full bg-[#fafafa] hover:bg-gray-200 border border-gray-200 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
+              aria-label="Avis suivant"
             >
               <ChevronRight className="w-5 h-5 stroke-[2.5]" />
             </button>

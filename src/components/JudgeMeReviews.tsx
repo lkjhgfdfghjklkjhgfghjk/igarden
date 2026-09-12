@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Star, X, Check, ThumbsUp, Filter, MessageSquare, ChevronDown } from 'lucide-react';
 import { UserReview } from '../types';
-import { getLocalizedReviews } from '../i18n/localizedData';
-import { useI18n } from '../i18n';
+import { NATIVE_FRENCH_REVIEWS } from '../data';
 
 export const JudgeMeReviews: React.FC = () => {
-  const { t, language } = useI18n();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const [rating, setRating] = useState(5);
@@ -17,17 +15,12 @@ export const JudgeMeReviews: React.FC = () => {
   const [isAnonymous, setIsAnonymous] = useState(false);
   
   // State for reviews and pagination
-  const [allReviews, setAllReviews] = useState<UserReview[]>(() => getLocalizedReviews(language));
+  const [allReviews, setAllReviews] = useState<UserReview[]>(NATIVE_FRENCH_REVIEWS);
   const [visibleCount, setVisibleCount] = useState(5);
   const [selectedFilter, setSelectedFilter] = useState<'all' | number>('all');
   const [sortBy, setSortBy] = useState<'recent' | 'rating-high' | 'rating-low'>('recent');
   const [helpfulCounts, setHelpfulCounts] = useState<Record<string, number>>({});
   const [votedReviews, setVotedReviews] = useState<Record<string, boolean>>({});
-
-  // Sync reviews when language changes
-  useEffect(() => {
-    setAllReviews(getLocalizedReviews(language));
-  }, [language]);
 
   const handleVoteHelpful = (id: string) => {
     if (votedReviews[id]) return;
@@ -45,13 +38,13 @@ export const JudgeMeReviews: React.FC = () => {
 
     const newReview: UserReview = {
       id: `rev-${Date.now()}`,
-      author: isAnonymous ? (t.reviews?.verifiedPurchase || "Verifizierter Käufer") : (name || t.reviews?.verifiedPurchase || "Verifizierter Käufer"),
+      author: isAnonymous ? "Client vérifié" : (name || "Client vérifié"),
       rating,
-      date: new Date().toLocaleDateString('de-DE'),
-      title: reviewTitle || (t.reviews?.verifiedPurchase || "Verifizierte Bewertung"),
+      date: new Date().toLocaleDateString('fr-FR'),
+      title: reviewTitle || "Avis vérifié",
       content: reviewBody,
       verified: true,
-      productVariant: t.product?.shortTitle || "Swim Jet — 1.000 W"
+      productVariant: "Swim Jet — 1 000 W"
     };
 
     setAllReviews([newReview, ...allReviews]);
@@ -81,7 +74,7 @@ export const JudgeMeReviews: React.FC = () => {
 
   // Statistics
   const totalCount = allReviews.length;
-  const avgRating = (allReviews.reduce((acc, r) => acc + r.rating, 0) / (totalCount || 1)).toFixed(1);
+  const avgRating = (allReviews.reduce((acc, r) => acc + r.rating, 0) / totalCount).toFixed(1);
   const count5 = allReviews.filter(r => r.rating === 5).length;
   const count4 = allReviews.filter(r => r.rating === 4).length;
   const count3 = allReviews.filter(r => r.rating === 3).length;
@@ -106,7 +99,7 @@ export const JudgeMeReviews: React.FC = () => {
                   ))}
                 </div>
                 <span className="text-[13px] text-gray-500 mt-1 font-medium">
-                  {t.reviews?.verifiedReviewsCount || "Basierend auf verifizierten Bewertungen"}
+                  Basé sur {totalCount} avis vérifiés
                 </span>
               </div>
 
@@ -116,9 +109,9 @@ export const JudgeMeReviews: React.FC = () => {
                   onClick={() => setSelectedFilter(selectedFilter === 5 ? 'all' : 5)}
                   className="flex items-center gap-2 cursor-pointer hover:opacity-80"
                 >
-                  <span className="w-16 text-right">5 Sterne</span>
+                  <span className="w-12 text-right">5 étoiles</span>
                   <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
-                    <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count5 / (totalCount || 1)) * 100}%` }}></div>
+                    <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count5 / totalCount) * 100}%` }}></div>
                   </div>
                   <span className="w-8 text-gray-400">{count5}</span>
                 </div>
@@ -126,9 +119,9 @@ export const JudgeMeReviews: React.FC = () => {
                   onClick={() => setSelectedFilter(selectedFilter === 4 ? 'all' : 4)}
                   className="flex items-center gap-2 cursor-pointer hover:opacity-80"
                 >
-                  <span className="w-16 text-right">4 Sterne</span>
+                  <span className="w-12 text-right">4 étoiles</span>
                   <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
-                    <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count4 / (totalCount || 1)) * 100}%` }}></div>
+                    <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count4 / totalCount) * 100}%` }}></div>
                   </div>
                   <span className="w-8 text-gray-400">{count4}</span>
                 </div>
@@ -136,9 +129,9 @@ export const JudgeMeReviews: React.FC = () => {
                   onClick={() => setSelectedFilter(selectedFilter === 3 ? 'all' : 3)}
                   className="flex items-center gap-2 cursor-pointer hover:opacity-80"
                 >
-                  <span className="w-16 text-right">3 Sterne</span>
+                  <span className="w-12 text-right">3 étoiles</span>
                   <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
-                    <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count3 / (totalCount || 1)) * 100}%` }}></div>
+                    <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count3 / totalCount) * 100}%` }}></div>
                   </div>
                   <span className="w-8 text-gray-400">{count3}</span>
                 </div>
@@ -149,16 +142,14 @@ export const JudgeMeReviews: React.FC = () => {
             <div className="flex flex-col items-center sm:items-end gap-2.5 w-full sm:w-auto">
               <button
                 id="btn-write-review"
-                onClick={() => {
-                  setIsModalOpen(true);
-                }}
-                className="w-full sm:w-auto px-6 py-3 rounded-sm bg-[#0071E3] hover:bg-[#005bb5] text-white font-bold text-[14px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wide"
+                onClick={() => setIsModalOpen(true)}
+                className="w-full sm:w-auto px-6 py-3 rounded-sm bg-[#0071E3] hover:bg-[#005bb5] text-white font-bold text-[14px] shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase"
               >
                 <MessageSquare className="w-4 h-4" />
-                {t.reviews?.writeReviewButton || "Bewertung schreiben"}
+                Écrire un avis
               </button>
               <span className="text-[12px] text-gray-500 text-center sm:text-right">
-                100% verifizierte Käufer-Bewertungen
+                100% des avis proviennent d'acheteurs vérifiés
               </span>
             </div>
 
@@ -169,50 +160,50 @@ export const JudgeMeReviews: React.FC = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-200">
           <div className="flex items-center gap-2 text-[13px] text-gray-600 flex-wrap">
             <span className="font-semibold text-gray-900 flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5" /> Filtern:
+              <Filter className="w-3.5 h-3.5" /> Filtrer :
             </span>
             <button
               onClick={() => setSelectedFilter('all')}
-              className={`px-3 py-1 rounded-sm border text-[12px] font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-sm border text-[12px] font-medium transition-all ${
                 selectedFilter === 'all'
                   ? 'bg-gray-900 text-white border-gray-900'
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
               }`}
             >
-              {t.reviews?.filterAll || "Alle"} ({totalCount})
+              Tous ({totalCount})
             </button>
             <button
               onClick={() => setSelectedFilter(5)}
-              className={`px-3 py-1 rounded-sm border text-[12px] font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-sm border text-[12px] font-medium transition-all ${
                 selectedFilter === 5
                   ? 'bg-[#F59E0B] text-white border-[#F59E0B]'
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
               }`}
             >
-              5 Sterne ({count5})
+              5 Étoiles ({count5})
             </button>
             <button
               onClick={() => setSelectedFilter(4)}
-              className={`px-3 py-1 rounded-sm border text-[12px] font-medium transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-sm border text-[12px] font-medium transition-all ${
                 selectedFilter === 4
                   ? 'bg-[#F59E0B] text-white border-[#F59E0B]'
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
               }`}
             >
-              4 Sterne ({count4})
+              4 Étoiles ({count4})
             </button>
           </div>
 
           <div className="flex items-center gap-2 text-[13px] text-gray-600">
-            <span>Sortieren nach:</span>
+            <span>Trier par :</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               className="bg-white border border-gray-200 rounded-sm px-2.5 py-1 text-[13px] font-medium text-gray-800 outline-none focus:border-blue-500 cursor-pointer"
             >
-              <option value="recent">Neueste zuerst</option>
-              <option value="rating-high">Höchste Bewertung</option>
-              <option value="rating-low">Niedrigste Bewertung</option>
+              <option value="recent">Plus récents</option>
+              <option value="rating-high">Meilleures notes</option>
+              <option value="rating-low">Notes les plus basses</option>
             </select>
           </div>
         </div>
@@ -235,7 +226,7 @@ export const JudgeMeReviews: React.FC = () => {
                       <span>{rev.author}</span>
                       {rev.verified && (
                         <span className="text-[10px] sm:text-[11px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.2 rounded-sm flex items-center gap-1 border border-emerald-200/60">
-                          <Check className="w-3 h-3 stroke-[3]" /> {t.reviews?.verifiedPurchase || "Verifizierter Kauf"}
+                          <Check className="w-3 h-3 stroke-[3]" /> Achat vérifié
                         </span>
                       )}
                     </div>
@@ -269,7 +260,7 @@ export const JudgeMeReviews: React.FC = () => {
 
               {/* Footer with helpful button */}
               <div className="mt-3.5 pt-2.5 border-t border-gray-100 flex items-center justify-between text-[12px] text-gray-500">
-                <span>War diese Bewertung hilfreich?</span>
+                <span>Cet avis vous a-t-il été utile ?</span>
                 <button
                   onClick={() => handleVoteHelpful(rev.id)}
                   disabled={votedReviews[rev.id]}
@@ -280,7 +271,7 @@ export const JudgeMeReviews: React.FC = () => {
                   }`}
                 >
                   <ThumbsUp className="w-3.5 h-3.5" />
-                  <span>{t.reviews?.helpful || "Hilfreich"} ({helpfulCounts[rev.id] || (rev.rating === 5 ? 4 : 1)})</span>
+                  <span>Utile ({helpfulCounts[rev.id] || (rev.rating === 5 ? 4 : 1)})</span>
                 </button>
               </div>
             </div>
@@ -295,7 +286,7 @@ export const JudgeMeReviews: React.FC = () => {
               onClick={handleLoadMore}
               className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-sm bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-bold text-[13px] sm:text-[14px] shadow-xs transition-colors cursor-pointer hover:border-gray-400 uppercase"
             >
-              <span>{t.reviews?.loadMore || "Mehr Bewertungen laden"} ({filteredReviews.length - visibleCount} weitere)</span>
+              <span>Afficher plus d'avis ({filteredReviews.length - visibleCount} restants)</span>
               <ChevronDown className="w-4 h-4" />
             </button>
           </div>
@@ -317,10 +308,10 @@ export const JudgeMeReviews: React.FC = () => {
             {formStep === 1 && (
               <div className="space-y-6 text-center py-2">
                 <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">
-                  {t.reviews?.modalTitle || "Bewerten Sie Ihren iGarden Swim Jet (1.000 W)"}
+                  Comment évalueriez-vous votre iGarden Swim Jet (1 000 W) ?
                 </h3>
                 <p className="text-[13px] sm:text-[14px] text-gray-500">
-                  Teilen Sie Ihre Erfahrung mit anderen Schwimmbegeisterten.
+                  Partagez votre retour d'expérience avec les autres passionnés de natation.
                 </p>
 
                 <div className="flex justify-center gap-2 py-4">
@@ -350,30 +341,30 @@ export const JudgeMeReviews: React.FC = () => {
 
             {formStep === 2 && (
               <form onSubmit={handleSubmitReview} className="space-y-4">
-                <h3 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Bewertung verfassen</h3>
+                <h3 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Rédiger votre avis</h3>
 
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                    Titel Ihrer Bewertung
+                    Titre de votre avis
                   </label>
                   <input
                     type="text"
                     value={reviewTitle}
                     onChange={(e) => setReviewTitle(e.target.value)}
-                    placeholder={t.reviews?.titlePlaceholder || "z.B. Ein Traum für unseren Gartenpool!"}
+                    placeholder="Ex: Une merveille pour notre piscine familiale !"
                     className="w-full p-2.5 rounded-sm border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                   />
                 </div>
 
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                    Ihre ausführliche Erfahrung (Erforderlich)
+                    Votre expérience détaillée (Obligatoire)
                   </label>
                   <textarea
                     rows={4}
                     value={reviewBody}
                     onChange={(e) => setReviewBody(e.target.value)}
-                    placeholder={t.reviews?.commentPlaceholder || "Beschreiben Sie Lieferung, Montage, Strömungsgefühl und Akkulaufzeit..."}
+                    placeholder="Racontez la livraison, l'installation, la sensation de nage, l'autonomie..."
                     required
                     className="w-full p-2.5 rounded-sm border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                   />
@@ -382,25 +373,25 @@ export const JudgeMeReviews: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                      Vorname / Name
+                      Nom / Prénom
                     </label>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder={t.reviews?.namePlaceholder || "z.B. Thomas K."}
+                      placeholder="Ex: Thomas G."
                       className="w-full p-2.5 rounded-sm border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                     />
                   </div>
                   <div>
                     <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                      E-Mail-Adresse (Wird nicht veröffentlicht)
+                      Adresse e-mail (Privée)
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@beispiel.de"
+                      placeholder="nom@exemple.fr"
                       required
                       className="w-full p-2.5 rounded-sm border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                     />
@@ -414,7 +405,7 @@ export const JudgeMeReviews: React.FC = () => {
                     onChange={(e) => setIsAnonymous(e.target.checked)}
                     className="rounded-sm border-gray-300 text-[#0071E3] focus:ring-0"
                   />
-                  <span>Als "Verifizierter Käufer" ohne vollständigen Namen veröffentlichen</span>
+                  <span>Publier sous la mention "Acheteur vérifié" sans mon nom complet</span>
                 </label>
 
                 <div className="pt-3 flex justify-between gap-3">
@@ -423,13 +414,13 @@ export const JudgeMeReviews: React.FC = () => {
                     onClick={() => setFormStep(1)}
                     className="px-5 py-2.5 rounded-sm border border-gray-300 text-gray-700 font-semibold text-[14px] cursor-pointer"
                   >
-                    Zurück
+                    Retour
                   </button>
                   <button
                     type="submit"
                     className="px-6 py-2.5 rounded-sm bg-[#0071E3] hover:bg-[#005bb5] text-white font-bold text-[14px] shadow-xs cursor-pointer uppercase"
                   >
-                    {t.reviews?.submitReview || "Bewertung veröffentlichen"}
+                    Publier l'avis
                   </button>
                 </div>
               </form>
@@ -440,17 +431,15 @@ export const JudgeMeReviews: React.FC = () => {
                 <div className="w-14 h-14 bg-green-100 text-green-600 rounded-sm flex items-center justify-center mx-auto">
                   <Check className="w-7 h-7 stroke-[3]" />
                 </div>
-                <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">
-                  {t.reviews?.reviewSubmitted || "Vielen Dank für Ihre Bewertung!"}
-                </h3>
+                <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">Merci pour votre avis !</h3>
                 <p className="text-[13px] sm:text-[14px] text-gray-600 max-w-md mx-auto">
-                  Ihr Erfahrungsbericht wurde erfolgreich übermittelt und hilft anderen Poolbesitzern bei ihrer Entscheidung.
+                  Votre retour a bien été enregistré et publié. Il aide les futurs acheteurs à faire le bon choix pour leur piscine.
                 </p>
                 <button
                   onClick={resetForm}
                   className="mt-4 px-6 py-2.5 rounded-sm bg-[#0071E3] text-white font-bold text-[14px] cursor-pointer uppercase"
                 >
-                  Schließen
+                  Fermer
                 </button>
               </div>
             )}

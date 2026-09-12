@@ -1,21 +1,18 @@
 import React from 'react';
-import { useI18n } from '../i18n';
 
 export const PortabilitySection: React.FC = () => {
-  const { t } = useI18n();
-
   const cards = [
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_9e858063-ead4-4ea6-8b3c-765eb9b30840.png?v=1778494904&width=1200",
-      title: t.portability.wheelsTitle
+      title: "Roues et poignée de style valise"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_1_2add0575-2c04-49fc-bec2-ff0bb47a4181.png?v=1779864936&width=1200",
-      title: t.portability.weightTitle
+      title: "Amusez-vous à la piscine d'un ami"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_1.png?v=1778494904&width=1200",
-      title: t.portability.subtitle
+      title: "Se range sans effort au garage ou placard"
     }
   ];
 
@@ -25,10 +22,11 @@ export const PortabilitySection: React.FC = () => {
         {/* Title */}
         <div className="text-center max-w-[840px] mx-auto mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-3">
-            {t.portability.title}
+            Portable. Rangement. Non lié.
           </h2>
           <p className="text-[16px] sm:text-[20px] text-gray-500 leading-relaxed font-medium">
-            {t.portability.subtitle}
+            Assez portable pour partager, assez compact pour stocker.
+            Protégez votre appareil du soleil et de la pluie sans tracas.
           </p>
         </div>
 
@@ -40,7 +38,7 @@ export const PortabilitySection: React.FC = () => {
               className="bg-[#FAFAFA] rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all group border border-gray-100"
             >
               <div className="aspect-[4/3] w-full overflow-hidden bg-gray-100">
-                <img referrerPolicy="no-referrer"
+                <img
                   src={card.img}
                   alt={card.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

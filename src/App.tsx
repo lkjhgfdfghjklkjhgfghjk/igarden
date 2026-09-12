@@ -31,12 +31,6 @@ import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
-import { useI18n } from './i18n';
-import {
-  trackTikTokPageView,
-  trackTikTokViewContent,
-  trackTikTokAddToCart
-} from './utils/tiktokPixel';
 
 export const PRODUCT_ROUTE = '/products/jet-de-natation-portable-igarden-x';
 
@@ -51,7 +45,6 @@ const getInitialPage = (): 'home' | 'product' => {
 };
 
 export default function App() {
-  const { country, setCountry } = useI18n();
   const [currentPage, setCurrentPage] = useState<'home' | 'product'>(getInitialPage);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(PRODUCT_VARIANTS[0]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -60,23 +53,7 @@ export default function App() {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-
-  React.useEffect(() => {
-    // TikTok Pixel - PageView
-    trackTikTokPageView();
-  }, []);
-
-  React.useEffect(() => {
-    if (currentPage === 'product') {
-      // TikTok Pixel - ViewContent
-      trackTikTokViewContent({
-        id: selectedVariant.id,
-        name: selectedVariant.name,
-        price: selectedVariant.price,
-        currency: 'EUR'
-      });
-    }
-  }, [currentPage, selectedVariant.id, selectedVariant.name, selectedVariant.price]);
+  const [currentCountry, setCurrentCountry] = useState('FR');
 
   React.useEffect(() => {
     const handlePopState = () => {
@@ -113,15 +90,6 @@ export default function App() {
     quantity: number,
     _selectedAccessories: { acc: AccessoryOption; qty: number; variantId?: string }[] = []
   ) => {
-    // TikTok Pixel - AddToCart
-    trackTikTokAddToCart({
-      id: variant.id,
-      name: variant.name,
-      price: variant.price,
-      currency: 'EUR',
-      quantity
-    }, quantity);
-
     const newItems = [...cartItems];
 
     // Add or update main product
@@ -172,9 +140,7 @@ export default function App() {
       {/* Main Header & Navigation */}
       <Header
         cartItems={cartItems}
-        onOpenCart={() => {
-          setIsCartOpen(true);
-        }}
+        onOpenCart={() => setIsCartOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenCountryDialog={() => setIsCountryOpen(true)}
         onOpenAccount={() => setIsAccountOpen(true)}
@@ -277,8 +243,8 @@ export default function App() {
       <CountryDialog
         isOpen={isCountryOpen}
         onClose={() => setIsCountryOpen(false)}
-        currentCountry={country}
-        onSelectCountry={setCountry}
+        currentCountry={currentCountry}
+        onSelectCountry={setCurrentCountry}
       />
 
       <AccountModal

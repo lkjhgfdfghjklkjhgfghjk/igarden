@@ -1,28 +1,25 @@
 import React from 'react';
-import { useI18n } from '../i18n';
 
 export const WhatsInTheBoxSection: React.FC = () => {
-  const { t } = useI18n();
-
   const items = [
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/1_1_2.png?v=1778495430&width=1400",
-      title: t.whatsInTheBox.item1,
+      title: "Jet",
       qty: "x1"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237486.png?v=1779788996&width=1400",
-      title: t.whatsInTheBox.item2,
+      title: "Boîte d'alimentation",
       qty: "x1"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Image_6_1_2.png?v=1779174423&width=1400",
-      title: t.whatsInTheBox.item3,
+      title: "Adaptateur",
       qty: "x1"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Image_7_e6efc16e-01cd-46b7-a866-929e6831496c.png?v=1778495431&width=1400",
-      title: t.whatsInTheBox.item4,
+      title: "Attache de sécurité",
       qty: "x1"
     }
   ];
@@ -32,7 +29,7 @@ export const WhatsInTheBoxSection: React.FC = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[44px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            {t.whatsInTheBox.title}
+            Qu'y a-t-il dans la boîte
           </h2>
         </div>
 
@@ -40,7 +37,7 @@ export const WhatsInTheBoxSection: React.FC = () => {
           {items.map((item, idx) => (
             <div key={idx} className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all border border-gray-100">
               <div className="aspect-square bg-[#F8F8F8] relative overflow-hidden flex items-center justify-center p-4">
-                <img referrerPolicy="no-referrer"
+                <img
                   src={item.img}
                   alt={item.title}
                   className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"

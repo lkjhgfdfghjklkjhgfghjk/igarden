@@ -1,19 +1,16 @@
 import React from 'react';
-import { useI18n } from '../i18n';
 
 export const VsComparisonSection: React.FC = () => {
-  const { t, formatCurrency } = useI18n();
-
   return (
     <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-2">
-            {t.vsComparison.title}
+            Pourquoi choisir iGarden ?
           </h2>
           <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-            {t.vsComparison.subtitle}
+            iGarden Swim Jet X Series par rapport aux jets de nage traditionnels en piscine
           </p>
         </div>
 
@@ -22,25 +19,25 @@ export const VsComparisonSection: React.FC = () => {
           {/* Card 1: iGarden Highlight */}
           <div className="bg-[#F0F7FF] rounded-3xl overflow-hidden shadow-sm flex flex-col border-2 border-blue-100 hover:shadow-md transition-all">
             <div className="w-full bg-[#E5F0FC] overflow-hidden aspect-[16/9] sm:aspect-[2/1]">
-              <img referrerPolicy="no-referrer"
+              <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/Container_2_59e83699-790e-4ba6-9433-3ca5b5d31c38.png?v=1778494491&width=1200"
-                alt="iGarden Swim Jet"
+                alt="iGarden Swim Jet Série X"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between items-center text-center space-y-4">
               <h3 className="text-[24px] sm:text-[28px] font-bold text-gray-900 font-['Figtree']">
-                {t.product.title}
+                iGarden Swim Jet Série X
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  {formatCurrency(209.00)} ({t.vsComparison.costIgarden})
+                  Seulement 209,00 € (1 000 W de puissance)
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  {t.vsComparison.installIgarden}
+                  6 à 10 h d'autonomie à pleine puissance
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  {t.vsComparison.portabilityIgarden}
+                  Compatible avec toutes les piscines
                 </span>
               </div>
             </div>
@@ -54,25 +51,25 @@ export const VsComparisonSection: React.FC = () => {
           {/* Card 2: Traditional Built-in Pools */}
           <div className="bg-[#FAFAFA] rounded-3xl overflow-hidden shadow-sm flex flex-col border border-gray-200 hover:shadow-md transition-all">
             <div className="w-full bg-[#EEEEEE] overflow-hidden aspect-[16/9] sm:aspect-[2/1]">
-              <img referrerPolicy="no-referrer"
+              <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/Image_Exxx_Pools.png?v=1778494744&width=1200"
-                alt="Traditional built-in systems"
+                alt="Piscines traditionnelles intégrées"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between items-center text-center space-y-4">
               <h3 className="text-[24px] sm:text-[28px] font-bold text-gray-700 font-['Figtree']">
-                {t.vsComparison.traditionalTitle}
+                Systèmes intégrés classiques
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  {t.vsComparison.costTrad}
+                  Coût 20 000 €+
                 </span>
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  {t.vsComparison.installTrad}
+                  Travaux et raccordements lourds
                 </span>
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  {t.vsComparison.portabilityTrad}
+                  Inamovible & coût d'entretien élevé
                 </span>
               </div>
             </div>

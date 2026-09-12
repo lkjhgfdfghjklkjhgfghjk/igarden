@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUp, MessageCircle, X, Send, Check, Sparkles } from 'lucide-react';
 import { CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
-import { useI18n } from '../i18n';
 
 export const FloatingWidgets: React.FC = () => {
-  const { t, countryInfo } = useI18n();
   const [showBackTop, setShowBackTop] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [showKlaviyoModal, setShowKlaviyoModal] = useState(false);
   const [showKlaviyoTeaser] = useState(true);
   const [chatMessage, setChatMessage] = useState('');
   const [chatHistory, setChatHistory] = useState<{ sender: 'user' | 'bot'; text: string }[]>([
-    { sender: 'bot', text: 'Hallo! Wie können wir Ihnen beim iGarden Swim Jet (1.000 W) für 209,00 € behilflich sein?' }
+    { sender: 'bot', text: 'Bonjour ! Comment pouvons-nous vous aider à propos du jet de natation iGarden Swim Jet 1 000 W (à 209,00 €) ?' }
   ]);
   const [klaviyoEmail, setKlaviyoEmail] = useState('');
   const [klaviyoSuccess, setKlaviyoSuccess] = useState(false);
@@ -46,7 +44,7 @@ export const FloatingWidgets: React.FC = () => {
         ...prev,
         {
           sender: 'bot',
-          text: "Vielen Dank für Ihre Nachricht! Unser deutscher iGarden-Kundenservice antwortet in wenigen Augenblicken. Um den 50% Aktionsrabatt sofort zu nutzen, klicken Sie einfach auf 'Jetzt bestellen'."
+          text: "Merci pour votre message ! Un conseiller iGarden France vous répond sous quelques minutes. Pour profiter immédiatement de la promotion officielle (jusqu'à -50%), vous pouvez cliquer directement sur 'Commander maintenant'."
         }
       ]);
     }, 800);
@@ -66,7 +64,7 @@ export const FloatingWidgets: React.FC = () => {
         className={`fixed right-4 bottom-44 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-sm bg-white text-gray-800 shadow-md border border-gray-200 flex items-center justify-center transition-all duration-300 cursor-pointer hover:bg-gray-50 ${
           showBackTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none'
         }`}
-        aria-label={t.floatingWidgets?.backToTop || "Nach oben"}
+        aria-label="Retour en haut"
       >
         <ArrowUp className="w-5 h-5 stroke-[2.5]" />
       </button>
@@ -76,7 +74,7 @@ export const FloatingWidgets: React.FC = () => {
         <button
           onClick={() => setShowChat(!showChat)}
           className="w-11 h-11 sm:w-12 sm:h-12 rounded-sm bg-[#0071E3] hover:bg-blue-600 text-white shadow-md flex items-center justify-center transition-colors cursor-pointer"
-          aria-label="Kundenservice"
+          aria-label="Service Client"
         >
           {showChat ? <X className="w-5 h-5" /> : <MessageCircle className="w-6 h-6" />}
         </button>
@@ -86,9 +84,9 @@ export const FloatingWidgets: React.FC = () => {
           <div className="absolute bottom-14 right-0 w-[300px] sm:w-[360px] bg-white rounded-sm shadow-2xl border border-gray-200 overflow-hidden flex flex-col h-[440px] animate-in slide-in-from-bottom-5 duration-200">
             <div className="bg-[#0071E3] p-3.5 text-white flex items-center justify-between">
               <div>
-                <div className="font-bold text-[15px]">iGarden Kundenservice</div>
+                <div className="font-bold text-[15px]">Support Client iGarden France</div>
                 <div className="text-[11px] opacity-80 flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-green-400 inline-block" /> Online 7 Tage/Woche
+                  <span className="w-2 h-2 rounded-full bg-green-400 inline-block" /> En ligne 7j/7
                 </div>
               </div>
               <button onClick={() => setShowChat(false)} className="text-white/80 hover:text-white cursor-pointer">
@@ -120,7 +118,7 @@ export const FloatingWidgets: React.FC = () => {
                 type="text"
                 value={chatMessage}
                 onChange={(e) => setChatMessage(e.target.value)}
-                placeholder="Ihre Nachricht..."
+                placeholder="Votre message..."
                 className="flex-1 px-3 py-2 text-[13px] bg-gray-100 rounded-sm outline-none border border-gray-200 focus:border-[#0071E3]"
               />
               <button
@@ -142,7 +140,7 @@ export const FloatingWidgets: React.FC = () => {
             className="px-3.5 py-1.5 bg-[#0071E3] text-white font-bold text-[12px] rounded-b-sm shadow-md hover:bg-blue-700 transition-colors tracking-wide flex items-center gap-1.5 cursor-pointer uppercase"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Sonderaktion -50%</span>
+            <span>Offre Promo -50%</span>
           </button>
         </div>
       )}
@@ -160,9 +158,9 @@ export const FloatingWidgets: React.FC = () => {
 
             {/* Left promo image */}
             <div className="w-full md:w-1/2 bg-blue-50 relative min-h-[180px] flex items-center justify-center p-4">
-              <img referrerPolicy="no-referrer"
-                src="https://eu.store.igarden.ai/cdn/shop/files/DE-X_12.png?v=1788838449"
-                alt="iGarden Swim Jet Serie X"
+              <img
+                src="https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732"
+                alt="iGarden Série X"
                 className="w-full h-auto object-contain max-h-[200px]"
               />
             </div>
@@ -170,14 +168,12 @@ export const FloatingWidgets: React.FC = () => {
             {/* Right Form */}
             <div className="w-full md:w-1/2 p-5 sm:p-6 flex flex-col justify-center space-y-3.5">
               <div>
-                <span className="text-[11px] font-bold text-[#0071E3] uppercase tracking-wider">
-                  Sonderangebot {countryInfo.name}
-                </span>
+                <span className="text-[11px] font-bold text-[#0071E3] uppercase tracking-wider">Offre Spéciale France</span>
                 <h3 className="text-[20px] font-extrabold text-gray-900 leading-tight mt-0.5">
-                  Swim Jet 1.000 W für nur 209,00 €
+                  Jet de natation portable 1 000 W à 209,00 €
                 </h3>
                 <p className="text-[12px] text-gray-500 mt-1">
-                  50% Sofortrabatt + kostenloser Expressversand inklusive Sendungsverfolgung.
+                  Profitez de la remise immédiate (-50%) + livraison Colissimo offerte en France métropolitaine.
                 </p>
               </div>
 
@@ -187,7 +183,7 @@ export const FloatingWidgets: React.FC = () => {
                     type="email"
                     value={klaviyoEmail}
                     onChange={(e) => setKlaviyoEmail(e.target.value)}
-                    placeholder="Ihre E-Mail-Adresse"
+                    placeholder="Votre adresse email"
                     required
                     className="w-full p-2.5 rounded-sm border border-gray-300 text-[13px] outline-none focus:border-[#0071E3]"
                   />
@@ -196,7 +192,7 @@ export const FloatingWidgets: React.FC = () => {
                     type="submit"
                     className="w-full h-11 rounded-sm bg-[#0071E3] hover:bg-blue-700 text-white font-bold text-[14px] uppercase tracking-wider transition-colors shadow-xs cursor-pointer text-center"
                   >
-                    50% Rabatt sichern
+                    Activer la réduction -50%
                   </button>
                 </form>
               ) : (
@@ -204,24 +200,18 @@ export const FloatingWidgets: React.FC = () => {
                   <div className="w-10 h-10 rounded-sm bg-green-100 text-green-600 flex items-center justify-center mx-auto">
                     <Check className="w-5 h-5" />
                   </div>
-                  <h4 className="font-bold text-[16px] text-gray-900">Rabatt aktiviert!</h4>
+                  <h4 className="font-bold text-[16px] text-gray-900">Offre activée !</h4>
                   <p className="text-[12px] text-gray-600">
-                    Ihr Sonderrabatt von <strong>209,00 € (-50%)</strong> wurde hinterlegt.
+                    Votre remise exceptionnelle de <strong>-50%</strong> est désormais appliquée.
                   </p>
                   <button
                     type="button"
                     onClick={() => {
-                      redirectToCheckout(CHECKOUT_URL, {
-                        id: 'swim-jet-1000w',
-                        name: 'Tragbare Gegenstromanlage iGarden Swim Jet — 1.000 W',
-                        price: 209.00,
-                        currency: 'EUR',
-                        quantity: 1
-                      });
+                      redirectToCheckout(CHECKOUT_URL);
                     }}
                     className="inline-block px-5 py-2.5 bg-[#0071E3] text-white text-[13px] font-bold rounded-sm shadow-xs hover:bg-blue-700 transition-colors uppercase cursor-pointer"
                   >
-                    Jetzt für 209 € bestellen →
+                    Commander maintenant →
                   </button>
                 </div>
               )}

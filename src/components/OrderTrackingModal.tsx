@@ -136,7 +136,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
 
               {/* Product recap */}
               <div className="flex items-center gap-3 p-3 bg-white rounded-sm border border-gray-200">
-                <img referrerPolicy="no-referrer"
+                <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732"
                   alt="Swim Jet — 1 000 W"
                   className="w-12 h-12 object-cover rounded-sm bg-gray-50 border border-gray-200 shrink-0"

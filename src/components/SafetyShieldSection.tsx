@@ -1,20 +1,14 @@
 import React from 'react';
-import { useI18n } from '../i18n';
 
 export const SafetyShieldSection: React.FC = () => {
-  const { t } = useI18n();
-
   return (
     <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            {t.safety.title}
+            <span className="text-[#0071E3]">360°</span> Blindage de sécurité
           </h2>
-          <p className="text-[16px] sm:text-[18px] text-gray-500 mt-2">
-            {t.safety.subtitle}
-          </p>
         </div>
 
         {/* 3-column layout */}
@@ -34,33 +28,27 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {t.safety.antiSuctionTitle}
-              </p>
-              <p className="text-[13px] text-gray-500 mt-1">
-                {t.safety.antiSuctionDesc}
+                Coupure de courant automatique
               </p>
             </div>
 
             <div className="text-center group">
               <div className="rounded-xl overflow-hidden shadow-sm bg-black mb-3.5">
-                <img referrerPolicy="no-referrer"
+                <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/lQDPKHROWGMftq3NBADNBgCwrLoTcdUcO2sJ1tSQ09acAA_1536_1024.jpg?v=1778494308&width=600"
-                  alt="Anti-entanglement grille"
+                  alt="Grille anti-enchevêtrement"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {t.safety.voltageTitle}
-              </p>
-              <p className="text-[13px] text-gray-500 mt-1">
-                {t.safety.voltageDesc}
+                Grille de protection anti-enchevêtrement
               </p>
             </div>
           </div>
 
           {/* Center column: Main Product Illustration */}
           <div className="rounded-2xl bg-[#F5F5F7] p-4 flex items-center justify-center shadow-inner hidden lg:flex">
-            <img referrerPolicy="no-referrer"
+            <img
               src="https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237223.png?v=1778494303&width=1000"
               alt="iGarden Swim Jet"
               className="w-full h-auto object-contain"
@@ -82,10 +70,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {t.safety.ip68Title}
-              </p>
-              <p className="text-[13px] text-gray-500 mt-1">
-                {t.safety.ip68Desc}
+                IP68 étanche (Unité de nage)
               </p>
             </div>
 
@@ -102,10 +87,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                IP65 Power Box
-              </p>
-              <p className="text-[13px] text-gray-500 mt-1">
-                {t.safety.voltageDesc}
+                IP65 étanche (Boîtier d'alimentation)
               </p>
             </div>
           </div>

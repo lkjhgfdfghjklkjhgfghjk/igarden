@@ -1,20 +1,17 @@
 import React from 'react';
-import { useI18n } from '../i18n';
 
 export const AdvantagesSection: React.FC = () => {
-  const { t } = useI18n();
-
   return (
-    <section id="Avantages" className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14 space-y-16 sm:space-y-24">
         {/* Section Part 1: Daily laps */}
         <div>
           <div className="mb-6">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree'] mb-2">
-              {t.advantages.title}
+              Maîtrisez vos tours quotidiens
             </h2>
             <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-              {t.advantages.subtitle}
+              Convient pour le papillon, le style libre et la brasse.
             </p>
           </div>
 
@@ -35,7 +32,7 @@ export const AdvantagesSection: React.FC = () => {
         <div>
           <div className="mb-8">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree']">
-              {t.advantages.card1Title}
+              Pure joie, pure détente
             </h2>
           </div>
 
@@ -55,10 +52,10 @@ export const AdvantagesSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  {t.advantages.card2Title}
+                  Jeu actif pour vos animaux de compagnie
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  {t.advantages.card2Desc}
+                  Offrez à vos amis à quatre pattes un entraînement rafraîchissant et à faible impact pour préserver leurs articulations.
                 </p>
               </div>
             </div>
@@ -78,10 +75,10 @@ export const AdvantagesSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  {t.advantages.card3Title}
+                  Alimentez l’ambiance de fête
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  {t.advantages.card3Desc}
+                  Transformez n'importe quel rassemblement en un événement dynamique avec un courant constant et invitant qui fait bouger tout le monde.
                 </p>
               </div>
             </div>

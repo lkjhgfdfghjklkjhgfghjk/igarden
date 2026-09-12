@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
-import { useI18n, getLocalizedReviews } from '../i18n';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { TRUSTPILOT_REVIEWS } from '../data';
 
 export const TrustpilotWidget: React.FC = () => {
-  const { t, language } = useI18n();
-  const reviews = getLocalizedReviews(language);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -12,7 +10,7 @@ export const TrustpilotWidget: React.FC = () => {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => Math.min(reviews.length - 1, prev + 1));
+    setCurrentIndex((prev) => Math.min(TRUSTPILOT_REVIEWS.length - 1, prev + 1));
   };
 
   return (
@@ -21,15 +19,15 @@ export const TrustpilotWidget: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col items-center gap-4 mb-12 sm:mb-16">
           <div className="flex items-center gap-3">
-            <img referrerPolicy="no-referrer"
+            <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-left_svg.png?v=1784616357&width=100"
               alt=""
               className="h-8 sm:h-12 w-auto object-contain"
             />
             <h2 className="text-[26px] sm:text-[42px] font-bold text-gray-950 font-['Figtree'] m-0">
-              {t.reviews.trustpilotTitle}
+              Trustpilot Review
             </h2>
-            <img referrerPolicy="no-referrer"
+            <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-right_svg.png?v=1784616357&width=100"
               alt=""
               className="h-8 sm:h-12 w-auto object-contain"
@@ -43,7 +41,7 @@ export const TrustpilotWidget: React.FC = () => {
               rel="noopener noreferrer"
               className="underline font-semibold hover:text-[#0071E3]"
             >
-              {t.reviews.verifiedReviewsCount}
+              223 Avis
             </a>
             <span>•</span>
             <div className="flex items-center gap-1">
@@ -54,7 +52,7 @@ export const TrustpilotWidget: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <strong className="text-gray-900 font-bold ml-1">{t.reviews.averageScore}</strong>
+              <strong className="text-gray-900 font-bold ml-1">4.7 / 5</strong>
             </div>
           </div>
         </div>
@@ -62,26 +60,21 @@ export const TrustpilotWidget: React.FC = () => {
         {/* Reviews Carousel Cards */}
         <div className="relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.slice(currentIndex, currentIndex + 3).map((review) => (
+            {TRUSTPILOT_REVIEWS.slice(currentIndex, currentIndex + 3).map((review) => (
               <div
                 key={review.id}
-                className="bg-[#FAFAFA] rounded-2xl p-6 sm:p-7 border border-gray-100 flex flex-col justify-between shadow-xs hover:shadow-md transition-all min-h-[280px]"
+                className="bg-[#FAFAFA] rounded-2xl p-6 sm:p-7 border border-gray-100 flex flex-col justify-between shadow-xs hover:shadow-md transition-all h-[360px]"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-10 h-10 rounded-full bg-blue-100 text-[#0071E3] font-bold flex items-center justify-center text-[15px]">
-                        {review.author.charAt(0)}
-                      </div>
-                      <div>
-                        <div className="font-bold text-[15px] text-gray-900 flex items-center gap-1.5">
-                          {review.author}
-                          {review.verified && (
-                            <CheckCircle2 className="w-4 h-4 text-[#00B67A]" />
-                          )}
-                        </div>
-                        <time className="text-[12px] text-gray-400 font-medium block">{review.date}</time>
-                      </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3.5">
+                    <img
+                      src={review.avatar}
+                      alt={review.name}
+                      className="w-12 h-12 rounded-full object-cover border border-gray-200"
+                    />
+                    <div>
+                      <div className="font-bold text-[16px] text-gray-900">{review.name}</div>
+                      <time className="text-[12px] text-gray-400 font-medium block">{review.date}</time>
                     </div>
                   </div>
 
@@ -93,40 +86,41 @@ export const TrustpilotWidget: React.FC = () => {
                     ))}
                   </div>
 
-                  {review.title && (
-                    <h4 className="font-bold text-[15px] text-gray-900 line-clamp-1">
-                      {review.title}
-                    </h4>
-                  )}
-
-                  <p className="text-[14px] text-gray-600 leading-relaxed line-clamp-5 m-0">
-                    "{review.content}"
+                  <p className="text-[14px] text-gray-600 leading-relaxed line-clamp-6 m-0">
+                    "{review.text}"
                   </p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex justify-center items-center gap-4 mt-8">
-            <button
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-              className={`p-3 rounded-full border border-gray-200 bg-white transition-all ${
-                currentIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-50 hover:border-gray-300 cursor-pointer'
-              }`}
-            >
-              <ChevronLeft className="w-5 h-5 text-gray-700" />
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={currentIndex + 3 >= reviews.length}
-              className={`p-3 rounded-full border border-gray-200 bg-white transition-all ${
-                currentIndex + 3 >= reviews.length ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-50 hover:border-gray-300 cursor-pointer'
-              }`}
-            >
-              <ChevronRight className="w-5 h-5 text-gray-700" />
-            </button>
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between mt-10 pt-4 border-t border-gray-100">
+            <div className="w-20 h-1 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gray-800 rounded-full transition-all duration-300"
+                style={{ width: `${((currentIndex + 3) / TRUSTPILOT_REVIEWS.length) * 100}%` }}
+              />
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handlePrev}
+                disabled={currentIndex === 0}
+                className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 cursor-pointer"
+                aria-label="Previous reviews"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex + 3 >= TRUSTPILOT_REVIEWS.length}
+                className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 cursor-pointer"
+                aria-label="Next reviews"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
