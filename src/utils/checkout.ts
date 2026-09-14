@@ -1,4 +1,5 @@
 import { CHECKOUT_URL } from '../data';
+import { trackTikTokInitiateCheckout } from './tiktokPixel';
 
 let isNavigating = false;
 
@@ -6,13 +7,17 @@ let isNavigating = false;
  * Single-execution checkout redirect handler.
  * Guarantees that only ONE checkout instance opens per user click.
  */
-export const redirectToCheckout = (url?: string) => {
+export const redirectToCheckout = (url?: string, quantity: number = 1) => {
   const targetUrl = url || CHECKOUT_URL;
   if (!targetUrl || typeof window === 'undefined') return;
 
   // Prevent multiple rapid triggers from double-clicking
   if (isNavigating) return;
   isNavigating = true;
+
+  // Track InitiateCheckout event on TikTok Pixel
+  trackTikTokInitiateCheckout(quantity);
+
   setTimeout(() => {
     isNavigating = false;
   }, 2000);

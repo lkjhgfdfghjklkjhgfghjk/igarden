@@ -28,12 +28,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   );
   const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalSavings = totalOriginalPrice - totalPrice;
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const itemWithCheckout = items.find((item) => item.checkoutUrl);
   const targetCheckoutUrl = itemWithCheckout?.checkoutUrl || CHECKOUT_URL;
 
   const handleProceedToCheckout = () => {
-    redirectToCheckout(targetCheckoutUrl);
+    redirectToCheckout(targetCheckoutUrl, totalQuantity || 1);
   };
 
   return (

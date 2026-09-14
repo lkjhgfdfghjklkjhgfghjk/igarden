@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck,
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS, CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokViewContent } from '../utils/tiktokPixel';
 
 interface ProductSectionProps {
   selectedVariant: ProductVariant;
@@ -19,6 +20,11 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'desc' | 'specs' | 'shipping' | 'warranty'>('desc');
   const [viewersCount] = useState(42);
+
+  // Track TikTok Pixel ViewContent once when product section is rendered
+  useEffect(() => {
+    trackTikTokViewContent();
+  }, []);
 
   // Reset image index when variant changes if out of bounds
   useEffect(() => {
@@ -51,7 +57,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   };
 
   const handleDirectCheckout = () => {
-    redirectToCheckout(selectedVariant.checkoutUrl);
+    redirectToCheckout(selectedVariant.checkoutUrl, quantity);
   };
 
   const handleVariantSelect = (variant: ProductVariant) => {
