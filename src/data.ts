@@ -1,6 +1,6 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true";
+export const CHECKOUT_URL = "https://igardemm.myshopify.com/checkouts/cn/hWNGoAHYFZV2jFBIxB6IbQXa/fr-fr?_r=AQABtSHSa10e-fotmh8ifG3LMhRgDhWMFc0uWodOewZFV7Y&preview_theme_id=205072925017";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
@@ -14,7 +14,7 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     discountAmount: 209.00,
     couponCode: "SWIMJET",
     couponOff: "€209,00",
-    checkoutUrl: "https://braceletot.myshopify.com/checkouts/cn/hWNGSsxvcXAObNr6n8uQ5eUc/fr-fr?_r=AQABZ6-HYhSRWuCWfUacKpFPnhCq_6wtZLdKPSCFsemrbYk&auto_redirect=false&edge_redirect=true&preview_theme_id=201240871252&skip_shop_pay=true",
+    checkoutUrl: "https://igardemm.myshopify.com/checkouts/cn/hWNGoAHYFZV2jFBIxB6IbQXa/fr-fr?_r=AQABtSHSa10e-fotmh8ifG3LMhRgDhWMFc0uWodOewZFV7Y&preview_theme_id=205072925017",
     specsSummary: "1 000 W de puissance | 6 à 10 h d'autonomie à pleine puissance | Compatible avec toutes les piscines",
     power: "1 000 W",
     speed: "1,5 m/s",
