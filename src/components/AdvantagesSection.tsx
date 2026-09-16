@@ -1,23 +1,17 @@
 import React from 'react';
-import { useI18n } from '../i18n/I18nContext';
 
 export const AdvantagesSection: React.FC = () => {
-  const { currentLanguage } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
-
   return (
-    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
+    <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14 space-y-16 sm:space-y-24">
         {/* Section Part 1: Daily laps */}
         <div>
           <div className="mb-6">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree'] mb-2">
-              {isAr ? 'أتقن تمارين السباحة اليومية' : 'Master Your Daily Swim Routine'}
+              Maîtrisez vos tours quotidiens
             </h2>
             <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-              {isAr
-                ? 'مثالي لسباحة الفراشة، والسباحة الحرة، وسباحة الصدر، وسباحة الظهر.'
-                : 'Engineered for freestyle, breaststroke, backstroke, and butterfly.'}
+              Convient pour le papillon, le style libre et la brasse.
             </p>
           </div>
 
@@ -29,6 +23,7 @@ export const AdvantagesSection: React.FC = () => {
               loop
               muted
               playsInline
+              preload="metadata"
               className="w-full h-auto aspect-video object-cover"
             />
           </div>
@@ -38,7 +33,7 @@ export const AdvantagesSection: React.FC = () => {
         <div>
           <div className="mb-8">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree']">
-              {isAr ? 'متعة نقية واسترخاء لجميع أفراد الأسرة' : 'Pure Joy & Refreshing Relaxation'}
+              Pure joie, pure détente
             </h2>
           </div>
 
@@ -53,17 +48,16 @@ export const AdvantagesSection: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   className="w-full h-auto aspect-video object-cover max-h-[380px]"
                 />
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  {isAr ? 'مرح صحي ولطيف على المفاصل للحيوانات الأليفة' : 'Active Fun for Your Pets'}
+                  Jeu actif pour vos animaux de compagnie
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  {isAr
-                    ? 'وفر لأليفك تمريناً مائياً منعشاً منخفض الصدمات يحافظ على سلامة مفاصله ولياقته.'
-                    : 'Provide gentle, low-impact aquatic exercise to keep joints healthy and spirits high.'}
+                  Offrez à vos amis à quatre pattes un entraînement rafraîchissant et à faible impact pour préserver leurs articulations.
                 </p>
               </div>
             </div>
@@ -78,17 +72,16 @@ export const AdvantagesSection: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   className="w-full h-auto aspect-video object-cover max-h-[380px]"
                 />
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  {isAr ? 'أجواء ممتعة في التجمعات العائلية' : 'Elevate Poolside Gatherings'}
+                  Alimentez l’ambiance de fête
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  {isAr
-                    ? 'حوّل أي لقاء عائلي أو حفلة مسبح إلى تجربة نهرية ممتعة تجذب الجميع للمشاركة والسباحة.'
-                    : 'Transform any backyard party into a dynamic water playground that everyone enjoys.'}
+                  Transformez n'importe quel rassemblement en un événement dynamique avec un courant constant et invitant qui fait bouger tout le monde.
                 </p>
               </div>
             </div>

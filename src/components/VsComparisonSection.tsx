@@ -1,22 +1,16 @@
 import React from 'react';
-import { useI18n } from '../i18n/I18nContext';
 
 export const VsComparisonSection: React.FC = () => {
-  const { currentLanguage, formatPrice, swimJetPrice } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
-
   return (
-    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
+    <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-2">
-            {isAr ? 'لماذا تختار آي جاردن س swim جيت؟' : 'Why Choose iGarden?'}
+            Pourquoi choisir iGarden ?
           </h2>
           <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-            {isAr
-              ? 'مقارنة جهاز آي جاردن س swim جيت المحمول بالأنظمة التقليدية المدمجة'
-              : 'iGarden Swim Jet Series vs. Traditional Built-In Swim Machines'}
+            iGarden Swim Jet X Series par rapport aux jets de nage traditionnels en piscine
           </p>
         </div>
 
@@ -27,23 +21,25 @@ export const VsComparisonSection: React.FC = () => {
             <div className="w-full bg-[#E5F0FC] overflow-hidden aspect-[16/9] sm:aspect-[2/1]">
               <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/Container_2_59e83699-790e-4ba6-9433-3ca5b5d31c38.png?v=1778494491&width=1200"
-                alt="iGarden Swim Jet"
+                alt="iGarden Swim Jet Série X"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between items-center text-center space-y-4">
               <h3 className="text-[24px] sm:text-[28px] font-bold text-gray-900 font-['Figtree']">
-                {isAr ? 'جهاز آي جاردن س swim جيت 1000 واط' : 'iGarden Swim Jet 1,000 W'}
+                iGarden Swim Jet Série X
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  {isAr ? `فقط ${formatPrice(swimJetPrice.price)} (قوة 1000 واط)` : `Only ${formatPrice(swimJetPrice.price)} (1,000 W Output)`}
+                  Seulement 209,00 € (1 000 W de puissance)
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  {isAr ? 'من 6 إلى 10 ساعات تشغيل متواصل' : '6 to 10h Runtime per Charge'}
+                  6 à 10 h d'autonomie à pleine puissance
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  {isAr ? 'متوافق مع كافة أنواع المسابح' : 'Universal Pool Compatibility'}
+                  Compatible avec toutes les piscines
                 </span>
               </div>
             </div>
@@ -59,23 +55,25 @@ export const VsComparisonSection: React.FC = () => {
             <div className="w-full bg-[#EEEEEE] overflow-hidden aspect-[16/9] sm:aspect-[2/1]">
               <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/Image_Exxx_Pools.png?v=1778494744&width=1200"
-                alt="Traditional Built-in System"
+                alt="Piscines traditionnelles intégrées"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between items-center text-center space-y-4">
               <h3 className="text-[24px] sm:text-[28px] font-bold text-gray-700 font-['Figtree']">
-                {isAr ? 'الأنظمة المدمجة التقليدية' : 'Traditional Built-In Systems'}
+                Systèmes intégrés classiques
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  {isAr ? 'تكلفة تتجاوز $20,000+' : 'Cost $20,000+'}
+                  Coût 20 000 €+
                 </span>
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  {isAr ? 'أعمال حفر وسباكة معقدة' : 'Heavy Construction & Plumbing'}
+                  Travaux et raccordements lourds
                 </span>
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  {isAr ? 'غير قابلة للنقل وصيانة باهظة' : 'Fixed In Place & High Maintenance'}
+                  Inamovible & coût d'entretien élevé
                 </span>
               </div>
             </div>

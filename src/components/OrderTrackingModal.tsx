@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { X, Search, Package, CheckCircle2, Truck, Clock } from 'lucide-react';
-import { useI18n } from '../i18n/I18nContext';
+import { X, Search, Package, CheckCircle2, Truck, Clock, MapPin, AlertCircle, ArrowRight } from 'lucide-react';
 
 interface OrderTrackingModalProps {
   isOpen: boolean;
@@ -11,9 +10,6 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
   isOpen,
   onClose
 }) => {
-  const { currentLanguage, currentMarket, formatPrice, swimJetPrice, t } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
-
   const [orderId, setOrderId] = useState('');
   const [email, setEmail] = useState('');
   const [searched, setSearched] = useState(false);
@@ -33,8 +29,8 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
   };
 
   const handleUseDemo = () => {
-    setOrderId(isAr ? 'IG-AE-84920' : 'IG-US-84920');
-    setEmail('customer@example.com');
+    setOrderId('IG-FR-84920');
+    setEmail('client.france@gmail.com');
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -43,30 +39,29 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200" dir={currentLanguage.direction}>
+    <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="w-full max-w-[560px] max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-y-auto border border-gray-200 animate-in zoom-in-95 duration-200"
+        className="w-full max-w-[560px] max-h-[90vh] bg-white rounded-sm shadow-2xl overflow-y-auto border border-gray-200 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="p-4 sm:p-5 border-b border-gray-200 flex items-center justify-between bg-[#F8FAFC]">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-sm bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center">
               <Package className="w-4 h-4" />
             </div>
             <div>
               <h3 className="font-bold text-[16px] sm:text-[17px] text-gray-900 leading-tight">
-                {isAr ? 'تتبع الطلب المباشر' : 'Live Order Tracking'}
+                Suivi de commande en direct
               </h3>
-              <p className="text-[12px] text-gray-500">
-                {isAr ? `خدمة التوصيل السريع — ${currentMarket.name}` : `Express Delivery Service — ${currentMarket.name}`}
-              </p>
+              <p className="text-[12px] text-gray-500">Service Colissimo / Chronopost France</p>
             </div>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer"
-            aria-label="Close"
+            className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -78,29 +73,29 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
           <form onSubmit={handleSearch} className="space-y-4">
             <div>
               <label className="block text-[13px] font-bold text-gray-700 mb-1">
-                {isAr ? 'رقم الطلب أو رقم التتبع' : 'Order Number or Tracking ID'}
+                Numéro de commande ou numéro de suivi
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  placeholder={isAr ? 'مثال: IG-84920 أو TRK987654321' : 'Ex: IG-US-84920 or TRK987654321'}
+                  placeholder="Ex : IG-FR-84920 ou 6A1234567890"
                   value={orderId}
                   onChange={(e) => setOrderId(e.target.value)}
-                  className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
+                  className="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-[13px] font-bold text-gray-700 mb-1">
-                {isAr ? 'البريد الإلكتروني المستخدم عند الشراء' : 'Email Address Used at Checkout'}
+                Adresse e-mail utilisée lors de l'achat
               </label>
               <input
                 type="email"
-                placeholder="customer@example.com"
+                placeholder="Ex : client@domaine.fr"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
+                className="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
               />
             </div>
 
@@ -108,18 +103,18 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 h-11 rounded-lg bg-[#0071E3] hover:bg-blue-700 text-white font-bold text-[13px] sm:text-[14px] tracking-wide transition-colors shadow-xs flex items-center justify-center gap-2 cursor-pointer uppercase disabled:opacity-50 text-center border-none"
+                className="flex-1 h-12 min-h-[44px] rounded-xl bg-[#0071E3] hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-[13px] sm:text-[14px] tracking-wide transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer uppercase disabled:opacity-50 text-center"
               >
                 <Search className="w-4 h-4" />
-                <span>{loading ? (isAr ? 'جارٍ البحث...' : 'Searching...') : (isAr ? 'تتبع شحنتي' : 'Track My Package')}</span>
+                <span>{loading ? "Recherche en cours..." : "Rechercher mon colis"}</span>
               </button>
 
               <button
                 type="button"
                 onClick={handleUseDemo}
-                className="h-11 px-4 rounded-lg border border-gray-300 hover:bg-gray-50 text-gray-700 text-[13px] font-semibold whitespace-nowrap cursor-pointer uppercase text-center"
+                className="h-12 min-h-[44px] px-4 rounded-xl border border-gray-300 hover:bg-gray-50 active:scale-[0.99] text-gray-700 text-[13px] font-semibold whitespace-nowrap cursor-pointer uppercase text-center transition-all"
               >
-                {isAr ? 'نموذج تجريبي' : 'Demo Example'}
+                Exemple démo
               </button>
             </div>
           </form>
@@ -130,95 +125,77 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
               {/* Order overview badge */}
               <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-gray-200">
                 <div>
-                  <span className="text-[12px] text-gray-500 font-semibold">{isAr ? 'رقم الطلب:' : 'Order ID:'}</span>
-                  <p className="font-extrabold text-[15px] text-gray-900">#IG-84920</p>
+                  <span className="text-[12px] text-gray-500 font-semibold">Commande :</span>
+                  <p className="font-extrabold text-[15px] text-gray-900">#IG-FR-84920</p>
                 </div>
-                <div className="text-right rtl:text-left">
-                  <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-[11px] font-bold px-2 py-0.5 rounded-full">
-                    <Truck className="w-3.5 h-3.5" /> {isAr ? 'في طريق التوصيل' : 'In Transit'}
+                <div className="text-right">
+                  <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-[11px] font-bold px-2.5 py-1 rounded-full">
+                    <Truck className="w-3.5 h-3.5" /> En cours d'acheminement
                   </span>
-                  <p className="text-[11px] text-gray-500 mt-0.5">{isAr ? 'شحن سريع ومؤمن' : 'Insured Express Courier'}</p>
+                  <p className="text-[11px] text-gray-500 mt-0.5">Colissimo Suivi France</p>
                 </div>
               </div>
 
               {/* Product recap */}
-              <div className="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-200">
+              <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-200">
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/1-FR-1.png?v=1782461732"
-                  alt="Swim Jet — 1,000 W"
+                  alt="Swim Jet — 1 000 W"
+                  loading="lazy"
+                  decoding="async"
                   className="w-12 h-12 object-cover rounded-lg bg-gray-50 border border-gray-200 shrink-0"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="font-bold text-[13px] sm:text-[14px] text-gray-900 truncate">
-                    {t.hero.title} — 1,000 W
+                    Swim Jet — 1 000 W (Compatible avec toutes les piscines)
                   </p>
-                  <p className="text-[12px] text-gray-500">
-                    {isAr ? `الكمية: 1 • ${formatPrice(swimJetPrice.price)} • شحن مجاني شامل` : `Qty: 1 • ${formatPrice(swimJetPrice.price)} • Free Express Shipping`}
-                  </p>
+                  <p className="text-[12px] text-gray-500">Qté: 1 • 209,00 € • Livraison Colissimo Offerte</p>
                 </div>
               </div>
 
               {/* Timeline Steps */}
               <div className="space-y-4 pt-1">
                 <h4 className="font-bold text-[13px] text-gray-900 uppercase tracking-wide">
-                  {isAr ? 'سجل مراحل الشحن والتوصيل' : 'Shipment Activity History'}
+                  Historique de l'expédition
                 </h4>
 
-                <div className="relative pl-6 rtl:pl-0 rtl:pr-6 space-y-6 before:absolute before:left-2 rtl:before:left-auto rtl:before:right-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-300">
+                <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-300">
                   {/* Step 1 */}
                   <div className="relative">
-                    <div className="absolute -left-[29px] rtl:-left-auto rtl:-right-[29px] top-0.5 w-4 h-4 rounded-full bg-[#0071E3] border-2 border-white ring-2 ring-[#0071E3]/20 flex items-center justify-center text-white">
+                    <div className="absolute -left-[29px] top-0.5 w-4 h-4 rounded-full bg-[#0071E3] border-2 border-white ring-2 ring-[#0071E3]/20 flex items-center justify-center text-white">
                       <div className="w-1.5 h-1.5 bg-white rounded-full" />
                     </div>
-                    <p className="font-bold text-[13px] text-gray-900">
-                      {isAr ? 'جاري الفرز والمعالجة في مركز التوزيع الإقليمي' : 'In transit to local distribution center'}
-                    </p>
-                    <p className="text-[12px] text-gray-500">
-                      {isAr ? `المركز اللوجستي — ${currentMarket.name}` : `Regional Logistics Hub — ${currentMarket.name}`}
-                    </p>
-                    <span className="text-[11px] text-gray-400">{isAr ? 'اليوم، 08:42 ص' : 'Today, 08:42 AM'}</span>
+                    <p className="font-bold text-[13px] text-gray-900">En cours de traitement sur la plateforme logistique</p>
+                    <p className="text-[12px] text-gray-500">Plateforme Colissimo - Hub Régional (77)</p>
+                    <span className="text-[11px] text-gray-400">Aujourd'hui, 08:42</span>
                   </div>
 
                   {/* Step 2 */}
                   <div className="relative">
-                    <div className="absolute -left-[29px] rtl:-left-auto rtl:-right-[29px] top-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white">
+                    <div className="absolute -left-[29px] top-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
-                    <p className="font-bold text-[13px] text-gray-900">
-                      {isAr ? 'تم استلام الشحنة من قبل شركة النقل السريع' : 'Package picked up by courier service'}
-                    </p>
-                    <p className="text-[12px] text-gray-500">
-                      {isAr ? 'مركز انطلاق وتجهيز الشحنات iGarden' : 'iGarden Fulfillment Facility'}
-                    </p>
-                    <span className="text-[11px] text-gray-400">{isAr ? 'أمس، 04:15 م' : 'Yesterday, 04:15 PM'}</span>
+                    <p className="font-bold text-[13px] text-gray-900">Colis pris en charge par le transporteur</p>
+                    <p className="text-[12px] text-gray-500">Centre d'expédition iGarden France</p>
+                    <span className="text-[11px] text-gray-400">Hier, 16:15</span>
                   </div>
 
                   {/* Step 3 */}
                   <div className="relative">
-                    <div className="absolute -left-[29px] rtl:-left-auto rtl:-right-[29px] top-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white">
+                    <div className="absolute -left-[29px] top-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
-                    <p className="font-bold text-[13px] text-gray-900">
-                      {isAr ? 'تم تأكيد الطلب والتعبئة' : 'Order verified & packaged'}
-                    </p>
-                    <p className="text-[12px] text-gray-500">
-                      {isAr ? 'متجر iGarden الرسمي' : 'iGarden Official Store'}
-                    </p>
-                    <span className="text-[11px] text-gray-400">{isAr ? 'أمس، 02:02 م' : 'Yesterday, 02:02 PM'}</span>
+                    <p className="font-bold text-[13px] text-gray-900">Commande confirmée et préparée</p>
+                    <p className="text-[12px] text-gray-500">Boutique officielle iGarden</p>
+                    <span className="text-[11px] text-gray-400">Hier, 14:02</span>
                   </div>
                 </div>
               </div>
 
               {/* Delivery estimation */}
-              <div className="p-3 bg-blue-50/80 rounded-lg border border-blue-200 text-[12px] sm:text-[13px] text-blue-900 flex items-center gap-2.5">
+              <div className="p-3 bg-blue-50/80 rounded-sm border border-blue-200 text-[12px] sm:text-[13px] text-blue-900 flex items-center gap-2.5">
                 <Clock className="w-5 h-5 text-[#0071E3] shrink-0" />
-                <span>
-                  {isAr ? (
-                    <>التوصيل المتوقع: <strong>خلال 24 إلى 48 ساعة عمل</strong> مباشرة إلى عنوانك مع التسليم بتوقيع.</>
-                  ) : (
-                    <>Estimated Delivery: <strong>Within 24 to 48 business hours</strong> directly to your address with signature on delivery.</>
-                  )}
-                </span>
+                <span>Livraison estimée : <strong>sous 24h à 48h ouvrées</strong> à votre domicile avec remise contre signature.</span>
               </div>
             </div>
           )}
@@ -226,7 +203,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
           {/* Need help */}
           <div className="pt-2 border-t border-gray-100 text-center">
             <p className="text-[12px] text-gray-500">
-              {isAr ? 'هل لديك أي استفسار بشأن التوصيل؟ تواصل مع فريق الدعم على ' : 'Have questions about your delivery? Contact our customer support team at '}
+              Une question sur votre livraison ? Notre équipe francophone vous répond à{' '}
               <a href="mailto:support@igarden.ai" className="font-bold text-[#0071E3] hover:underline">
                 support@igarden.ai
               </a>

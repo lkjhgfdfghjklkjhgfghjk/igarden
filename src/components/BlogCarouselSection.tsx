@@ -1,13 +1,9 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { BLOG_ARTICLES_DATA } from '../homeData';
-import { useI18n } from '../i18n/I18nContext';
+import { BLOG_ARTICLES } from '../homeData';
 
 export const BlogCarouselSection: React.FC = () => {
-  const { currentLanguage } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const articles = currentLanguage.id === 'ar' ? BLOG_ARTICLES_DATA.ar : BLOG_ARTICLES_DATA.en;
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -17,12 +13,12 @@ export const BlogCarouselSection: React.FC = () => {
   };
 
   return (
-    <section className="py-12 sm:py-20 bg-white overflow-hidden" dir={currentLanguage.direction}>
+    <section className="py-12 sm:py-20 bg-white overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-[24px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight">
-            {currentLanguage.id === 'ar' ? 'مقالات وأخبار آي جاردن' : 'Dive into iGarden News & Guides'}
+            Plongez dans iGarden News
           </h2>
         </div>
 
@@ -32,7 +28,7 @@ export const BlogCarouselSection: React.FC = () => {
           className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth"
           style={{ scrollSnapType: 'x mandatory' }}
         >
-          {articles.map((article) => (
+          {BLOG_ARTICLES.map((article) => (
             <a
               key={article.id}
               href={article.link}
@@ -78,14 +74,14 @@ export const BlogCarouselSection: React.FC = () => {
             <button
               onClick={() => scroll('left')}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label="Previous article"
+              aria-label="Article précédent"
             >
               <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
             </button>
             <button
               onClick={() => scroll('right')}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label="Next article"
+              aria-label="Article suivant"
             >
               <ChevronRight className="w-5 h-5 stroke-[2.5]" />
             </button>

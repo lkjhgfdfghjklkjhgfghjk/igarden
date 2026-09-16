@@ -1,12 +1,8 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useI18n } from '../i18n/I18nContext';
-import { TESTIMONIALS_1_DATA } from '../homeData';
+import { TESTIMONIALS_2 } from '../homeData';
 
 export const TestimonialsCarousel2: React.FC = () => {
-  const { currentLanguage } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
-  const testimonials = isAr ? TESTIMONIALS_1_DATA.ar : TESTIMONIALS_1_DATA.en;
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -17,7 +13,7 @@ export const TestimonialsCarousel2: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-12 sm:py-16 my-8" dir={currentLanguage.direction}>
+    <section className="relative overflow-hidden py-12 sm:py-16 my-8">
       {/* Background graphic */}
       <div className="absolute inset-0 z-0">
         <img
@@ -36,12 +32,10 @@ export const TestimonialsCarousel2: React.FC = () => {
         {/* Left Side: Fixed text */}
         <div className="w-full lg:w-[32%] flex flex-col justify-center shrink-0">
           <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black mb-3 md:mb-5 leading-tight">
-            {isAr ? 'تجارب وآراء المستخدمين' : 'User Experiences'}
+            Témoignage d'utilisateur
           </h2>
           <p className="text-[14px] sm:text-[16px] md:text-[17px] text-gray-800 font-normal leading-relaxed opacity-90">
-            {isAr
-              ? 'نولي اهتماماً كبيراً بتجربة كل سباح وعائلة تستخدم أجهزتنا. تعرّف على آراء وانطباعات المستخدمين الحقيقيين وكيف أثرت على متعتهم بالسباحة.'
-              : 'We value the authentic experience of every user. Hear directly from verified swimmers who transformed their backyard pool routine with iGarden.'}
+            Nous valorisons l’expérience authentique de chaque utilisateur. Si vous l'avez déjà, nous vous invitons à partager votre ressenti d'utilisation ; si vous hésitez encore, autant jeter un œil d’abord aux vrais retours des autres acheteurs.
           </p>
         </div>
 
@@ -52,7 +46,7 @@ export const TestimonialsCarousel2: React.FC = () => {
             className="flex items-center gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth"
             style={{ scrollSnapType: 'x mandatory' }}
           >
-            {testimonials.map((item) => (
+            {TESTIMONIALS_2.map((item) => (
               <a
                 key={item.id}
                 href={item.link}
@@ -77,7 +71,7 @@ export const TestimonialsCarousel2: React.FC = () => {
                   <p className="text-[13px] sm:text-[14px] font-normal text-white/95 line-clamp-4 leading-snug">
                     {item.quote}
                   </p>
-                  <p className="text-[13px] sm:text-[14px] font-bold text-white text-right rtl:text-left pt-1">
+                  <p className="text-[13px] sm:text-[14px] font-bold text-white text-right pt-1">
                     — {item.author}
                   </p>
                 </div>
@@ -97,16 +91,16 @@ export const TestimonialsCarousel2: React.FC = () => {
               <button
                 onClick={() => scroll('left')}
                 className="w-10 h-10 rounded-full bg-gray-200/90 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-                aria-label="Previous"
+                aria-label="Témoignage précédent"
               >
-                <ChevronLeft className="w-5 h-5 stroke-[2.5] rtl:rotate-180" />
+                <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
               </button>
               <button
                 onClick={() => scroll('right')}
                 className="w-10 h-10 rounded-full bg-gray-200/90 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-                aria-label="Next"
+                aria-label="Témoignage suivant"
               >
-                <ChevronRight className="w-5 h-5 stroke-[2.5] rtl:rotate-180" />
+                <ChevronRight className="w-5 h-5 stroke-[2.5]" />
               </button>
             </div>
           </div>

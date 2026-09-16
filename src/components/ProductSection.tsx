@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Check, Star, ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones, Lock, Eye, Clock } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck, ShieldCheck, RotateCcw, Headphones, Info, Sparkles, Zap, Lock, Eye, Clock } from 'lucide-react';
 import { ProductVariant } from '../types';
+import { PRODUCT_VARIANTS, CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
-import { trackTikTokViewContent } from '../utils/tiktokPixel';
-import { useI18n } from '../i18n/I18nContext';
 
 interface ProductSectionProps {
   selectedVariant: ProductVariant;
@@ -16,16 +15,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   onSelectVariant,
   onAddToCart
 }) => {
-  const { currentMarket, currentLanguage, formatPrice, swimJetPrice, t } = useI18n();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'desc' | 'specs' | 'shipping' | 'warranty'>('desc');
   const [viewersCount] = useState(42);
-
-  // Track TikTok Pixel ViewContent once when product section is rendered
-  useEffect(() => {
-    trackTikTokViewContent();
-  }, []);
 
   // Reset image index when variant changes if out of bounds
   useEffect(() => {
@@ -58,27 +51,27 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   };
 
   const handleDirectCheckout = () => {
-    redirectToCheckout(swimJetPrice.checkoutUrl || selectedVariant.checkoutUrl, quantity);
+    redirectToCheckout(selectedVariant.checkoutUrl);
+  };
+
+  const handleVariantSelect = (variant: ProductVariant) => {
+    onSelectVariant(variant);
+    setCurrentImageIndex(0);
   };
 
   const pad = (n: number) => n.toString().padStart(2, '0');
-  const discountPercent = Math.round(((swimJetPrice.originalPrice - swimJetPrice.price) / swimJetPrice.originalPrice) * 100);
-  const installmentAmount = formatPrice(swimJetPrice.price / 3);
-
-  const formattedCurrentPrice = formatPrice(swimJetPrice.price);
-  const formattedOriginalPrice = formatPrice(swimJetPrice.originalPrice);
-  const formattedDiscountAmount = formatPrice(swimJetPrice.discountAmount);
-  const formattedTotalDirect = formatPrice(swimJetPrice.price * quantity);
+  const discountPercent = Math.round(((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100);
+  const klarnaInstallment = (selectedVariant.price / 3).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   return (
-    <section id="MainContent" className="py-6 sm:py-10 max-w-[1520px] mx-auto px-4 sm:px-8 lg:px-12" dir={currentLanguage.direction}>
+    <section id="MainContent" className="py-6 sm:py-10 max-w-[1520px] mx-auto px-4 sm:px-8 lg:px-12">
       {/* Breadcrumb */}
       <div className="mb-4 text-[13px] text-gray-500 flex items-center gap-2">
-        <a href="#MainContent" className="hover:text-gray-900 transition-colors">{t.product.breadcrumbHome}</a>
+        <a href="#MainContent" className="hover:text-gray-900 transition-colors">Accueil</a>
         <span>/</span>
-        <a href="#MainContent" className="hover:text-gray-900 transition-colors">{t.product.breadcrumbCategory}</a>
+        <a href="#MainContent" className="hover:text-gray-900 transition-colors">Jets de natation</a>
         <span>/</span>
-        <span className="text-gray-900 font-medium">{t.hero.title}</span>
+        <span className="text-gray-900 font-medium">{selectedVariant.name}</span>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-14 items-start">
@@ -88,33 +81,37 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="relative w-full aspect-square bg-[#F5F6F8] rounded-sm overflow-hidden group shadow-xs border border-gray-200">
             <img
               src={selectedVariant.images[currentImageIndex] || selectedVariant.images[0]}
-              alt={t.hero.title}
+              alt={selectedVariant.name}
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
             {/* Live badge */}
             <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-sm text-[11px] sm:text-[12px] font-semibold text-gray-800 shadow-xs border border-gray-200">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>{t.common.inStock}</span>
+              <span>En stock — Expédié sous 24h</span>
             </div>
 
             {/* Discount tag badge on image */}
             <div className="absolute top-3 right-3 bg-red-600 text-white font-extrabold text-[11px] sm:text-[12px] tracking-wide px-2.5 py-1 rounded-sm shadow-xs">
-              -{discountPercent}% {t.common.off}
+              -{discountPercent}% DE RÉDUCTION
             </div>
 
             {/* Slider arrows */}
             <button
+              type="button"
               onClick={handlePrevImage}
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-sm bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
-              aria-label="Previous image"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+              aria-label="Image précédente"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
+              type="button"
               onClick={handleNextImage}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-sm bg-black/50 hover:bg-black/80 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
-              aria-label="Next image"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+              aria-label="Image suivante"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -130,14 +127,16 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             {selectedVariant.images.map((img, idx) => (
               <button
                 key={idx}
+                type="button"
                 onClick={() => setCurrentImageIndex(idx)}
                 className={`w-[60px] sm:w-[72px] aspect-square rounded-sm overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
                   currentImageIndex === idx
                     ? 'border-[#0071E3] shadow-xs'
                     : 'border-gray-200 hover:border-gray-400 opacity-70 hover:opacity-100'
                 }`}
+                aria-label={`Afficher l'image ${idx + 1}`}
               >
-                <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                <img src={img} alt={`Aperçu ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
               </button>
             ))}
           </div>
@@ -148,7 +147,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           {/* Brand & SKU Header */}
           <div className="flex items-center justify-between gap-2">
             <span className="text-[12px] sm:text-[13px] font-bold text-[#0071E3] tracking-wider uppercase">
-              iGarden Official Store • {currentMarket.name}
+              iGarden Official Store France
             </span>
             <span className="text-[11px] sm:text-[12px] text-gray-500 font-mono">
               SKU: {selectedVariant.sku}
@@ -156,13 +155,13 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           </div>
 
           {/* Product Title */}
-          <h1 className="text-[24px] sm:text-[32px] font-black text-gray-950 leading-tight break-words">
-            {t.hero.title}
+          <h1 className="text-[24px] sm:text-[32px] font-black text-gray-950 leading-tight font-['Figtree'] break-words">
+            {selectedVariant.name}
           </h1>
 
           {/* Subtitle */}
           <p className="text-[13px] sm:text-[15px] text-gray-600 font-medium leading-relaxed">
-            {t.hero.desc}
+            {selectedVariant.subtitle}
           </p>
 
           {/* Rating & Live viewing indicator */}
@@ -173,14 +172,14 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                   <Star key={i} className="w-4 h-4 fill-[#00b67a]" />
                 ))}
               </div>
-              <span className="text-[13px] font-extrabold text-gray-900">{t.common.rating}</span>
+              <span className="text-[13px] font-extrabold text-gray-900">4.8 / 5</span>
               <a href="#customer-reviews" className="text-[13px] text-gray-500 hover:text-[#0071E3] underline underline-offset-2">
-                (128 {t.common.reviews})
+                (128 avis vérifiés)
               </a>
             </div>
             <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] text-gray-700 font-medium bg-amber-50 px-2.5 py-1 rounded-sm border border-amber-200/60 w-fit">
               <Eye className="w-3.5 h-3.5 text-amber-700 shrink-0" />
-              <span><strong>{viewersCount}</strong> {t.product.liveViewers}</span>
+              <span><strong>{viewersCount} personnes</strong> regardent cette offre</span>
             </div>
           </div>
 
@@ -188,11 +187,11 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="p-3 rounded-sm bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white shadow-xs flex flex-col sm:flex-row items-center justify-between gap-2">
             <div className="flex items-center gap-1.5 font-bold text-[12px] sm:text-[13px] text-center sm:text-left">
               <span>⚡</span>
-              <span>{t.hero.flashSaleTitle.toUpperCase()} : {t.common.saveAmount.toUpperCase()} {formattedDiscountAmount}</span>
+              <span>VENTE FLASH : ÉCONOMISEZ {selectedVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</span>
             </div>
             <div className="flex items-center gap-1 text-[12px] font-mono">
               <Clock className="w-3.5 h-3.5 shrink-0" />
-              <span className="font-bold text-[11px]">{t.product.flashSaleEnds} :</span>
+              <span className="font-bold text-[11px]">Fin :</span>
               <span className="bg-black/30 px-1 py-0.5 rounded-xs font-bold">{pad(timeLeft.hours)}h</span>:
               <span className="bg-black/30 px-1 py-0.5 rounded-xs font-bold">{pad(timeLeft.minutes)}m</span>:
               <span className="bg-black/30 px-1 py-0.5 rounded-xs font-bold">{pad(timeLeft.seconds)}s</span>
@@ -203,30 +202,30 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="p-4 sm:p-5 rounded-sm bg-[#F8FAFC] border border-slate-200 space-y-3">
             <div className="flex flex-wrap items-baseline gap-2.5">
               <span className="text-[30px] sm:text-[40px] font-black text-gray-950 tracking-tight leading-none">
-                {formattedCurrentPrice}
+                {selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
               </span>
               <span className="text-[17px] sm:text-[20px] font-medium text-gray-400 line-through">
-                {formattedOriginalPrice}
+                {selectedVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
               </span>
               <span className="px-2.5 py-0.5 rounded-sm bg-emerald-600 text-white text-[12px] font-bold shadow-xs">
-                -{discountPercent}% ({t.common.saveAmount} {formattedDiscountAmount})
+                -{discountPercent}% (Économie {selectedVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €)
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2 text-[12px] sm:text-[13px] text-gray-700">
               <span className="flex items-center gap-1 font-semibold text-emerald-700">
-                <Check className="w-3.5 h-3.5" /> {t.common.taxIncluded}
+                <Check className="w-3.5 h-3.5" /> Taxes incluses
               </span>
               <span>•</span>
               <span className="flex items-center gap-1 font-semibold text-emerald-700">
-                <Truck className="w-3.5 h-3.5" /> {t.common.freeShipping}
+                <Truck className="w-3.5 h-3.5" /> Livraison Colissimo Offerte
               </span>
             </div>
 
-            {/* Installments info */}
+            {/* Klarna / 3x payment info */}
             <div className="pt-2 border-t border-slate-200/80 flex items-center justify-between text-[12px] sm:text-[13px] text-gray-700">
-              <span>{t.common.or3PaymentsOf} <strong>{installmentAmount}</strong></span>
-              <span className="px-2 py-0.5 rounded-sm bg-[#FFA8CD] text-[#0B051D] font-bold text-[11px]">Installments</span>
+              <span>Payez en <strong>3x {klarnaInstallment} € sans frais</strong></span>
+              <span className="px-2 py-0.5 rounded-sm bg-[#FFA8CD] text-[#0B051D] font-bold text-[11px]">Klarna</span>
             </div>
           </div>
 
@@ -234,26 +233,26 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="space-y-2.5">
             <div className="flex items-center justify-between">
               <label className="block text-[13px] font-bold text-gray-900">
-                {t.product.selectPowerVariant}
+                Configuration du modèle :
               </label>
-              <span className="text-[11px] text-[#0071E3] font-bold">1,000 W Flagship Edition</span>
+              <span className="text-[11px] text-[#0071E3] font-bold">Modèle unique 1 000 W</span>
             </div>
 
             <div className="p-3.5 rounded-sm border-2 border-[#0071E3] bg-blue-50/40 shadow-xs flex items-center justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-extrabold text-[14px] sm:text-[15px] text-gray-950">
-                    {t.hero.title}
+                    {selectedVariant.shortName}
                   </span>
                   <span className="text-[10px] sm:text-[11px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-sm">
-                    {formattedCurrentPrice}
+                    {selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                   </span>
                   <span className="text-[11px] text-gray-400 line-through">
-                    {formattedOriginalPrice}
+                    {selectedVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                   </span>
                 </div>
                 <p className="text-[11px] sm:text-[12px] text-gray-600 mt-1">
-                  1,000 W Brushless • 6–10h Runtime • Universally Compatible
+                  {selectedVariant.specsSummary}
                 </p>
               </div>
 
@@ -266,48 +265,48 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
           {/* Key specs highlight */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
-              <span className="text-[11px] text-gray-500 block">{t.product.specsPower}</span>
-              <span className="text-[13px] font-bold text-gray-900">1,000 W</span>
+              <span className="text-[11px] text-gray-500 block">Puissance</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.power}</span>
             </div>
             <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
-              <span className="text-[11px] text-gray-500 block">{t.product.specsSpeed}</span>
-              <span className="text-[13px] font-bold text-gray-900">1.5 m/s</span>
+              <span className="text-[11px] text-gray-500 block">Débit d'eau</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.flowRate}</span>
             </div>
             <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
-              <span className="text-[11px] text-gray-500 block">{t.product.specsBattery}</span>
-              <span className="text-[13px] font-bold text-gray-900">6–10 h</span>
+              <span className="text-[11px] text-gray-500 block">Vitesse max</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.speed}</span>
             </div>
             <div className="p-2.5 bg-gray-50 rounded-sm border border-gray-100 text-center">
-              <span className="text-[11px] text-gray-500 block">{t.product.specsFlow}</span>
-              <span className="text-[13px] font-bold text-gray-900">Laminar</span>
+              <span className="text-[11px] text-gray-500 block">Autonomie</span>
+              <span className="text-[13px] font-bold text-gray-900">{selectedVariant.batteryLife}</span>
             </div>
           </div>
 
           {/* Quantity and Purchase Action Area */}
-          <div className="space-y-2.5 pt-2">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          <div className="space-y-3 pt-3 w-full max-w-full">
+            {/* Main Action Row: Quantity + Direct Checkout */}
+            <div className="flex items-center gap-2 sm:gap-3 w-full max-w-full">
               {/* Quantity selector */}
-              <div className="flex items-center justify-between sm:justify-center border border-gray-300 rounded-sm bg-white h-12 px-3 sm:px-1 shrink-0">
-                <span className="text-[12px] font-semibold text-gray-500 sm:hidden">{t.common.qty} :</span>
-                <div className="flex items-center">
-                  <button
-                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="w-9 h-9 flex items-center justify-center hover:bg-gray-100 text-gray-700 font-bold text-[18px] cursor-pointer rounded-sm bg-transparent border-none"
-                    aria-label="Decrease quantity"
-                  >
-                    -
-                  </button>
-                  <span className="w-10 text-center text-[15px] font-bold text-gray-900">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity((q) => q + 1)}
-                    className="w-9 h-9 flex items-center justify-center hover:bg-gray-100 text-gray-700 font-bold text-[18px] cursor-pointer rounded-sm bg-transparent border-none"
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
-                </div>
+              <div className="h-12 sm:h-14 w-24 sm:w-32 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-between px-1.5 sm:px-2 shrink-0 shadow-xs">
+                <button
+                  type="button"
+                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors font-bold text-[16px] sm:text-[18px] cursor-pointer"
+                  aria-label="Diminuer la quantité"
+                >
+                  -
+                </button>
+                <span className="text-[14px] sm:text-[15px] font-extrabold text-gray-900 select-none">
+                  {quantity}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setQuantity((q) => q + 1)}
+                  className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-gray-700 hover:text-black hover:bg-white rounded-lg transition-colors font-bold text-[16px] sm:text-[18px] cursor-pointer"
+                  aria-label="Augmenter la quantité"
+                >
+                  +
+                </button>
               </div>
 
               {/* Direct Checkout Buy Button (Primary Action) */}
@@ -318,35 +317,26 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                   e.stopPropagation();
                   handleDirectCheckout();
                 }}
-                className="flex-1 h-12 px-4 rounded-sm bg-[#0071E3] hover:bg-blue-700 text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide shadow-sm hover:shadow transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase active:bg-blue-800 text-center border-none"
+                className="flex-1 min-w-0 h-12 sm:h-14 px-2 sm:px-6 rounded-xl bg-[#0071E3] hover:bg-[#0062c4] active:bg-[#004f9f] active:scale-[0.99] text-white font-extrabold text-[12px] sm:text-[15px] tracking-wide shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer uppercase text-center overflow-hidden"
               >
-                <Lock className="w-4 h-4 shrink-0" />
-                <span className="truncate">{t.common.orderNow.toUpperCase()} • {formattedTotalDirect}</span>
-                <ArrowRight className={`w-4 h-4 shrink-0 ${currentLanguage.direction === 'rtl' ? 'rotate-180' : ''}`} />
+                <Lock className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">COMMANDER • {(selectedVariant.price * quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €</span>
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 hidden sm:inline-block" />
               </button>
             </div>
 
             {/* Add to Cart secondary button */}
             <button
-              onClick={() => {
-                const dynamicVariant: ProductVariant = {
-                  ...selectedVariant,
-                  price: swimJetPrice.price,
-                  originalPrice: swimJetPrice.originalPrice,
-                  discountAmount: swimJetPrice.discountAmount,
-                  checkoutUrl: swimJetPrice.checkoutUrl || selectedVariant.checkoutUrl,
-                  name: t.hero.title
-                };
-                onAddToCart(dynamicVariant, quantity, []);
-              }}
-              className="w-full h-12 px-4 rounded-sm border-2 border-gray-900 bg-white hover:bg-gray-50 text-gray-900 font-bold text-[14px] sm:text-[15px] transition-colors cursor-pointer flex items-center justify-center text-center uppercase tracking-wide"
+              type="button"
+              onClick={() => onAddToCart(selectedVariant, quantity, [])}
+              className="w-full h-12 sm:h-13 px-4 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 active:bg-gray-100 active:scale-[0.99] text-gray-900 font-bold text-[13px] sm:text-[15px] transition-all cursor-pointer flex items-center justify-center text-center uppercase tracking-wider shadow-2xs"
             >
-              {t.common.addToCart}
+              Ajouter au panier
             </button>
 
-            <p className="text-center text-[11px] sm:text-[12px] text-gray-500 flex items-center justify-center gap-1.5 pt-0.5">
+            <p className="text-center text-[12px] text-gray-500 flex items-center justify-center gap-1.5 pt-1">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>{t.common.secureCheckout} • {t.trustBar.returns}</span>
+              <span>Paiement SSL sécurisé via Shopify • Satisfait ou remboursé 30 jours</span>
             </p>
           </div>
 
@@ -355,78 +345,82 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             <div className="grid grid-cols-2 gap-2.5 text-[12px] sm:text-[13px] font-semibold text-gray-800">
               <div className="flex items-center gap-2">
                 <Truck className="w-4 h-4 text-[#0071E3] shrink-0" />
-                <span>{t.common.freeShipping}</span>
+                <span>Livraison Colissimo Gratuite</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#0071E3] shrink-0" />
-                <span>{t.common.warranty2Years}</span>
+                <span>Garantie Fabricant 2 ans</span>
               </div>
               <div className="flex items-center gap-2">
                 <RotateCcw className="w-4 h-4 text-[#0071E3] shrink-0" />
-                <span>{t.common.returns30Days}</span>
+                <span>Retours gratuits 30 jours</span>
               </div>
               <div className="flex items-center gap-2">
                 <Headphones className="w-4 h-4 text-[#0071E3] shrink-0" />
-                <span>{t.footer.serviceHoursVal}</span>
+                <span>Support francophone 7j/7</span>
               </div>
             </div>
 
             {/* Payment badges */}
             <div className="pt-2 border-t border-blue-100 flex flex-wrap items-center justify-between gap-2">
-              <span className="text-[11px] font-bold text-gray-500">{t.trustBar.securePayment} :</span>
+              <span className="text-[11px] font-bold text-gray-500">Moyens de paiement acceptés :</span>
               <div className="flex flex-wrap items-center gap-1.5">
-                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/visa_48x48.svg?v=1772161676" alt="Visa" />
-                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/MasterCard_48x48.svg?v=1772161120" alt="MasterCard" />
-                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/paypal_48x48.svg?v=1772161193" alt="PayPal" />
-                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/applepay_48x48.svg?v=1772160097" alt="Apple Pay" />
-                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/google_pay_c8e18dbb-5c0f-49ab-b000-1c88465e36c9_48x48.svg?v=1776049893" alt="Google Pay" />
-                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/klarna_48x48.svg?v=1772160095" alt="Klarna" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/visa_48x48.svg?v=1772161676" alt="Visa" loading="lazy" decoding="async" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/MasterCard_48x48.svg?v=1772161120" alt="MasterCard" loading="lazy" decoding="async" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/paypal_48x48.svg?v=1772161193" alt="PayPal" loading="lazy" decoding="async" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/applepay_48x48.svg?v=1772160097" alt="Apple Pay" loading="lazy" decoding="async" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/google_pay_c8e18dbb-5c0f-49ab-b000-1c88465e36c9_48x48.svg?v=1776049893" alt="Google Pay" loading="lazy" decoding="async" />
+                <img className="h-3.5 sm:h-4 object-contain" src="https://eu.store.igarden.ai/cdn/shop/files/klarna_48x48.svg?v=1772160095" alt="Klarna" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
 
-          {/* Interactive Information Tabs */}
+          {/* Interactive Information Tabs / Accordion */}
           <div className="rounded-sm border border-gray-200 overflow-hidden bg-white">
             <div className="grid grid-cols-4 border-b border-gray-200 bg-gray-50">
               <button
+                type="button"
                 onClick={() => setActiveTab('desc')}
-                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate border-none ${
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'desc'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
-                    : 'bg-transparent text-gray-600 hover:text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                {t.product.tabDesc}
+                Description
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab('specs')}
-                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate border-none ${
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'specs'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
-                    : 'bg-transparent text-gray-600 hover:text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                {t.product.tabSpecs}
+                Spécifications
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab('shipping')}
-                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate border-none ${
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'shipping'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
-                    : 'bg-transparent text-gray-600 hover:text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                {t.product.tabShipping}
+                Livraison
               </button>
               <button
+                type="button"
                 onClick={() => setActiveTab('warranty')}
-                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate border-none ${
+                className={`py-3 px-1 text-center text-[12px] sm:text-[13px] font-bold transition-colors cursor-pointer truncate ${
                   activeTab === 'warranty'
                     ? 'bg-white text-[#0071E3] border-b-2 border-[#0071E3]'
-                    : 'bg-transparent text-gray-600 hover:text-gray-900'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                {t.product.tabWarranty}
+                Garantie
               </button>
             </div>
 
@@ -434,47 +428,66 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               {activeTab === 'desc' && (
                 <div className="space-y-2.5">
                   <p className="font-medium text-gray-900">
-                    {t.product.overviewTitle}
+                    Transformez n'importe quelle piscine en véritable couloir de nage sans travaux de plomberie ni raccordement lourd. Une solution universelle et polyvalente pour votre piscine.
                   </p>
-                  <p>{t.product.overviewP1}</p>
-                  <p>{t.product.overviewP2}</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>1 000 W de puissance premium :</strong> Profitez d'une expérience de nage à contre-courant fluide et dynamique grâce au moteur Brushless haute performance.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>6 à 10 heures d'autonomie à pleine puissance :</strong> Profitez de longues séances de nage sans recharge constante grâce au pack batterie Lithium haute densité.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>Compatible avec toutes les piscines :</strong> Fixation universelle instantanée sans perçage pour piscines tubulaires, coques, bois ou maçonnées.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0 mt-0.5" />
+                      <span><strong>Praticité & sécurité totale :</strong> Basse tension sans danger dans l'eau, étanchéité IP68 intégrale, télécommande sans fil et roulettes de transport ergonomiques.</span>
+                    </li>
+                  </ul>
                 </div>
               )}
 
               {activeTab === 'specs' && (
                 <div className="space-y-2">
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
-                    <span className="text-gray-500">{t.product.specsPower}</span>
-                    <span className="font-bold text-gray-900">1,000 W Inverter Brushless</span>
+                    <span className="text-gray-500">Puissance</span>
+                    <span className="font-bold text-gray-900">1 000 W de puissance</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
-                    <span className="text-gray-500">{t.product.specsBattery}</span>
-                    <span className="font-bold text-gray-900">6–10 Hours</span>
+                    <span className="text-gray-500">Autonomie certifiée</span>
+                    <span className="font-bold text-gray-900">6 à 10 heures d'autonomie à pleine puissance</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
-                    <span className="text-gray-500">{t.product.specsCompatibility}</span>
-                    <span className="font-bold text-gray-900">{t.product.specsCompatibilityVal}</span>
+                    <span className="text-gray-500">Compatibilité bassins</span>
+                    <span className="font-bold text-gray-900">Compatible avec toutes les piscines</span>
                   </div>
                   <div className="flex justify-between py-1.5 border-b border-gray-100">
-                    <span className="text-gray-500">{t.product.specsSpeed}</span>
-                    <span className="font-bold text-gray-900">1.5 m/s (Adjustable Flow)</span>
+                    <span className="text-gray-500">Vitesse d'écoulement</span>
+                    <span className="font-bold text-gray-900">Jusqu'à 1,5 m/s (réglage progressif sans fil)</span>
                   </div>
                   <div className="flex justify-between py-1.5">
-                    <span className="text-gray-500">Waterproof Standard</span>
-                    <span className="font-bold text-gray-900">IP68 Full Submersible Certification</span>
+                    <span className="text-gray-500">Étanchéité & Sécurité</span>
+                    <span className="font-bold text-gray-900">Norme IP68 submersible intégrale</span>
                   </div>
                 </div>
               )}
 
               {activeTab === 'shipping' && (
                 <div className="space-y-2">
-                  <p>{t.product.shippingInfo}</p>
+                  <p><strong>Expédition rapide :</strong> Votre commande est préparée et expédiée sous 24h ouvrées.</p>
+                  <p><strong>Transporteur :</strong> Colissimo Suivi avec remise contre signature à domicile.</p>
+                  <p><strong>Délai moyen de livraison :</strong> 2 à 4 jours ouvrés en France métropolitaine, Belgique et Suisse.</p>
                 </div>
               )}
 
               {activeTab === 'warranty' && (
                 <div className="space-y-2">
-                  <p>{t.product.warrantyInfo}</p>
+                  <p><strong>Garantie constructeur 2 ans :</strong> Pièces et main d'œuvre prises en charge par le SAV officiel iGarden.</p>
+                  <p><strong>Période d'essai 30 jours :</strong> Si vous n'êtes pas 100% satisfait, vous pouvez retourner le produit sans justification.</p>
                 </div>
               )}
             </div>

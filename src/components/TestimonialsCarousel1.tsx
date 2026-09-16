@@ -1,13 +1,9 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { TESTIMONIALS_1_DATA } from '../homeData';
-import { useI18n } from '../i18n/I18nContext';
+import { TESTIMONIALS_1 } from '../homeData';
 
 export const TestimonialsCarousel1: React.FC = () => {
-  const { currentLanguage } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const testimonials = currentLanguage.id === 'ar' ? TESTIMONIALS_1_DATA.ar : TESTIMONIALS_1_DATA.en;
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -17,7 +13,7 @@ export const TestimonialsCarousel1: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-12 sm:py-16 my-8" dir={currentLanguage.direction}>
+    <section className="relative overflow-hidden py-12 sm:py-16 my-8">
       {/* Background Graphic with gradient overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -36,12 +32,10 @@ export const TestimonialsCarousel1: React.FC = () => {
         {/* Left Side: Fixed text */}
         <div className="w-full lg:w-[32%] flex flex-col justify-center shrink-0">
           <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black mb-3 md:mb-5 leading-tight">
-            {currentLanguage.id === 'ar' ? 'آراء وتجارب المستخدمين' : 'Customer Experiences'}
+            Témoignage d'utilisateur
           </h2>
           <p className="text-[14px] sm:text-[16px] md:text-[17px] text-gray-800 font-normal leading-relaxed opacity-90">
-            {currentLanguage.id === 'ar'
-              ? 'نحرص على نقل التجارب الحقيقية لمستخدمينا بكل مصداقية. اكتشف كيف ساعد جهاز آي جاردن العائلات والسباحين حول العالم في الاستمتاع بمسابحهم.'
-              : 'We value authentic user stories. See how the iGarden Swim Jet empowers swimmers and families around the world to unlock the full potential of their pools.'}
+            Nous valorisons l’expérience authentique de chaque utilisateur. Si vous l'avez déjà, nous vous invitons à partager votre ressenti d'utilisation ; si vous hésitez encore, autant jeter un œil d’abord aux vrais retours des autres acheteurs.
           </p>
         </div>
 
@@ -52,7 +46,7 @@ export const TestimonialsCarousel1: React.FC = () => {
             className="flex items-center gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth"
             style={{ scrollSnapType: 'x mandatory' }}
           >
-            {testimonials.map((item) => (
+            {TESTIMONIALS_1.map((item) => (
               <a
                 key={item.id}
                 href={item.link}
@@ -97,14 +91,14 @@ export const TestimonialsCarousel1: React.FC = () => {
               <button
                 onClick={() => scroll('left')}
                 className="w-10 h-10 rounded-full bg-gray-200/90 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-                aria-label="Previous testimonial"
+                aria-label="Témoignage précédent"
               >
                 <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
               </button>
               <button
                 onClick={() => scroll('right')}
                 className="w-10 h-10 rounded-full bg-gray-200/90 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-                aria-label="Next testimonial"
+                aria-label="Témoignage suivant"
               >
                 <ChevronRight className="w-5 h-5 stroke-[2.5]" />
               </button>

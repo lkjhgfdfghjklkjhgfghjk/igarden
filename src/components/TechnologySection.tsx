@@ -1,10 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Play, Pause } from 'lucide-react';
-import { useI18n } from '../i18n/I18nContext';
 
 export const TechnologySection: React.FC = () => {
-  const { currentLanguage } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -21,17 +18,15 @@ export const TechnologySection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
+    <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <h2 className="text-[26px] sm:text-[38px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-2">
-            {isAr ? 'أفضل تدفق مائي في فئته الهندسية' : 'Class-Leading Laminar Water Flow'}
+            Meilleur débit d'eau de sa catégorie
           </h2>
           <span className="text-[16px] sm:text-[20px] font-semibold text-gray-500">
-            {isAr
-              ? 'قوة 1000 واط — متوافق تماماً مع كافة أنواع وأحجام المسابح'
-              : '1,000 W High Thrust Output — Universal Pool Compatibility'}
+            1 000 W de puissance — Compatible avec toutes les piscines
           </span>
         </div>
 
@@ -48,6 +43,7 @@ export const TechnologySection: React.FC = () => {
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-full object-cover"
           />
 
@@ -64,34 +60,28 @@ export const TechnologySection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 sm:mt-14 pt-6 border-t border-gray-100 text-center">
           <div className="p-4 border-b md:border-b-0 md:border-r border-gray-100">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              {isAr ? 'تقنية العاكس الذكي' : 'Smart Inverter Drive'}
+              Technologie d'onduleur IA
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              {isAr
-                ? 'يوفر تدفقاً مائياً قوياً ومستقراً هو الأكثر سلاسة في فئته'
-                : 'Delivers high-efficiency, ripple-free counter-current propulsion'}
+              offre le débit d'eau le plus puissant et constant de sa catégorie
             </span>
           </div>
 
           <div className="p-4 border-b md:border-b-0 md:border-r border-gray-100">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              {isAr ? 'محرك متزامن متطور' : 'Synchronous BLDC Motor'}
+              Mode intelligent
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              {isAr
-                ? 'مغناطيس دائم عالي العزم لتشغيل هادئ وكفاءة طاقة استثنائية'
-                : 'High-torque permanent magnet system for whisper-quiet endurance'}
+              moteur synchrone à aimant permanent de nouvelle génération
             </span>
           </div>
 
           <div className="p-4">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              {isAr ? 'تيار انسيابي مستقيم' : 'Laminar Hydrodynamics'}
+              Flux en ligne droite
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              {isAr
-                ? 'تيار سباحة مستقيم بدون دوامات معاكسة للتدريب الرياضي الدقيق'
-                : 'Wide, turbulence-free channel optimized for continuous lap swimming'}
+              flux laminaire fluide calibré pour l'entraînement de précision
             </span>
           </div>
         </div>

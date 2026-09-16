@@ -1,17 +1,13 @@
 import React from 'react';
-import { useI18n } from '../i18n/I18nContext';
 
 export const SafetyShieldSection: React.FC = () => {
-  const { currentLanguage } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
-
   return (
-    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
+    <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            <span className="text-[#0071E3]">360°</span> {isAr ? 'حماية وسلامة متكاملة' : 'Full-Spectrum Safety System'}
+            <span className="text-[#0071E3]">360°</span> Blindage de sécurité
           </h2>
         </div>
 
@@ -28,11 +24,12 @@ export const SafetyShieldSection: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {isAr ? 'فصل تلقائي فوري للطاقة' : 'Instant Automatic Shut-Off'}
+                Coupure de courant automatique
               </p>
             </div>
 
@@ -41,11 +38,13 @@ export const SafetyShieldSection: React.FC = () => {
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/lQDPKHROWGMftq3NBADNBgCwrLoTcdUcO2sJ1tSQ09acAA_1536_1024.jpg?v=1778494308&width=600"
                   alt="Grille anti-enchevêtrement"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {isAr ? 'شبكة حماية أمان مضادة للتشابك' : 'Anti-Entanglement Safety Grill'}
+                Grille de protection anti-enchevêtrement
               </p>
             </div>
           </div>
@@ -55,6 +54,8 @@ export const SafetyShieldSection: React.FC = () => {
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237223.png?v=1778494303&width=1000"
               alt="iGarden Swim Jet"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto object-contain"
             />
           </div>
@@ -70,11 +71,12 @@ export const SafetyShieldSection: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {isAr ? 'مقاومة الماء المعيارية IP68 (وحدة السباحة)' : 'IP68 Waterproof (Swim Unit)'}
+                IP68 étanche (Unité de nage)
               </p>
             </div>
 
@@ -87,11 +89,12 @@ export const SafetyShieldSection: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                {isAr ? 'مقاومة الماء والأحوال الجوية IP65 (وحدة الطاقة)' : 'IP65 Weatherproof (Power Station)'}
+                IP65 étanche (Boîtier d'alimentation)
               </p>
             </div>
           </div>

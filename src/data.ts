@@ -1,6 +1,6 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://igardemm.myshopify.com/checkouts/cn/hWNGoAHYFZV2jFBIxB6IbQXa/fr-fr?_r=AQABtSHSa10e-fotmh8ifG3LMhRgDhWMFc0uWodOewZFV7Y&preview_theme_id=205072925017";
+export const CHECKOUT_URL = "https://braceletot.myshopify.com/cart/add?items[][id]=57181764125012&items[][quantity]=1&return_to=%2Fcheckout";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
@@ -14,7 +14,7 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     discountAmount: 209.00,
     couponCode: "SWIMJET",
     couponOff: "€209,00",
-    checkoutUrl: "https://igardemm.myshopify.com/checkouts/cn/hWNGoAHYFZV2jFBIxB6IbQXa/fr-fr?_r=AQABtSHSa10e-fotmh8ifG3LMhRgDhWMFc0uWodOewZFV7Y&preview_theme_id=205072925017",
+    checkoutUrl: "https://braceletot.myshopify.com/cart/add?items[][id]=57181764125012&items[][quantity]=1&return_to=%2Fcheckout",
     specsSummary: "1 000 W de puissance | 6 à 10 h d'autonomie à pleine puissance | Compatible avec toutes les piscines",
     power: "1 000 W",
     speed: "1,5 m/s",

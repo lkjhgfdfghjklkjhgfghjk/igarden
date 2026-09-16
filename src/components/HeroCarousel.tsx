@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { HERO_SLIDES } from '../homeData';
-import { useI18n } from '../i18n/I18nContext';
 
 interface HeroCarouselProps {
   onNavigateToProduct?: () => void;
 }
 
 export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct }) => {
-  const { currentLanguage, swimJetPrice, formatPrice, t } = useI18n();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [timeLeft, setTimeLeft] = useState({
     days: 5,
@@ -44,10 +42,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
     return () => clearInterval(auto);
   }, []);
 
-  const formattedSwimJetPrice = formatPrice(swimJetPrice.price);
+  const slide = HERO_SLIDES[currentSlide];
 
   return (
-    <section className="relative w-full overflow-hidden bg-black select-none" dir={currentLanguage.direction}>
+    <section className="relative w-full overflow-hidden bg-black select-none">
       <div className="relative w-full aspect-[430/600] md:aspect-[1920/684] min-h-[460px] md:min-h-[550px]">
         {/* Background Images for all slides */}
         {HERO_SLIDES.map((item, index) => (
@@ -61,16 +59,20 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
             <img
               src={item.bgPc}
               alt={item.heading || "iGarden Banner"}
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding={index === 0 ? "sync" : "async"}
               className="hidden md:block w-full h-full object-cover object-center"
             />
             {/* Mobile BG */}
             <img
               src={item.bgMb}
               alt={item.heading || "iGarden Banner"}
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding={index === 0 ? "sync" : "async"}
               className="block md:hidden w-full h-full object-cover object-top"
             />
 
-            {/* Slide 1: Special Promo Custom Layout */}
+            {/* Slide 1: School / Rentrée Custom Layout */}
             {item.type === 'school' && (
               <div className="absolute inset-0 flex flex-col items-center md:items-start justify-start md:justify-center px-6 md:px-16 lg:px-24 max-w-[1500px] mx-auto pt-10 md:pt-0 z-20">
                 <div className="max-w-[550px] w-full flex flex-col items-center md:items-start text-center md:text-left space-y-4 md:space-y-6">
@@ -78,23 +80,23 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                   <div className="relative w-full max-w-[420px] md:max-w-[480px]">
                     <img
                       src="https://eu.store.igarden.ai/cdn/shop/files/Group_2121239313.png?v=1785401452&width=1200"
-                      alt="Special Promo"
+                      alt="Offres de Rentrée"
                       className="w-full h-auto drop-shadow-md"
                     />
                     <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between text-white text-left">
                       <p className="text-[13px] md:text-[15px] font-bold uppercase tracking-wider text-white/90">
-                        {t.hero.flashSaleTitle}
+                        Offre Spéciale Swim Jet
                       </p>
                       <div className="flex items-baseline gap-2">
                         <span className="text-[12px] md:text-[14px] font-bold leading-tight uppercase">
-                          {t.common.specialPrice}
+                          Prix<br />Spécial
                         </span>
-                        <span className="text-[32px] md:text-[46px] font-extrabold leading-none tracking-tight">
-                          {formattedSwimJetPrice}
+                        <span className="text-[36px] md:text-[54px] font-extrabold leading-none tracking-tight">
+                          209 €
                         </span>
                       </div>
                       <p className="text-[12px] md:text-[14px] font-medium text-white/90">
-                        1,000 W Power • 6-10 h runtime
+                        1 000 W de puissance • 6 à 10 h d'autonomie
                       </p>
                     </div>
                   </div>
@@ -105,37 +107,38 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.days).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">{t.hero.days}</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Jours</span>
                     </div>
                     <span className="text-white font-extrabold text-[20px] md:text-[24px]">:</span>
                     <div className="w-[55px] h-[55px] md:w-[75px] md:h-[75px] bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center">
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.hours).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">{t.hero.hours}</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Horaires</span>
                     </div>
                     <span className="text-white font-extrabold text-[20px] md:text-[24px]">:</span>
                     <div className="w-[55px] h-[55px] md:w-[75px] md:h-[75px] bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center">
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.minutes).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">{t.hero.mins}</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Minutes</span>
                     </div>
                     <span className="text-white font-extrabold text-[20px] md:text-[24px]">:</span>
                     <div className="w-[55px] h-[55px] md:w-[75px] md:h-[75px] bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center">
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.seconds).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">{t.hero.secs}</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Secondes</span>
                     </div>
                   </div>
 
                   {/* CTA Button */}
                   <button
+                    type="button"
                     onClick={onNavigateToProduct}
-                    className="px-8 py-3.5 bg-[#f86709] hover:bg-[#d55807] text-white font-extrabold text-[15px] md:text-[17px] rounded-sm tracking-wide shadow-lg transition-all cursor-pointer uppercase border-none"
+                    className="px-8 py-3.5 min-h-[44px] bg-[#f86709] hover:bg-[#d55807] active:scale-[0.99] text-white font-extrabold text-[15px] md:text-[17px] rounded-xl tracking-wide shadow-lg transition-all cursor-pointer uppercase"
                   >
-                    {t.common.orderNow} ({formattedSwimJetPrice})
+                    Commander à 209,00 €
                   </button>
                 </div>
               </div>
@@ -177,8 +180,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                   )}
                   <div className="pt-3">
                     <button
+                      type="button"
                       onClick={onNavigateToProduct}
-                      className="px-7 py-3 rounded-sm font-bold text-[14px] md:text-[15px] tracking-wide transition-opacity hover:opacity-90 shadow-md cursor-pointer uppercase border-none"
+                      className="px-7 py-3 min-h-[44px] rounded-xl font-bold text-[14px] md:text-[15px] tracking-wide transition-all active:scale-[0.99] hover:opacity-90 shadow-md cursor-pointer uppercase"
                       style={{
                         backgroundColor: item.btnBg || '#ffffff',
                         color: item.btnColor || '#000000'
@@ -195,16 +199,18 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
 
         {/* Circular Arrows */}
         <button
+          type="button"
           onClick={() => setCurrentSlide(prev => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-30 hidden md:flex w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/40 items-center justify-center text-white transition-colors cursor-pointer"
-          aria-label="Previous slide"
+          aria-label="Slide précédent"
         >
           <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
         </button>
         <button
+          type="button"
           onClick={() => setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length)}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-30 hidden md:flex w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md border border-white/40 items-center justify-center text-white transition-colors cursor-pointer"
-          aria-label="Next slide"
+          aria-label="Slide suivant"
         >
           <ChevronRight className="w-6 h-6 stroke-[2.5]" />
         </button>
@@ -214,13 +220,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
           {HERO_SLIDES.map((_, idx) => (
             <button
               key={idx}
+              type="button"
               onClick={() => setCurrentSlide(idx)}
-              className={`transition-all duration-300 rounded-full cursor-pointer border-none ${
+              className={`transition-all duration-300 rounded-full cursor-pointer ${
                 idx === currentSlide
                   ? 'w-6 h-2 bg-white'
                   : 'w-2 h-2 bg-white/50 hover:bg-white/80'
               }`}
-              aria-label={`Go to slide ${idx + 1}`}
+              aria-label={`Aller au slide ${idx + 1}`}
             />
           ))}
         </div>

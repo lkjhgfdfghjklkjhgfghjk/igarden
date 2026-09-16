@@ -1,31 +1,28 @@
 import React, { useState } from 'react';
 import { Play, X } from 'lucide-react';
-import { useI18n } from '../i18n/I18nContext';
 
 export const VideoGuideSection: React.FC = () => {
-  const { currentLanguage } = useI18n();
-  const isAr = currentLanguage.id === 'ar';
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
 
   const guides = [
     {
       id: "fOjOnNt07mM",
-      title: isAr ? "دليل التثبيت خطوة بخطوة" : "Step-by-Step Installation",
+      title: "Installation étape par étape",
       poster: "https://eu.store.igarden.ai/cdn/shop/files/how-to-set-up-x-series.jpg?v=1785137633&width=3840"
     },
     {
       id: "az-UqGbfjDQ",
-      title: isAr ? "ضبط دبابيس القفل والمقبض" : "Locking Pins & Handle Setup",
+      title: "Configuration des broches de verrouillage",
       poster: "https://eu.store.igarden.ai/cdn/shop/files/how-to-set-up-locking-pins-on-the-handle.jpg?v=1785137633&width=3840"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
+    <section className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8">
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-[24px] sm:text-[36px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            {isAr ? 'كيفية إعداد واستخدام جهاز آي جاردن س swim جيت' : 'How to Set Up Your iGarden Swim Jet'}
+            Comment configurer votre iGarden Swim Jet X Series
           </h2>
         </div>
 
@@ -53,7 +50,13 @@ export const VideoGuideSection: React.FC = () => {
                   onClick={() => setPlayingVideoId(g.id)}
                   className="relative aspect-video w-full bg-black overflow-hidden cursor-pointer group"
                 >
-                  <img src={g.poster} alt={g.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <img
+                    src={g.poster}
+                    alt={g.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                     <div className="w-14 h-14 rounded-full bg-black/50 text-white flex items-center justify-center backdrop-blur-xs group-hover:scale-110 transition-transform shadow-xl">
                       <Play className="w-6 h-6 fill-white ml-0.5" />

@@ -1,13 +1,9 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { AWARDS_LOGOS, AWARDS_REVIEWS_DATA } from '../homeData';
-import { useI18n } from '../i18n/I18nContext';
+import { AWARDS_LOGOS, AWARDS_REVIEWS } from '../homeData';
 
 export const AwardsRecognitionsSection: React.FC = () => {
-  const { currentLanguage } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const reviews = currentLanguage.id === 'ar' ? AWARDS_REVIEWS_DATA.ar : AWARDS_REVIEWS_DATA.en;
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -17,7 +13,7 @@ export const AwardsRecognitionsSection: React.FC = () => {
   };
 
   return (
-    <section className="py-12 sm:py-16 bg-white overflow-hidden" dir={currentLanguage.direction}>
+    <section className="py-12 sm:py-16 bg-white overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8">
         {/* Title */}
         <div className="flex items-center justify-center gap-3 mb-8">
@@ -28,7 +24,7 @@ export const AwardsRecognitionsSection: React.FC = () => {
             loading="lazy"
           />
           <h2 className="text-[24px] sm:text-[34px] md:text-[40px] font-extrabold text-black text-center leading-tight">
-            {currentLanguage.id === 'ar' ? 'الجوائز والتكريمات الدولية' : 'Awards & Global Recognition'}
+            Prix et reconnaissances
           </h2>
           <img
             src="https://eu.store.igarden.ai/cdn/shop/t/40/assets/icon-ces-vector-right.svg?v=136859214946119851641778826866"
@@ -67,7 +63,7 @@ export const AwardsRecognitionsSection: React.FC = () => {
           className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto pb-4 no-scrollbar scroll-smooth"
           style={{ scrollSnapType: 'x mandatory' }}
         >
-          {reviews.map((rev, idx) => (
+          {AWARDS_REVIEWS.map((rev, idx) => (
             <a
               key={idx}
               href={rev.link}
@@ -98,16 +94,18 @@ export const AwardsRecognitionsSection: React.FC = () => {
 
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={() => scroll('left')}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label="Previous review"
+              aria-label="Avis précédent"
             >
               <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
             </button>
             <button
+              type="button"
               onClick={() => scroll('right')}
               className="w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-gray-700 transition-colors cursor-pointer"
-              aria-label="Next review"
+              aria-label="Avis suivant"
             >
               <ChevronRight className="w-5 h-5 stroke-[2.5]" />
             </button>

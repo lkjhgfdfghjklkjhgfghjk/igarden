@@ -27,8 +27,9 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
       >
         {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-sm text-gray-400 hover:text-black hover:bg-gray-100 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-black hover:bg-gray-100 transition-colors cursor-pointer"
           aria-label="Fermer"
         >
           <X className="w-5 h-5" />
@@ -46,11 +47,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
             </h3>
             <div className="flex flex-col gap-2">
               <button
+                type="button"
                 onClick={() => { onSelectCountry("US"); onClose(); }}
-                className="flex items-center justify-center gap-2.5 p-3 bg-[#F7F8F9] hover:bg-[#EFEFEF] rounded-sm transition-colors text-center w-full cursor-pointer"
+                className="flex items-center justify-center gap-2.5 p-3 min-h-[44px] bg-[#F7F8F9] hover:bg-[#EFEFEF] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer"
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/us-flag.png?v=1774427824"
                   alt="United States"
                 />
@@ -67,11 +71,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
             </h3>
             <div className="flex flex-col gap-2">
               <button
+                type="button"
                 onClick={() => { onSelectCountry("AU"); onClose(); }}
-                className="flex items-center justify-center gap-2.5 p-3 bg-[#F7F8F9] hover:bg-[#EFEFEF] rounded-sm transition-colors text-center w-full cursor-pointer"
+                className="flex items-center justify-center gap-2.5 p-3 min-h-[44px] bg-[#F7F8F9] hover:bg-[#EFEFEF] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer"
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/au-flag.png?v=1774427824"
                   alt="Australia"
                 />
@@ -88,11 +95,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
             </h3>
             <div className="flex flex-col gap-2">
               <button
+                type="button"
                 onClick={() => { onSelectCountry("EU_EN"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 rounded-sm transition-colors text-center w-full cursor-pointer ${currentCountry === 'EU_EN' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'EU_EN' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/eu_ade130c2-a62d-4383-b1ea-f828162296b1.png?v=1775555541"
                   alt="Europe"
                 />
@@ -101,11 +111,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
               </button>
 
               <button
+                type="button"
                 onClick={() => { onSelectCountry("DE"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 rounded-sm transition-colors text-center w-full cursor-pointer ${currentCountry === 'DE' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'DE' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/Deutschland.png?v=1777531737"
                   alt="Deutschland"
                 />
@@ -114,11 +127,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
               </button>
 
               <button
+                type="button"
                 onClick={() => { onSelectCountry("FR"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 rounded-sm transition-colors text-center w-full cursor-pointer ${currentCountry === 'FR' ? 'bg-blue-50 border border-blue-400 font-bold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'FR' ? 'bg-blue-50 border border-blue-400 font-bold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/France.png?v=1777531419"
                   alt="France"
                 />
@@ -127,11 +143,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
               </button>
 
               <button
+                type="button"
                 onClick={() => { onSelectCountry("ES"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 rounded-sm transition-colors text-center w-full cursor-pointer ${currentCountry === 'ES' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'ES' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/Espana.png?v=1777531419"
                   alt="España"
                 />
@@ -140,11 +159,14 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
               </button>
 
               <button
+                type="button"
                 onClick={() => { onSelectCountry("IT"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 rounded-sm transition-colors text-center w-full cursor-pointer ${currentCountry === 'IT' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'IT' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/Italy.png?v=1777531419"
                   alt="Italy"
                 />

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Facebook, Instagram, Youtube, Globe } from 'lucide-react';
-import { useI18n } from '../i18n/I18nContext';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
 
 interface FooterProps {
   onOpenCountryDialog: () => void;
@@ -17,7 +16,6 @@ export const Footer: React.FC<FooterProps> = ({
   onNavigateToProduct,
   onNavigateToHome,
 }) => {
-  const { currentMarket, currentLanguage, t } = useI18n();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [openCol, setOpenCol] = useState<number | null>(null);
@@ -34,12 +32,12 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#1a1a1a] text-[#bbb9ba] pt-10 pb-12 border-t border-[#333]" dir={currentLanguage.direction}>
+    <footer className="bg-[#1a1a1a] text-[#bbb9ba] font-['Figtree'] pt-10 pb-12 border-t border-[#333]">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-14">
-        {/* Top bar: Contact, Newsletter & Socials */}
+        {/* Top bar: CONTACTEZ-NOUS, Newsletter & Socials */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pb-8 border-b border-[#494546]">
           <span className="font-bold text-[16px] sm:text-[20px] text-white/90 uppercase tracking-wide shrink-0">
-            {t.footer.contactUs.toUpperCase()} :
+            CONTACTEZ-NOUS :
           </span>
 
           {/* Form */}
@@ -49,15 +47,15 @@ export const Footer: React.FC<FooterProps> = ({
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.footer.newsletterPlaceholder}
+                placeholder="Entrez votre email"
                 required
                 className="flex-1 px-4 py-2 text-[14px] sm:text-[16px] text-gray-900 bg-transparent outline-none"
               />
               <button
                 type="submit"
-                className="px-6 py-2.5 rounded-full bg-[#0071E3] hover:bg-blue-600 text-white font-bold text-[13px] sm:text-[15px] uppercase tracking-wider transition-colors shrink-0 cursor-pointer border-none"
+                className="px-6 py-2.5 rounded-full bg-[#0071E3] hover:bg-blue-600 text-white font-bold text-[13px] sm:text-[15px] uppercase tracking-wider transition-colors shrink-0 cursor-pointer"
               >
-                {subscribed ? "✓" : t.footer.newsletterSubscribe.toUpperCase()}
+                {subscribed ? "ABONNÉ !" : "ABONNEZ-VOUS"}
               </button>
             </div>
           </form>
@@ -111,7 +109,9 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="space-y-4">
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/iGarden_Logo_a75f4524-dbee-4d91-bb0d-0ce9cc051f03.png?v=1772160643&width=600"
-              alt="iGarden Store"
+              alt="iGarden Europe Store"
+              loading="lazy"
+              decoding="async"
               className="h-8 w-auto object-contain"
             />
             <p className="text-[14px] text-white/70 font-medium">
@@ -119,65 +119,65 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
           </div>
 
-          {/* Col 1: Products */}
+          {/* Col 1: Produits */}
           <div className="space-y-3">
             <h3
               onClick={() => toggleCol(1)}
               className="font-bold text-[16px] text-white/90 uppercase tracking-wider flex items-center justify-between cursor-pointer sm:cursor-default"
             >
-              <span>{t.footer.products}</span>
+              <span>Produits</span>
             </h3>
             <ul className={`space-y-2 text-[14px] text-white/70 font-medium ${openCol === 1 ? 'block' : 'block'}`}>
               <li>
-                <button onClick={onNavigateToHome} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
-                  iGarden KN Series Pool Cleaner
+                <button type="button" onClick={onNavigateToHome} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
+                  Robot nettoyeur de piscine iGarden série KN
                 </button>
               </li>
               <li>
-                <button onClick={onNavigateToProduct} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70 font-bold text-white">
-                  {t.hero.title}
+                <button type="button" onClick={onNavigateToProduct} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
+                  Jet de natation portable iGarden série X
                 </button>
               </li>
               <li>
-                <button onClick={onNavigateToHome} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
-                  iGarden R Series Robotic Mower
+                <button type="button" onClick={onNavigateToHome} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
+                  iGarden Robot tondeuse à gazon série R
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 2: Support */}
+          {/* Col 2: Aide et assistance */}
           <div className="space-y-3">
             <h3
               onClick={() => toggleCol(2)}
               className="font-bold text-[16px] text-white/90 uppercase tracking-wider flex items-center justify-between cursor-pointer sm:cursor-default"
             >
-              <span>{t.footer.helpSupport}</span>
+              <span>Aide et assistance</span>
             </h3>
             <ul className={`space-y-2 text-[14px] text-white/70 font-medium ${openCol === 2 ? 'block' : 'block'}`}>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/retour-et-remboursements" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.returnsRefunds}</a></li>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/politique-de-garantie" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.warrantyPolicy}</a></li>
-              <li><button onClick={onOpenAccount} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">{t.footer.contactUs}</button></li>
-              <li><a href="https://eu.store.igarden.ai/policies/shipping-policy" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.shippingPolicy}</a></li>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/methodes-de-paiement" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.paymentMethods}</a></li>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/politique-de-confidentialite" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.privacyPolicy}</a></li>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/conditions-dutilisation" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.termsOfUse}</a></li>
-              <li><button onClick={onOpenTracking} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">{t.footer.orderTracking}</button></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/retour-et-remboursements" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Retours et remboursements</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/politique-de-garantie" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Politique de garantie</a></li>
+              <li><button type="button" onClick={onOpenAccount} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">Contactez-nous</button></li>
+              <li><a href="https://eu.store.igarden.ai/policies/shipping-policy" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Politique d'expédition</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/methodes-de-paiement" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Mode de paiement</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/politique-de-confidentialite" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Politique de confidentialité</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/conditions-dutilisation" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Conditions d'utilisation</a></li>
+              <li><button type="button" onClick={onOpenTracking} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">Suivi des commandes</button></li>
             </ul>
           </div>
 
-          {/* Col 3: Explore */}
+          {/* Col 3: Explorer */}
           <div className="space-y-3">
             <h3
               onClick={() => toggleCol(3)}
               className="font-bold text-[16px] text-white/90 uppercase tracking-wider flex items-center justify-between cursor-pointer sm:cursor-default"
             >
-              <span>{t.footer.explore}</span>
+              <span>Explorer</span>
             </h3>
             <ul className={`space-y-2 text-[14px] text-white/70 font-medium ${openCol === 3 ? 'block' : 'block'}`}>
-              <li><a href="https://eu.store.igarden.ai/fr/blogs/news" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.blog}</a></li>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/filiale" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.affiliate}</a></li>
-              <li><a href="https://eu.store.igarden.ai/fr/pages/a-propos-de-nous" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{t.footer.aboutUs}</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/blogs/news" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Blogue</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/filiale" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Programme d'affiliation</a></li>
+              <li><a href="https://eu.store.igarden.ai/fr/pages/a-propos-de-nous" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">À propos de nous</a></li>
             </ul>
           </div>
 
@@ -188,22 +188,26 @@ export const Footer: React.FC<FooterProps> = ({
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/SVG.svg?v=1773125689&width=48"
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className="w-5 h-5 object-contain"
                 />
-                <p className="font-bold text-[15px] text-white">{t.footer.emailUs}</p>
+                <p className="font-bold text-[15px] text-white">Envoyez-nous un e-mail</p>
               </div>
-              <p className="text-[14px] text-white/70 pl-7">{t.footer.emailVal}</p>
+              <p className="text-[14px] text-white/70 pl-7">customercare@igarden.ai</p>
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/SVG-2.svg?v=1773125689&width=48"
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className="w-5 h-5 object-contain"
                 />
-                <p className="font-bold text-[15px] text-white">{t.footer.serviceHours}</p>
+                <p className="font-bold text-[15px] text-white">Horaires du service client</p>
               </div>
-              <p className="text-[14px] text-white/70 pl-7">{t.footer.serviceHoursVal}</p>
+              <p className="text-[14px] text-white/70 pl-7">Assistance disponible 24h/24 et 7j/7</p>
             </div>
           </div>
         </div>
@@ -212,14 +216,17 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-[13px] text-white/60">
           <div className="flex items-center gap-4 flex-wrap">
             <button
+              type="button"
               onClick={onOpenCountryDialog}
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 font-medium"
+              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0"
             >
-              <Globe className="w-4 h-4 text-[#0071E3]" />
-              <span>{currentMarket.flag} {currentMarket.name} / {currentLanguage.nativeName} ({currentMarket.currency})</span>
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 18 18">
+                <path d="M9 1.5A7.5 7.5 0 1 0 16.5 9 7.508 7.508 0 0 0 9 1.5Zm5.872 4.5h-2.497a11.736 11.736 0 0 0-1.034-2.902A6.023 6.023 0 0 1 14.872 6ZM9 2.527A10.564 10.564 0 0 1 10.31 6H7.69A10.564 10.564 0 0 1 9 2.527ZM2.695 10.5a6.112 6.112 0 0 1 0-3H5.55a12.4 12.4 0 0 0 0 3H2.695Zm.433 1.5h2.497a11.736 11.736 0 0 0 1.034 2.902A6.003 6.003 0 0 1 3.128 12Zm2.497-6H3.128a6.003 6.003 0 0 1 3.531-2.902A11.736 11.736 0 0 0 5.625 6ZM9 15.473A10.564 10.564 0 0 1 7.69 12h2.62A10.564 10.564 0 0 1 9 15.473ZM10.555 10.5h-3.11a11.227 11.227 0 0 1 0-3h3.11a11.227 11.227 0 0 1 0 3Zm.786 4.402A11.736 11.736 0 0 0 12.375 12h2.497a6.023 6.023 0 0 1-3.531 2.902ZM12.45 10.5a12.4 12.4 0 0 0 0-3h2.855a6.112 6.112 0 0 1 0 3H12.45Z"/>
+              </svg>
+              <span>Europe / Français</span>
             </button>
             <span className="text-white/40">•</span>
-            <span>{t.footer.copyright}</span>
+            <span>Copyright © 2026 iGarden All Rights Reserved</span>
           </div>
 
           {/* Payment Badges list */}

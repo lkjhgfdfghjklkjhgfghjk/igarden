@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { I18nProvider, useI18n } from './i18n/I18nContext';
-import { RegionLanguageModal } from './components/RegionLanguageModal';
-import { InitialMarketPopup } from './components/InitialMarketPopup';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { SearchModal } from './components/SearchModal';
+import { CountryDialog } from './components/CountryDialog';
 import { CartDrawer } from './components/CartDrawer';
 import { AccountModal } from './components/AccountModal';
 import { OrderTrackingModal } from './components/OrderTrackingModal';
@@ -33,33 +31,58 @@ import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
-import { trackTikTokAddToCart } from './utils/tiktokPixel';
 
-function AppContent() {
-  const {
-    currentLanguage,
-    pageType,
-    navigateToPage,
-    isRegionModalOpen,
-    openRegionModal,
-    closeRegionModal,
-    swimJetPrice,
-    formatPrice
-  } = useI18n();
+export const PRODUCT_ROUTE = '/products/hydro-propulseur-de-natation-contre-courant-haute-performance-1000w-autonomie-pro-pack-complet';
 
+const getInitialPage = (): 'home' | 'product' => {
+  if (typeof window !== 'undefined') {
+    const path = window.location.pathname;
+    if (path === PRODUCT_ROUTE || path.startsWith('/products') || path.includes('hydro-propulseur') || path.includes('swim-jet') || path.includes('jet-de-natation')) {
+      return 'product';
+    }
+  }
+  return 'home';
+};
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'product'>(getInitialPage);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(PRODUCT_VARIANTS[0]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
+  const [currentCountry, setCurrentCountry] = useState('FR');
+
+  React.useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === PRODUCT_ROUTE || path.startsWith('/products') || path.includes('hydro-propulseur') || path.includes('swim-jet') || path.includes('jet-de-natation')) {
+        setCurrentPage('product');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   const navigateToProduct = (_handle?: string) => {
-    navigateToPage('product');
+    if (typeof window !== 'undefined' && window.location.pathname !== PRODUCT_ROUTE) {
+      window.history.pushState({}, '', PRODUCT_ROUTE);
+    }
+    setCurrentPage('product');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToHome = () => {
-    navigateToPage('home');
+    if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+      window.history.pushState({}, '', '/');
+    }
+    setCurrentPage('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleAddToCart = (
@@ -67,33 +90,23 @@ function AppContent() {
     quantity: number,
     _selectedAccessories: { acc: AccessoryOption; qty: number; variantId?: string }[] = []
   ) => {
-    // Track TikTok Pixel AddToCart event
-    trackTikTokAddToCart(quantity);
-
     const newItems = [...cartItems];
 
-    // Add or update main product with active market checkout URL and localized price
+    // Add or update main product
     const existingIndex = newItems.findIndex((item) => item.id === variant.id);
-    const activeCheckoutUrl = swimJetPrice.checkoutUrl || variant.checkoutUrl;
-    const activePrice = swimJetPrice.price || variant.price;
-    const activeOriginalPrice = swimJetPrice.originalPrice || variant.originalPrice;
-
     if (existingIndex > -1) {
       newItems[existingIndex].quantity += quantity;
-      newItems[existingIndex].checkoutUrl = activeCheckoutUrl;
-      newItems[existingIndex].price = activePrice;
-      newItems[existingIndex].originalPrice = activeOriginalPrice;
     } else {
       newItems.push({
         id: variant.id,
         title: variant.name,
         variantTitle: variant.shortName,
-        price: activePrice,
-        originalPrice: activeOriginalPrice,
+        price: variant.price,
+        originalPrice: variant.originalPrice,
         image: variant.images[0],
         quantity,
         discountCode: variant.couponCode,
-        checkoutUrl: activeCheckoutUrl
+        checkoutUrl: variant.checkoutUrl
       });
     }
 
@@ -120,19 +133,16 @@ function AppContent() {
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col bg-white text-[#121212] font-sans selection:bg-[#0071E3] selection:text-white"
-      dir={currentLanguage.direction}
-    >
+    <div className="min-h-screen flex flex-col bg-white text-[#121212] font-['Figtree'] selection:bg-[#0071E3] selection:text-white">
       {/* Top Announcement Bar */}
-      <AnnouncementBar onOpenCountryDialog={openRegionModal} />
+      <AnnouncementBar onOpenCountryDialog={() => setIsCountryOpen(true)} />
 
       {/* Main Header & Navigation */}
       <Header
         cartItems={cartItems}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenCountryDialog={openRegionModal}
+        onOpenCountryDialog={() => setIsCountryOpen(true)}
         onOpenAccount={() => setIsAccountOpen(true)}
         onOpenTracking={() => setIsTrackingOpen(true)}
         onNavigateToProduct={navigateToProduct}
@@ -140,8 +150,8 @@ function AppContent() {
       />
 
       <main className="flex-1">
-        {pageType === 'home' ? (
-          /* ================= HOME PAGE ================= */
+        {currentPage === 'home' ? (
+          /* ================= FULL HOME PAGE RECONSTRUCTION ================= */
           <Home onNavigateToProduct={navigateToProduct} />
         ) : (
           /* ================= PRODUCT DETAIL PAGE ================= */
@@ -160,10 +170,10 @@ function AppContent() {
               onAddToCart={() => handleAddToCart(selectedVariant, 1, [])}
             />
 
-            {/* Feature Grid / Overview */}
+            {/* Feature Grid / Aperçu (Kickstarter proof & Bento grid) */}
             <FeatureGridSection />
 
-            {/* KOL Showcase Slider */}
+            {/* KOL Showcase Slider & Video modal */}
             <KolShowcaseSection />
 
             {/* Inverter Tech & Performance specs */}
@@ -216,7 +226,7 @@ function AppContent() {
 
       {/* Footer */}
       <Footer
-        onOpenCountryDialog={openRegionModal}
+        onOpenCountryDialog={() => setIsCountryOpen(true)}
         onOpenAccount={() => setIsAccountOpen(true)}
         onOpenTracking={() => setIsTrackingOpen(true)}
         onNavigateToProduct={navigateToProduct}
@@ -229,15 +239,13 @@ function AppContent() {
         onClose={() => setIsSearchOpen(false)}
         onNavigateToProduct={navigateToProduct}
       />
-
-      {/* Advanced Multi-Region / Language / Currency Modal */}
-      <RegionLanguageModal
-        isOpen={isRegionModalOpen}
-        onClose={closeRegionModal}
+      
+      <CountryDialog
+        isOpen={isCountryOpen}
+        onClose={() => setIsCountryOpen(false)}
+        currentCountry={currentCountry}
+        onSelectCountry={setCurrentCountry}
       />
-
-      {/* Automatic Geolocation Confirmation Popup */}
-      <InitialMarketPopup />
 
       <AccountModal
         isOpen={isAccountOpen}
@@ -262,15 +270,7 @@ function AppContent() {
         onAddAccessory={() => {}}
       />
 
-      <FloatingWidgets />
+      <FloatingWidgets onScrollToTop={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <I18nProvider>
-      <AppContent />
-    </I18nProvider>
   );
 }
