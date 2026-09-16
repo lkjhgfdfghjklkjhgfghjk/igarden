@@ -1,13 +1,17 @@
 import React from 'react';
+import { useI18n } from '../i18n/I18nContext';
 
 export const SafetyShieldSection: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
+
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            <span className="text-[#0071E3]">360°</span> Blindage de sécurité
+            <span className="text-[#0071E3]">360°</span> {isAr ? 'حماية وسلامة متكاملة' : 'Full-Spectrum Safety System'}
           </h2>
         </div>
 
@@ -28,7 +32,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                Coupure de courant automatique
+                {isAr ? 'فصل تلقائي فوري للطاقة' : 'Instant Automatic Shut-Off'}
               </p>
             </div>
 
@@ -41,7 +45,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                Grille de protection anti-enchevêtrement
+                {isAr ? 'شبكة حماية أمان مضادة للتشابك' : 'Anti-Entanglement Safety Grill'}
               </p>
             </div>
           </div>
@@ -70,7 +74,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                IP68 étanche (Unité de nage)
+                {isAr ? 'مقاومة الماء المعيارية IP68 (وحدة السباحة)' : 'IP68 Waterproof (Swim Unit)'}
               </p>
             </div>
 
@@ -87,7 +91,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                IP65 étanche (Boîtier d'alimentation)
+                {isAr ? 'مقاومة الماء والأحوال الجوية IP65 (وحدة الطاقة)' : 'IP65 Weatherproof (Power Station)'}
               </p>
             </div>
           </div>

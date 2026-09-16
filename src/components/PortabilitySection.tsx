@@ -1,32 +1,37 @@
 import React from 'react';
+import { useI18n } from '../i18n/I18nContext';
 
 export const PortabilitySection: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
+
   const cards = [
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_9e858063-ead4-4ea6-8b3c-765eb9b30840.png?v=1778494904&width=1200",
-      title: "Roues et poignée de style valise"
+      title: isAr ? "عجلات متينة ومقبض سحب مريح كحقيبة السفر" : "Suitcase-Style Wheels & Ergonomic Handle"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_1_2add0575-2c04-49fc-bec2-ff0bb47a4181.png?v=1779864936&width=1200",
-      title: "Amusez-vous à la piscine d'un ami"
+      title: isAr ? "سهل الحمل للاستمتاع في مسبح الأصدقاء" : "Take the Fun to a Friend's Pool"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_1.png?v=1778494904&width=1200",
-      title: "Se range sans effort au garage ou placard"
+      title: isAr ? "تخزين مريح في الخزانة أو المرآب" : "Effortless Compact Garage or Closet Storage"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Title */}
         <div className="text-center max-w-[840px] mx-auto mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-3">
-            Portable. Rangement. Non lié.
+            {isAr ? 'تصميم محمول. سهل التخزين. حرية تامة.' : 'Portable. Easy Storage. Zero Constraints.'}
           </h2>
           <p className="text-[16px] sm:text-[20px] text-gray-500 leading-relaxed font-medium">
-            Assez portable pour partager, assez compact pour stocker.
-            Protégez votre appareil du soleil et de la pluie sans tracas.
+            {isAr
+              ? 'محمول بما يكفي لمشاركته أينما ذهبت، ومدمج للتخزين السريع. احمِ جهازك من أشعة الشمس والأمطار بسهولة ودون أي عناء.'
+              : 'Portable enough to share, compact enough to store. Protect your equipment easily from weather elements whenever not in use.'}
           </p>
         </div>
 

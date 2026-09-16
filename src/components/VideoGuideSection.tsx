@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
 import { Play, X } from 'lucide-react';
+import { useI18n } from '../i18n/I18nContext';
 
 export const VideoGuideSection: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
 
   const guides = [
     {
       id: "fOjOnNt07mM",
-      title: "Installation étape par étape",
+      title: isAr ? "دليل التثبيت خطوة بخطوة" : "Step-by-Step Installation",
       poster: "https://eu.store.igarden.ai/cdn/shop/files/how-to-set-up-x-series.jpg?v=1785137633&width=3840"
     },
     {
       id: "az-UqGbfjDQ",
-      title: "Configuration des broches de verrouillage",
+      title: isAr ? "ضبط دبابيس القفل والمقبض" : "Locking Pins & Handle Setup",
       poster: "https://eu.store.igarden.ai/cdn/shop/files/how-to-set-up-locking-pins-on-the-handle.jpg?v=1785137633&width=3840"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8">
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-[24px] sm:text-[36px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Comment configurer votre iGarden Swim Jet X Series
+            {isAr ? 'كيفية إعداد واستخدام جهاز آي جاردن س swim جيت' : 'How to Set Up Your iGarden Swim Jet'}
           </h2>
         </div>
 

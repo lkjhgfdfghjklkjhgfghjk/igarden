@@ -1,8 +1,9 @@
 import React from 'react';
-import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, RotateCcw, ShoppingBag, Lock } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, ShoppingBag, Lock } from 'lucide-react';
 import { CartItem } from '../types';
 import { CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { useI18n } from '../i18n/I18nContext';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -20,6 +21,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   onUpdateQuantity,
   onRemoveItem
 }) => {
+  const { currentLanguage, formatPrice, t, swimJetPrice } = useI18n();
+
   if (!isOpen) return null;
 
   const totalOriginalPrice = items.reduce(
@@ -31,14 +34,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const itemWithCheckout = items.find((item) => item.checkoutUrl);
-  const targetCheckoutUrl = itemWithCheckout?.checkoutUrl || CHECKOUT_URL;
+  const targetCheckoutUrl = itemWithCheckout?.checkoutUrl || swimJetPrice.checkoutUrl || CHECKOUT_URL;
 
   const handleProceedToCheckout = () => {
     redirectToCheckout(targetCheckoutUrl, totalQuantity || 1);
   };
 
   return (
-    <div className="fixed inset-0 z-[999999] flex justify-end bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[999999] flex justify-end bg-black/60 backdrop-blur-xs animate-in fade-in duration-200" dir={currentLanguage.direction}>
       <div 
         className="w-full max-w-[500px] h-full bg-white shadow-2xl flex flex-col justify-between overflow-hidden animate-in slide-in-from-right duration-200"
         onClick={(e) => e.stopPropagation()}
@@ -46,15 +49,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         {/* Header */}
         <div className="p-4 sm:p-5 border-b border-gray-200 flex items-center justify-between bg-[#F8FAFC]">
           <div className="flex items-center gap-2">
-            <h2 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Mon Panier</h2>
+            <h2 className="text-[18px] sm:text-[20px] font-bold text-gray-900">{t.cart.myCart}</h2>
             <span className="w-5 h-5 rounded-sm bg-[#0071E3] text-white text-[11px] font-bold flex items-center justify-center">
               {items.reduce((sum, item) => sum + item.quantity, 0)}
             </span>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-sm text-gray-400 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer"
-            aria-label="Fermer"
+            className="p-1.5 rounded-sm text-gray-400 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer bg-transparent border-none"
+            aria-label={t.common.close}
           >
             <X className="w-5 h-5" />
           </button>
@@ -67,15 +70,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="w-14 h-14 bg-blue-50 text-[#0071E3] rounded-sm flex items-center justify-center mx-auto">
                 <ShoppingBag className="w-7 h-7" />
               </div>
-              <p className="text-[16px] sm:text-[17px] font-bold text-gray-900">Votre panier est actuellement vide</p>
+              <p className="text-[16px] sm:text-[17px] font-bold text-gray-900">{t.cart.emptyTitle}</p>
               <p className="text-[13px] text-gray-500 max-w-xs mx-auto">
-                Profitez dès maintenant du jet de natation portable Swim Jet (1 000 W) à 209,00 € avec la livraison offerte.
+                {t.cart.emptyDesc}
               </p>
               <button
                 onClick={onClose}
-                className="px-6 py-2.5 bg-[#0071E3] text-white rounded-sm text-[13px] sm:text-[14px] font-bold hover:bg-blue-700 transition-colors shadow-xs uppercase cursor-pointer"
+                className="px-6 py-2.5 bg-[#0071E3] text-white rounded-sm text-[13px] sm:text-[14px] font-bold hover:bg-blue-700 transition-colors shadow-xs uppercase cursor-pointer border-none"
               >
-                Découvrir l'offre
+                {t.cart.discoverOffer}
               </button>
             </div>
           ) : (
@@ -99,11 +102,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     <div className="flex items-center justify-between mt-2.5">
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-[15px] sm:text-[16px] font-extrabold text-gray-900">
-                          {(item.price * item.quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                          {formatPrice(item.price * item.quantity)}
                         </span>
                         {item.originalPrice && item.originalPrice > item.price && (
                           <span className="text-[11px] sm:text-[12px] text-gray-400 line-through">
-                            {(item.originalPrice * item.quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                            {formatPrice(item.originalPrice * item.quantity)}
                           </span>
                         )}
                       </div>
@@ -112,7 +115,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       <div className="flex items-center border border-gray-300 rounded-sm bg-white overflow-hidden">
                         <button
                           onClick={() => onUpdateQuantity(item.id, -1)}
-                          className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 text-gray-700 cursor-pointer"
+                          className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 text-gray-700 cursor-pointer bg-transparent border-none"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
@@ -121,7 +124,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                         </span>
                         <button
                           onClick={() => onUpdateQuantity(item.id, 1)}
-                          className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 text-gray-700 cursor-pointer"
+                          className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 text-gray-700 cursor-pointer bg-transparent border-none"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -130,8 +133,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                     <button
                       onClick={() => onRemoveItem(item.id)}
-                      className="text-gray-400 hover:text-red-500 absolute top-3 right-3 p-1 cursor-pointer"
-                      title="Supprimer du panier"
+                      className="text-gray-400 hover:text-red-500 absolute top-3 right-3 p-1 cursor-pointer bg-transparent border-none"
+                      aria-label="Remove item"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -146,19 +149,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         {items.length > 0 && (
           <div className="p-4 sm:p-5 bg-[#F8FAFC] border-t border-gray-200 shadow-xl space-y-3.5">
             <div className="flex items-center justify-between text-[11px] sm:text-[12px] text-gray-600 pb-2 border-b border-gray-200">
-              <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5 text-[#0071E3]" /> Livraison Colissimo Offerte</span>
-              <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-[#0071E3]" /> Garantie 2 ans</span>
+              <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5 text-[#0071E3]" /> {t.common.freeShipping}</span>
+              <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-[#0071E3]" /> {t.common.warranty2Years}</span>
             </div>
 
             <div className="flex items-baseline justify-between">
-              <span className="text-[14px] sm:text-[15px] font-semibold text-gray-700">Total TTC</span>
+              <span className="text-[14px] sm:text-[15px] font-semibold text-gray-700">{t.common.subtotal}</span>
               <div className="text-right">
                 <span className="text-[22px] sm:text-[24px] font-extrabold text-gray-950">
-                  {totalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                  {formatPrice(totalPrice)}
                 </span>
                 {totalSavings > 0 && (
                   <p className="text-[11px] sm:text-[12px] text-emerald-600 font-bold">
-                    Vous économisez {totalSavings.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} € (-50%)
+                    {t.common.saveAmount} {formatPrice(totalSavings)}
                   </p>
                 )}
               </div>
@@ -171,15 +174,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 e.stopPropagation();
                 handleProceedToCheckout();
               }}
-              className="w-full h-12 rounded-sm bg-[#0071E3] hover:bg-blue-700 text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase text-center"
+              className="w-full h-12 rounded-sm bg-[#0071E3] hover:bg-blue-700 text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer uppercase text-center border-none"
             >
               <Lock className="w-4 h-4" />
-              <span>COMMANDER MAINTENANT</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>{t.common.orderNow.toUpperCase()}</span>
+              <ArrowRight className={`w-4 h-4 ${currentLanguage.direction === 'rtl' ? 'rotate-180' : ''}`} />
             </button>
 
             <p className="text-center text-[11px] text-gray-500">
-              Paiement 100% sécurisé SSL • Redirection immédiate vers le checkout officiel
+              {t.common.secureCheckout} • {t.cart.checkoutNotice}
             </p>
           </div>
         )}

@@ -1,17 +1,23 @@
 import React from 'react';
+import { useI18n } from '../i18n/I18nContext';
 
 export const AdvantagesSection: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
+
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14 space-y-16 sm:space-y-24">
         {/* Section Part 1: Daily laps */}
         <div>
           <div className="mb-6">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree'] mb-2">
-              Maîtrisez vos tours quotidiens
+              {isAr ? 'أتقن تمارين السباحة اليومية' : 'Master Your Daily Swim Routine'}
             </h2>
             <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-              Convient pour le papillon, le style libre et la brasse.
+              {isAr
+                ? 'مثالي لسباحة الفراشة، والسباحة الحرة، وسباحة الصدر، وسباحة الظهر.'
+                : 'Engineered for freestyle, breaststroke, backstroke, and butterfly.'}
             </p>
           </div>
 
@@ -32,7 +38,7 @@ export const AdvantagesSection: React.FC = () => {
         <div>
           <div className="mb-8">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree']">
-              Pure joie, pure détente
+              {isAr ? 'متعة نقية واسترخاء لجميع أفراد الأسرة' : 'Pure Joy & Refreshing Relaxation'}
             </h2>
           </div>
 
@@ -52,10 +58,12 @@ export const AdvantagesSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  Jeu actif pour vos animaux de compagnie
+                  {isAr ? 'مرح صحي ولطيف على المفاصل للحيوانات الأليفة' : 'Active Fun for Your Pets'}
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  Offrez à vos amis à quatre pattes un entraînement rafraîchissant et à faible impact pour préserver leurs articulations.
+                  {isAr
+                    ? 'وفر لأليفك تمريناً مائياً منعشاً منخفض الصدمات يحافظ على سلامة مفاصله ولياقته.'
+                    : 'Provide gentle, low-impact aquatic exercise to keep joints healthy and spirits high.'}
                 </p>
               </div>
             </div>
@@ -75,10 +83,12 @@ export const AdvantagesSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  Alimentez l’ambiance de fête
+                  {isAr ? 'أجواء ممتعة في التجمعات العائلية' : 'Elevate Poolside Gatherings'}
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  Transformez n'importe quel rassemblement en un événement dynamique avec un courant constant et invitant qui fait bouger tout le monde.
+                  {isAr
+                    ? 'حوّل أي لقاء عائلي أو حفلة مسبح إلى تجربة نهرية ممتعة تجذب الجميع للمشاركة والسباحة.'
+                    : 'Transform any backyard party into a dynamic water playground that everyone enjoys.'}
                 </p>
               </div>
             </div>

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { TRUSTPILOT_REVIEWS } from '../data';
+import { useI18n } from '../i18n/I18nContext';
 
 export const TrustpilotWidget: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -14,7 +17,7 @@ export const TrustpilotWidget: React.FC = () => {
   };
 
   return (
-    <section id="Avis" className="py-16 sm:py-24 bg-white border-t border-gray-100">
+    <section id="Avis" className="py-16 sm:py-24 bg-white border-t border-gray-100" dir={currentLanguage.direction}>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Header */}
         <div className="flex flex-col items-center gap-4 mb-12 sm:mb-16">
@@ -25,7 +28,7 @@ export const TrustpilotWidget: React.FC = () => {
               className="h-8 sm:h-12 w-auto object-contain"
             />
             <h2 className="text-[26px] sm:text-[42px] font-bold text-gray-950 font-['Figtree'] m-0">
-              Trustpilot Review
+              {isAr ? 'تقييمات تراست بايلوت المعتمدة' : 'Verified Trustpilot Reviews'}
             </h2>
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-right_svg.png?v=1784616357&width=100"
@@ -41,7 +44,7 @@ export const TrustpilotWidget: React.FC = () => {
               rel="noopener noreferrer"
               className="underline font-semibold hover:text-[#0071E3]"
             >
-              223 Avis
+              {isAr ? '223 تقييماً موثقاً' : '223 Verified Reviews'}
             </a>
             <span>•</span>
             <div className="flex items-center gap-1">
@@ -81,7 +84,7 @@ export const TrustpilotWidget: React.FC = () => {
                   <div className="flex text-[#00B67A] gap-0.5">
                     {[...Array(review.rating)].map((_, i) => (
                       <div key={i} className="w-4 h-4 bg-[#00B67A] rounded-xs flex items-center justify-center text-white">
-                        <Star className="w-3 h-3 fill-white" />
+                        <Star className="w-3.5 h-3.5 fill-white" />
                       </div>
                     ))}
                   </div>
@@ -110,7 +113,7 @@ export const TrustpilotWidget: React.FC = () => {
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 cursor-pointer"
                 aria-label="Previous reviews"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-5 h-5 rtl:rotate-180" />
               </button>
               <button
                 onClick={handleNext}
@@ -118,7 +121,7 @@ export const TrustpilotWidget: React.FC = () => {
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 cursor-pointer"
                 aria-label="Next reviews"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5 rtl:rotate-180" />
               </button>
             </div>
           </div>

@@ -5,294 +5,14 @@ export interface HeroSlide {
   bgMb: string;
   eyebrow?: string;
   heading?: string;
-  headingPc?: string;
-  headingMb?: string;
   desc?: string;
   btnText: string;
   btnLink: string;
   btnBg?: string;
   btnColor?: string;
   align?: 'left' | 'center';
-  endTs?: number; // timestamp for countdown
+  endTs?: number;
 }
-
-export const HERO_SLIDES: HeroSlide[] = [
-  {
-    id: "slide_PPG9m4",
-    type: "standard",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_banner.jpg?v=1780654836&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237258_1.jpg?v=1780654824&width=430",
-    eyebrow: "Plus de 4,2 millions d'euros récoltés sur Kickstarter",
-    heading: "Jet de natation portable iGarden Swim Jet — 1 000 W",
-    desc: "1 000 W de puissance • 6 à 10 h d'autonomie à pleine puissance • Compatible avec toutes les piscines",
-    btnText: "Commander maintenant (209,00 €)",
-    btnLink: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine",
-    btnBg: "#0071E3",
-    btnColor: "#ffffff",
-    align: "center"
-  },
-  {
-    id: "school_banner_LCDNyF",
-    type: "school",
-    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_3.png?v=1785481427&width=1920",
-    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_4.png?v=1785481427&width=430",
-    eyebrow: "Offre Spéciale iGarden Swim Jet",
-    heading: "Économisez 209 € sur votre Swim Jet 1 000 W",
-    desc: "1 000 W de puissance | 6 à 10 h d'autonomie | Compatible avec toutes les piscines",
-    btnText: "Commander à 209,00 €",
-    btnLink: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine",
-    btnBg: "#f86709",
-    btnColor: "#ffffff",
-    endTs: 1788249599
-  }
-];
-
-export const TRUST_BAR_ITEMS = [
-  {
-    icon: "https://eu.store.igarden.ai/cdn/shop/files/icon_document.svg?v=1772780165&width=80",
-    label: "Livraison gratuite et rapide"
-  },
-  {
-    icon: "https://eu.store.igarden.ai/cdn/shop/files/icon_star.svg?v=1772780166&width=80",
-    label: "Retours sous 30 jours"
-  },
-  {
-    icon: "https://eu.store.igarden.ai/cdn/shop/files/icon_shield_svg.svg?v=1772780175&width=80",
-    label: "2 ans+ de garantie"
-  },
-  {
-    icon: "https://eu.store.igarden.ai/cdn/shop/files/icon_smile.svg?v=1772780165&width=80",
-    label: "Méthodes de paiement sécurisées"
-  }
-];
-
-export const TESTIMONIALS_1 = [
-  {
-    id: "t1-1",
-    author: "dana_stalling",
-    quote: '"Avec le Swim Jet, on profite d\'un débit puissant, d\'une infinité de possibilités pour nager et de notre propre parc aquatique à la maison !"',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_55553.png?v=1787020733&width=800",
-    link: "https://www.instagram.com/reel/DcGw3B4uLkp/"
-  },
-  {
-    id: "t1-2",
-    author: "aniuta.ugc",
-    quote: '"Il génère un contre-courant puissant pour nager sur place, s\'entraîner ou s\'amuser en famille. J\'adore pouvoir régler le flux selon nos envies — d\'une baignade douce à une session sportive intense."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_48822.png?v=1787021014&width=800",
-    link: "https://www.instagram.com/reels/Db_jVc2OhkX/"
-  },
-  {
-    id: "t1-3",
-    author: "ffjeffo",
-    quote: '"Le iGarden Swim Jet a complètement changé la façon dont nous utilisons notre piscine. L\'installation était étonnamment simple et, en quelques minutes, Jax en avait déjà fait son jeu préféré : sauter sur un flotteur et suivre le courant à travers la piscine."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/9436ec37-3268-4ac2-bc43-8072b10a88bf.png?v=1784888154&width=800",
-    link: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine"
-  },
-  {
-    id: "t1-4",
-    author: "ericamuellerhome",
-    quote: '"Transformez votre piscine en lieu de rencontre estival. La série iGarden Swim Jet X apporte un courant doux et réglable directement à votre piscine de jardin. Que vous fassiez des longueurs, que vous vous entraîniez ou que vous vous amusiez simplement en famille, c\'est un moyen simple de tirer le meilleur parti de votre piscine tout au long de la saison."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/b97a9921-3a3d-451c-bc91-516dedebb94f.png?v=1784888202&width=800",
-    link: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine"
-  },
-  {
-    id: "t1-5",
-    author: "kerrybalbuziente",
-    quote: '"Une piscine... des façons infinies d\'en profiter ! ☀️💦 Des flotteurs relaxants à l\'entraînement à la natation et tout le reste. L\'iGarden Swim Jet X transforme la piscine du jardin en quelques secondes."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/752682106_18609390595031892_8824578704219922165_n.jpg?v=1784889373&width=800",
-    link: "/fr/products/igarden-swim-jet-x-series-portable-swim-machine"
-  }
-];
-
-export const TESTIMONIALS_2 = [
-  {
-    id: "t2-1",
-    author: "katelynsmorgan",
-    quote: '"Passez au nettoyeur de piscine IA iGarden M1-45. L\'IA repère les débris et repasse sur les zones oubliées. Aucun tuyau encombrant, plus sûr pour les enfants. Il élimine toutes les impuretés cachées du bassin."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/lQLPJxse7lqZQ_PNBKrNAp6wospjemEhRFIKVlpPjH-XAA_670_1194.png?v=1787032226&width=800",
-    link: "https://www.instagram.com/reels/DbIwCD-px4g/"
-  },
-  {
-    id: "t2-2",
-    author: "heyaddnotsubtract",
-    quote: '"L\'entretien de notre piscine est devenu un véritable jeu d\'enfant. Si seulement nous l\'avions acheté plus tôt ! Idéal pour garder une eau cristalline sans le moindre effort au quotidien."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_30762.png?v=1787022859&width=800",
-    link: "https://www.instagram.com/reel/DZ7x3pWBX03/"
-  },
-  {
-    id: "t2-3",
-    author: "jaymesquires",
-    quote: '"Piscine sale prête à nager en 20 minutes avec le nettoyeur de piscine iGarden M1-AI !"',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/444796d8-7a10-44b2-9c22-bc61d46015a6.png?v=1784888560&width=800",
-    link: "/fr/products/nettoyeur-de-piscine-igarden-serie-m1-ai"
-  },
-  {
-    id: "t2-4",
-    author: "stacysathome",
-    quote: '"Garder notre piscine propre n\'a jamais été aussi simple ! La série iGarden Pool Cleaner M1-AI fait tout le travail à notre place avec une aspiration puissante, une navigation intelligente et une autonomie impressionnante."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/c57a3f28-fd18-441d-8454-2a724f53c81e.png?v=1784888704&width=800",
-    link: "/fr/products/nettoyeur-de-piscine-igarden-serie-m1-ai"
-  },
-  {
-    id: "t2-5",
-    author: "heyitsmariamugc",
-    quote: '"✨ Gardez votre piscine limpide avec le nettoyeur de piscine iGarden KN Series ! 🏊💙 Passez moins de temps à nettoyer et plus de temps à profiter de votre piscine."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_21875.png?v=1784889873&width=800",
-    link: "/fr/products/igarden-robot-piscine-kn-series"
-  },
-  {
-    id: "t2-6",
-    author: "lilileyvacortez",
-    quote: '"Notre piscine mérite d\'être toujours impeccable et prête pour la baignade. Ce robot est devenu notre meilleur allié de l\'été !"',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/708270777_1498931005025705_3521763456855781907_n.jpg?v=1787021479&width=800",
-    link: "https://www.instagram.com/reels/DYx4SJtRMtb/"
-  },
-  {
-    id: "t2-7",
-    author: "saharaebrahimi",
-    quote: '"Découvrez le compagnon idéal pour votre bassin : iGarden M1. Double flux haute puissance, autonomie record jusqu\'à 16 heures et jusqu\'à 30 jours sans entretien manuel."',
-    image: "https://eu.store.igarden.ai/cdn/shop/files/lQLPKdq8WzXJobPNBG_NApmwO_jXiD5ZvOEKVlziPjDvAA_665_1135.png?v=1787032311&width=800",
-    link: "https://www.instagram.com/reel/Dail1dDsabN/?hl=en"
-  }
-];
-
-export const HOME_KOL_VIDEOS = [
-  {
-    id: "k1",
-    author: "moine.thegolden",
-    followers: "6,7K abonnés",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/6ee394b4-4868-41b4-9689-e6e78b6aaa68.png?v=1784890241&width=80",
-    thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/0b0657e3-2af6-431f-9f37-d22d309457c4.png?v=1784890241&width=800",
-    videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/ad5bf5bde86d48bd88aa57d76b904525/ad5bf5bde86d48bd88aa57d76b904525.HD-1080p-2.5Mbps-89793802.mp4?v=0",
-    desc: "Je savais que nous adorerions le Jet de natation portable iGarden Swim Jet — 1 000 W, mais je ne savais tout simplement pas que Monk deviendrait un surfeur à plein temps. C'est devenu l'équipement préféré de notre jardin à tous."
-  },
-  {
-    id: "k2",
-    author: "jonathanandjennahome",
-    followers: "16 000 abonnés",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/c028f30f-3ad2-4d39-a0e1-f2ab26942c9d.png?v=1784890321&width=80",
-    thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/35a20b86-a1fe-4cfa-b7e0-0faf162bf218_1.png?v=1784890326&width=800",
-    videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/2b75c1c0d8c847c4936e5d4f4278de92/2b75c1c0d8c847c4936e5d4f4278de92.HD-1080p-2.5Mbps-89793881.mp4?v=0",
-    desc: "Un jet de nage à contre-courant portable et puissant ? Le Jet de natation portable iGarden Swim Jet — 1 000 W apporte une puissance impressionnante et une autonomie remarquable."
-  },
-  {
-    id: "k4",
-    author: "ollgabbigun",
-    followers: "19 000 abonnés",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/123440b2-7478-4d80-8b74-1dc2c017acc3.png?v=1784891071&width=80",
-    thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/166cfeb6-bc09-4e79-a1bd-e70f3c08b31a.png?v=1784891080&width=800",
-    videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/b34434b795924fdea867f6f5b1afb6ed/b34434b795924fdea867f6f5b1afb6ed.HD-1080p-3.3Mbps-89794686.mp4?v=0",
-    desc: "Le Jet de natation portable iGarden Swim Jet — 1 000 W rend chaque baignade sportive, agréable et sans limites, peu importe la taille de la piscine."
-  },
-  {
-    id: "k6",
-    author: "isydneyk",
-    followers: "208 000 abonnés",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/650121470_18366392221205458_7345930834072426192_n.jpg?v=1784892091&width=80",
-    thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/750146965_18385958044205458_5282926624391628263_n.jpg?v=1784892092&width=800",
-    videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/46a971642efa4e8ca882fa50a41b8851/46a971642efa4e8ca882fa50a41b8851.HD-1080p-2.5Mbps-89795821.mp4?v=0",
-    desc: "Totalement conquise par le Jet de natation portable iGarden Swim Jet — 1 000 W ! Très facile à installer et le courant de nage permet un entraînement intensif ou une détente parfaite. 😍"
-  }
-];
-
-export const TRUSTPILOT_REVIEWS = [
-  {
-    id: "tp-1",
-    name: "Tim Parisi",
-    date: "18 août 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_861b8ced-5913-4f1d-971b-1b3b6a675e7a.png?crop=center&height=160&v=1787103106&width=160",
-    rating: 5,
-    text: "Temps de réponse exceptionnel un samedi soir tard, suivi d'un échange le dimanche. Service client remarquable et solution rapide trouvée dès lundi.\n\nUne expérience client irréprochable."
-  },
-  {
-    id: "tp-2",
-    name: "Don Stramanak",
-    date: "10 août 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_1_7cf7be94-153c-49c6-8549-08614a3c2a30.png?crop=center&height=160&v=1786428214&width=160",
-    rating: 5,
-    text: "Le support client est formidable et résout chaque demande dès le premier échange. Les autres marques me faisaient tourner en rond, je n'achèterai plus jamais chez eux. Les produits iGarden sont exceptionnels, un grand merci !"
-  },
-  {
-    id: "tp-3",
-    name: "Kevin Evans",
-    date: "09 août 2026",
-    avatar: "",
-    rating: 5,
-    text: "J'ai commandé le Swim Jet X et il fonctionne exactement comme annoncé. Le service client est ultra-rapide et personnalisé lorsqu'on a besoin d'aide."
-  },
-  {
-    id: "tp-4",
-    name: "Amy Quinn",
-    date: "10 août 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_32459157-cea8-4478-9daf-0d628de2c83f.png?crop=center&height=160&v=1786427972&width=160",
-    rating: 5,
-    text: "Service client et assistance après-vente absolument remarquables !"
-  },
-  {
-    id: "tp-5",
-    name: "Kathy",
-    date: "09 août 2026",
-    avatar: "",
-    rating: 5,
-    text: "J'ai reçu mon jet de nage iGarden et il valait vraiment l'attente. Testé dès son arrivée, je suis très impressionnée par la puissance et la finition. Très satisfaite de mon achat et du suivi client irréprochable."
-  },
-  {
-    id: "tp-6",
-    name: "Norm",
-    date: "09 août 2026",
-    avatar: "",
-    rating: 5,
-    text: "Performances exceptionnelles et véritable révolution pour les petites piscines ! Livré rapidement, testé dans l'eau immédiatement : un pur bonheur au quotidien pour nager sans limites."
-  },
-  {
-    id: "tp-7",
-    name: "Alberto Carrozzo",
-    date: "26 juillet 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_33227b19-1575-4496-954f-2e14c3feda80.png?crop=center&height=160&v=1785312272&width=160",
-    rating: 5,
-    text: "J'utilise le jet de nage iGarden régulièrement dans ma piscine et il a réellement transformé mes séances. Le débit d'eau est puissant, stable et facilement réglable..."
-  },
-  {
-    id: "tp-8",
-    name: "RP",
-    date: "06 août 2026",
-    avatar: "",
-    rating: 5,
-    text: "Le produit est remarquable et le contact avec le support client a été parfait. Entreprise sérieuse, produits innovants et livraison rapide."
-  },
-  {
-    id: "tp-9",
-    name: "Denise Benjamin",
-    date: "04 août 2026",
-    avatar: "",
-    rating: 5,
-    text: "Réponse immédiate de l'équipe pour mes questions sur la mise en route. Totalement conquise par la réactivité du service client. Je recommande sans hésiter !"
-  },
-  {
-    id: "tp-10",
-    name: "Charles Jackson",
-    date: "02 août 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_2_ac21224a-b899-4077-84a4-da84afae7d88.png?crop=center&height=160&v=1786428540&width=160",
-    rating: 4,
-    text: "Ancien nageur de compétition, je trouve le contre-courant régulier et parfait pour nager sur place sur de longues distances. Toute la famille adore aussi l'effet hydromassant."
-  },
-  {
-    id: "tp-11",
-    name: "BD Miller",
-    date: "27 juillet 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_3_e3a1070b-1267-406b-b4f4-274069ee7200.png?crop=center&height=160&v=1786437520&width=160",
-    rating: 5,
-    text: "Extrêmement satisfait du produit et de la marque. Le jet est léger, facile à installer et remplit parfaitement sa mission. Livraison rapide et soignée."
-  },
-  {
-    id: "tp-12",
-    name: "Gregory Lee",
-    date: "17 juin 2026",
-    avatar: "https://eu.store.igarden.ai/cdn/shop/files/73x73_3.png?crop=center&height=160&v=1784616593&width=160",
-    rating: 5,
-    text: "Le vrai test d'une marque se voit dans son service après-vente. iGarden a dépassé mes attentes avec un suivi exemplaire et des engagements tenus."
-  }
-];
 
 export const AWARDS_LOGOS = [
   {
@@ -327,131 +47,393 @@ export const AWARDS_LOGOS = [
   }
 ];
 
-export const AWARDS_REVIEWS = [
-  {
-    source: "MUSE Design Awards Platinum",
-    text: "Le Jet de natation portable iGarden Swim Jet — 1 000 W est une machine portable sans fil primée qui transforme toutes les piscines en couloirs de nage infinis.",
-    link: "https://design.museaward.com/winner-info.php?id=37803"
-  },
-  {
-    source: "Tech Times",
-    text: "Le Jet de natation portable iGarden Swim Jet — 1 000 W réinvente la baignade à domicile en offrant un contre-courant puissant et une autonomie remarquable de 6 à 10 h à pleine puissance.",
-    link: "https://www.techtimes.com/articles/314615/20260212/smartest-member-family-how-ai-powered-igarden-x-series-changing-backyard-fun.htm"
-  },
-  {
-    source: "TIME Best Inventions",
-    text: "TIME Best Inventions — Le Jet de natation portable iGarden Swim Jet — 1 000 W apporte une puissance de 1 000 W et une polyvalence exceptionnelle pour nager sur place sans fin dans toutes les piscines.",
-    link: "https://time.com/collections/best-inventions-2025/7318411/igarden-swim-jet-p-series"
-  },
-  {
-    source: "CES Innovation Awards 2026",
-    text: "CES Innovation Award Honoree pour la technologie de propulsion haute performance 1 000 W et la conception sans fil du Jet de natation portable iGarden Swim Jet.",
-    link: "https://www.ces.tech/ces-innovation-awards/2026/igarden-swim-jet-x-series/"
-  }
-];
+export const TESTIMONIALS_1_DATA = {
+  en: [
+    {
+      id: "t1-1",
+      author: "dana_stalling",
+      quote: '"With the Swim Jet, we get powerful water flow, endless swimming possibilities, and our own personal water park right at home!"',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_55553.png?v=1787020733&width=800",
+      link: "https://www.instagram.com/reel/DcGw3B4uLkp/"
+    },
+    {
+      id: "t1-2",
+      author: "aniuta.ugc",
+      quote: '"It generates a steady counter-current for continuous swimming in place or family fun. I love being able to dial in the flow from a gentle cruise to intense workout pace."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_48822.png?v=1787021014&width=800",
+      link: "https://www.instagram.com/reels/Db_jVc2OhkX/"
+    },
+    {
+      id: "t1-3",
+      author: "ffjeffo",
+      quote: '"The iGarden Swim Jet completely changed how we enjoy our pool. Setup was remarkably quick, and within minutes our kids were floating happily in the gentle current."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/9436ec37-3268-4ac2-bc43-8072b10a88bf.png?v=1784888154&width=800",
+      link: "/products/igarden-swim-jet-x-series-portable-swim-machine"
+    },
+    {
+      id: "t1-4",
+      author: "ericamuellerhome",
+      quote: '"Transform your pool into a private training hub. The iGarden Swim Jet provides a smooth, adjustable current right in your backyard, perfect for all skill levels."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/b97a9921-3a3d-451c-bc91-516dedebb94f.png?v=1784888202&width=800",
+      link: "/products/igarden-swim-jet-x-series-portable-swim-machine"
+    },
+    {
+      id: "t1-5",
+      author: "kerrybalbuziente",
+      quote: '"One pool, endless ways to enjoy it! From relaxed floats to high-end lap training. The iGarden Swim Jet sets up securely in under a minute."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/752682106_18609390595031892_8824578704219922165_n.jpg?v=1784889373&width=800",
+      link: "/products/igarden-swim-jet-x-series-portable-swim-machine"
+    }
+  ],
+  ar: [
+    {
+      id: "t1-1",
+      author: "dana_stalling",
+      quote: '"مع جهاز س swim جيت، نحصل على تدفق مائي قوي وإمكانيات سباحة لا تنتهي في مسبحنا المنزلي بكل راحة وسهولة!"',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_55553.png?v=1787020733&width=800",
+      link: "https://www.instagram.com/reel/DcGw3B4uLkp/"
+    },
+    {
+      id: "t1-2",
+      author: "aniuta.ugc",
+      quote: '"يولد تياراً معاكساً سلساً ومستمراً للسباحة في المكان والتمارين الرياضية. أداء مذهل وتحكم دقيق في قوة الدفع تناسب جميع أفراد العائلة."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/videoframe_48822.png?v=1787021014&width=800",
+      link: "https://www.instagram.com/reels/Db_jVc2OhkX/"
+    },
+    {
+      id: "t1-3",
+      author: "ffjeffo",
+      quote: '"غيّر جهاز آي جاردن س swim جيت طريقة استخدامنا للمسبح بالكامل. كان التركيب بسيطاً وسريعاً للغاية بدون أي تمديدات معقدة."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/9436ec37-3268-4ac2-bc43-8072b10a88bf.png?v=1784888154&width=800",
+      link: "/products/igarden-swim-jet-x-series-portable-swim-machine"
+    },
+    {
+      id: "t1-4",
+      author: "ericamuellerhome",
+      quote: '"حوّل مسبحك العادي إلى مسبح تدريب احترافي لا نهائي. تدفق هادئ وقوي يلائم التمرين اليومي والاسترخاء المنزلي."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/b97a9921-3a3d-451c-bc91-516dedebb94f.png?v=1784888202&width=800",
+      link: "/products/igarden-swim-jet-x-series-portable-swim-machine"
+    },
+    {
+      id: "t1-5",
+      author: "kerrybalbuziente",
+      quote: '"مسبح واحد وطرق لا حصر لها للاستمتاع! من التجديف الهادئ إلى تمارين السباحة الرياضية. جهاز متكامل وسهل الاستخدام."',
+      image: "https://eu.store.igarden.ai/cdn/shop/files/752682106_18609390595031892_8824578704219922165_n.jpg?v=1784889373&width=800",
+      link: "/products/igarden-swim-jet-x-series-portable-swim-machine"
+    }
+  ]
+};
 
-export const FEATURE_GRID_ITEMS = [
-  {
-    id: 0,
-    tall: true,
-    title: "Service VIP exclusif",
-    image: "https://eu.store.igarden.ai/cdn/shop/files/01_1_d30c0b5b-ad25-4a48-b286-1c1705d18707.png?v=1782444829&width=600"
-  },
-  {
-    id: 1,
-    tall: false,
-    title: "Livraison gratuite et rapide",
-    image: "https://eu.store.igarden.ai/cdn/shop/files/Shipping_truck_with_package_for_logistics_and_freight_transportation_1.png?v=1782444799&width=600"
-  },
-  {
-    id: 2,
-    tall: false,
-    title: "2 ans+ de garantie",
-    image: "https://eu.store.igarden.ai/cdn/shop/files/Account_security_Antivirus_protection_Shield_with_checkmark_badge_1.png?v=1782444800&width=600"
-  },
-  {
-    id: 3,
-    tall: true,
-    title: "Méthodes de paiement sécurisées",
-    image: "https://eu.store.igarden.ai/cdn/shop/files/credit_card_payment_with_coins_and_transfer_arrows_1.png?v=1782444829&width=600"
-  },
-  {
-    id: 4,
-    tall: false,
-    title: "Assistance 24h/24 et 7j/7",
-    image: "https://eu.store.igarden.ai/cdn/shop/files/02_1.png?v=1782444835&width=600"
-  },
-  {
-    id: 5,
-    tall: false,
-    title: "Retours sous 30 jours",
-    image: "https://eu.store.igarden.ai/cdn/shop/files/2222_2.png?v=1782444799&width=600"
-  }
-];
+export const HOME_KOL_VIDEOS_DATA = {
+  en: [
+    {
+      id: "k1",
+      author: "moine.thegolden",
+      followers: "6.7K followers",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/6ee394b4-4868-41b4-9689-e6e78b6aaa68.png?v=1784890241&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/0b0657e3-2af6-431f-9f37-d22d309457c4.png?v=1784890241&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/ad5bf5bde86d48bd88aa57d76b904525/ad5bf5bde86d48bd88aa57d76b904525.HD-1080p-2.5Mbps-89793802.mp4?v=0",
+      desc: "I knew we would love the iGarden Swim Jet 1,000 W, but it quickly became everyone's favorite backyard pool companion."
+    },
+    {
+      id: "k2",
+      author: "jonathanandjennahome",
+      followers: "16K followers",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/c028f30f-3ad2-4d39-a0e1-f2ab26942c9d.png?v=1784890321&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/35a20b86-a1fe-4cfa-b7e0-0faf162bf218_1.png?v=1784890326&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/2b75c1c0d8c847c4936e5d4f4278de92/2b75c1c0d8c847c4936e5d4f4278de92.HD-1080p-2.5Mbps-89793881.mp4?v=0",
+      desc: "A truly portable counter-current swim machine with real power. Outstanding battery endurance and effortless installation."
+    },
+    {
+      id: "k4",
+      author: "ollgabbigun",
+      followers: "19K followers",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/123440b2-7478-4d80-8b74-1dc2c017acc3.png?v=1784891071&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/166cfeb6-bc09-4e79-a1bd-e70f3c08b31a.png?v=1784891080&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/b34434b795924fdea867f6f5b1afb6ed/b34434b795924fdea867f6f5b1afb6ed.HD-1080p-3.3Mbps-89794686.mp4?v=0",
+      desc: "The iGarden Swim Jet makes continuous lap swimming accessible in any pool, regardless of its size."
+    },
+    {
+      id: "k6",
+      author: "isydneyk",
+      followers: "208K followers",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/650121470_18366392221205458_7345930834072426192_n.jpg?v=1784892091&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/750146965_18385958044205458_5282926624391628263_n.jpg?v=1784892092&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/46a971642efa4e8ca882fa50a41b8851/46a971642efa4e8ca882fa50a41b8851.HD-1080p-2.5Mbps-89795821.mp4?v=0",
+      desc: "Completely impressed by the 1,000 W Swim Jet! Very easy to mount, and the smooth flow enables high-level training at home."
+    }
+  ],
+  ar: [
+    {
+      id: "k1",
+      author: "moine.thegolden",
+      followers: "6.7 ألف متابع",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/6ee394b4-4868-41b4-9689-e6e78b6aaa68.png?v=1784890241&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/0b0657e3-2af6-431f-9f37-d22d309457c4.png?v=1784890241&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/ad5bf5bde86d48bd88aa57d76b904525/ad5bf5bde86d48bd88aa57d76b904525.HD-1080p-2.5Mbps-89793802.mp4?v=0",
+      desc: "كنا نعلم أننا سنحب جهاز آي جاردن س swim جيت 1000 واط، ولكنه سرعان ما أصبح الجهاز المفضل للجميع في مسبح الحديقة."
+    },
+    {
+      id: "k2",
+      author: "jonathanandjennahome",
+      followers: "16 ألف متابع",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/c028f30f-3ad2-4d39-a0e1-f2ab26942c9d.png?v=1784890321&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/35a20b86-a1fe-4cfa-b7e0-0faf162bf218_1.png?v=1784890326&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/2b75c1c0d8c847c4936e5d4f4278de92/2b75c1c0d8c847c4936e5d4f4278de92.HD-1080p-2.5Mbps-89793881.mp4?v=0",
+      desc: "جهاز سباحة بتيار معاكس محمول وفائق القوة. بطارية تدوم طويلاً وتثبيت مباشر على حافة المسبح دون عناء."
+    },
+    {
+      id: "k4",
+      author: "ollgabbigun",
+      followers: "19 ألف متابع",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/123440b2-7478-4d80-8b74-1dc2c017acc3.png?v=1784891071&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/166cfeb6-bc09-4e79-a1bd-e70f3c08b31a.png?v=1784891080&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/b34434b795924fdea867f6f5b1afb6ed/b34434b795924fdea867f6f5b1afb6ed.HD-1080p-3.3Mbps-89794686.mp4?v=0",
+      desc: "يجعل جهاز آي جاردن س swim جيت تجربة السباحة الرياضية المتواصلة ممكنة وممتعة في أي مسبح مهما كان حجمه."
+    },
+    {
+      id: "k6",
+      author: "isydneyk",
+      followers: "208 ألف متابع",
+      avatar: "https://eu.store.igarden.ai/cdn/shop/files/650121470_18366392221205458_7345930834072426192_n.jpg?v=1784892091&width=80",
+      thumbnail: "https://eu.store.igarden.ai/cdn/shop/files/750146965_18385958044205458_5282926624391628263_n.jpg?v=1784892092&width=800",
+      videoUrl: "https://eu.store.igarden.ai/cdn/shop/videos/c/vp/46a971642efa4e8ca882fa50a41b8851/46a971642efa4e8ca882fa50a41b8851.HD-1080p-2.5Mbps-89795821.mp4?v=0",
+      desc: "معجبة جداً بأداء جهاز السباحة 1000 واط! سهل التثبيت ويوفر تدفقاً انسيابياً مثالياً لتمارين اللياقة."
+    }
+  ]
+};
 
-export const BLOG_ARTICLES = [
+export const AWARDS_REVIEWS_DATA = {
+  en: [
+    {
+      source: "MUSE Design Awards Platinum",
+      text: "The iGarden Swim Jet 1,000 W is an award-winning cordless machine transforming any residential pool into an endless swimming lane.",
+      link: "https://design.museaward.com/winner-info.php?id=37803"
+    },
+    {
+      source: "Tech Times",
+      text: "The iGarden Swim Jet 1,000 W reinvents home swimming by delivering powerful counter-current flow and 6 to 10 hours of runtime on full charge.",
+      link: "https://www.techtimes.com/articles/314615/20260212/smartest-member-family-how-ai-powered-igarden-x-series-changing-backyard-fun.htm"
+    },
+    {
+      source: "TIME Best Inventions",
+      text: "TIME Best Inventions Honoree — Delivering 1,000 W of thrust and cordless versatility to swim continuously in pools of any size.",
+      link: "https://time.com/collections/best-inventions-2025/7318411/igarden-swim-jet-p-series"
+    },
+    {
+      source: "CES Innovation Awards 2026",
+      text: "CES Innovation Award Honoree for high-efficiency 1,000 W fluid propulsion technology and cordless portable engineering.",
+      link: "https://www.ces.tech/ces-innovation-awards/2026/igarden-swim-jet-x-series/"
+    }
+  ],
+  ar: [
+    {
+      source: "MUSE Design Awards Platinum",
+      text: "جهاز آي جاردن س swim جيت 1000 واط هو ابتكار حائز على الجائزة البلاتينية يحوّل أي مسبح منزلي إلى مسار سباحة لا نهائي.",
+      link: "https://design.museaward.com/winner-info.php?id=37803"
+    },
+    {
+      source: "Tech Times",
+      text: "يعيد جهاز آي جاردن س swim جيت تعريف السباحة المنزلية بفضل تيار معاكس قوي وتشغيل متواصل من 6 إلى 10 ساعات.",
+      link: "https://www.techtimes.com/articles/314615/20260212/smartest-member-family-how-ai-powered-igarden-x-series-changing-backyard-fun.htm"
+    },
+    {
+      source: "TIME Best Inventions",
+      text: "ضمن قائمة أفضل اختراعات مجلة تايم — قوة دفع 1000 واط وتصميم لاسلكي مبتكر يتيح السباحة المتواصلة في أي مسبح.",
+      link: "https://time.com/collections/best-inventions-2025/7318411/igarden-swim-jet-p-series"
+    },
+    {
+      source: "CES Innovation Awards 2026",
+      text: "جائزة الابتكار في معرض CES لتقنية الدفع الهيدروديناميكي عالي الكفاءة بقدرة 1000 واط والتصميم اللاسلكي المتطور.",
+      link: "https://www.ces.tech/ces-innovation-awards/2026/igarden-swim-jet-x-series/"
+    }
+  ]
+};
+
+export const FEATURE_GRID_ITEMS_DATA = {
+  en: [
+    {
+      id: 0,
+      tall: true,
+      title: "Exclusive VIP Support",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/01_1_d30c0b5b-ad25-4a48-b286-1c1705d18707.png?v=1782444829&width=600"
+    },
+    {
+      id: 1,
+      tall: false,
+      title: "Fast & Free Tracked Delivery",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/Shipping_truck_with_package_for_logistics_and_freight_transportation_1.png?v=1782444799&width=600"
+    },
+    {
+      id: 2,
+      tall: false,
+      title: "2-Year Official Warranty",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/Account_security_Antivirus_protection_Shield_with_checkmark_badge_1.png?v=1782444800&width=600"
+    },
+    {
+      id: 3,
+      tall: true,
+      title: "100% Secure Encrypted Checkout",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/credit_card_payment_with_coins_and_transfer_arrows_1.png?v=1782444829&width=600"
+    },
+    {
+      id: 4,
+      tall: false,
+      title: "24/7 Dedicated Support",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/02_1.png?v=1782444835&width=600"
+    },
+    {
+      id: 5,
+      tall: false,
+      title: "30-Day Money-Back Guarantee",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/2222_2.png?v=1782444799&width=600"
+    }
+  ],
+  ar: [
+    {
+      id: 0,
+      tall: true,
+      title: "خدمة كبار الشخصيات الحصرية",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/01_1_d30c0b5b-ad25-4a48-b286-1c1705d18707.png?v=1782444829&width=600"
+    },
+    {
+      id: 1,
+      tall: false,
+      title: "شحن مجاني وسريع مع التتبع",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/Shipping_truck_with_package_for_logistics_and_freight_transportation_1.png?v=1782444799&width=600"
+    },
+    {
+      id: 2,
+      tall: false,
+      title: "ضمان رسمي شامل لمدة سنتين",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/Account_security_Antivirus_protection_Shield_with_checkmark_badge_1.png?v=1782444800&width=600"
+    },
+    {
+      id: 3,
+      tall: true,
+      title: "دفع آمن ومشفر بنسبة 100%",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/credit_card_payment_with_coins_and_transfer_arrows_1.png?v=1782444829&width=600"
+    },
+    {
+      id: 4,
+      tall: false,
+      title: "خدمة عملاء ودعم متواصل 24/7",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/02_1.png?v=1782444835&width=600"
+    },
+    {
+      id: 5,
+      tall: false,
+      title: "استرجاع مضمون خلال 30 يوماً",
+      image: "https://eu.store.igarden.ai/cdn/shop/files/2222_2.png?v=1782444799&width=600"
+    }
+  ]
+};
+
+export const BLOG_ARTICLES_DATA = {
+  en: [
+    {
+      id: "blog-1",
+      title: "What is a Counter-Current Swimming System? Beginner's Guide",
+      excerpt: "A compact pool doesn't mean compromising on serious swimming training. The iGarden Swim Jet 1,000 W delivers endless flow...",
+      date: "2026-08-19",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/igarden_swim_jet.png?v=1787124881&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/swim-machine-beginner-guides"
+    },
+    {
+      id: "blog-2",
+      title: "Top Alternatives to Built-In Endless Pools: Which One to Choose?",
+      excerpt: "Discover why portable 1,000 W counter-current swim jets have become the premier choice for pool owners worldwide...",
+      date: "2026-08-17",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/Endless_pool_alternatives_5c5a4834-19cf-4d5c-9f94-65caa6f32a62.webp?v=1786959857&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/endless-pool-alternatives"
+    },
+    {
+      id: "blog-3",
+      title: "How to Swim in Place in Any Residential Pool",
+      excerpt: "Stationary swimming with a dedicated 1,000 W laminar flow machine allows uninterrupted lap sessions in any basin...",
+      date: "2026-08-13",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/Swim_in_place_ebfe3823-44a0-4d1f-9ce8-0f45dc485e35.webp?v=1786959752&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/how-to-swim-in-place-europea-guide"
+    },
+    {
+      id: "blog-4",
+      title: "Are Counter-Current Swim Machines Worth It? Complete Review",
+      excerpt: "Why the cordless iGarden Swim Jet transforms backyard pools into fitness and relaxation powerhouses...",
+      date: "2026-08-12",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/Are_Counter_Current_Swim_Machine_Worth_it_449e2a34-77a9-4ad4-927a-183917827a86.webp?v=1786958964&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/are-swim-machines-worth-it"
+    }
+  ],
+  ar: [
+    {
+      id: "blog-1",
+      title: "ما هو نظام السباحة بالتيار المعاكس؟ دليل المبتدئين الشامل",
+      excerpt: "المسبح الصغير لا يعني التخلي عن التمارين الرياضية الجادة. يوفر جهاز آي جاردن س swim جيت تدفقاً مستمراً وفعالاً...",
+      date: "2026-08-19",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/igarden_swim_jet.png?v=1787124881&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/swim-machine-beginner-guides"
+    },
+    {
+      id: "blog-2",
+      title: "أفضل بدائل المسابح اللانهائية التقليدية: كيف تختار الحل الأمثل؟",
+      excerpt: "تعرف على الأسباب التي تجعل أجهزة السباحة المحمولة بقدرة 1000 واط الخيار المفضل لأصحاب المسابح المنزلية...",
+      date: "2026-08-17",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/Endless_pool_alternatives_5c5a4834-19cf-4d5c-9f94-65caa6f32a62.webp?v=1786959857&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/endless-pool-alternatives"
+    },
+    {
+      id: "blog-3",
+      title: "كيفية السباحة في المكان داخل أي مسبح منزلي بسهولة",
+      excerpt: "تتيح السباحة الثابتة بتيار مائي انسيابي بقوة 1000 واط أداء تمارين سباحة غير محدودة في أي حوض مائي...",
+      date: "2026-08-13",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/Swim_in_place_ebfe3823-44a0-4d1f-9ce8-0f45dc485e35.webp?v=1786959752&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/how-to-swim-in-place-europea-guide"
+    },
+    {
+      id: "blog-4",
+      title: "هل تستحق أجهزة السباحة ذات التيار المعاكس الشراء؟ مراجعة شاملة",
+      excerpt: "اكتشف كيف يحول جهاز آي جاردن س swim جيت مسبح حديقتك إلى مركز متكامل للياقة البدنية والاسترخاء...",
+      date: "2026-08-12",
+      image: "https://eu.store.igarden.ai/cdn/shop/articles/Are_Counter_Current_Swim_Machine_Worth_it_449e2a34-77a9-4ad4-927a-183917827a86.webp?v=1786958964&width=800",
+      link: "https://eu.store.igarden.ai/blogs/news/are-swim-machines-worth-it"
+    }
+  ]
+};
+
+// Backward-compatible exports for direct imports
+export const TESTIMONIALS_1 = TESTIMONIALS_1_DATA.en;
+export const HOME_KOL_VIDEOS = HOME_KOL_VIDEOS_DATA.en;
+export const AWARDS_REVIEWS = AWARDS_REVIEWS_DATA.en;
+export const FEATURE_GRID_ITEMS = FEATURE_GRID_ITEMS_DATA.en;
+export const BLOG_ARTICLES = BLOG_ARTICLES_DATA.en;
+
+export const HERO_SLIDES: HeroSlide[] = [
   {
-    id: "blog-1",
-    title: "Qu’est-ce qu’un système de nage à contre-courant ? Guide du débutant",
-    excerpt: "Une piscine courte ne signifie pas forcément qu’il faut renoncer à une pratique sérieuse de la natation. Le Jet de natation portable iGarden Swim Jet — 1 000 W...",
-    date: "2026-08-19",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/igarden_swim_jet.png?v=1787124881&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/swim-machine-beginner-guides"
+    id: "slide_PPG9m4",
+    type: "standard",
+    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_banner.jpg?v=1780654836&width=1920",
+    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237258_1.jpg?v=1780654824&width=430",
+    eyebrow: "Over $4.2M Raised on Kickstarter",
+    heading: "iGarden Portable Swim Jet — 1,000 W",
+    desc: "1,000 W Power • 6–10h Runtime at Max Thrust • Universal Pool Fit",
+    btnText: "Order Now",
+    btnLink: "/products/igarden-swim-jet-x-series-portable-swim-machine",
+    btnBg: "#0071E3",
+    btnColor: "#ffffff",
+    align: "center"
   },
   {
-    id: "blog-2",
-    title: "5 alternatives à l’Endless Pool : quelle solution choisir pour nager chez soi ?",
-    excerpt: "Pour de nombreux propriétaires en France et en Europe, le Jet de natation portable iGarden Swim Jet — 1 000 W est la solution idéale...",
-    date: "2026-08-17",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/Endless_pool_alternatives_5c5a4834-19cf-4d5c-9f94-65caa6f32a62.webp?v=1786959857&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/endless-pool-alternatives"
-  },
-  {
-    id: "blog-3",
-    title: "Comment nager sur place dans une petite piscine",
-    excerpt: "La nage sur place avec un jet de 1 000 W permet de s’entraîner en continu dans une piscine de toutes dimensions...",
-    date: "2026-08-13",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/Swim_in_place_ebfe3823-44a0-4d1f-9ce8-0f45dc485e35.webp?v=1786959752&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/how-to-swim-in-place-europea-guide"
-  },
-  {
-    id: "blog-4",
-    title: "Les appareils de nage à contre-courant en valent-ils la peine ? Guide complet",
-    excerpt: "Pourquoi le Jet de natation portable iGarden Swim Jet — 1 000 W transforme n'importe quel bassin en espace de sport et de détente...",
-    date: "2026-08-12",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/Are_Counter_Current_Swim_Machine_Worth_it_449e2a34-77a9-4ad4-927a-183917827a86.webp?v=1786958964&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/are-swim-machines-worth-it"
-  },
-  {
-    id: "blog-5",
-    title: "Meilleure machine de nage pour une piscine existante en France (Guide 2026)",
-    excerpt: "En France, découvrez comment installer et profiter facilement du Jet de natation portable iGarden Swim Jet — 1 000 W...",
-    date: "2026-08-07",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/04_What_to_Look_for_in_a_Portable_Swim_Jet.png?v=1786081701&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/best-swim-machines-for-existing-pools"
-  },
-  {
-    id: "blog-6",
-    title: "Guide complet de la nage à contre-courant en piscine",
-    excerpt: "Un système de nage à contre-courant génère un flux continu permettant de nager sans interruption...",
-    date: "2026-07-30",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/06_Portable_Swim_Jet_vs_Built-In_Swim_Jet_263f4fb4-0a69-4798-9e3c-63f3e25dd385.png?v=1785404749&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/counter-current-swim-system-guide"
-  },
-  {
-    id: "blog-7",
-    title: "Guide complet du Swim Jet : fonctionnement, puissance 1 000 W et autonomie",
-    excerpt: "Tout savoir sur le Jet de natation portable iGarden Swim Jet — 1 000 W, son autonomie de 6 à 10 h et sa compatibilité universelle...",
-    date: "2026-06-10",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/04_c49af546-ddf8-4a26-b820-d3553d24b8d4.png?v=1781749607&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/guide-complet-du-swim-jet"
-  },
-  {
-    id: "blog-9",
-    title: "Les principaux critères techniques des systèmes de nage à contre-courant",
-    excerpt: "Comprendre les critères de puissance de 1 000 W, la dynamique de flux laminaire et l'autonomie sur batterie...",
-    date: "2026-05-25",
-    image: "https://eu.store.igarden.ai/cdn/shop/articles/03_273932ef-a043-4b50-8496-42ceb1e41dbd.png?v=1779702473&width=800",
-    link: "https://eu.store.igarden.ai/fr/blogs/news/les-normes-techniques-derriere-les-machines-a-courant-de-nage"
+    id: "school_banner_LCDNyF",
+    type: "school",
+    bgPc: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_3.png?v=1785481427&width=1920",
+    bgMb: "https://eu.store.igarden.ai/cdn/shop/files/Hero_Banner_4.png?v=1785481427&width=430",
+    eyebrow: "Special iGarden Swim Jet Offer",
+    heading: "Save Big on Your 1,000 W Swim Jet",
+    desc: "1,000 W Power | 6–10h Runtime | Universal Compatibility",
+    btnText: "Order Now",
+    btnLink: "/products/igarden-swim-jet-x-series-portable-swim-machine",
+    btnBg: "#f86709",
+    btnColor: "#ffffff",
+    endTs: 1788249599
   }
 ];

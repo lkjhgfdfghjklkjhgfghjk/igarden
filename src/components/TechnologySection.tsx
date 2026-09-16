@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Play, Pause } from 'lucide-react';
+import { useI18n } from '../i18n/I18nContext';
 
 export const TechnologySection: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -18,15 +21,17 @@ export const TechnologySection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white" dir={currentLanguage.direction}>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <h2 className="text-[26px] sm:text-[38px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-2">
-            Meilleur débit d'eau de sa catégorie
+            {isAr ? 'أفضل تدفق مائي في فئته الهندسية' : 'Class-Leading Laminar Water Flow'}
           </h2>
           <span className="text-[16px] sm:text-[20px] font-semibold text-gray-500">
-            1 000 W de puissance — Compatible avec toutes les piscines
+            {isAr
+              ? 'قوة 1000 واط — متوافق تماماً مع كافة أنواع وأحجام المسابح'
+              : '1,000 W High Thrust Output — Universal Pool Compatibility'}
           </span>
         </div>
 
@@ -59,28 +64,34 @@ export const TechnologySection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 sm:mt-14 pt-6 border-t border-gray-100 text-center">
           <div className="p-4 border-b md:border-b-0 md:border-r border-gray-100">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              Technologie d'onduleur IA
+              {isAr ? 'تقنية العاكس الذكي' : 'Smart Inverter Drive'}
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              offre le débit d'eau le plus puissant et constant de sa catégorie
+              {isAr
+                ? 'يوفر تدفقاً مائياً قوياً ومستقراً هو الأكثر سلاسة في فئته'
+                : 'Delivers high-efficiency, ripple-free counter-current propulsion'}
             </span>
           </div>
 
           <div className="p-4 border-b md:border-b-0 md:border-r border-gray-100">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              Mode intelligent
+              {isAr ? 'محرك متزامن متطور' : 'Synchronous BLDC Motor'}
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              moteur synchrone à aimant permanent de nouvelle génération
+              {isAr
+                ? 'مغناطيس دائم عالي العزم لتشغيل هادئ وكفاءة طاقة استثنائية'
+                : 'High-torque permanent magnet system for whisper-quiet endurance'}
             </span>
           </div>
 
           <div className="p-4">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              Flux en ligne droite
+              {isAr ? 'تيار انسيابي مستقيم' : 'Laminar Hydrodynamics'}
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              flux laminaire fluide calibré pour l'entraînement de précision
+              {isAr
+                ? 'تيار سباحة مستقيم بدون دوامات معاكسة للتدريب الرياضي الدقيق'
+                : 'Wide, turbulence-free channel optimized for continuous lap swimming'}
             </span>
           </div>
         </div>

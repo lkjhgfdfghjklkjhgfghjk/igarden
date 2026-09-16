@@ -1,14 +1,18 @@
 import React from 'react';
 import { ATHLETES, PRESS_QUOTES, FEATURED_LOGOS } from '../data';
+import { useI18n } from '../i18n/I18nContext';
 
 export const AthletesPressSection: React.FC = () => {
+  const { currentLanguage } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
+
   return (
-    <section className="py-16 sm:py-24 bg-white overflow-hidden">
+    <section className="py-16 sm:py-24 bg-white overflow-hidden" dir={currentLanguage.direction}>
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14 space-y-16 sm:space-y-20">
         {/* Title */}
         <div className="text-center">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Ce que disent les athlètes d’élite
+            {isAr ? 'ماذا يقول نخبة الرياضيين والسباحين' : 'What Elite Athletes Are Saying'}
           </h2>
         </div>
 
@@ -57,7 +61,7 @@ export const AthletesPressSection: React.FC = () => {
         {/* Featured in media logos ticker */}
         <div className="bg-[#FAFAFA] rounded-3xl p-8 sm:p-10 text-center space-y-6">
           <p className="text-[14px] sm:text-[16px] font-bold text-gray-400 uppercase tracking-widest m-0">
-            ÉGALEMENT PRÉSENTÉ DANS
+            {isAr ? 'تمت تغطيتنا أيضاً في كبرى وسائل الإعلام' : 'AS FEATURED ACROSS GLOBAL MEDIA'}
           </p>
 
           <div className="overflow-hidden relative w-full py-2">

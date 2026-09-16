@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ProductVariant } from '../types';
-import { CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
 import { ArrowRight, Lock } from 'lucide-react';
+import { useI18n } from '../i18n/I18nContext';
 
 interface StickyInsideNavProps {
   selectedVariant: ProductVariant;
@@ -13,14 +13,16 @@ interface StickyInsideNavProps {
 export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
   selectedVariant
 }) => {
+  const { currentLanguage, swimJetPrice, formatPrice, t } = useI18n();
+  const isAr = currentLanguage.id === 'ar';
   const [activeSection, setActiveSection] = useState('Aperçu');
   const [showBottomBar, setShowBottomBar] = useState(false);
 
   const sections = [
-    { id: 'Aperçu', label: 'Aperçu' },
-    { id: 'Technologie', label: 'Technologie' },
-    { id: 'Avantages', label: 'Avantages' },
-    { id: 'Avis', label: 'Avis Clients' }
+    { id: 'Aperçu', label: isAr ? 'نظرة عامة' : 'Overview' },
+    { id: 'Technologie', label: isAr ? 'التكنولوجيا' : 'Technology' },
+    { id: 'Avantages', label: isAr ? 'المميزات' : 'Benefits' },
+    { id: 'Avis', label: isAr ? 'آراء العملاء' : 'Customer Reviews' }
   ];
 
   useEffect(() => {
@@ -60,23 +62,23 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
   };
 
   const handleDirectCheckout = () => {
-    redirectToCheckout(selectedVariant.checkoutUrl);
+    redirectToCheckout(swimJetPrice.checkoutUrl || selectedVariant.checkoutUrl);
   };
 
   return (
     <>
       {/* Top sticky anchor bar */}
-      <div className="sticky top-[68px] sm:top-[80px] z-30 bg-white/95 backdrop-blur-md border-y border-gray-200 shadow-xs">
+      <div className="sticky top-[68px] sm:top-[80px] z-30 bg-white/95 backdrop-blur-md border-y border-gray-200 shadow-xs" dir={currentLanguage.direction}>
         <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12 py-3 flex flex-wrap items-center justify-between gap-3">
           {/* Model info */}
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
             <div>
               <span className="font-bold text-[15px] sm:text-[16px] text-gray-900 leading-tight">
-                {selectedVariant.name}
+                {t.hero.title}
               </span>
-              <span className="text-[13px] text-gray-500 hidden sm:inline ml-2">
-                — Débit {selectedVariant.flowRate} | {selectedVariant.power}
+              <span className="text-[13px] text-gray-500 hidden sm:inline ml-2 rtl:mr-2 rtl:ml-0">
+                — {isAr ? 'قوة 1000 واط | تشغيل 6-10 ساعات' : '1,000 W Power | 6-10 h Runtime'}
               </span>
             </div>
           </div>
@@ -103,7 +105,7 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
 
       {/* Floating Bottom Quick Buy Bar */}
       {showBottomBar && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 py-2.5 px-3 sm:px-8 shadow-2xl animate-in slide-in-from-bottom duration-200">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 py-2.5 px-3 sm:px-8 shadow-2xl animate-in slide-in-from-bottom duration-200" dir={currentLanguage.direction}>
           <div className="max-w-[1500px] mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5 min-w-0">
               <img
@@ -113,17 +115,17 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
               />
               <div className="min-w-0">
                 <p className="font-bold text-[13px] sm:text-[15px] text-gray-900 truncate">
-                  {selectedVariant.name}
+                  {t.hero.title}
                 </p>
                 <div className="flex items-center gap-1.5">
                   <span className="text-[15px] sm:text-[17px] font-extrabold text-gray-950">
-                    {selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                    {formatPrice(swimJetPrice.price)}
                   </span>
                   <span className="text-[12px] text-gray-400 line-through">
-                    {selectedVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                    {formatPrice(swimJetPrice.originalPrice)}
                   </span>
                   <span className="px-1.5 py-0.2 rounded-sm bg-emerald-100 text-emerald-800 text-[10px] sm:text-[11px] font-bold">
-                    -{Math.round(((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100)}%
+                    -{Math.round(((swimJetPrice.originalPrice - swimJetPrice.price) / swimJetPrice.originalPrice) * 100)}%
                   </span>
                 </div>
               </div>
@@ -136,11 +138,11 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
                 e.stopPropagation();
                 handleDirectCheckout();
               }}
-              className="h-11 px-4 sm:px-7 rounded-sm bg-[#0071E3] hover:bg-blue-700 text-white font-extrabold text-[13px] sm:text-[14px] tracking-wide shadow-sm transition-colors shrink-0 flex items-center justify-center gap-1.5 cursor-pointer uppercase text-center"
+              className="h-11 px-4 sm:px-7 rounded-lg bg-[#0071E3] hover:bg-blue-700 text-white font-extrabold text-[13px] sm:text-[14px] tracking-wide shadow-sm transition-colors shrink-0 flex items-center justify-center gap-1.5 cursor-pointer uppercase text-center border-none"
             >
               <Lock className="w-3.5 h-3.5 shrink-0" />
-              <span>COMMANDER</span>
-              <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+              <span>{t.common.orderNow}</span>
+              <ArrowRight className={`w-3.5 h-3.5 shrink-0 ${isAr ? 'rotate-180' : ''}`} />
             </button>
           </div>
         </div>

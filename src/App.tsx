@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { I18nProvider, useI18n } from './i18n/I18nContext';
+import { RegionLanguageModal } from './components/RegionLanguageModal';
+import { InitialMarketPopup } from './components/InitialMarketPopup';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { SearchModal } from './components/SearchModal';
-import { CountryDialog } from './components/CountryDialog';
 import { CartDrawer } from './components/CartDrawer';
 import { AccountModal } from './components/AccountModal';
 import { OrderTrackingModal } from './components/OrderTrackingModal';
@@ -33,57 +35,31 @@ import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
 import { trackTikTokAddToCart } from './utils/tiktokPixel';
 
-export const PRODUCT_ROUTE = '/products/jet-de-natation-portable-igarden-x';
+function AppContent() {
+  const {
+    currentLanguage,
+    pageType,
+    navigateToPage,
+    isRegionModalOpen,
+    openRegionModal,
+    closeRegionModal,
+    swimJetPrice,
+    formatPrice
+  } = useI18n();
 
-const getInitialPage = (): 'home' | 'product' => {
-  if (typeof window !== 'undefined') {
-    const path = window.location.pathname;
-    if (path === PRODUCT_ROUTE || path.startsWith('/products') || path.includes('jet-de-natation')) {
-      return 'product';
-    }
-  }
-  return 'home';
-};
-
-export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'product'>(getInitialPage);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(PRODUCT_VARIANTS[0]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-  const [currentCountry, setCurrentCountry] = useState('FR');
-
-  React.useEffect(() => {
-    const handlePopState = () => {
-      const path = window.location.pathname;
-      if (path === PRODUCT_ROUTE || path.startsWith('/products') || path.includes('jet-de-natation')) {
-        setCurrentPage('product');
-      } else {
-        setCurrentPage('home');
-      }
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
 
   const navigateToProduct = (_handle?: string) => {
-    if (typeof window !== 'undefined' && window.location.pathname !== PRODUCT_ROUTE) {
-      window.history.pushState({}, '', PRODUCT_ROUTE);
-    }
-    setCurrentPage('product');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateToPage('product');
   };
 
   const navigateToHome = () => {
-    if (typeof window !== 'undefined' && window.location.pathname !== '/') {
-      window.history.pushState({}, '', '/');
-    }
-    setCurrentPage('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateToPage('home');
   };
 
   const handleAddToCart = (
@@ -96,21 +72,28 @@ export default function App() {
 
     const newItems = [...cartItems];
 
-    // Add or update main product
+    // Add or update main product with active market checkout URL and localized price
     const existingIndex = newItems.findIndex((item) => item.id === variant.id);
+    const activeCheckoutUrl = swimJetPrice.checkoutUrl || variant.checkoutUrl;
+    const activePrice = swimJetPrice.price || variant.price;
+    const activeOriginalPrice = swimJetPrice.originalPrice || variant.originalPrice;
+
     if (existingIndex > -1) {
       newItems[existingIndex].quantity += quantity;
+      newItems[existingIndex].checkoutUrl = activeCheckoutUrl;
+      newItems[existingIndex].price = activePrice;
+      newItems[existingIndex].originalPrice = activeOriginalPrice;
     } else {
       newItems.push({
         id: variant.id,
         title: variant.name,
         variantTitle: variant.shortName,
-        price: variant.price,
-        originalPrice: variant.originalPrice,
+        price: activePrice,
+        originalPrice: activeOriginalPrice,
         image: variant.images[0],
         quantity,
         discountCode: variant.couponCode,
-        checkoutUrl: variant.checkoutUrl
+        checkoutUrl: activeCheckoutUrl
       });
     }
 
@@ -137,16 +120,19 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#121212] font-['Figtree'] selection:bg-[#0071E3] selection:text-white">
+    <div
+      className="min-h-screen flex flex-col bg-white text-[#121212] font-sans selection:bg-[#0071E3] selection:text-white"
+      dir={currentLanguage.direction}
+    >
       {/* Top Announcement Bar */}
-      <AnnouncementBar onOpenCountryDialog={() => setIsCountryOpen(true)} />
+      <AnnouncementBar onOpenCountryDialog={openRegionModal} />
 
       {/* Main Header & Navigation */}
       <Header
         cartItems={cartItems}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenCountryDialog={() => setIsCountryOpen(true)}
+        onOpenCountryDialog={openRegionModal}
         onOpenAccount={() => setIsAccountOpen(true)}
         onOpenTracking={() => setIsTrackingOpen(true)}
         onNavigateToProduct={navigateToProduct}
@@ -154,8 +140,8 @@ export default function App() {
       />
 
       <main className="flex-1">
-        {currentPage === 'home' ? (
-          /* ================= FULL HOME PAGE RECONSTRUCTION ================= */
+        {pageType === 'home' ? (
+          /* ================= HOME PAGE ================= */
           <Home onNavigateToProduct={navigateToProduct} />
         ) : (
           /* ================= PRODUCT DETAIL PAGE ================= */
@@ -174,10 +160,10 @@ export default function App() {
               onAddToCart={() => handleAddToCart(selectedVariant, 1, [])}
             />
 
-            {/* Feature Grid / Aperçu (Kickstarter proof & Bento grid) */}
+            {/* Feature Grid / Overview */}
             <FeatureGridSection />
 
-            {/* KOL Showcase Slider & Video modal */}
+            {/* KOL Showcase Slider */}
             <KolShowcaseSection />
 
             {/* Inverter Tech & Performance specs */}
@@ -230,7 +216,7 @@ export default function App() {
 
       {/* Footer */}
       <Footer
-        onOpenCountryDialog={() => setIsCountryOpen(true)}
+        onOpenCountryDialog={openRegionModal}
         onOpenAccount={() => setIsAccountOpen(true)}
         onOpenTracking={() => setIsTrackingOpen(true)}
         onNavigateToProduct={navigateToProduct}
@@ -243,13 +229,15 @@ export default function App() {
         onClose={() => setIsSearchOpen(false)}
         onNavigateToProduct={navigateToProduct}
       />
-      
-      <CountryDialog
-        isOpen={isCountryOpen}
-        onClose={() => setIsCountryOpen(false)}
-        currentCountry={currentCountry}
-        onSelectCountry={setCurrentCountry}
+
+      {/* Advanced Multi-Region / Language / Currency Modal */}
+      <RegionLanguageModal
+        isOpen={isRegionModalOpen}
+        onClose={closeRegionModal}
       />
+
+      {/* Automatic Geolocation Confirmation Popup */}
+      <InitialMarketPopup />
 
       <AccountModal
         isOpen={isAccountOpen}
@@ -274,7 +262,15 @@ export default function App() {
         onAddAccessory={() => {}}
       />
 
-      <FloatingWidgets onScrollToTop={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+      <FloatingWidgets />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <I18nProvider>
+      <AppContent />
+    </I18nProvider>
   );
 }
