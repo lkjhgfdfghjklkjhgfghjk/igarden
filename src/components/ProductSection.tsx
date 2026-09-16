@@ -51,7 +51,11 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   };
 
   const handleDirectCheckout = () => {
-    redirectToCheckout(selectedVariant.checkoutUrl);
+    let targetUrl = selectedVariant.checkoutUrl || CHECKOUT_URL;
+    if (quantity > 1 && targetUrl.includes('items[][quantity]=')) {
+      targetUrl = targetUrl.replace(/items\[\]\[quantity\]=\d+/, `items[][quantity]=${quantity}`);
+    }
+    redirectToCheckout(targetUrl);
   };
 
   const handleVariantSelect = (variant: ProductVariant) => {
