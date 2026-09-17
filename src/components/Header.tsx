@@ -148,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
                           </div>
                           <div>
                             <h4 className="font-bold text-[14px] text-gray-900 text-center">Jet de natation portable iGarden Swim Jet — 1 000 W</h4>
-                            <p className="text-[#0071E3] font-bold text-[13px] text-center mt-0.5">209,00 €</p>
+                            <p className="text-[#0071E3] font-bold text-[13px] text-center mt-0.5">229,00 €</p>
                             <div className="flex items-center justify-center gap-1.5 text-[11px] text-gray-600 mt-2 flex-wrap">
                               <span>1 000 W</span>
                               <span>•</span>
@@ -489,7 +489,7 @@ export const Header: React.FC<HeaderProps> = ({
                     />
                     <div>
                       <p className="font-bold text-[14px] text-gray-900">iGarden Swim Jet Série X</p>
-                      <p className="text-[12px] text-[#0071E3] font-semibold">209,00 € (Offre -50%)</p>
+                      <p className="text-[12px] text-[#0071E3] font-semibold">229,00 € (Offre -50%)</p>
                     </div>
                   </div>
                 </div>

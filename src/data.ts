@@ -1,6 +1,6 @@
 import { ProductVariant, AccessoryOption, KolVideo, Athlete, PressQuote, TrustpilotReview, UserReview } from './types';
 
-export const CHECKOUT_URL = "https://braceletot.myshopify.com/cart/add?items[][id]=57181764125012&items[][quantity]=1&return_to=%2Fcheckout";
+export const CHECKOUT_URL = "https://0f0kk2-fs.myshopify.com/cart/add?items[][id]=54989976502609&items[][quantity]=1&return_to=%2Fcheckout";
 
 export const PRODUCT_VARIANTS: ProductVariant[] = [
   {
@@ -9,12 +9,12 @@ export const PRODUCT_VARIANTS: ProductVariant[] = [
     name: "Jet de natation portable iGarden Swim Jet — 1 000 W",
     shortName: "Swim Jet — 1 000 W",
     subtitle: "Système de nage à contre-courant universel et polyvalent — Compatible avec toutes les piscines",
-    price: 209.00,
+    price: 229.00,
     originalPrice: 418.00,
-    discountAmount: 209.00,
+    discountAmount: 189.00,
     couponCode: "SWIMJET",
-    couponOff: "€209,00",
-    checkoutUrl: "https://braceletot.myshopify.com/cart/add?items[][id]=57181764125012&items[][quantity]=1&return_to=%2Fcheckout",
+    couponOff: "€189,00",
+    checkoutUrl: "https://0f0kk2-fs.myshopify.com/cart/add?items[][id]=54989976502609&items[][quantity]=1&return_to=%2Fcheckout",
     specsSummary: "1 000 W de puissance | 6 à 10 h d'autonomie à pleine puissance | Compatible avec toutes les piscines",
     power: "1 000 W",
     speed: "1,5 m/s",
@@ -263,7 +263,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     rating: 5,
     date: "19/08/2026",
     title: "Une vraie révolution pour notre petite piscine à Bordeaux",
-    content: "Nous hésitions avec un système de nage encastré à plus de 4 000 €, mais pour 209,00 € cet appareil fait exactement le même travail sans aucun chantier. La télécommande sans fil est très pratique pour doser l'effort. Les enfants s'amusent aussi comme des fous avec le courant.",
+    content: "Nous hésitions avec un système de nage encastré à plus de 4 000 €, mais pour 229,00 € cet appareil fait exactement le même travail sans aucun chantier. La télécommande sans fil est très pratique pour doser l'effort. Les enfants s'amusent aussi comme des fous avec le courant.",
     verified: true,
     productVariant: "Swim Jet — 1 000 W"
   },
@@ -352,7 +352,7 @@ export const NATIVE_FRENCH_REVIEWS: UserReview[] = [
     author: "Antoine Mercier",
     rating: 5,
     date: "24/07/2026",
-    title: "Rapport qualité/prix exceptionnel à 209,00 €",
+    title: "Rapport qualité/prix exceptionnel à 229,00 €",
     content: "À ce prix avec la promo, c'est une affaire en or comparé aux pompes de nage traditionnelles qui demandent des tuyauteries sous dalle et des milliers d'euros de plomberie. Fonctionne dès le déballage.",
     verified: true,
     productVariant: "Swim Jet — 1 000 W"

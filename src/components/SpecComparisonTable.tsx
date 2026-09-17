@@ -304,7 +304,7 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
               className="px-6 py-3 min-h-[44px] bg-[#0071E3] hover:bg-blue-700 active:scale-[0.99] text-white rounded-xl text-[13px] sm:text-[14px] font-bold uppercase transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
             >
               <Lock className="w-3.5 h-3.5 shrink-0" />
-              <span>Commander le Swim Jet — 209,00 €</span>
+              <span>Commander le Swim Jet — 229,00 €</span>
               <ArrowRight className="w-3.5 h-3.5 shrink-0" />
             </button>
           </div>

@@ -69,7 +69,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               </div>
               <p className="text-[16px] sm:text-[17px] font-bold text-gray-900">Votre panier est actuellement vide</p>
               <p className="text-[13px] text-gray-500 max-w-xs mx-auto">
-                Profitez dès maintenant du jet de natation portable Swim Jet (1 000 W) à 209,00 € avec la livraison offerte.
+                Profitez dès maintenant du jet de natation portable Swim Jet (1 000 W) à 229,00 € avec la livraison offerte.
               </p>
               <button
                 type="button"
