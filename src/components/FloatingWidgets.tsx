@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUp, MessageCircle, X, Send, Check, Sparkles } from 'lucide-react';
 import { CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokInitiateCheckout } from '../utils/tiktokPixel';
 
 export const FloatingWidgets: React.FC = () => {
   const [showBackTop, setShowBackTop] = useState(false);
@@ -220,6 +221,13 @@ export const FloatingWidgets: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => {
+                      trackTikTokInitiateCheckout({
+                        id: 'swim-jet-1000w',
+                        name: 'Jet de natation portable iGarden Swim Jet — 1 000 W',
+                        price: 229,
+                        quantity: 1,
+                        currency: 'EUR'
+                      });
                       redirectToCheckout(CHECKOUT_URL);
                     }}
                     className="inline-block px-5 py-3 min-h-[44px] bg-[#0071E3] text-white text-[13px] font-bold rounded-xl shadow-xs hover:bg-blue-700 active:scale-[0.99] transition-all uppercase cursor-pointer"

@@ -31,6 +31,7 @@ import { FloatingWidgets } from './components/FloatingWidgets';
 
 import { ProductVariant, AccessoryOption, CartItem } from './types';
 import { PRODUCT_VARIANTS } from './data';
+import { trackTikTokAddToCart } from './utils/tiktokPixel';
 
 export const PRODUCT_ROUTE = '/products/hydro-propulseur-de-natation-contre-courant-haute-performance-1000w-autonomie-pro-pack-complet';
 
@@ -90,6 +91,15 @@ export default function App() {
     quantity: number,
     _selectedAccessories: { acc: AccessoryOption; qty: number; variantId?: string }[] = []
   ) => {
+    // TikTok Pixel: AddToCart tracking on actual user action
+    trackTikTokAddToCart({
+      id: variant.id,
+      name: variant.name,
+      price: variant.price,
+      quantity,
+      currency: 'EUR'
+    });
+
     const newItems = [...cartItems];
 
     // Add or update main product

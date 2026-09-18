@@ -3,6 +3,7 @@ import { X, Trash2, Plus, Minus, ArrowRight, ShieldCheck, Truck, RotateCcw, Shop
 import { CartItem } from '../types';
 import { CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokInitiateCheckout } from '../utils/tiktokPixel';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -33,6 +34,22 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const targetCheckoutUrl = itemWithCheckout?.checkoutUrl || CHECKOUT_URL;
 
   const handleProceedToCheckout = () => {
+    const primaryItem = items[0];
+    const totalQty = items.reduce((sum, item) => sum + item.quantity, 0);
+    trackTikTokInitiateCheckout({
+      id: primaryItem ? primaryItem.id : 'swim-jet-1000w',
+      name: primaryItem ? primaryItem.title : 'Jet de natation portable iGarden Swim Jet — 1 000 W',
+      price: totalPrice,
+      quantity: totalQty || 1,
+      currency: 'EUR',
+      contents: items.map((item) => ({
+        content_id: item.id,
+        content_name: item.title,
+        content_type: 'product',
+        quantity: item.quantity,
+        price: item.price
+      }))
+    });
     redirectToCheckout(targetCheckoutUrl);
   };
 

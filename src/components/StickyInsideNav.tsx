@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ProductVariant } from '../types';
 import { CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokInitiateCheckout } from '../utils/tiktokPixel';
 import { ArrowRight, Lock } from 'lucide-react';
 
 interface StickyInsideNavProps {
@@ -68,6 +69,13 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
   };
 
   const handleDirectCheckout = () => {
+    trackTikTokInitiateCheckout({
+      id: selectedVariant.id,
+      name: selectedVariant.name,
+      price: selectedVariant.price,
+      quantity: 1,
+      currency: 'EUR'
+    });
     redirectToCheckout(selectedVariant.checkoutUrl);
   };
 

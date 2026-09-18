@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, ChevronDown, Check, Star, ArrowRight, Truck,
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS, CHECKOUT_URL } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokViewContent, trackTikTokInitiateCheckout } from '../utils/tiktokPixel';
 
 interface ProductSectionProps {
   selectedVariant: ProductVariant;
@@ -19,6 +20,17 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'desc' | 'specs' | 'shipping' | 'warranty'>('desc');
   const [viewersCount] = useState(42);
+
+  // TikTok Pixel: ViewContent tracking when product details are viewed
+  useEffect(() => {
+    trackTikTokViewContent({
+      id: selectedVariant.id,
+      name: selectedVariant.name,
+      price: selectedVariant.price,
+      quantity: 1,
+      currency: 'EUR'
+    });
+  }, [selectedVariant.id]);
 
   // Reset image index when variant changes if out of bounds
   useEffect(() => {
@@ -55,6 +67,13 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
     if (quantity > 1 && targetUrl.includes('items[][quantity]=')) {
       targetUrl = targetUrl.replace(/items\[\]\[quantity\]=\d+/, `items[][quantity]=${quantity}`);
     }
+    trackTikTokInitiateCheckout({
+      id: selectedVariant.id,
+      name: selectedVariant.name,
+      price: selectedVariant.price,
+      quantity: quantity,
+      currency: 'EUR'
+    });
     redirectToCheckout(targetUrl);
   };
 

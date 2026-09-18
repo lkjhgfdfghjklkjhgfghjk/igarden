@@ -2,6 +2,7 @@ import React from 'react';
 import { ProductVariant } from '../types';
 import { PRODUCT_VARIANTS } from '../data';
 import { redirectToCheckout } from '../utils/checkout';
+import { trackTikTokInitiateCheckout } from '../utils/tiktokPixel';
 import { Check, Zap, ArrowRight, Shield, Award, Sparkles, Lock } from 'lucide-react';
 
 interface SpecComparisonTableProps {
@@ -133,6 +134,13 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
 
   const handleSelect = (variant: ProductVariant) => {
     onSelectVariant(variant);
+    trackTikTokInitiateCheckout({
+      id: variant.id,
+      name: variant.name,
+      price: variant.price,
+      quantity: 1,
+      currency: 'EUR'
+    });
     redirectToCheckout(variant.checkoutUrl);
   };
 
