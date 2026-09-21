@@ -11,7 +11,7 @@ export const FloatingWidgets: React.FC = () => {
   const [showKlaviyoTeaser] = useState(true);
   const [chatMessage, setChatMessage] = useState('');
   const [chatHistory, setChatHistory] = useState<{ sender: 'user' | 'bot'; text: string }[]>([
-    { sender: 'bot', text: 'Bonjour ! Comment pouvons-nous vous aider à propos du jet de natation iGarden Swim Jet 1 000 W (à 229,00 €) ?' }
+    { sender: 'bot', text: 'Bonjour ! Comment pouvons-nous vous aider à propos du jet de natation iGarden Swim Jet 1 000 W (à 209,00 €) ?' }
   ]);
   const [klaviyoEmail, setKlaviyoEmail] = useState('');
   const [klaviyoSuccess, setKlaviyoSuccess] = useState(false);
@@ -184,7 +184,7 @@ export const FloatingWidgets: React.FC = () => {
               <div>
                 <span className="text-[11px] font-bold text-[#0071E3] uppercase tracking-wider">Offre Spéciale France</span>
                 <h3 className="text-[20px] font-extrabold text-gray-900 leading-tight mt-0.5">
-                  Jet de natation portable 1 000 W à 229,00 €
+                  Jet de natation portable 1 000 W à 209,00 €
                 </h3>
                 <p className="text-[12px] text-gray-500 mt-1">
                   Profitez de la remise immédiate (-50%) + livraison Colissimo offerte en France métropolitaine.
@@ -224,7 +224,7 @@ export const FloatingWidgets: React.FC = () => {
                       trackTikTokInitiateCheckout({
                         id: 'swim-jet-1000w',
                         name: 'Jet de natation portable iGarden Swim Jet — 1 000 W',
-                        price: 229,
+                        price: 209,
                         quantity: 1,
                         currency: 'EUR'
                       });

@@ -33,7 +33,7 @@ export const VsComparisonSection: React.FC = () => {
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  Seulement 229,00 € (1 000 W de puissance)
+                  Seulement 209,00 € (1 000 W de puissance)
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
                   6 à 10 h d'autonomie à pleine puissance

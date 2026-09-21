@@ -149,7 +149,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
                   <p className="font-bold text-[13px] sm:text-[14px] text-gray-900 truncate">
                     Swim Jet — 1 000 W (Compatible avec toutes les piscines)
                   </p>
-                  <p className="text-[12px] text-gray-500">Qté: 1 • 229,00 € • Livraison Colissimo Offerte</p>
+                  <p className="text-[12px] text-gray-500">Qté: 1 • 209,00 € • Livraison Colissimo Offerte</p>
                 </div>
               </div>
 

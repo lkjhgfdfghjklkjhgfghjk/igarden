@@ -22,7 +22,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
   const recommendations = [
     {
       title: "Jet de natation portable Swim Jet — 1 000 W",
-      price: "229,00 €",
+      price: "209,00 €",
       originalPrice: "418,00 €",
       image: "https://eu.store.igarden.ai/cdn/shop/files/1200_x_1200_1_549cfcd1-014d-4f4b-a0b7-589f37292f31.png?v=1776675064&width=320"
     },

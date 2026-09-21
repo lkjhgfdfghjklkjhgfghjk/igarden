@@ -51,7 +51,7 @@ export const ProductCardFlexSwimJet: React.FC<ProductCardFlexSwimJetProps> = ({ 
                 }}
                 className="px-6 py-3 min-h-[44px] bg-white text-black font-bold text-[14px] sm:text-[15px] rounded-xl hover:bg-gray-100 active:scale-[0.99] transition-all shadow-md cursor-pointer uppercase"
               >
-                Commander (229,00 €)
+                Commander (209,00 €)
               </button>
             </div>
           </div>

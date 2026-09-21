@@ -92,7 +92,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                           Prix<br />Spécial
                         </span>
                         <span className="text-[36px] md:text-[54px] font-extrabold leading-none tracking-tight">
-                          229 €
+                          209 €
                         </span>
                       </div>
                       <p className="text-[12px] md:text-[14px] font-medium text-white/90">
@@ -138,7 +138,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                     onClick={onNavigateToProduct}
                     className="px-8 py-3.5 min-h-[44px] bg-[#f86709] hover:bg-[#d55807] active:scale-[0.99] text-white font-extrabold text-[15px] md:text-[17px] rounded-xl tracking-wide shadow-lg transition-all cursor-pointer uppercase"
                   >
-                    Commander à 229,00 €
+                    Commander à 209,00 €
                   </button>
                 </div>
               </div>
