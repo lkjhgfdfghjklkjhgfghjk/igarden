@@ -46,12 +46,12 @@ export const AccountModal: React.FC<AccountModalProps> = ({
     e.preventDefault();
     setErrorMsg(null);
     if (!email || !password) {
-      setErrorMsg('Bitte füllen Sie alle erforderlichen Felder aus.');
+      setErrorMsg('Veuillez remplir tous les champs obligatoires.');
       return;
     }
 
     const loggedUser: UserProfile = {
-      firstName: firstName || 'Kunde',
+      firstName: firstName || 'Client',
       lastName: lastName || 'iGarden',
       email,
       isLoggedIn: true,
@@ -60,7 +60,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
 
     setUser(loggedUser);
     localStorage.setItem('igarden_user', JSON.stringify(loggedUser));
-    setSuccessMsg('Anmeldung erfolgreich! Willkommen in Ihrem Kundenbereich.');
+    setSuccessMsg('Connexion réussie ! Bienvenue dans votre espace client.');
     setTimeout(() => setSuccessMsg(null), 3000);
   };
 
@@ -68,7 +68,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
     e.preventDefault();
     setErrorMsg(null);
     if (!email || !password || !firstName || !lastName) {
-      setErrorMsg('Bitte geben Sie Ihren Vornamen, Nachnamen, E-Mail-Adresse und Passwort ein.');
+      setErrorMsg('Veuillez saisir votre prénom, nom, adresse e-mail et mot de passe.');
       return;
     }
 
@@ -82,14 +82,14 @@ export const AccountModal: React.FC<AccountModalProps> = ({
 
     setUser(newUser);
     localStorage.setItem('igarden_user', JSON.stringify(newUser));
-    setSuccessMsg('Konto erfolgreich erstellt!');
+    setSuccessMsg('Compte créé avec succès !');
     setTimeout(() => setSuccessMsg(null), 3000);
   };
 
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('igarden_user');
-    setSuccessMsg('Erfolgreich abgemeldet.');
+    setSuccessMsg('Déconnexion réussie.');
     setTimeout(() => setSuccessMsg(null), 2500);
   };
 
@@ -107,16 +107,16 @@ export const AccountModal: React.FC<AccountModalProps> = ({
             </div>
             <div>
               <h3 className="font-bold text-[17px] text-gray-900 leading-tight">
-                {user ? `Guten Tag, ${user.firstName}` : 'iGarden Kundenkonto'}
+                {user ? `Bonjour, ${user.firstName}` : 'Espace Client iGarden'}
               </h3>
-              <p className="text-[12px] text-gray-500">Offizieller Store Deutschland & EU</p>
+              <p className="text-[12px] text-gray-500">Boutique Officielle France & Europe</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full text-gray-400 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer"
-            aria-label="Schließen"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -141,7 +141,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
             /* Logged in Dashboard */
             <div className="space-y-4">
               <div className="p-4 bg-blue-50/60 rounded-xl border border-blue-100 space-y-1">
-                <p className="text-[12px] text-gray-500 font-medium">Verifiziertes Kundenkonto</p>
+                <p className="text-[12px] text-gray-500 font-medium">Compte client vérifié</p>
                 <p className="text-[16px] font-bold text-gray-900">{user.firstName} {user.lastName}</p>
                 <p className="text-[13px] text-gray-600">{user.email}</p>
               </div>
@@ -151,7 +151,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-bold text-[14px] text-gray-900 flex items-center gap-2">
                     <Package className="w-4 h-4 text-[#0071E3]" />
-                    Bestellstatus in Echtzeit verfolgen
+                    Suivi de commande en temps réel
                   </span>
                   <button
                     type="button"
@@ -161,11 +161,11 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                     }}
                     className="text-[13px] font-bold text-[#0071E3] hover:underline flex items-center gap-1 cursor-pointer"
                   >
-                    Verfolgen <ArrowRight className="w-3.5 h-3.5" />
+                    Suivre <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
                 <p className="text-[12px] text-gray-500">
-                  Prüfen Sie den aktuellen Versandstatus Ihres DHL / DPD Pakets in Echtzeit.
+                  Consultez l'acheminement de votre colis avec votre numéro de suivi.
                 </p>
               </div>
 
@@ -176,14 +176,14 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                   className="px-4 py-2 min-h-[44px] rounded-xl text-red-600 hover:bg-red-50 active:scale-95 text-[13px] font-bold flex items-center gap-1.5 transition-all cursor-pointer"
                 >
                   <LogOut className="w-4 h-4" />
-                  Abmelden
+                  Se déconnecter
                 </button>
                 <button
                   type="button"
                   onClick={onClose}
                   className="px-6 py-2.5 min-h-[44px] bg-gray-900 text-white rounded-xl text-[13px] font-bold hover:bg-black active:scale-95 transition-all uppercase cursor-pointer"
                 >
-                  Schließen
+                  Fermer
                 </button>
               </div>
             </div>
@@ -199,7 +199,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                     tab === 'login' ? 'border-[#0071E3] text-[#0071E3]' : 'border-transparent text-gray-500 hover:text-gray-900'
                   }`}
                 >
-                  Anmelden
+                  Se connecter
                 </button>
                 <button
                   type="button"
@@ -208,20 +208,20 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                     tab === 'register' ? 'border-[#0071E3] text-[#0071E3]' : 'border-transparent text-gray-500 hover:text-gray-900'
                   }`}
                 >
-                  Konto erstellen
+                  Créer un compte
                 </button>
               </div>
 
               {tab === 'login' ? (
                 <form onSubmit={handleLogin} className="space-y-4">
                   <div>
-                    <label className="block text-[13px] font-bold text-gray-700 mb-1">E-Mail-Adresse</label>
+                    <label className="block text-[13px] font-bold text-gray-700 mb-1">Adresse e-mail</label>
                     <div className="relative">
                       <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
                         type="email"
                         required
-                        placeholder="beispiel@email.de"
+                        placeholder="exemple@email.fr"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
@@ -230,7 +230,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-[13px] font-bold text-gray-700 mb-1">Passwort</label>
+                    <label className="block text-[13px] font-bold text-gray-700 mb-1">Mot de passe</label>
                     <div className="relative">
                       <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                       <input
@@ -247,14 +247,14 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                   <div className="flex items-center justify-between text-[12px]">
                     <label className="flex items-center gap-1.5 text-gray-600 cursor-pointer">
                       <input type="checkbox" defaultChecked className="rounded-sm border-gray-300 text-[#0071E3]" />
-                      <span>Angemeldet bleiben</span>
+                      <span>Rester connecté</span>
                     </label>
                     <button
                       type="button"
-                      onClick={() => setSuccessMsg("Ein Link zum Zurücksetzen Ihres Passworts wurde an Ihre E-Mail gesendet.")}
+                      onClick={() => setSuccessMsg("Un e-mail de réinitialisation a été envoyé.")}
                       className="text-[#0071E3] font-semibold hover:underline cursor-pointer"
                     >
-                      Passwort vergessen?
+                      Mot de passe oublié ?
                     </button>
                   </div>
 
@@ -262,29 +262,29 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                     type="submit"
                     className="w-full h-12 min-h-[44px] rounded-xl bg-[#0071E3] hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-[14px] sm:text-[15px] tracking-wide transition-all shadow-xs cursor-pointer uppercase text-center"
                   >
-                    Anmelden
+                    Se connecter
                   </button>
                 </form>
               ) : (
                 <form onSubmit={handleRegister} className="space-y-3.5">
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[12px] font-bold text-gray-700 mb-1">Vorname</label>
+                      <label className="block text-[12px] font-bold text-gray-700 mb-1">Prénom</label>
                       <input
                         type="text"
                         required
-                        placeholder="Max"
+                        placeholder="Jean"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-xl text-[13px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
                       />
                     </div>
                     <div>
-                      <label className="block text-[12px] font-bold text-gray-700 mb-1">Nachname</label>
+                      <label className="block text-[12px] font-bold text-gray-700 mb-1">Nom</label>
                       <input
                         type="text"
                         required
-                        placeholder="Mustermann"
+                        placeholder="Dupont"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-xl text-[13px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
@@ -293,11 +293,11 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-[12px] font-bold text-gray-700 mb-1">E-Mail-Adresse</label>
+                    <label className="block text-[12px] font-bold text-gray-700 mb-1">Adresse e-mail</label>
                     <input
                       type="email"
                       required
-                      placeholder="max.mustermann@email.de"
+                      placeholder="jean.dupont@email.fr"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-3.5 py-2 border border-gray-300 rounded-xl text-[13px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
@@ -305,7 +305,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
                   </div>
 
                   <div>
-                    <label className="block text-[12px] font-bold text-gray-700 mb-1">Passwort (mind. 8 Zeichen)</label>
+                    <label className="block text-[12px] font-bold text-gray-700 mb-1">Mot de passe (8 caractères min.)</label>
                     <input
                       type="password"
                       required
@@ -318,14 +318,14 @@ export const AccountModal: React.FC<AccountModalProps> = ({
 
                   <div className="flex items-start gap-2 pt-1 text-[11px] text-gray-500">
                     <input type="checkbox" required defaultChecked className="mt-0.5 rounded-sm border-gray-300 text-[#0071E3]" />
-                    <span>Ich akzeptiere die Allgemeinen Geschäftsbedingungen (AGB) und die Datenschutzrichtlinie von iGarden.</span>
+                    <span>J'accepte les Conditions Générales de Vente et la Politique de Confidentialité d'iGarden.</span>
                   </div>
 
                   <button
                     type="submit"
                     className="w-full h-12 min-h-[44px] rounded-xl bg-[#0071E3] hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-[14px] sm:text-[15px] tracking-wide transition-all shadow-xs cursor-pointer uppercase text-center"
                   >
-                    Konto jetzt erstellen
+                    Créer mon compte
                   </button>
                 </form>
               )}
@@ -335,7 +335,7 @@ export const AccountModal: React.FC<AccountModalProps> = ({
           {/* Reassurance */}
           <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-center gap-1.5 text-[11px] text-gray-500">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-            <span>100% DSGVO-konformer Datenschutz (Deutschland / EU)</span>
+            <span>Données 100% sécurisées et conformes RGPD (France & Union Européenne)</span>
           </div>
         </div>
       </div>

@@ -4,18 +4,18 @@ export const WhyChooseUsSection: React.FC = () => {
   const items = [
     {
       icon: "https://eu.store.igarden.ai/cdn/shop/files/18_c3cdf571-4b47-40fa-967b-1891dc924409.svg?v=1778500400&width=120",
-      title: "2 Jahre Garantie",
-      desc: "Garantierte Spitzenleistung für Swim Jet und Akkueinheit."
+      title: "Garantie 2 ans",
+      desc: "Performance et tranquillité d'esprit garanties pour le Swim Jet et sa batterie."
     },
     {
       icon: "https://eu.store.igarden.ai/cdn/shop/files/Multichannel_Support.png?v=1774252270&width=120",
-      title: "24/7 Kundenservice",
-      desc: "Erreichen Sie uns jederzeit unkompliziert per E-Mail oder Chat."
+      title: "Support client réactif 7j/7",
+      desc: "Une équipe dédiée à votre écoute par e-mail ou chat pour répondre à toutes vos questions."
     },
     {
       icon: "https://eu.store.igarden.ai/cdn/shop/files/Up_to_30-Day_Returns.png?v=1774252270&width=120",
-      title: "30 Tage Rückgaberecht",
-      desc: "Testen Sie ganz ohne Risiko – mit unserer 30-tägigen Geld-zurück-Garantie ab Erhalt."
+      title: "Essai 30 jours satisfait ou remboursé",
+      desc: "Testez votre appareil en conditions réelles sans aucun risque dès sa réception."
     }
   ];
 
@@ -24,7 +24,7 @@ export const WhyChooseUsSection: React.FC = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[26px] sm:text-[38px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Warum ist iGarden die beste Wahl für Ihre Gegenstromanlage?
+            Pourquoi choisir iGarden pour votre système de nage à contre-courant ?
           </h2>
         </div>
 

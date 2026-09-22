@@ -34,10 +34,10 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer className="bg-[#1a1a1a] text-[#bbb9ba] font-['Figtree'] pt-10 pb-12 border-t border-[#333]">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-14">
-        {/* Top bar: NEWSLETTER, Newsletter & Socials */}
+        {/* Top bar: NEWSLETTER & Socials */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pb-8 border-b border-[#494546]">
           <span className="font-bold text-[16px] sm:text-[20px] text-white/90 uppercase tracking-wide shrink-0">
-            NEWSLETTER & ANGEBOTE:
+            NEWSLETTER & OFFRES EXCLUSIVES :
           </span>
 
           {/* Form */}
@@ -47,7 +47,7 @@ export const Footer: React.FC<FooterProps> = ({
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="E-Mail-Adresse eingeben"
+                placeholder="Entrez votre adresse e-mail"
                 required
                 className="flex-1 px-4 py-2 text-[14px] sm:text-[16px] text-gray-900 bg-transparent outline-none"
               />
@@ -55,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({
                 type="submit"
                 className="px-6 py-2.5 rounded-full bg-[#0071E3] hover:bg-blue-600 text-white font-bold text-[13px] sm:text-[15px] uppercase tracking-wider transition-colors shrink-0 cursor-pointer"
               >
-                {subscribed ? "ANGEMELDET!" : "ANMELDEN"}
+                {subscribed ? "INSCRIT !" : "S'INSCRIRE"}
               </button>
             </div>
           </form>
@@ -119,65 +119,65 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
           </div>
 
-          {/* Col 1: Produkte */}
+          {/* Col 1: Produits */}
           <div className="space-y-3">
             <h3
               onClick={() => toggleCol(1)}
               className="font-bold text-[16px] text-white/90 uppercase tracking-wider flex items-center justify-between cursor-pointer sm:cursor-default"
             >
-              <span>Produkte</span>
+              <span>Produits</span>
             </h3>
             <ul className={`space-y-2 text-[14px] text-white/70 font-medium ${openCol === 1 ? 'block' : 'block'}`}>
               <li>
                 <button type="button" onClick={onNavigateToHome} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
-                  iGarden Poolroboter KN-Serie
+                  Robot Piscine iGarden Série KN
                 </button>
               </li>
               <li>
                 <button type="button" onClick={onNavigateToProduct} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
-                  Tragbare Gegenstromanlage iGarden X-Serie
+                  Hydro-Propulseur de Natation iGarden Série X
                 </button>
               </li>
               <li>
                 <button type="button" onClick={onNavigateToHome} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">
-                  iGarden Mähroboter R-Serie
+                  Robot Tondeuse iGarden Série R
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Col 2: Hilfe & Support */}
+          {/* Col 2: Aide & Support */}
           <div className="space-y-3">
             <h3
               onClick={() => toggleCol(2)}
               className="font-bold text-[16px] text-white/90 uppercase tracking-wider flex items-center justify-between cursor-pointer sm:cursor-default"
             >
-              <span>Hilfe & Support</span>
+              <span>Aide & Support</span>
             </h3>
             <ul className={`space-y-2 text-[14px] text-white/70 font-medium ${openCol === 2 ? 'block' : 'block'}`}>
-              <li><a href="https://eu.store.igarden.ai/pages/retour-et-remboursements" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Rückgabe & Erstattung</a></li>
-              <li><a href="https://eu.store.igarden.ai/pages/politique-de-garantie" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Garantiebestimmungen</a></li>
-              <li><button type="button" onClick={onOpenAccount} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">Kontaktieren Sie uns</button></li>
-              <li><a href="https://eu.store.igarden.ai/policies/shipping-policy" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Versandinformationen</a></li>
-              <li><a href="https://eu.store.igarden.ai/pages/methodes-de-paiement" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Zahlungsmethoden</a></li>
-              <li><a href="https://eu.store.igarden.ai/pages/politique-de-confidentialite" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Datenschutzrichtlinie</a></li>
-              <li><a href="https://eu.store.igarden.ai/pages/conditions-dutilisation" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Allgemeine Geschäftsbedingungen</a></li>
-              <li><button type="button" onClick={onOpenTracking} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">Sendungsverfolgung</button></li>
+              <li><a href="https://eu.store.igarden.ai/pages/retour-et-remboursements" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Retours & Remboursements</a></li>
+              <li><a href="https://eu.store.igarden.ai/pages/politique-de-garantie" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Garantie 2 ans</a></li>
+              <li><button type="button" onClick={onOpenAccount} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">Contactez-nous</button></li>
+              <li><a href="https://eu.store.igarden.ai/policies/shipping-policy" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Informations de livraison</a></li>
+              <li><a href="https://eu.store.igarden.ai/pages/methodes-de-paiement" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Moyens de paiement</a></li>
+              <li><a href="https://eu.store.igarden.ai/pages/politique-de-confidentialite" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Politique de confidentialité</a></li>
+              <li><a href="https://eu.store.igarden.ai/pages/conditions-dutilisation" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Conditions Générales de Vente</a></li>
+              <li><button type="button" onClick={onOpenTracking} className="hover:text-white transition-colors text-left bg-transparent border-none p-0 cursor-pointer text-white/70">Suivi de commande</button></li>
             </ul>
           </div>
 
-          {/* Col 3: Entdecken */}
+          {/* Col 3: Découvrir */}
           <div className="space-y-3">
             <h3
               onClick={() => toggleCol(3)}
               className="font-bold text-[16px] text-white/90 uppercase tracking-wider flex items-center justify-between cursor-pointer sm:cursor-default"
             >
-              <span>Entdecken</span>
+              <span>Découvrir</span>
             </h3>
             <ul className={`space-y-2 text-[14px] text-white/70 font-medium ${openCol === 3 ? 'block' : 'block'}`}>
-              <li><a href="https://eu.store.igarden.ai/blogs/news" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Blog & Ratgeber</a></li>
-              <li><a href="https://eu.store.igarden.ai/pages/filiale" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Partnerprogramm</a></li>
-              <li><a href="https://eu.store.igarden.ai/pages/a-propos-de-nous" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Über uns</a></li>
+              <li><a href="https://eu.store.igarden.ai/blogs/news" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Blog & Guides</a></li>
+              <li><a href="https://eu.store.igarden.ai/pages/filiale" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Programme d'affiliation</a></li>
+              <li><a href="https://eu.store.igarden.ai/pages/a-propos-de-nous" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">À propos de nous</a></li>
             </ul>
           </div>
 
@@ -192,7 +192,7 @@ export const Footer: React.FC<FooterProps> = ({
                   decoding="async"
                   className="w-5 h-5 object-contain"
                 />
-                <p className="font-bold text-[15px] text-white">E-Mail schreiben</p>
+                <p className="font-bold text-[15px] text-white">Nous écrire</p>
               </div>
               <p className="text-[14px] text-white/70 pl-7">customercare@igarden.ai</p>
             </div>
@@ -205,9 +205,9 @@ export const Footer: React.FC<FooterProps> = ({
                   decoding="async"
                   className="w-5 h-5 object-contain"
                 />
-                <p className="font-bold text-[15px] text-white">Kundenservice-Zeiten</p>
+                <p className="font-bold text-[15px] text-white">Service Client</p>
               </div>
-              <p className="text-[14px] text-white/70 pl-7">24/7 Support verfügbar</p>
+              <p className="text-[14px] text-white/70 pl-7">Support 24/7 disponible</p>
             </div>
           </div>
         </div>
@@ -223,7 +223,7 @@ export const Footer: React.FC<FooterProps> = ({
               <svg className="w-4 h-4 fill-current" viewBox="0 0 18 18">
                 <path d="M9 1.5A7.5 7.5 0 1 0 16.5 9 7.508 7.508 0 0 0 9 1.5Zm5.872 4.5h-2.497a11.736 11.736 0 0 0-1.034-2.902A6.023 6.023 0 0 1 14.872 6ZM9 2.527A10.564 10.564 0 0 1 10.31 6H7.69A10.564 10.564 0 0 1 9 2.527ZM2.695 10.5a6.112 6.112 0 0 1 0-3H5.55a12.4 12.4 0 0 0 0 3H2.695Zm.433 1.5h2.497a11.736 11.736 0 0 0 1.034 2.902A6.003 6.003 0 0 1 3.128 12Zm2.497-6H3.128a6.003 6.003 0 0 1 3.531-2.902A11.736 11.736 0 0 0 5.625 6ZM9 15.473A10.564 10.564 0 0 1 7.69 12h2.62A10.564 10.564 0 0 1 9 15.473ZM10.555 10.5h-3.11a11.227 11.227 0 0 1 0-3h3.11a11.227 11.227 0 0 1 0 3Zm.786 4.402A11.736 11.736 0 0 0 12.375 12h2.497a6.023 6.023 0 0 1-3.531 2.902ZM12.45 10.5a12.4 12.4 0 0 0 0-3h2.855a6.112 6.112 0 0 1 0 3H12.45Z"/>
               </svg>
-              <span>Deutschland / Deutsch</span>
+              <span>France / Français</span>
             </button>
             <span className="text-white/40">•</span>
             <span>Copyright © 2026 iGarden All Rights Reserved</span>

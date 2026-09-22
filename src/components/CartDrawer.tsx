@@ -62,7 +62,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         {/* Header */}
         <div className="p-4 sm:p-5 border-b border-gray-200 flex items-center justify-between bg-[#F8FAFC]">
           <div className="flex items-center gap-2">
-            <h2 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Mein Warenkorb</h2>
+            <h2 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Mon Panier</h2>
             <span className="w-5 h-5 rounded-sm bg-[#0071E3] text-white text-[11px] font-bold flex items-center justify-center">
               {items.reduce((sum, item) => sum + item.quantity, 0)}
             </span>
@@ -71,7 +71,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             type="button"
             onClick={onClose}
             className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-500 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer"
-            aria-label="Schließen"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -84,16 +84,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="w-14 h-14 bg-blue-50 text-[#0071E3] rounded-xl flex items-center justify-center mx-auto">
                 <ShoppingBag className="w-7 h-7" />
               </div>
-              <p className="text-[16px] sm:text-[17px] font-bold text-gray-900">Ihr Warenkorb ist derzeit leer</p>
+              <p className="text-[16px] sm:text-[17px] font-bold text-gray-900">Votre panier est actuellement vide</p>
               <p className="text-[13px] text-gray-500 max-w-xs mx-auto">
-                Sichern Sie sich jetzt die tragbare Gegenstromanlage Swim Jet (1.000 W) für 209,00 € inkl. kostenlosem DHL-Versand.
+                Profitez dès maintenant du système de nage à contre-courant portable Swim Jet (1 000 W) à 209,00 € avec livraison express offerte.
               </p>
               <button
                 type="button"
                 onClick={onClose}
                 className="px-6 py-3 min-h-[44px] bg-[#0071E3] text-white rounded-xl text-[13px] sm:text-[14px] font-bold hover:bg-blue-700 active:scale-[0.99] transition-all shadow-xs uppercase cursor-pointer"
               >
-                Angebot ansehen
+                Découvrir l'offre
               </button>
             </div>
           ) : (
@@ -119,11 +119,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     <div className="flex items-center justify-between mt-2.5">
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-[15px] sm:text-[16px] font-extrabold text-gray-900">
-                          {(item.price * item.quantity).toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
+                          {(item.price * item.quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                         </span>
                         {item.originalPrice && item.originalPrice > item.price && (
                           <span className="text-[11px] sm:text-[12px] text-gray-400 line-through">
-                            {(item.originalPrice * item.quantity).toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
+                            {(item.originalPrice * item.quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                           </span>
                         )}
                       </div>
@@ -134,7 +134,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           type="button"
                           onClick={() => onUpdateQuantity(item.id, -1)}
                           className="w-7 h-7 flex items-center justify-center hover:bg-gray-100 text-gray-700 cursor-pointer"
-                          aria-label="Menge verringern"
+                          aria-label="Diminuer la quantité"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
@@ -145,7 +145,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                           type="button"
                           onClick={() => onUpdateQuantity(item.id, 1)}
                           className="w-7 h-7 flex items-center justify-center hover:bg-gray-100 text-gray-700 cursor-pointer"
-                          aria-label="Menge erhöhen"
+                          aria-label="Augmenter la quantité"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -156,8 +156,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       type="button"
                       onClick={() => onRemoveItem(item.id)}
                       className="text-gray-400 hover:text-red-500 absolute top-3 right-3 p-1.5 rounded-md cursor-pointer"
-                      title="Aus dem Warenkorb entfernen"
-                      aria-label="Aus dem Warenkorb entfernen"
+                      title="Retirer du panier"
+                      aria-label="Retirer du panier"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -172,19 +172,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         {items.length > 0 && (
           <div className="p-4 sm:p-5 bg-[#F8FAFC] border-t border-gray-200 shadow-xl space-y-3.5">
             <div className="flex items-center justify-between text-[11px] sm:text-[12px] text-gray-600 pb-2 border-b border-gray-200">
-              <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5 text-[#0071E3]" /> Kostenloser DHL-Versand</span>
-              <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-[#0071E3]" /> 2 Jahre Garantie</span>
+              <span className="flex items-center gap-1"><Truck className="w-3.5 h-3.5 text-[#0071E3]" /> Livraison offerte</span>
+              <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-[#0071E3]" /> Garantie 2 ans</span>
             </div>
 
             <div className="flex items-baseline justify-between">
-              <span className="text-[14px] sm:text-[15px] font-semibold text-gray-700">Gesamtsumme (inkl. MwSt.)</span>
+              <span className="text-[14px] sm:text-[15px] font-semibold text-gray-700">Total (TVA incluse)</span>
               <div className="text-right">
                 <span className="text-[22px] sm:text-[24px] font-extrabold text-gray-950">
-                  {totalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
+                  {totalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
                 </span>
                 {totalSavings > 0 && (
                   <p className="text-[11px] sm:text-[12px] text-emerald-600 font-bold">
-                    Sie sparen {totalSavings.toLocaleString('de-DE', { minimumFractionDigits: 2 })} € (-50%)
+                    Vous économisez {totalSavings.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} € (-50%)
                   </p>
                 )}
               </div>
@@ -200,12 +200,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               className="w-full h-13 sm:h-14 rounded-xl bg-[#0071E3] hover:bg-[#0062c4] active:bg-[#004f9f] active:scale-[0.99] text-white font-extrabold text-[14px] sm:text-[15px] tracking-wide shadow-md shadow-blue-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer uppercase text-center"
             >
               <Lock className="w-4 h-4 shrink-0" />
-              <span>ZUR KASSE GEHEN</span>
+              <span>COMMANDER EN TOUTE SÉCURITÉ</span>
               <ArrowRight className="w-4 h-4 shrink-0" />
             </button>
 
             <p className="text-center text-[11px] text-gray-500">
-              100% sichere SSL-Verschlüsselung • Direkte Weiterleitung zum offiziellen Checkout
+              Paiement 100% sécurisé SSL • Redirection immédiate vers le checkout officiel
             </p>
           </div>
         )}

@@ -44,7 +44,7 @@ export const TrustpilotReviewWidget: React.FC = () => {
               loading="lazy"
             />
             <h2 className="text-[28px] sm:text-[40px] md:text-[48px] font-extrabold text-black tracking-tight leading-none">
-              Trustpilot-Bewertungen
+              Avis Trustpilot
             </h2>
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-right_svg.png?v=1784616357&width=100"
@@ -62,7 +62,7 @@ export const TrustpilotReviewWidget: React.FC = () => {
               rel="noopener noreferrer"
               className="underline hover:text-black transition-colors"
             >
-              229 Bewertungen
+              229 avis vérifiés
             </a>
             <div className="flex items-center gap-1.5 text-gray-900 font-bold">
               <div className="flex items-center gap-0.5">

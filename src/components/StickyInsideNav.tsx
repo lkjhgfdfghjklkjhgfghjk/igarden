@@ -18,10 +18,10 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
   const [showBottomBar, setShowBottomBar] = useState(false);
 
   const sections = [
-    { id: 'Aperçu', label: 'Übersicht' },
+    { id: 'Aperçu', label: 'Aperçu' },
     { id: 'Technologie', label: 'Technologie' },
-    { id: 'Avantages', label: 'Vorteile' },
-    { id: 'Avis', label: 'Kundenbewertungen' }
+    { id: 'Avantages', label: 'Avantages' },
+    { id: 'Avis', label: 'Avis Clients' }
   ];
 
   useEffect(() => {
@@ -156,7 +156,7 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
               className="h-11 sm:h-13 px-4 sm:px-8 rounded-xl bg-[#0071E3] hover:bg-[#0062c4] active:bg-[#004f9f] active:scale-[0.99] text-white font-extrabold text-[12px] sm:text-[15px] tracking-wide shadow-md shadow-blue-500/20 transition-all shrink-0 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer uppercase text-center"
             >
               <Lock className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-              <span>JETZT BESTELLEN</span>
+              <span>COMMANDER MAINTENANT</span>
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 hidden xs:inline-block" />
             </button>
           </div>

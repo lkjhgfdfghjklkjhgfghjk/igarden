@@ -9,7 +9,7 @@ export const ProductCardFlexMower: React.FC<ProductCardFlexMowerProps> = ({ onNa
     <section className="py-8 sm:py-12 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-8">
         <h2 className="text-[24px] sm:text-[32px] md:text-[36px] font-extrabold text-gray-900 mb-6 md:mb-8 leading-tight">
-          Mähroboter
+          Robots Tondeuses
         </h2>
 
         {/* Full-width clickable banner */}
@@ -20,14 +20,14 @@ export const ProductCardFlexMower: React.FC<ProductCardFlexMowerProps> = ({ onNa
           {/* PC Image */}
           <img
             src="https://eu.store.igarden.ai/cdn/shop/files/1500_520.png?v=1776673997&width=2000"
-            alt="iGarden R-Serie Mähroboter"
+            alt="Robot Tondeuse iGarden Série R"
             className="hidden sm:block absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-500 group-hover:scale-[1.01]"
             loading="lazy"
           />
           {/* Mobile Image */}
           <img
             src="https://eu.store.igarden.ai/cdn/shop/files/370_292.png?v=1776673990&width=800"
-            alt="iGarden R-Serie Mähroboter"
+            alt="Robot Tondeuse iGarden Série R"
             className="block sm:hidden absolute inset-0 w-full h-full object-cover object-bottom"
             loading="lazy"
           />
@@ -35,10 +35,10 @@ export const ProductCardFlexMower: React.FC<ProductCardFlexMowerProps> = ({ onNa
           {/* Banner Content */}
           <div className="relative z-10 p-6 sm:p-10 md:p-14 max-w-[540px] flex flex-col justify-center space-y-3 sm:space-y-4">
             <h3 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-white leading-tight">
-              iGarden R-Serie Mähroboter
+              Robot Tondeuse iGarden Série R
             </h3>
             <p className="text-[14px] sm:text-[18px] text-white/95 font-medium leading-snug">
-              Grenzenlose Präzision. Zeit für das Wesentliche.
+              Précision sans limites. Prenez du temps pour l'essentiel.
             </p>
             <div className="pt-2">
               <button
@@ -48,7 +48,7 @@ export const ProductCardFlexMower: React.FC<ProductCardFlexMowerProps> = ({ onNa
                 }}
                 className="px-6 py-3 bg-white text-black font-bold text-[14px] sm:text-[15px] rounded-sm hover:bg-gray-100 transition-colors shadow-md cursor-pointer uppercase"
               >
-                Jetzt kaufen
+                Acheter maintenant
               </button>
             </div>
           </div>

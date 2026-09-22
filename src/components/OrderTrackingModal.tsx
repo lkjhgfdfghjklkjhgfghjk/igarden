@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Search, Package, CheckCircle2, Truck, Clock, MapPin, AlertCircle, ArrowRight } from 'lucide-react';
+import { X, Search, Package, CheckCircle2, Truck, Clock } from 'lucide-react';
 
 interface OrderTrackingModalProps {
   isOpen: boolean;
@@ -29,8 +29,8 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
   };
 
   const handleUseDemo = () => {
-    setOrderId('IG-DE-84920');
-    setEmail('kunde.deutschland@gmail.com');
+    setOrderId('IG-FR-84920');
+    setEmail('client.france@gmail.com');
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -52,16 +52,16 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
             </div>
             <div>
               <h3 className="font-bold text-[16px] sm:text-[17px] text-gray-900 leading-tight">
-                Sendungsverfolgung in Echtzeit
+                Suivi de livraison en temps réel
               </h3>
-              <p className="text-[12px] text-gray-500">Offizieller DHL / DPD Express-Service</p>
+              <p className="text-[12px] text-gray-500">Service Express Officiel Colissimo / Chronopost / DHL</p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-black hover:bg-gray-200 transition-colors cursor-pointer"
-            aria-label="Schließen"
+            aria-label="Fermer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -73,12 +73,12 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
           <form onSubmit={handleSearch} className="space-y-4">
             <div>
               <label className="block text-[13px] font-bold text-gray-700 mb-1">
-                Bestellnummer oder Sendungsnummer
+                Numéro de commande ou numéro de suivi
               </label>
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Z. B.: IG-DE-84920 oder 00340434..."
+                  placeholder="Ex : IG-FR-84920 ou 00340434..."
                   value={orderId}
                   onChange={(e) => setOrderId(e.target.value)}
                   className="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
@@ -88,11 +88,11 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
 
             <div>
               <label className="block text-[13px] font-bold text-gray-700 mb-1">
-                E-Mail-Adresse der Bestellung
+                Adresse e-mail utilisée pour la commande
               </label>
               <input
                 type="email"
-                placeholder="Z. B.: max.mustermann@email.de"
+                placeholder="Ex : jean.dupont@email.fr"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-[14px] text-gray-900 focus:outline-none focus:border-[#0071E3]"
@@ -106,7 +106,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
                 className="flex-1 h-12 min-h-[44px] rounded-xl bg-[#0071E3] hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-[13px] sm:text-[14px] tracking-wide transition-all shadow-xs flex items-center justify-center gap-2 cursor-pointer uppercase disabled:opacity-50 text-center"
               >
                 <Search className="w-4 h-4" />
-                <span>{loading ? "Wird gesucht..." : "Paketstatus abrufen"}</span>
+                <span>{loading ? "Recherche en cours..." : "Suivre mon colis"}</span>
               </button>
 
               <button
@@ -114,7 +114,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
                 onClick={handleUseDemo}
                 className="h-12 min-h-[44px] px-4 rounded-xl border border-gray-300 hover:bg-gray-50 active:scale-[0.99] text-gray-700 text-[13px] font-semibold whitespace-nowrap cursor-pointer uppercase text-center transition-all"
               >
-                Muster-Sendung
+                Exemple de suivi
               </button>
             </div>
           </form>
@@ -125,14 +125,14 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
               {/* Order overview badge */}
               <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-gray-200">
                 <div>
-                  <span className="text-[12px] text-gray-500 font-semibold">Bestellung:</span>
-                  <p className="font-extrabold text-[15px] text-gray-900">#IG-DE-84920</p>
+                  <span className="text-[12px] text-gray-500 font-semibold">Commande :</span>
+                  <p className="font-extrabold text-[15px] text-gray-900">#IG-FR-84920</p>
                 </div>
                 <div className="text-right">
                   <span className="inline-flex items-center gap-1 bg-green-100 text-green-800 text-[11px] font-bold px-2.5 py-1 rounded-full">
-                    <Truck className="w-3.5 h-3.5" /> Auf dem Versandweg
+                    <Truck className="w-3.5 h-3.5" /> En cours d'acheminement
                   </span>
-                  <p className="text-[11px] text-gray-500 mt-0.5">DHL Paket Deutschland</p>
+                  <p className="text-[11px] text-gray-500 mt-0.5">Colissimo Express France & UE</p>
                 </div>
               </div>
 
@@ -140,23 +140,23 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
               <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-200">
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/DE-X_12.png?v=1788838449"
-                  alt="Swim Jet — 1.000 W"
+                  alt="Swim Jet — 1 000 W"
                   loading="lazy"
                   decoding="async"
                   className="w-12 h-12 object-cover rounded-lg bg-gray-50 border border-gray-200 shrink-0"
                 />
                 <div className="min-w-0 flex-1">
                   <p className="font-bold text-[13px] sm:text-[14px] text-gray-900 truncate">
-                    Swim Jet — 1.000 W (Passend für jeden Pool)
+                    Hydro-Propulseur Swim Jet — 1 000 W (Adaptable tout bassin)
                   </p>
-                  <p className="text-[12px] text-gray-500">Menge: 1 • 209,00 € • Kostenloser DHL-Versand</p>
+                  <p className="text-[12px] text-gray-500">Quantité : 1 • 209,00 € • Livraison Express Offerte</p>
                 </div>
               </div>
 
               {/* Timeline Steps */}
               <div className="space-y-4 pt-1">
                 <h4 className="font-bold text-[13px] text-gray-900 uppercase tracking-wide">
-                  Sendungsverlauf
+                  Historique de livraison
                 </h4>
 
                 <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-300">
@@ -165,9 +165,9 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
                     <div className="absolute -left-[29px] top-0.5 w-4 h-4 rounded-full bg-[#0071E3] border-2 border-white ring-2 ring-[#0071E3]/20 flex items-center justify-center text-white">
                       <div className="w-1.5 h-1.5 bg-white rounded-full" />
                     </div>
-                    <p className="font-bold text-[13px] text-gray-900">In der Zustellbasis bearbeitet</p>
-                    <p className="text-[12px] text-gray-500">DHL Paketzentrum – Region Frankfurt</p>
-                    <span className="text-[11px] text-gray-400">Heute, 08:42 Uhr</span>
+                    <p className="font-bold text-[13px] text-gray-900">En cours de traitement sur la plateforme logistique</p>
+                    <p className="text-[12px] text-gray-500">Hub logistique régional</p>
+                    <span className="text-[11px] text-gray-400">Aujourd'hui, 08:42</span>
                   </div>
 
                   {/* Step 2 */}
@@ -175,9 +175,9 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
                     <div className="absolute -left-[29px] top-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
-                    <p className="font-bold text-[13px] text-gray-900">Paket an Versanddienstleister übergeben</p>
-                    <p className="text-[12px] text-gray-500">iGarden Versandzentrum</p>
-                    <span className="text-[11px] text-gray-400">Gestern, 16:15 Uhr</span>
+                    <p className="font-bold text-[13px] text-gray-900">Colis remis au transporteur express</p>
+                    <p className="text-[12px] text-gray-500">Centre d'expédition iGarden Europe</p>
+                    <span className="text-[11px] text-gray-400">Hier, 16:15</span>
                   </div>
 
                   {/* Step 3 */}
@@ -185,9 +185,9 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
                     <div className="absolute -left-[29px] top-0.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                     </div>
-                    <p className="font-bold text-[13px] text-gray-900">Bestellung verpackt & versandbereit</p>
-                    <p className="text-[12px] text-gray-500">Offizieller iGarden Store</p>
-                    <span className="text-[11px] text-gray-400">Gestern, 14:02 Uhr</span>
+                    <p className="font-bold text-[13px] text-gray-900">Commande emballée et prête pour expédition</p>
+                    <p className="text-[12px] text-gray-500">Boutique Officielle iGarden</p>
+                    <span className="text-[11px] text-gray-400">Hier, 14:02</span>
                   </div>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
               {/* Delivery estimation */}
               <div className="p-3 bg-blue-50/80 rounded-sm border border-blue-200 text-[12px] sm:text-[13px] text-blue-900 flex items-center gap-2.5">
                 <Clock className="w-5 h-5 text-[#0071E3] shrink-0" />
-                <span>Voraussichtliche Zustellung: <strong>innerhalb von 24 bis 48 Std.</strong> direkt an Ihre Wunschadresse.</span>
+                <span>Livraison estimée : <strong>sous 24 à 48 heures</strong> en main propre à votre domicile.</span>
               </div>
             </div>
           )}
@@ -203,7 +203,7 @@ export const OrderTrackingModal: React.FC<OrderTrackingModalProps> = ({
           {/* Need help */}
           <div className="pt-2 border-t border-gray-100 text-center">
             <p className="text-[12px] text-gray-500">
-              Fragen zu Ihrer Lieferung? Unser deutschsprachiges Support-Team hilft Ihnen unter{' '}
+              Une question sur votre commande ? Notre support francophone est à votre écoute sur{' '}
               <a href="mailto:support@igarden.ai" className="font-bold text-[#0071E3] hover:underline">
                 support@igarden.ai
               </a>

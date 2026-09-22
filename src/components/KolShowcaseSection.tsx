@@ -67,10 +67,10 @@ export const KolShowcaseSection: React.FC = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="text-[26px] sm:text-[40px] font-bold text-gray-900 font-['Figtree'] tracking-tight">
-            Begeistert echte Poolbesitzer & Schwimmer
+            Approuvé par les propriétaires de piscine & nageurs
           </h2>
           <p className="mt-2.5 text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
-            Authentische Erfahrungsberichte und Live-Demonstrationen unserer Kunden.
+            Découvrez les retours d'expérience authentiques et démonstrations en conditions réelles de nos clients.
           </p>
         </div>
 
@@ -157,7 +157,7 @@ export const KolShowcaseSection: React.FC = () => {
                     setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : KOL_VIDEOS.length - 1))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Vorheriges Video"
+                  title="Vidéo précédente"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
@@ -169,7 +169,7 @@ export const KolShowcaseSection: React.FC = () => {
                     setActiveVideoIndex((prev) => (prev !== null && prev < KOL_VIDEOS.length - 1 ? prev + 1 : 0))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Nächstes Video"
+                  title="Vidéo suivante"
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -177,7 +177,7 @@ export const KolShowcaseSection: React.FC = () => {
                 <button
                   onClick={() => setActiveVideoIndex(null)}
                   className="ml-2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                  aria-label="Video schließen"
+                  aria-label="Fermer la vidéo"
                 >
                   <X className="w-4 h-4" />
                 </button>

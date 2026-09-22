@@ -80,23 +80,23 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                   <div className="relative w-full max-w-[420px] md:max-w-[480px]">
                     <img
                       src="https://eu.store.igarden.ai/cdn/shop/files/Group_2121239313.png?v=1785401452&width=1200"
-                      alt="Sonderaktion Gegenstromanlage"
+                      alt="Offre spéciale nage à contre-courant"
                       className="w-full h-auto drop-shadow-md"
                     />
                     <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between text-white text-left">
                       <p className="text-[13px] md:text-[15px] font-bold uppercase tracking-wider text-white/90">
-                        Sonderangebot Swim Jet
+                        Offre Spéciale Swim Jet
                       </p>
                       <div className="flex items-baseline gap-2">
                         <span className="text-[12px] md:text-[14px] font-bold leading-tight uppercase">
-                          Sonder-<br />preis
+                          Prix<br />Spécial
                         </span>
                         <span className="text-[36px] md:text-[54px] font-extrabold leading-none tracking-tight">
                           209 €
                         </span>
                       </div>
                       <p className="text-[12px] md:text-[14px] font-medium text-white/90">
-                        1.000 W Spitzenleistung • 6 bis 10 Std. Akku
+                        1 000 W Puissance de pointe • 6 à 10 h d'autonomie
                       </p>
                     </div>
                   </div>
@@ -107,28 +107,28 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.days).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Tage</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Jours</span>
                     </div>
                     <span className="text-white font-extrabold text-[20px] md:text-[24px]">:</span>
                     <div className="w-[55px] h-[55px] md:w-[75px] md:h-[75px] bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center">
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.hours).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Stunden</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Heures</span>
                     </div>
                     <span className="text-white font-extrabold text-[20px] md:text-[24px]">:</span>
                     <div className="w-[55px] h-[55px] md:w-[75px] md:h-[75px] bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center">
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.minutes).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Minuten</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Minutes</span>
                     </div>
                     <span className="text-white font-extrabold text-[20px] md:text-[24px]">:</span>
                     <div className="w-[55px] h-[55px] md:w-[75px] md:h-[75px] bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col items-center justify-center">
                       <span className="text-[#0071E3] font-extrabold text-[20px] md:text-[28px] leading-none">
                         {String(timeLeft.seconds).padStart(2, '0')}
                       </span>
-                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Sekunden</span>
+                      <span className="text-gray-500 text-[10px] md:text-[11px] font-semibold mt-0.5">Secondes</span>
                     </div>
                   </div>
 
@@ -138,7 +138,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigateToProduct 
                     onClick={onNavigateToProduct}
                     className="px-8 py-3.5 min-h-[44px] bg-[#f86709] hover:bg-[#d55807] active:scale-[0.99] text-white font-extrabold text-[15px] md:text-[17px] rounded-xl tracking-wide shadow-lg transition-all cursor-pointer uppercase"
                   >
-                    Jetzt für 209,00 € bestellen
+                    Commander maintenant pour 209,00 €
                   </button>
                 </div>
               </div>

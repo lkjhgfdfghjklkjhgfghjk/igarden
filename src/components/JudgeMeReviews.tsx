@@ -38,13 +38,13 @@ export const JudgeMeReviews: React.FC = () => {
 
     const newReview: UserReview = {
       id: `rev-${Date.now()}`,
-      author: isAnonymous ? "Verifizierter Käufer" : (name || "Verifizierter Käufer"),
+      author: isAnonymous ? "Acheteur vérifié" : (name || "Acheteur vérifié"),
       rating,
-      date: new Date().toLocaleDateString('de-DE'),
-      title: reviewTitle || "Verifizierte Bewertung",
+      date: new Date().toLocaleDateString('fr-FR'),
+      title: reviewTitle || "Avis vérifié",
       content: reviewBody,
       verified: true,
-      productVariant: "Swim Jet — 1.000 W"
+      productVariant: "Swim Jet — 1 000 W"
     };
 
     setAllReviews([newReview, ...allReviews]);
@@ -99,7 +99,7 @@ export const JudgeMeReviews: React.FC = () => {
                   ))}
                 </div>
                 <span className="text-[13px] text-gray-500 mt-1 font-medium">
-                  Basierend auf {totalCount} verifizierten Bewertungen
+                  Basé sur {totalCount} avis vérifiés
                 </span>
               </div>
 
@@ -109,7 +109,7 @@ export const JudgeMeReviews: React.FC = () => {
                   onClick={() => setSelectedFilter(selectedFilter === 5 ? 'all' : 5)}
                   className="flex items-center gap-2 cursor-pointer hover:opacity-80"
                 >
-                  <span className="w-16 text-right">5 Sterne</span>
+                  <span className="w-16 text-right">5 étoiles</span>
                   <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
                     <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count5 / totalCount) * 100}%` }}></div>
                   </div>
@@ -119,7 +119,7 @@ export const JudgeMeReviews: React.FC = () => {
                   onClick={() => setSelectedFilter(selectedFilter === 4 ? 'all' : 4)}
                   className="flex items-center gap-2 cursor-pointer hover:opacity-80"
                 >
-                  <span className="w-16 text-right">4 Sterne</span>
+                  <span className="w-16 text-right">4 étoiles</span>
                   <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
                     <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count4 / totalCount) * 100}%` }}></div>
                   </div>
@@ -129,7 +129,7 @@ export const JudgeMeReviews: React.FC = () => {
                   onClick={() => setSelectedFilter(selectedFilter === 3 ? 'all' : 3)}
                   className="flex items-center gap-2 cursor-pointer hover:opacity-80"
                 >
-                  <span className="w-16 text-right">3 Sterne</span>
+                  <span className="w-16 text-right">3 étoiles</span>
                   <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
                     <div className="h-full bg-[#F59E0B] rounded-sm" style={{ width: `${(count3 / totalCount) * 100}%` }}></div>
                   </div>
@@ -147,10 +147,10 @@ export const JudgeMeReviews: React.FC = () => {
                 className="w-full sm:w-auto px-6 py-3 min-h-[44px] rounded-xl bg-[#0071E3] hover:bg-[#005bb5] active:scale-[0.99] text-white font-bold text-[14px] shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer uppercase"
               >
                 <MessageSquare className="w-4 h-4" />
-                Bewertung schreiben
+                Écrire un avis
               </button>
               <span className="text-[12px] text-gray-500 text-center sm:text-right">
-                100% der Bewertungen stammen von echten Käufern
+                100 % des avis proviennent de clients vérifiés
               </span>
             </div>
 
@@ -161,7 +161,7 @@ export const JudgeMeReviews: React.FC = () => {
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-gray-200">
           <div className="flex items-center gap-2 text-[13px] text-gray-600 flex-wrap">
             <span className="font-semibold text-gray-900 flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5" /> Filtern:
+              <Filter className="w-3.5 h-3.5" /> Filtrer :
             </span>
             <button
               type="button"
@@ -172,7 +172,7 @@ export const JudgeMeReviews: React.FC = () => {
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
               }`}
             >
-              Alle ({totalCount})
+              Tous ({totalCount})
             </button>
             <button
               type="button"
@@ -183,7 +183,7 @@ export const JudgeMeReviews: React.FC = () => {
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
               }`}
             >
-              5 Sterne ({count5})
+              5 étoiles ({count5})
             </button>
             <button
               type="button"
@@ -194,20 +194,20 @@ export const JudgeMeReviews: React.FC = () => {
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
               }`}
             >
-              4 Sterne ({count4})
+              4 étoiles ({count4})
             </button>
           </div>
 
           <div className="flex items-center gap-2 text-[13px] text-gray-600">
-            <span>Sortieren nach:</span>
+            <span>Trier par :</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               className="bg-white border border-gray-200 rounded-lg px-2.5 py-1.5 text-[13px] font-medium text-gray-800 outline-none focus:border-blue-500 cursor-pointer"
             >
-              <option value="recent">Neueste zuerst</option>
-              <option value="rating-high">Höchste Bewertung</option>
-              <option value="rating-low">Niedrigste Bewertung</option>
+              <option value="recent">Plus récents</option>
+              <option value="rating-high">Note la plus élevée</option>
+              <option value="rating-low">Note la plus basse</option>
             </select>
           </div>
         </div>
@@ -230,7 +230,7 @@ export const JudgeMeReviews: React.FC = () => {
                       <span>{rev.author}</span>
                       {rev.verified && (
                         <span className="text-[10px] sm:text-[11px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.2 rounded-sm flex items-center gap-1 border border-emerald-200/60">
-                          <Check className="w-3 h-3 stroke-[3]" /> Verifizierter Kauf
+                          <Check className="w-3 h-3 stroke-[3]" /> Achat vérifié
                         </span>
                       )}
                     </div>
@@ -264,7 +264,7 @@ export const JudgeMeReviews: React.FC = () => {
 
               {/* Footer with helpful button */}
               <div className="mt-3.5 pt-2.5 border-t border-gray-100 flex items-center justify-between text-[12px] text-gray-500">
-                <span>War dieser Erfahrungsbericht hilfreich?</span>
+                <span>Cet avis vous a-t-il été utile ?</span>
                 <button
                   type="button"
                   onClick={() => handleVoteHelpful(rev.id)}
@@ -276,7 +276,7 @@ export const JudgeMeReviews: React.FC = () => {
                   }`}
                 >
                   <ThumbsUp className="w-3.5 h-3.5" />
-                  <span>Hilfreich ({helpfulCounts[rev.id] || (rev.rating === 5 ? 4 : 1)})</span>
+                  <span>Utile ({helpfulCounts[rev.id] || (rev.rating === 5 ? 4 : 1)})</span>
                 </button>
               </div>
             </div>
@@ -292,7 +292,7 @@ export const JudgeMeReviews: React.FC = () => {
               onClick={handleLoadMore}
               className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 min-h-[44px] rounded-xl bg-white hover:bg-gray-50 active:scale-[0.99] border border-gray-300 text-gray-900 font-bold text-[13px] sm:text-[14px] shadow-xs transition-all cursor-pointer hover:border-gray-400 uppercase"
             >
-              <span>Weitere Bewertungen anzeigen ({filteredReviews.length - visibleCount} verbleibend)</span>
+              <span>Afficher plus d'avis ({filteredReviews.length - visibleCount} restants)</span>
               <ChevronDown className="w-4 h-4" />
             </button>
           </div>
@@ -308,7 +308,7 @@ export const JudgeMeReviews: React.FC = () => {
               type="button"
               onClick={resetForm}
               className="absolute top-4 right-4 p-2 rounded-full text-gray-400 hover:text-black hover:bg-gray-100 cursor-pointer"
-              aria-label="Schließen"
+              aria-label="Fermer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -316,10 +316,10 @@ export const JudgeMeReviews: React.FC = () => {
             {formStep === 1 && (
               <div className="space-y-6 text-center py-2">
                 <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">
-                  Wie bewerten Sie Ihre iGarden Swim Jet (1.000 W)?
+                  Comment évaluez-vous votre iGarden Swim Jet (1 000 W) ?
                 </h3>
                 <p className="text-[13px] sm:text-[14px] text-gray-500">
-                  Teilen Sie Ihre Erfahrungen mit anderen Schwimmbegeisterten.
+                  Partagez votre retour d'expérience avec la communauté.
                 </p>
 
                 <div className="flex justify-center gap-2 py-4">
@@ -334,7 +334,7 @@ export const JudgeMeReviews: React.FC = () => {
                         setFormStep(2);
                       }}
                       className="p-1 cursor-pointer transform hover:scale-110 transition-transform"
-                      aria-label={`${star} Sterne`}
+                      aria-label={`${star} étoiles`}
                     >
                       <Star
                         className={`w-9 h-9 sm:w-10 sm:h-10 transition-colors ${
@@ -351,30 +351,30 @@ export const JudgeMeReviews: React.FC = () => {
 
             {formStep === 2 && (
               <form onSubmit={handleSubmitReview} className="space-y-4">
-                <h3 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Ihre Bewertung verfassen</h3>
+                <h3 className="text-[18px] sm:text-[20px] font-bold text-gray-900">Rédiger votre avis</h3>
 
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                    Titel Ihrer Bewertung
+                    Titre de votre avis
                   </label>
                   <input
                     type="text"
                     value={reviewTitle}
                     onChange={(e) => setReviewTitle(e.target.value)}
-                    placeholder="Z. B.: Ein echter Gewinn für unseren Familienpool!"
+                    placeholder="Ex. : Un véritable bonheur pour notre piscine familiale !"
                     className="w-full p-2.5 rounded-lg border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                   />
                 </div>
 
                 <div>
                   <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                    Ihre ausführliche Erfahrung (Erforderlich)
+                    Votre avis détaillé (Obligatoire)
                   </label>
                   <textarea
                     rows={4}
                     value={reviewBody}
                     onChange={(e) => setReviewBody(e.target.value)}
-                    placeholder="Beschreiben Sie Versand, Montage, Schwimmgefühl, Akkulaufzeit..."
+                    placeholder="Décrivez la livraison, l'installation, les sensations de nage, l'autonomie..."
                     required
                     className="w-full p-2.5 rounded-lg border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                   />
@@ -383,25 +383,25 @@ export const JudgeMeReviews: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                      Vor- und Nachname
+                      Prénom et nom
                     </label>
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Z. B.: Thomas M."
+                      placeholder="Ex. : Thomas M."
                       className="w-full p-2.5 rounded-lg border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                     />
                   </div>
                   <div>
                     <label className="block text-[13px] font-semibold text-gray-700 mb-1">
-                      E-Mail-Adresse (Wird nicht veröffentlicht)
+                      Adresse e-mail (Ne sera pas publiée)
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@beispiel.de"
+                      placeholder="exemple@email.fr"
                       required
                       className="w-full p-2.5 rounded-lg border border-gray-300 focus:border-[#0071E3] outline-none text-[14px]"
                     />
@@ -415,7 +415,7 @@ export const JudgeMeReviews: React.FC = () => {
                     onChange={(e) => setIsAnonymous(e.target.checked)}
                     className="rounded border-gray-300 text-[#0071E3] focus:ring-0"
                   />
-                  <span>Als "Verifizierter Käufer" ohne vollständigen Namen veröffentlichen</span>
+                  <span>Publier en tant qu'« Acheteur vérifié » sans afficher mon nom complet</span>
                 </label>
 
                 <div className="pt-3 flex justify-between gap-3">
@@ -424,13 +424,13 @@ export const JudgeMeReviews: React.FC = () => {
                     onClick={() => setFormStep(1)}
                     className="px-5 py-2.5 min-h-[44px] rounded-xl border border-gray-300 text-gray-700 font-semibold text-[14px] cursor-pointer"
                   >
-                    Zurück
+                    Retour
                   </button>
                   <button
                     type="submit"
                     className="px-6 py-2.5 min-h-[44px] rounded-xl bg-[#0071E3] hover:bg-[#005bb5] active:scale-[0.99] text-white font-bold text-[14px] shadow-xs cursor-pointer uppercase transition-all"
                   >
-                    Bewertung absenden
+                    Publier mon avis
                   </button>
                 </div>
               </form>
@@ -441,16 +441,16 @@ export const JudgeMeReviews: React.FC = () => {
                 <div className="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
                   <Check className="w-7 h-7 stroke-[3]" />
                 </div>
-                <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">Vielen Dank für Ihre Bewertung!</h3>
+                <h3 className="text-[20px] sm:text-[22px] font-bold text-gray-900">Merci beaucoup pour votre avis !</h3>
                 <p className="text-[13px] sm:text-[14px] text-gray-600 max-w-md mx-auto">
-                  Ihr Erfahrungsbericht wurde erfolgreich gespeichert und veröffentlicht. Er hilft anderen Kunden bei ihrer Kaufentscheidung.
+                  Votre retour d'expérience a bien été enregistré et publié. Il aide les futurs acquéreurs dans leur choix.
                 </p>
                 <button
                   type="button"
                   onClick={resetForm}
                   className="mt-4 px-6 py-2.5 min-h-[44px] rounded-xl bg-[#0071E3] text-white font-bold text-[14px] cursor-pointer uppercase transition-all"
                 >
-                  Schließen
+                  Fermer
                 </button>
               </div>
             )}

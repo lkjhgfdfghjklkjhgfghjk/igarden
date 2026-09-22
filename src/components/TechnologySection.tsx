@@ -23,10 +23,10 @@ export const TechnologySection: React.FC = () => {
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <h2 className="text-[26px] sm:text-[38px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-2">
-            Beste Strömungsleistung ihrer Klasse
+            La meilleure performance hydrodynamique de sa catégorie
           </h2>
           <span className="text-[16px] sm:text-[20px] font-semibold text-gray-500">
-            1.000 W Power — Kompatibel mit allen Pools
+            Puissance 1 000 W — Compatible avec toutes les piscines
           </span>
         </div>
 
@@ -60,28 +60,28 @@ export const TechnologySection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 sm:mt-14 pt-6 border-t border-gray-100 text-center">
           <div className="p-4 border-b md:border-b-0 md:border-r border-gray-100">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              KI-Inverter-Technologie
+              Technologie Inverter IA
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              liefert den stärksten und gleichmäßigsten Wasserstrom seiner Klasse
+              génère le courant d'eau le plus puissant, fluide et constant de sa catégorie
             </span>
           </div>
 
           <div className="p-4 border-b md:border-b-0 md:border-r border-gray-100">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              Intelligenter Modus
+              Moteur Synchrone Avancé
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              hocheffizienter Permanentmagnet-Synchronmotor der neuesten Generation
+              moteur à aimants permanents haute efficacité de dernière génération
             </span>
           </div>
 
           <div className="p-4">
             <span className="block text-[22px] sm:text-[28px] font-bold text-[#0071E3] font-['Figtree'] mb-2">
-              Linearer Strömungskanal
+              Canal d'Écoulement Laminaire
             </span>
             <span className="text-[15px] sm:text-[17px] text-gray-600">
-              turbulenzarmer Laminarstrom, optimal kalibriert für echtes Schwimmtraining
+              flux laminaire sans turbulences, calibré pour un entraînement de natation réaliste
             </span>
           </div>
         </div>

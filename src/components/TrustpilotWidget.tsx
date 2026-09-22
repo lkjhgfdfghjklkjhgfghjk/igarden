@@ -25,7 +25,7 @@ export const TrustpilotWidget: React.FC = () => {
               className="h-8 sm:h-12 w-auto object-contain"
             />
             <h2 className="text-[26px] sm:text-[42px] font-bold text-gray-950 font-['Figtree'] m-0">
-              Trustpilot-Bewertungen
+              Avis Trustpilot
             </h2>
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/ces-vector-right_svg.png?v=1784616357&width=100"
@@ -41,7 +41,7 @@ export const TrustpilotWidget: React.FC = () => {
               rel="noopener noreferrer"
               className="underline font-semibold hover:text-[#0071E3]"
             >
-              223 Bewertungen
+              223 avis vérifiés
             </a>
             <span>•</span>
             <div className="flex items-center gap-1">
@@ -108,7 +108,7 @@ export const TrustpilotWidget: React.FC = () => {
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 cursor-pointer"
-                aria-label="Vorherige Bewertungen"
+                aria-label="Avis précédents"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -116,7 +116,7 @@ export const TrustpilotWidget: React.FC = () => {
                 onClick={handleNext}
                 disabled={currentIndex + 3 >= TRUSTPILOT_REVIEWS.length}
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 cursor-pointer"
-                aria-label="Nächste Bewertungen"
+                aria-label="Avis suivants"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

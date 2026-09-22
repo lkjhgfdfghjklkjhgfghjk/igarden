@@ -4,32 +4,32 @@ export const WhatsInTheBoxSection: React.FC = () => {
   const items = [
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/1_1_2.png?v=1778495430&width=1400",
-      title: "Jet-Schwimmeinheit",
+      title: "Turbine de nage Swim Jet",
       qty: "1x"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237486.png?v=1779788996&width=1400",
-      title: "Powerbox-Akkueinheit",
+      title: "Powerbox batterie haute capacité",
       qty: "1x"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Image_6_1_2.png?v=1779174423&width=1400",
-      title: "Netzteil / Ladegerät",
+      title: "Chargeur secteur rapide",
       qty: "1x"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Image_7_e6efc16e-01cd-46b7-a866-929e6831496c.png?v=1778495431&width=1400",
-      title: "Sicherheitsbefestigung",
+      title: "Système de fixation sécurisé",
       qty: "1x"
     }
   ];
 
   return (
-    <section id="lieferumfang" className="py-16 sm:py-24 bg-white">
+    <section id="contenu-du-coffret" className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[44px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Lieferumfang
+            Contenu du coffret
           </h2>
         </div>
 

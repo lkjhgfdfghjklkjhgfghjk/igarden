@@ -32,10 +32,10 @@ export const TestimonialsCarousel1: React.FC = () => {
         {/* Left Side: Fixed text */}
         <div className="w-full lg:w-[32%] flex flex-col justify-center shrink-0">
           <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black mb-3 md:mb-5 leading-tight">
-            Erfahrungsberichte unserer Kunden
+            Témoignages de nos clients
           </h2>
           <p className="text-[14px] sm:text-[16px] md:text-[17px] text-gray-800 font-normal leading-relaxed opacity-90">
-            Wir legen größten Wert auf echte und transparente Nutzererfahrungen. Werfen Sie einen Blick auf das ehrliche Feedback von Poolbesitzern aus ganz Europa.
+            Nous accordons une importance primordiale aux retours authentiques et vérifiés. Découvrez les expériences de propriétaires de piscines dans toute l'Europe.
           </p>
         </div>
 

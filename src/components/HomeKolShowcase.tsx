@@ -61,10 +61,10 @@ export const HomeKolShowcase: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-14">
           <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight font-['Figtree']">
-            Von echten Nutzern geschätzt
+            Approuvé par notre communauté
           </h2>
           <p className="mt-2.5 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Entdecken Sie authentische Erfahrungsberichte und Live-Demonstrationen unserer Community mit den Geräten von iGarden.
+            Découvrez les retours d'expérience authentiques et démonstrations en conditions réelles avec les équipements iGarden.
           </p>
         </div>
 
@@ -153,7 +153,7 @@ export const HomeKolShowcase: React.FC = () => {
                     setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : HOME_KOL_VIDEOS.length - 1))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Vorheriges Video (Pfeil links)"
+                  title="Vidéo précédente"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
@@ -165,7 +165,7 @@ export const HomeKolShowcase: React.FC = () => {
                     setActiveVideoIndex((prev) => (prev !== null && prev < HOME_KOL_VIDEOS.length - 1 ? prev + 1 : 0))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Nächstes Video (Pfeil rechts)"
+                  title="Vidéo suivante"
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -173,7 +173,7 @@ export const HomeKolShowcase: React.FC = () => {
                 <button
                   onClick={() => setActiveVideoIndex(null)}
                   className="ml-2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-                  aria-label="Video schließen"
+                  aria-label="Fermer la vidéo"
                 >
                   <X className="w-4 h-4" />
                 </button>

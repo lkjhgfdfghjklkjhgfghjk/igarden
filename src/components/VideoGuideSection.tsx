@@ -7,12 +7,12 @@ export const VideoGuideSection: React.FC = () => {
   const guides = [
     {
       id: "fOjOnNt07mM",
-      title: "Schritt-für-Schritt Aufbauanleitung",
+      title: "Guide d'installation pas à pas",
       poster: "https://eu.store.igarden.ai/cdn/shop/files/how-to-set-up-x-series.jpg?v=1785137633&width=3840"
     },
     {
       id: "az-UqGbfjDQ",
-      title: "Einstellung der Haltebolzen am Griff",
+      title: "Réglage des goupilles de fixation sur la poignée",
       poster: "https://eu.store.igarden.ai/cdn/shop/files/how-to-set-up-locking-pins-on-the-handle.jpg?v=1785137633&width=3840"
     }
   ];
@@ -22,7 +22,7 @@ export const VideoGuideSection: React.FC = () => {
       <div className="max-w-[1200px] mx-auto px-4 sm:px-8">
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-[24px] sm:text-[36px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            So einfach installieren Sie Ihre iGarden Swim Jet X-Serie
+            Installation simple et rapide de votre iGarden Swim Jet Série X
           </h2>
         </div>
 
