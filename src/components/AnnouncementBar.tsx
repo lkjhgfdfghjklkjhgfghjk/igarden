@@ -11,17 +11,18 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onOpenCountryD
       <div className="max-w-[1500px] mx-auto flex items-center justify-between">
         <div className="w-full text-center sm:text-left sm:w-auto font-semibold text-gray-800 flex items-center justify-center sm:justify-start gap-1.5 leading-snug">
           <Sparkles className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
-          <span className="hidden sm:inline">Offre Spéciale France : Jet de natation Swim Jet (1 000 W) à 209,00 € • Livraison Colissimo Offerte • Garantie 2 ans</span>
-          <span className="sm:hidden">Offre France : Swim Jet (1 000 W) à <strong>209,00 €</strong> • Livraison Colissimo Offerte</span>
+          <span className="hidden sm:inline">Exklusives Angebot: iGarden Swim Jet Gegenstromanlage (1.000 W) für 209,00 € • Kostenloser DHL-Versand • 2 Jahre Garantie</span>
+          <span className="sm:hidden">Sonderaktion: Swim Jet (1.000 W) für <strong>209,00 €</strong> • Kostenloser Versand</span>
         </div>
         <button
           onClick={onOpenCountryDialog}
           className="hidden sm:flex items-center gap-1.5 text-black hover:text-[#0071E3] transition-colors cursor-pointer text-[12px] font-medium shrink-0 rounded-sm"
         >
           <Globe className="w-3.5 h-3.5" />
-          <span>France ( Français / € EUR )</span>
+          <span>Deutschland ( Deutsch / € EUR )</span>
         </button>
       </div>
     </div>
   );
 };
+

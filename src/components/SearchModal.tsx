@@ -13,31 +13,31 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
   if (!isOpen) return null;
 
   const hotSearches = [
-    { text: "Jet de natation Swim Jet 1 000 W", hot: true },
-    { text: "Fixation sans perçage", hot: true },
-    { text: "Batterie étanche IP68", hot: true },
-    { text: "Accessoires & Sac à dos", hot: false }
+    { text: "Gegenstromanlage Swim Jet 1.000 W", hot: true },
+    { text: "Bohrfreie Montage", hot: true },
+    { text: "Wasserdichter Akku IP68", hot: true },
+    { text: "Zubehör & Transporttasche", hot: false }
   ];
 
   const recommendations = [
     {
-      title: "Jet de natation portable Swim Jet — 1 000 W",
+      title: "Mobiler Swim Jet Gegenstromanlage — 1.000 W",
       price: "209,00 €",
       originalPrice: "418,00 €",
       image: "https://eu.store.igarden.ai/cdn/shop/files/1200_x_1200_1_549cfcd1-014d-4f4b-a0b7-589f37292f31.png?v=1776675064&width=320"
     },
     {
-      title: "Robot nettoyeur de piscine iGarden M1-AI",
+      title: "iGarden M1-AI Poolreinigungsroboter",
       price: "489,00 €",
       image: "https://eu.store.igarden.ai/cdn/shop/files/adbd64503fcd5abaff264259d2f44cad.png?v=1781781288&width=320"
     },
     {
-      title: "Robot nettoyeur de piscine iGarden K Series",
+      title: "iGarden K-Serie Poolroboter",
       price: "480,00 €",
       image: "https://eu.store.igarden.ai/cdn/shop/files/65D8A0F6-EF9A-45A5-BCFE-B51F285C2A572_4.png?v=1782899669&width=320"
     },
     {
-      title: "Robot de piscine sans fil iGarden KN Series",
+      title: "iGarden KN-Serie Kabelloser Poolroboter",
       price: "380,00 €",
       image: "https://eu.store.igarden.ai/cdn/shop/files/lQLPJx05WhemDjHNE4jNE4iw0Jd3Jfxte7MJ6RxRqHqwAA_5000_5000_1.png?v=1779694578&width=320"
     }
@@ -60,7 +60,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
             type="button"
             onClick={onClose}
             className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-500 hover:text-black rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-            aria-label="Fermer la recherche"
+            aria-label="Suche schließen"
           >
             <ArrowLeft className="w-5 h-5 sm:hidden" />
             <X className="w-5 h-5 hidden sm:block" />
@@ -72,7 +72,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Rechercher un produit, une spécification, une notice..."
+              placeholder="Produkt suchen, technische Daten, Anleitung..."
               className="w-full bg-transparent border-none outline-none text-[14px] sm:text-[15px] text-gray-900 placeholder-gray-400"
               autoFocus
             />
@@ -81,7 +81,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
                 type="button"
                 onClick={() => setSearchTerm('')}
                 className="text-gray-400 hover:text-gray-600 p-1 cursor-pointer"
-                aria-label="Effacer"
+                aria-label="Löschen"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -94,7 +94,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
           {/* Hot Searches */}
           <div className="mb-6">
             <h3 className="text-[13px] sm:text-[14px] font-bold text-gray-800 uppercase tracking-wider mb-2.5">
-              Recherches populaires
+              Beliebte Suchbegriffe
             </h3>
             <div className="flex flex-wrap gap-2">
               {hotSearches.map((item, idx) => (
@@ -114,7 +114,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
           {/* Recommendations */}
           <div>
             <h3 className="text-[13px] sm:text-[14px] font-bold text-gray-800 uppercase tracking-wider mb-2.5">
-              Produits recommandés
+              Empfohlene Produkte
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {recommendations.map((prod, idx) => (

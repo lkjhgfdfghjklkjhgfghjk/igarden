@@ -18,7 +18,7 @@ export const BlogCarouselSection: React.FC = () => {
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-[24px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight">
-            Plongez dans iGarden News
+            Aktuelles aus der iGarden-Welt
           </h2>
         </div>
 

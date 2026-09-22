@@ -8,7 +8,7 @@ export const AthletesPressSection: React.FC = () => {
         {/* Title */}
         <div className="text-center">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Ce que disent les athlètes d’élite
+            Das sagen Spitzensportler
           </h2>
         </div>
 
@@ -57,7 +57,7 @@ export const AthletesPressSection: React.FC = () => {
         {/* Featured in media logos ticker */}
         <div className="bg-[#FAFAFA] rounded-3xl p-8 sm:p-10 text-center space-y-6">
           <p className="text-[14px] sm:text-[16px] font-bold text-gray-400 uppercase tracking-widest m-0">
-            ÉGALEMENT PRÉSENTÉ DANS
+            BEKANNT AUS DEN MEDIEN
           </p>
 
           <div className="overflow-hidden relative w-full py-2">

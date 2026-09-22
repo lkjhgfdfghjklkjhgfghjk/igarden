@@ -18,10 +18,10 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
   const [showBottomBar, setShowBottomBar] = useState(false);
 
   const sections = [
-    { id: 'Aperçu', label: 'Aperçu' },
+    { id: 'Aperçu', label: 'Übersicht' },
     { id: 'Technologie', label: 'Technologie' },
-    { id: 'Avantages', label: 'Avantages' },
-    { id: 'Avis', label: 'Avis Clients' }
+    { id: 'Avantages', label: 'Vorteile' },
+    { id: 'Avis', label: 'Kundenbewertungen' }
   ];
 
   useEffect(() => {
@@ -92,7 +92,7 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
                 {selectedVariant.name}
               </span>
               <span className="text-[13px] text-gray-500 hidden sm:inline ml-2">
-                — Débit {selectedVariant.flowRate} | {selectedVariant.power}
+                — Strömung {selectedVariant.flowRate} | {selectedVariant.power}
               </span>
             </div>
           </div>
@@ -134,10 +134,10 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
                 </p>
                 <div className="flex items-center gap-1.5">
                   <span className="text-[16px] sm:text-[18px] font-extrabold text-gray-950">
-                    {selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                    {selectedVariant.price.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
                   </span>
                   <span className="text-[12px] text-gray-400 line-through">
-                    {selectedVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                    {selectedVariant.originalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
                   </span>
                   <span className="px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] sm:text-[11px] font-bold">
                     -{Math.round(((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100)}%
@@ -156,7 +156,7 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
               className="h-11 sm:h-13 px-4 sm:px-8 rounded-xl bg-[#0071E3] hover:bg-[#0062c4] active:bg-[#004f9f] active:scale-[0.99] text-white font-extrabold text-[12px] sm:text-[15px] tracking-wide shadow-md shadow-blue-500/20 transition-all shrink-0 flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer uppercase text-center"
             >
               <Lock className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
-              <span>COMMANDER</span>
+              <span>JETZT BESTELLEN</span>
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 hidden xs:inline-block" />
             </button>
           </div>

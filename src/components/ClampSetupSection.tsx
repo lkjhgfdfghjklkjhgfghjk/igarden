@@ -22,34 +22,34 @@ export const ClampSetupSection: React.FC = () => {
           {/* Text & Steps side */}
           <div className="w-full lg:w-2/5 space-y-8">
             <h2 className="text-[28px] sm:text-[44px] font-bold text-gray-900 font-['Figtree'] leading-tight">
-              Clampez et partez en moins d'une minute
+              Einfach anklemmen und in unter 1 Minute losschwimmen
             </h2>
 
             <div className="space-y-6">
               <div className="border-l-4 border-[#0071E3] pl-5 space-y-1">
                 <span className="text-[#0071E3] font-bold text-[14px] uppercase tracking-wider block">
-                  Étape 01
+                  Schritt 01
                 </span>
                 <p className="text-[20px] sm:text-[26px] font-bold text-gray-900 m-0">
-                  Connectez le boîtier d'alimentation
+                  Akkueinheit anschließen
                 </p>
               </div>
 
               <div className="border-l-4 border-gray-300 hover:border-[#0071E3] pl-5 space-y-1 transition-colors">
                 <span className="text-gray-400 font-bold text-[14px] uppercase tracking-wider block">
-                  Étape 02
+                  Schritt 02
                 </span>
                 <p className="text-[20px] sm:text-[26px] font-bold text-gray-900 m-0">
-                  Fixez le jet sur la margelle
+                  Jet am Beckenrand fixieren
                 </p>
               </div>
 
               <div className="border-l-4 border-gray-300 hover:border-[#0071E3] pl-5 space-y-1 transition-colors">
                 <span className="text-gray-400 font-bold text-[14px] uppercase tracking-wider block">
-                  Étape 03
+                  Schritt 03
                 </span>
                 <p className="text-[20px] sm:text-[26px] font-bold text-gray-900 m-0">
-                  Activez le flux et nagez
+                  Strömung starten & genießen
                 </p>
               </div>
             </div>

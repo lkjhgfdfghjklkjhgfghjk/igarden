@@ -4,32 +4,32 @@ export const WhatsInTheBoxSection: React.FC = () => {
   const items = [
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/1_1_2.png?v=1778495430&width=1400",
-      title: "Jet",
-      qty: "x1"
+      title: "Jet-Schwimmeinheit",
+      qty: "1x"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_2147237486.png?v=1779788996&width=1400",
-      title: "Boîte d'alimentation",
-      qty: "x1"
+      title: "Powerbox-Akkueinheit",
+      qty: "1x"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Image_6_1_2.png?v=1779174423&width=1400",
-      title: "Adaptateur",
-      qty: "x1"
+      title: "Netzteil / Ladegerät",
+      qty: "1x"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Image_7_e6efc16e-01cd-46b7-a866-929e6831496c.png?v=1778495431&width=1400",
-      title: "Attache de sécurité",
-      qty: "x1"
+      title: "Sicherheitsbefestigung",
+      qty: "1x"
     }
   ];
 
   return (
-    <section id="Qu’y a-t-il dans la boîte" className="py-16 sm:py-24 bg-white">
+    <section id="lieferumfang" className="py-16 sm:py-24 bg-white">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[44px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Qu'y a-t-il dans la boîte
+            Lieferumfang
           </h2>
         </div>
 

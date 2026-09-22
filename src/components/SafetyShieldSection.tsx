@@ -7,7 +7,7 @@ export const SafetyShieldSection: React.FC = () => {
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            <span className="text-[#0071E3]">360°</span> Blindage de sécurité
+            <span className="text-[#0071E3]">360°</span>-Sicherheitsschutz
           </h2>
         </div>
 
@@ -29,7 +29,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                Coupure de courant automatique
+                Automatische Sicherheitsabschaltung
               </p>
             </div>
 
@@ -37,14 +37,14 @@ export const SafetyShieldSection: React.FC = () => {
               <div className="rounded-xl overflow-hidden shadow-sm bg-black mb-3.5">
                 <img
                   src="https://eu.store.igarden.ai/cdn/shop/files/lQDPKHROWGMftq3NBADNBgCwrLoTcdUcO2sJ1tSQ09acAA_1536_1024.jpg?v=1778494308&width=600"
-                  alt="Grille anti-enchevêtrement"
+                  alt="Berührungssicheres Schutzgitter"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-auto object-cover"
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                Grille de protection anti-enchevêtrement
+                Berührungssicheres Schutzgitter
               </p>
             </div>
           </div>
@@ -76,7 +76,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                IP68 étanche (Unité de nage)
+                IP68 wasserdicht (Schwimmeinheit)
               </p>
             </div>
 
@@ -94,7 +94,7 @@ export const SafetyShieldSection: React.FC = () => {
                 />
               </div>
               <p className="font-bold text-[18px] sm:text-[20px] text-gray-900 m-0">
-                IP65 étanche (Boîtier d'alimentation)
+                IP65 wetterfest (Akkueinheit)
               </p>
             </div>
           </div>

@@ -7,10 +7,10 @@ export const VsComparisonSection: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-2">
-            Pourquoi choisir iGarden ?
+            Warum iGarden?
           </h2>
           <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-            iGarden Swim Jet X Series par rapport aux jets de nage traditionnels en piscine
+            iGarden Swim Jet X-Serie im direkten Vergleich zu herkömmlichen Gegenstromanlagen
           </p>
         </div>
 
@@ -21,7 +21,7 @@ export const VsComparisonSection: React.FC = () => {
             <div className="w-full bg-[#E5F0FC] overflow-hidden aspect-[16/9] sm:aspect-[2/1]">
               <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/Container_2_59e83699-790e-4ba6-9433-3ca5b5d31c38.png?v=1778494491&width=1200"
-                alt="iGarden Swim Jet Série X"
+                alt="iGarden Swim Jet X-Serie"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover"
@@ -29,17 +29,17 @@ export const VsComparisonSection: React.FC = () => {
             </div>
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between items-center text-center space-y-4">
               <h3 className="text-[24px] sm:text-[28px] font-bold text-gray-900 font-['Figtree']">
-                iGarden Swim Jet Série X
+                iGarden Swim Jet X-Serie
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  Seulement 209,00 € (1 000 W de puissance)
+                  Nur 209,00 € (1.000 W Spitzenleistung)
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  6 à 10 h d'autonomie à pleine puissance
+                  6 bis 10 Std. Akkulaufzeit
                 </span>
                 <span className="px-4 py-2 rounded-full bg-white text-[#0071E3] font-semibold text-[14px] sm:text-[15px] shadow-xs">
-                  Compatible avec toutes les piscines
+                  Kompatibel mit allen Pools
                 </span>
               </div>
             </div>
@@ -55,7 +55,7 @@ export const VsComparisonSection: React.FC = () => {
             <div className="w-full bg-[#EEEEEE] overflow-hidden aspect-[16/9] sm:aspect-[2/1]">
               <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/Image_Exxx_Pools.png?v=1778494744&width=1200"
-                alt="Piscines traditionnelles intégrées"
+                alt="Herkömmliche Festeinbau-Systeme"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover"
@@ -63,17 +63,17 @@ export const VsComparisonSection: React.FC = () => {
             </div>
             <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between items-center text-center space-y-4">
               <h3 className="text-[24px] sm:text-[28px] font-bold text-gray-700 font-['Figtree']">
-                Systèmes intégrés classiques
+                Klassische Festeinbau-Anlagen
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  Coût 20 000 €+
+                  Kosten 20.000 €+
                 </span>
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  Travaux et raccordements lourds
+                  Aufwendige Erdarbeiten & Bau
                 </span>
                 <span className="px-4 py-2 rounded-full bg-[#EBEBEB] text-[#999999] font-medium text-[14px] sm:text-[15px]">
-                  Inamovible & coût d'entretien élevé
+                  Feste Montage & hohe Wartung
                 </span>
               </div>
             </div>

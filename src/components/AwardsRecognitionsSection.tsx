@@ -24,7 +24,7 @@ export const AwardsRecognitionsSection: React.FC = () => {
             loading="lazy"
           />
           <h2 className="text-[24px] sm:text-[34px] md:text-[40px] font-extrabold text-black text-center leading-tight">
-            Prix et reconnaissances
+            Auszeichnungen & Medienberichte
           </h2>
           <img
             src="https://eu.store.igarden.ai/cdn/shop/t/40/assets/icon-ces-vector-right.svg?v=136859214946119851641778826866"

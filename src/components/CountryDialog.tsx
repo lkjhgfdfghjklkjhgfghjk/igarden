@@ -30,20 +30,20 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
           type="button"
           onClick={onClose}
           className="absolute top-4 right-4 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-black hover:bg-gray-100 transition-colors cursor-pointer"
-          aria-label="Fermer"
+          aria-label="Schließen"
         >
           <X className="w-5 h-5" />
         </button>
 
         <h2 className="text-[18px] sm:text-[20px] font-bold text-center text-gray-900 pb-4 mb-5 border-b border-gray-200">
-          Choisissez votre pays ou votre région
+          Wählen Sie Ihr Land oder Ihre Region
         </h2>
 
         <div className="space-y-5">
           {/* North America */}
           <div>
             <h3 className="text-[14px] font-bold text-gray-800 text-center mb-2.5 uppercase tracking-wide">
-              North America
+              Nordamerika
             </h3>
             <div className="flex flex-col gap-2">
               <button
@@ -58,8 +58,8 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/us-flag.png?v=1774427824"
                   alt="United States"
                 />
-                <span className="font-semibold text-[13px] text-gray-900">United States</span>
-                <span className="text-[13px] text-gray-500 font-normal">( English / $ USD )</span>
+                <span className="font-semibold text-[13px] text-gray-900">Vereinigte Staaten</span>
+                <span className="text-[13px] text-gray-500 font-normal">( Englisch / $ USD )</span>
               </button>
             </div>
           </div>
@@ -67,7 +67,7 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
           {/* Asia Pacific */}
           <div>
             <h3 className="text-[14px] font-bold text-gray-800 text-center mb-2.5 uppercase tracking-wide">
-              Asia Pacific
+              Asien-Pazifik
             </h3>
             <div className="flex flex-col gap-2">
               <button
@@ -80,10 +80,10 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
                   loading="lazy"
                   decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/au-flag.png?v=1774427824"
-                  alt="Australia"
+                  alt="Australien"
                 />
-                <span className="font-semibold text-[13px] text-gray-900">Australia</span>
-                <span className="text-[13px] text-gray-500 font-normal">( English / $ AUD )</span>
+                <span className="font-semibold text-[13px] text-gray-900">Australien</span>
+                <span className="text-[13px] text-gray-500 font-normal">( Englisch / $ AUD )</span>
               </button>
             </div>
           </div>
@@ -91,29 +91,13 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
           {/* Europe */}
           <div>
             <h3 className="text-[14px] font-bold text-gray-800 text-center mb-2.5 uppercase tracking-wide">
-              Europe
+              Europa
             </h3>
             <div className="flex flex-col gap-2">
               <button
                 type="button"
-                onClick={() => { onSelectCountry("EU_EN"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'EU_EN' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
-              >
-                <img
-                  className="w-6 h-auto object-contain"
-                  loading="lazy"
-                  decoding="async"
-                  src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/eu_ade130c2-a62d-4383-b1ea-f828162296b1.png?v=1775555541"
-                  alt="Europe"
-                />
-                <span className="font-semibold text-[13px] text-gray-900">Europe</span>
-                <span className="text-[13px] text-gray-500 font-normal">( English / € EUR )</span>
-              </button>
-
-              <button
-                type="button"
                 onClick={() => { onSelectCountry("DE"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'DE' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'DE' ? 'bg-blue-50 border border-blue-400 font-bold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
@@ -128,18 +112,34 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
 
               <button
                 type="button"
+                onClick={() => { onSelectCountry("EU_EN"); onClose(); }}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'EU_EN' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+              >
+                <img
+                  className="w-6 h-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/eu_ade130c2-a62d-4383-b1ea-f828162296b1.png?v=1775555541"
+                  alt="Europa"
+                />
+                <span className="font-semibold text-[13px] text-gray-900">Europa (International)</span>
+                <span className="text-[13px] text-gray-500 font-normal">( Englisch / € EUR )</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => { onSelectCountry("FR"); onClose(); }}
-                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'FR' ? 'bg-blue-50 border border-blue-400 font-bold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
+                className={`flex items-center justify-center gap-2.5 p-3 min-h-[44px] rounded-xl active:scale-[0.99] transition-all text-center w-full cursor-pointer ${currentCountry === 'FR' ? 'bg-blue-50 border border-blue-200 font-semibold' : 'bg-[#F7F8F9] hover:bg-[#EFEFEF]'}`}
               >
                 <img
                   className="w-6 h-auto object-contain"
                   loading="lazy"
                   decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/France.png?v=1777531419"
-                  alt="France"
+                  alt="Frankreich"
                 />
-                <span className="font-semibold text-[13px] text-gray-900">France</span>
-                <span className="text-[13px] text-gray-500 font-normal">( Français / € EUR )</span>
+                <span className="font-semibold text-[13px] text-gray-900">Frankreich</span>
+                <span className="text-[13px] text-gray-500 font-normal">( Französisch / € EUR )</span>
               </button>
 
               <button
@@ -152,10 +152,10 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
                   loading="lazy"
                   decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/Espana.png?v=1777531419"
-                  alt="España"
+                  alt="Spanien"
                 />
-                <span className="font-semibold text-[13px] text-gray-900">Español</span>
-                <span className="text-[13px] text-gray-500 font-normal">( Español / € EUR )</span>
+                <span className="font-semibold text-[13px] text-gray-900">Spanien</span>
+                <span className="text-[13px] text-gray-500 font-normal">( Spanisch / € EUR )</span>
               </button>
 
               <button
@@ -168,10 +168,10 @@ export const CountryDialog: React.FC<CountryDialogProps> = ({
                   loading="lazy"
                   decoding="async"
                   src="https://cdn.shopify.com/s/files/1/0811/0728/8282/files/Italy.png?v=1777531419"
-                  alt="Italy"
+                  alt="Italien"
                 />
-                <span className="font-semibold text-[13px] text-gray-900">Italiano</span>
-                <span className="text-[13px] text-gray-500 font-normal">( Italiano / € EUR )</span>
+                <span className="font-semibold text-[13px] text-gray-900">Italien</span>
+                <span className="text-[13px] text-gray-500 font-normal">( Italienisch / € EUR )</span>
               </button>
             </div>
           </div>

@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
-          {/* Soldes de rentrée */}
+          {/* Saison-Angebote */}
           <button
             type="button"
             onClick={onNavigateToProduct}
@@ -81,10 +81,10 @@ export const Header: React.FC<HeaderProps> = ({
               decoding="async"
               className="w-5 h-5 object-contain"
             />
-            <span>Soldes de rentrée</span>
+            <span>Sonderangebote</span>
           </button>
 
-          {/* Jet de natation Mega Menu */}
+          {/* Gegenstromanlage Mega Menu */}
           <div
             className="relative"
             onMouseEnter={() => setActiveMegaMenu('swim-jet')}
@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
                 activeMegaMenu === 'swim-jet' ? 'text-[#0071E3]' : 'text-gray-900 hover:text-[#0071E3]'
               }`}
             >
-              <span>Jet de natation</span>
+              <span>Gegenstromanlage</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'swim-jet' ? 'rotate-180' : ''}`} />
             </button>
 
@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
                         activeSwimJetTab === 'products' ? 'bg-[#F8F9FD] text-[#0071E3]' : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >
-                      Produits
+                      Produkte
                     </button>
                     <button
                       type="button"
@@ -122,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
                         activeSwimJetTab === 'accessories' ? 'bg-[#F8F9FD] text-[#0071E3]' : 'text-gray-700 hover:bg-gray-50'
                       }`}
                     >
-                      Accessoires
+                      Zubehör
                     </button>
                   </div>
 
@@ -135,26 +135,26 @@ export const Header: React.FC<HeaderProps> = ({
                           className="bg-[#F8F9FD] rounded-xl p-4 cursor-pointer hover:shadow-md transition-all group relative flex flex-col justify-between"
                         >
                           <span className="absolute top-3 right-3 bg-[#c6e8de] text-[#00c767] text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase">
-                            NOUVEAU
+                            NEU
                           </span>
                           <div className="h-32 flex items-center justify-center my-2">
                             <img
                               src="https://eu.store.igarden.ai/cdn/shop/files/1200_x_1200_1_549cfcd1-014d-4f4b-a0b7-589f37292f31.png?v=1776675064&width=520"
-                              alt="iGarden Swim Jet Série X"
+                              alt="iGarden Swim Jet X-Serie"
                               loading="lazy"
                               decoding="async"
                               className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform"
                             />
                           </div>
                           <div>
-                            <h4 className="font-bold text-[14px] text-gray-900 text-center">Jet de natation portable iGarden Swim Jet — 1 000 W</h4>
+                            <h4 className="font-bold text-[14px] text-gray-900 text-center">Tragbare Gegenstromanlage iGarden Swim Jet — 1.000 W</h4>
                             <p className="text-[#0071E3] font-bold text-[13px] text-center mt-0.5">209,00 €</p>
                             <div className="flex items-center justify-center gap-1.5 text-[11px] text-gray-600 mt-2 flex-wrap">
-                              <span>1 000 W</span>
+                              <span>1.000 W</span>
                               <span>•</span>
-                              <span>6 à 10 h d'autonomie</span>
+                              <span>6–10 Std. Akku</span>
                               <span>•</span>
-                              <span>Toutes piscines</span>
+                              <span>Alle Pools</span>
                             </div>
                           </div>
                         </div>
@@ -162,22 +162,22 @@ export const Header: React.FC<HeaderProps> = ({
                     ) : (
                       <div className="grid grid-cols-2 gap-3">
                         <a
-                          href="https://eu.store.igarden.ai/fr/products/igarden-x-series-storage-bag"
+                          href="https://eu.store.igarden.ai/products/igarden-x-series-storage-bag"
                           target="_blank"
                           rel="noreferrer"
                           className="bg-[#F8F9FD] rounded-xl p-3 flex items-center gap-3 hover:shadow-xs transition-all"
                         >
                           <img
                             src="https://eu.store.igarden.ai/cdn/shop/files/2_441a6884-e0f6-4ca1-86eb-018e1a3fd6c1.png?v=1784095673&width=820"
-                            alt="Sac de rangement"
+                            alt="Aufbewahrungstasche"
                             loading="lazy"
                             decoding="async"
                             className="w-14 h-14 object-contain"
                           />
-                          <p className="font-bold text-[13px] text-gray-800 line-clamp-2">Sac de rangement iGarden série X</p>
+                          <p className="font-bold text-[13px] text-gray-800 line-clamp-2">iGarden X-Serie Aufbewahrungstasche</p>
                         </a>
                         <a
-                          href="https://eu.store.igarden.ai/fr/products/igarden-swim-jet-power-box"
+                          href="https://eu.store.igarden.ai/products/igarden-swim-jet-power-box"
                           target="_blank"
                           rel="noreferrer"
                           className="bg-[#F8F9FD] rounded-xl p-3 flex items-center gap-3 hover:shadow-xs transition-all"
@@ -199,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Nettoyeur de piscine Mega Menu */}
+          {/* Poolroboter Mega Menu */}
           <div
             className="relative"
             onMouseEnter={() => setActiveMegaMenu('pool-cleaner')}
@@ -212,7 +212,7 @@ export const Header: React.FC<HeaderProps> = ({
                 activeMegaMenu === 'pool-cleaner' ? 'text-[#0071E3]' : 'text-gray-900 hover:text-[#0071E3]'
               }`}
             >
-              <span>Nettoyeur de piscine</span>
+              <span>Poolroboter</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'pool-cleaner' ? 'rotate-180' : ''}`} />
             </button>
 
@@ -225,20 +225,20 @@ export const Header: React.FC<HeaderProps> = ({
                     className="bg-[#F8F9FD] rounded-xl p-4 cursor-pointer hover:shadow-md transition-all group relative flex flex-col justify-between"
                   >
                     <span className="absolute top-3 right-3 bg-[#c6e8de] text-[#00c767] text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase">
-                      CHAUD
+                      BELIEBT
                     </span>
                     <div className="h-28 flex items-center justify-center my-2">
                       <img
                         src="https://eu.store.igarden.ai/cdn/shop/files/adbd64503fcd5abaff264259d2f44cad.png?v=1781781288&width=520"
-                        alt="Robot M1-AI"
+                        alt="Roboter M1-AI"
                         loading="lazy"
                         decoding="async"
                         className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="text-center">
-                      <h4 className="font-bold text-[14px] text-gray-900">Robot série M1-Al</h4>
-                      <p className="text-[#0071E3] font-bold text-[12px] mt-0.5">Prime</p>
+                      <h4 className="font-bold text-[14px] text-gray-900">M1-AI Serie Poolroboter</h4>
+                      <p className="text-[#0071E3] font-bold text-[12px] mt-0.5">Premium</p>
                       <p className="text-[11px] text-gray-500 mt-1">Bionic AI Dual-Vision</p>
                     </div>
                   </div>
@@ -249,21 +249,21 @@ export const Header: React.FC<HeaderProps> = ({
                     className="bg-[#F8F9FD] rounded-xl p-4 cursor-pointer hover:shadow-md transition-all group relative flex flex-col justify-between"
                   >
                     <span className="absolute top-3 right-3 bg-[#e1f7e8] text-[#00a65a] text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase">
-                      NOUVEAU
+                      NEU
                     </span>
                     <div className="h-28 flex items-center justify-center my-2">
                       <img
                         src="https://eu.store.igarden.ai/cdn/shop/files/65D8A0F6-EF9A-45A5-BCFE-B51F285C2A572_4.png?v=1782899669&width=520"
-                        alt="Robot Série K"
+                        alt="Roboter K-Serie"
                         loading="lazy"
                         decoding="async"
                         className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="text-center">
-                      <h4 className="font-bold text-[14px] text-gray-900">Robot série K</h4>
-                      <p className="text-[#0071E3] font-bold text-[12px] mt-0.5">Essentiel</p>
-                      <p className="text-[11px] text-gray-500 mt-1">Cordless Cleaning</p>
+                      <h4 className="font-bold text-[14px] text-gray-900">K-Serie Poolroboter</h4>
+                      <p className="text-[#0071E3] font-bold text-[12px] mt-0.5">Essentiell</p>
+                      <p className="text-[11px] text-gray-500 mt-1">Kabellose Reinigung</p>
                     </div>
                   </div>
 
@@ -275,16 +275,16 @@ export const Header: React.FC<HeaderProps> = ({
                     <div className="h-28 flex items-center justify-center my-2">
                       <img
                         src="https://eu.store.igarden.ai/cdn/shop/files/lQLPJx05WhemDjHNE4jNE4iw0Jd3Jfxte7MJ6RxRqHqwAA_5000_5000_1.png?v=1779694578&width=520"
-                        alt="Robot Série KN"
+                        alt="Roboter KN-Serie"
                         loading="lazy"
                         decoding="async"
                         className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="text-center">
-                      <h4 className="font-bold text-[14px] text-gray-900">Robot série KN</h4>
-                      <p className="text-[#0071E3] font-bold text-[12px] mt-0.5">Basic</p>
-                      <p className="text-[11px] text-gray-500 mt-1">4x Scrubbing</p>
+                      <h4 className="font-bold text-[14px] text-gray-900">KN-Serie Poolroboter</h4>
+                      <p className="text-[#0071E3] font-bold text-[12px] mt-0.5">Basis</p>
+                      <p className="text-[11px] text-gray-500 mt-1">4-fache Bürstenkraft</p>
                     </div>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </div>
 
-          {/* Tondeuse à gazon Mega Menu */}
+          {/* Mähroboter Mega Menu */}
           <div
             className="relative"
             onMouseEnter={() => setActiveMegaMenu('lawn-mower')}
@@ -305,7 +305,7 @@ export const Header: React.FC<HeaderProps> = ({
                 activeMegaMenu === 'lawn-mower' ? 'text-[#0071E3]' : 'text-gray-900 hover:text-[#0071E3]'
               }`}
             >
-              <span>Tondeuse à gazon</span>
+              <span>Mähroboter</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'lawn-mower' ? 'rotate-180' : ''}`} />
             </button>
 
@@ -316,37 +316,37 @@ export const Header: React.FC<HeaderProps> = ({
                   className="bg-[#F8F9FD] rounded-xl p-4 cursor-pointer hover:shadow-md transition-all group relative flex flex-col justify-between"
                 >
                   <span className="absolute top-3 right-3 bg-[#c6e8de] text-[#00c767] text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase">
-                    NOUVEAU
+                    NEU
                   </span>
                   <div className="h-32 flex items-center justify-center my-2">
                     <img
                       src="https://eu.store.igarden.ai/cdn/shop/files/3_adb7c2f2-cd53-4877-933f-b849c33c206b.png?v=1776334481&width=520"
-                      alt="Tondeuse R Series"
+                      alt="Mähroboter R-Serie"
                       loading="lazy"
                       decoding="async"
                       className="max-h-full w-auto object-contain group-hover:scale-105 transition-transform"
                     />
                   </div>
                   <div className="text-center">
-                    <h4 className="font-bold text-[15px] text-gray-900">Robot tondeuse série R</h4>
-                    <p className="text-[#0071E3] font-bold text-[13px] mt-0.5">Essentiel</p>
-                    <p className="text-[11px] text-gray-500 mt-1">NetRTK + Vision stéréo • Jusqu'à 1 500 m²</p>
+                    <h4 className="font-bold text-[15px] text-gray-900">R-Serie Mähroboter</h4>
+                    <p className="text-[#0071E3] font-bold text-[13px] mt-0.5">Essentiell</p>
+                    <p className="text-[11px] text-gray-500 mt-1">NetRTK + Stereo-Vision • Bis zu 1.500 m²</p>
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Aide-moi à choisir */}
+          {/* Kaufberater */}
           <button
             type="button"
             onClick={onNavigateToProduct}
             className="text-[15px] xl:text-[16px] font-semibold text-gray-900 hover:text-[#0071E3] transition-colors py-3 cursor-pointer bg-transparent border-none"
           >
-            Aide-moi à choisir
+            Kaufberater
           </button>
 
-          {/* Explorer Dropdown */}
+          {/* Entdecken Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setActiveMegaMenu('explore')}
@@ -358,34 +358,34 @@ export const Header: React.FC<HeaderProps> = ({
                 activeMegaMenu === 'explore' ? 'text-[#0071E3]' : 'text-gray-900 hover:text-[#0071E3]'
               }`}
             >
-              <span>Explorer</span>
+              <span>Entdecken</span>
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeMegaMenu === 'explore' ? 'rotate-180' : ''}`} />
             </button>
 
             {activeMegaMenu === 'explore' && (
               <div className="absolute top-full right-0 w-[680px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 z-50 animate-in fade-in slide-in-from-top-2 duration-200 grid grid-cols-3 gap-8">
                 <div>
-                  <h4 className="text-[13px] font-bold uppercase tracking-wider text-gray-400 mb-4">Soutien</h4>
+                  <h4 className="text-[13px] font-bold uppercase tracking-wider text-gray-400 mb-4">Kundenservice</h4>
                   <ul className="space-y-2.5 text-[15px] font-medium text-gray-800">
-                    <li><button type="button" onClick={onOpenTracking} className="hover:text-[#0071E3] transition-colors text-left bg-transparent border-none p-0 cursor-pointer">Suivi des commandes</button></li>
-                    <li><a href="https://www.igarden.ai/support/" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Support technique</a></li>
-                    <li><button type="button" onClick={onOpenAccount} className="hover:text-[#0071E3] transition-colors text-left bg-transparent border-none p-0 cursor-pointer">Contactez-nous</button></li>
+                    <li><button type="button" onClick={onOpenTracking} className="hover:text-[#0071E3] transition-colors text-left bg-transparent border-none p-0 cursor-pointer">Bestellverfolgung</button></li>
+                    <li><a href="https://www.igarden.ai/support/" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Technischer Support</a></li>
+                    <li><button type="button" onClick={onOpenAccount} className="hover:text-[#0071E3] transition-colors text-left bg-transparent border-none p-0 cursor-pointer">Kontaktieren Sie uns</button></li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-bold uppercase tracking-wider text-gray-400 mb-4">Politique</h4>
+                  <h4 className="text-[13px] font-bold uppercase tracking-wider text-gray-400 mb-4">Richtlinien</h4>
                   <ul className="space-y-2.5 text-[15px] font-medium text-gray-800">
-                    <li><a href="https://eu.store.igarden.ai/fr/pages/retour-et-remboursements" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Retours & Remboursements</a></li>
-                    <li><a href="https://eu.store.igarden.ai/fr/pages/politique-de-garantie" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Garantie 2 ans+</a></li>
-                    <li><a href="https://eu.store.igarden.ai/fr/pages/politique-dexpedition" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Livraison Colissimo</a></li>
+                    <li><a href="https://eu.store.igarden.ai/pages/retour-et-remboursements" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Rückgabe & Erstattung</a></li>
+                    <li><a href="https://eu.store.igarden.ai/pages/politique-de-garantie" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">2+ Jahre Garantie</a></li>
+                    <li><a href="https://eu.store.igarden.ai/pages/politique-dexpedition" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Kostenloser Versand</a></li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-bold uppercase tracking-wider text-gray-400 mb-4">Explorer</h4>
+                  <h4 className="text-[13px] font-bold uppercase tracking-wider text-gray-400 mb-4">Entdecken</h4>
                   <ul className="space-y-2.5 text-[15px] font-medium text-gray-800">
-                    <li><a href="https://eu.store.igarden.ai/fr/blogs/news" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Blog & Guides</a></li>
-                    <li><a href="https://eu.store.igarden.ai/fr/pages/filiale" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Programme Partenaire</a></li>
-                    <li><a href="https://eu.store.igarden.ai/fr/pages/a-propos-de-nous" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">À propos d'iGarden</a></li>
+                    <li><a href="https://eu.store.igarden.ai/blogs/news" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Blog & Ratgeber</a></li>
+                    <li><a href="https://eu.store.igarden.ai/pages/filiale" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Partnerprogramm</a></li>
+                    <li><a href="https://eu.store.igarden.ai/pages/a-propos-de-nous" target="_blank" rel="noreferrer" className="hover:text-[#0071E3] transition-colors block">Über iGarden</a></li>
                   </ul>
                 </div>
               </div>
@@ -400,7 +400,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenCountryDialog}
             className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-black transition-colors rounded-full hover:bg-gray-100 cursor-pointer"
-            aria-label="Changer de pays ou langue"
+            aria-label="Land oder Sprache ändern"
           >
             <Globe className="w-5 h-5" />
           </button>
@@ -410,7 +410,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenSearch}
             className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-black transition-colors rounded-full hover:bg-gray-100 cursor-pointer"
-            aria-label="Rechercher"
+            aria-label="Suchen"
           >
             <Search className="w-5 h-5" />
           </button>
@@ -420,7 +420,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenAccount}
             className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-black transition-colors rounded-full hover:bg-gray-100 cursor-pointer"
-            aria-label="Mon Compte"
+            aria-label="Mein Konto"
           >
             <User className="w-5 h-5" />
           </button>
@@ -430,7 +430,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenCart}
             className="relative p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-700 hover:text-black transition-colors rounded-full hover:bg-gray-100 cursor-pointer"
-            aria-label="Panier"
+            aria-label="Warenkorb"
           >
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
@@ -446,7 +446,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[64px] bottom-0 bg-white z-50 overflow-y-auto p-6 space-y-4 animate-in slide-in-from-top-4 duration-300">
           <div className="divide-y divide-gray-100">
-            {/* Soldes */}
+            {/* Sonderangebote */}
             <div className="py-3">
               <button
                 onClick={() => {
@@ -460,17 +460,17 @@ export const Header: React.FC<HeaderProps> = ({
                   alt=""
                   className="w-5 h-5 object-contain"
                 />
-                <span>Soldes de rentrée</span>
+                <span>Sonderangebote</span>
               </button>
             </div>
 
-            {/* Jet de natation */}
+            {/* Gegenstromanlage */}
             <div className="py-3">
               <button
                 onClick={() => toggleMobileSection('swim')}
                 className="flex items-center justify-between w-full text-[16px] font-bold text-gray-900 bg-transparent border-none p-0 cursor-pointer"
               >
-                <span>Jet de natation</span>
+                <span>Gegenstromanlage</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenSection === 'swim' ? 'rotate-180' : ''}`} />
               </button>
               {mobileOpenSection === 'swim' && (
@@ -488,21 +488,21 @@ export const Header: React.FC<HeaderProps> = ({
                       className="w-12 h-12 object-contain"
                     />
                     <div>
-                      <p className="font-bold text-[14px] text-gray-900">iGarden Swim Jet Série X</p>
-                      <p className="text-[12px] text-[#0071E3] font-semibold">209,00 € (Offre -50%)</p>
+                      <p className="font-bold text-[14px] text-gray-900">iGarden Swim Jet X-Serie</p>
+                      <p className="text-[12px] text-[#0071E3] font-semibold">209,00 € (50% Rabatt)</p>
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Nettoyeur de piscine */}
+            {/* Poolroboter */}
             <div className="py-3">
               <button
                 onClick={() => toggleMobileSection('pool')}
                 className="flex items-center justify-between w-full text-[16px] font-bold text-gray-900 bg-transparent border-none p-0 cursor-pointer"
               >
-                <span>Nettoyeur de piscine</span>
+                <span>Poolroboter</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileOpenSection === 'pool' ? 'rotate-180' : ''}`} />
               </button>
               {mobileOpenSection === 'pool' && (
@@ -516,8 +516,8 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <img src="https://eu.store.igarden.ai/cdn/shop/files/adbd64503fcd5abaff264259d2f44cad.png?v=1781781288&width=520" alt="" className="w-10 h-10 object-contain" />
                     <div>
-                      <p className="font-bold text-[13px]">Robot M1-AI</p>
-                      <p className="text-[11px] text-gray-500">1 199,00 €</p>
+                      <p className="font-bold text-[13px]">M1-AI Poolroboter</p>
+                      <p className="text-[11px] text-gray-500">1.199,00 €</p>
                     </div>
                   </div>
                   <div
@@ -529,7 +529,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <img src="https://eu.store.igarden.ai/cdn/shop/files/65D8A0F6-EF9A-45A5-BCFE-B51F285C2A572_4.png?v=1782899669&width=520" alt="" className="w-10 h-10 object-contain" />
                     <div>
-                      <p className="font-bold text-[13px]">Robot Série K</p>
+                      <p className="font-bold text-[13px]">K-Serie Poolroboter</p>
                       <p className="text-[11px] text-gray-500">799,00 €</p>
                     </div>
                   </div>
@@ -537,7 +537,7 @@ export const Header: React.FC<HeaderProps> = ({
               )}
             </div>
 
-            {/* Tondeuse */}
+            {/* Mähroboter */}
             <div className="py-3">
               <button
                 onClick={() => {
@@ -546,11 +546,11 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className="w-full text-left font-bold text-[16px] text-gray-900 bg-transparent border-none p-0 cursor-pointer"
               >
-                Tondeuse à gazon
+                Mähroboter
               </button>
             </div>
 
-            {/* Suivi & Compte */}
+            {/* Sendungsverfolgung & Konto */}
             <div className="py-3 space-y-2">
               <button
                 onClick={() => {
@@ -559,7 +559,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className="block w-full text-left font-semibold text-[15px] text-[#0071E3] bg-transparent border-none p-0 cursor-pointer"
               >
-                📦 Suivre mon colis
+                📦 Sendungsverfolgung
               </button>
               <button
                 onClick={() => {
@@ -568,7 +568,7 @@ export const Header: React.FC<HeaderProps> = ({
                 }}
                 className="block w-full text-left font-semibold text-[15px] text-gray-700 bg-transparent border-none p-0 cursor-pointer"
               >
-                👤 Mon compte client
+                👤 Mein Kundenkonto
               </button>
             </div>
           </div>

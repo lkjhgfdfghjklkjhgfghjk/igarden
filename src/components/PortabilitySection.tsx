@@ -4,15 +4,15 @@ export const PortabilitySection: React.FC = () => {
   const cards = [
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_9e858063-ead4-4ea6-8b3c-765eb9b30840.png?v=1778494904&width=1200",
-      title: "Roues et poignée de style valise"
+      title: "Trolley-Räder und ergonomischer Ziehgriff"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_1_2add0575-2c04-49fc-bec2-ff0bb47a4181.png?v=1779864936&width=1200",
-      title: "Amusez-vous à la piscine d'un ami"
+      title: "Einfach mitnehmen zum Pool von Freunden"
     },
     {
       img: "https://eu.store.igarden.ai/cdn/shop/files/Frame_1_1.png?v=1778494904&width=1200",
-      title: "Se range sans effort au garage ou placard"
+      title: "Mühelos verstauen in Garage oder Schrank"
     }
   ];
 
@@ -22,11 +22,11 @@ export const PortabilitySection: React.FC = () => {
         {/* Title */}
         <div className="text-center max-w-[840px] mx-auto mb-12 sm:mb-16">
           <h2 className="text-[28px] sm:text-[46px] font-bold text-gray-950 font-['Figtree'] leading-tight mb-3">
-            Portable. Rangement. Non lié.
+            Mobil. Kompakt. Ungebunden.
           </h2>
           <p className="text-[16px] sm:text-[20px] text-gray-500 leading-relaxed font-medium">
-            Assez portable pour partager, assez compact pour stocker.
-            Protégez votre appareil du soleil et de la pluie sans tracas.
+            Handlich genug zum flexiblen Teilen, kompakt genug zum platzsparenden Verstauen.
+            Schützen Sie Ihr Gerät mühelos vor Witterung und Sonne.
           </p>
         </div>
 

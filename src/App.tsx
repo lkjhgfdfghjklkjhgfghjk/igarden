@@ -54,7 +54,7 @@ export default function App() {
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-  const [currentCountry, setCurrentCountry] = useState('FR');
+  const [currentCountry, setCurrentCountry] = useState('DE');
 
   React.useEffect(() => {
     const handlePopState = () => {

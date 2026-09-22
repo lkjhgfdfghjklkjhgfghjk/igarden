@@ -14,119 +14,119 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
 
   const specCategories = [
     {
-      category: "⚡ Performances Hydrodynamiques",
+      category: "⚡ Hydrodynamische Leistung",
       rows: [
         {
-          label: "Puissance nominale moteur",
-          value: "1 000 W de puissance premium",
+          label: "Nennleistung Motor",
+          value: "1.000 W Spitzenleistung",
           highlight: true
         },
         {
-          label: "Débit volumique & Propulsion",
-          value: "Flux laminaire haute performance sans turbulence",
+          label: "Volumenstrom & Schubkraft",
+          value: "Laminare Hochleistungsströmung ohne Verwirbelungen",
           highlight: true
         },
         {
-          label: "Vitesse d'écoulement max",
-          value: "Jusqu'à 1,5 m/s (réglable en continu sans fil)",
+          label: "Max. Strömungsgeschwindigkeit",
+          value: "Bis zu 1,5 m/s (stufenlos per Fernbedienung regulierbar)",
           highlight: true
         },
         {
-          label: "Type de flux généré",
-          value: "Flux laminaire continu large et stable pour une nage naturelle"
+          label: "Strömungsprofil",
+          value: "Breiter, stabiler laminarer Gegenstrom für ein natürliches Schwimmgefühl"
         },
         {
-          label: "Plage de vitesse",
-          value: "Progressif en continu (0 - 100% via télécommande sans fil)"
+          label: "Geschwindigkeitsbereich",
+          value: "Stufenlos regulierbar (0 – 100% über Funk-Fernbedienung)"
         }
       ]
     },
     {
-      category: "🔋 Batterie & Autonomie",
+      category: "🔋 Akku & Laufzeit",
       rows: [
         {
-          label: "Autonomie certifiée",
-          value: "6 à 10 heures d'autonomie à pleine puissance",
+          label: "Zertifizierte Laufzeit",
+          value: "6 bis 10 Stunden Akkulaufzeit",
           highlight: true
         },
         {
-          label: "Performance d'endurance",
-          value: "Jusqu'à 10 heures d'autonomie — longues séances sans recharge constante",
+          label: "Ausdauerleistung",
+          value: "Bis zu 10 Stunden Betrieb — lange Schwimmeinheiten ohne ständiges Nachladen",
           highlight: true
         },
         {
-          label: "Capacité & type de batterie",
-          value: "Pack Lithium-ion haute densité énergétique sécurisé basse tension"
+          label: "Akkukapazität & Zelltyp",
+          value: "Hochleistungs-Lithium-Ionen-Akkupack mit sicherer Niederspannung"
         },
         {
-          label: "Temps de recharge complète",
-          value: "~3,5 h (Chargeur rapide intelligent inclus)"
+          label: "Ladedauer (vollständig)",
+          value: "~3,5 Std. (inklusive intelligentem Schnellladegerät)"
         },
         {
-          label: "Batterie amovible & interchangeable",
-          value: "Oui — clipsable et interchangeable en quelques secondes"
+          label: "Herausnehmbarer Akku",
+          value: "Ja — sekundenschnell per Klick-System entnehm- und wechselbar"
         }
       ]
     },
     {
-      category: "🏊‍♂️ Compatibilité & Profils d'Utilisation",
+      category: "🏊‍♂️ Kompatibilität & Einsatzbereiche",
       rows: [
         {
-          label: "Compatibilité bassins",
-          value: "Compatible avec toutes les piscines (hors-sol, enterrées, semi-enterrées)",
+          label: "Pool-Kompatibilität",
+          value: "Passend für alle gängigen Poolarten (Aufstellpools, Einbaubecken, Stahlwand, Holz)",
           highlight: true
         },
         {
-          label: "Polyvalence d'utilisation",
-          value: "Une solution universelle et polyvalente pour votre piscine (loisir, fitness, nage sportive)",
+          label: "Einsatzvielfalt",
+          value: "Universelle & flexible Lösung für jeden Pool (Freizeitschwimmen, Aquafitness, Sporttraining)",
           highlight: true
         },
         {
-          label: "Compatibilité des parois & margelles",
-          value: "100% Universel (piscines tubulaires, coques polyester, bois, béton, carrelage, acier)"
+          label: "Beckenrand-Kompatibilität",
+          value: "100% Universell (Aufstellbecken, Rundbecken, Holz-, Beton-, Fliesen- und Stahlrahmenbecken)"
         }
       ]
     },
     {
-      category: "🛠️ Conception, Ergonomie & Robustesse",
+      category: "🛠️ Konstruktion, Ergonomie & Robustheit",
       rows: [
         {
-          label: "Système de fixation",
-          value: "Pince universelle télescopique sans perçage avec patins de protection"
+          label: "Befestigungssystem",
+          value: "Universelle Teleskop-Klemmhalterung ohne Bohren mit Oberflächenschonern"
         },
         {
-          label: "Indice d'étanchéité moteur",
-          value: "IP68 submersible intégral haute résistance au chlore et au sel"
+          label: "Schutzart Motor",
+          value: "IP68 vollständig tauchfähig, chlor- und salzwasserbeständig"
         },
         {
-          label: "Niveau sonore en fonctionnement",
-          value: "Ultra-silencieux (< 48 dB à pleine puissance)"
+          label: "Betriebslautstärke",
+          value: "Flüsterleise (< 48 dB bei voller Leistung)"
         },
         {
-          label: "Transport & manipulation",
-          value: "Poignée ergonomique et roulettes intégrées pour un déplacement sans effort"
+          label: "Transport & Handling",
+          value: "Ergonomischer Tragegriff und integrierte Leichtlaufrollen für mühelosen Transport"
         }
       ]
     },
     {
-      category: "📦 Pack Inclus & Garanties Officielles",
+      category: "📦 Lieferumfang & Herstellergarantie",
       rows: [
         {
-          label: "Contenu du pack complet",
-          value: "Moteur Swim Jet 1 000 W + Batterie Lithium haute endurance + Chargeur + Fixation universelle + Télécommande"
+          label: "Lieferumfang Komplettset",
+          value: "Swim Jet 1.000 W Antriebseinheit + Lithium-Akku + Schnellladegerät + Universalklemme + Fernbedienung"
         },
         {
-          label: "Garantie constructeur iGarden",
-          value: "Garantie 2 ans pièces et main d'œuvre incluse",
+          label: "iGarden Herstellergarantie",
+          value: "2 Jahre Garantie auf Teile und Arbeitsleistung inklusive",
           highlight: true
         },
         {
-          label: "Expédition & Livraison",
-          value: "Livraison Colissimo Suivi Gratuite en 24-48h partout en France"
+          label: "Versand & Zustellung",
+          value: "Kostenloser DHL Express-Versand mit Sendungsverfolgung (2-4 Werktage)"
         },
         {
-          label: "Essai & Retours",
-          value: "Garantie 30 jours Satisfait ou Remboursé"
+          label: "Testphase & Rückgabe",
+          value: "30 Tage Geld-zurück-Garantie ohne Risiko"
         }
       ]
     }
@@ -152,13 +152,13 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
         {/* Title */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200/60 text-[#0071E3] text-[13px] font-bold mb-3 shadow-xs">
-            <Zap className="w-4 h-4" /> Fiche Technique & Spécifications Officielles
+            <Zap className="w-4 h-4" /> Offizielles Datenblatt & Technische Spezifikationen
           </div>
           <h2 className="text-[28px] sm:text-[44px] font-bold text-gray-950 leading-tight mb-3 font-['Figtree']">
-            Spécifications du Swim Jet — 1 000 W
+            Technische Daten — Swim Jet 1.000 W
           </h2>
           <p className="text-[16px] sm:text-[18px] text-gray-600 max-w-[800px] mx-auto leading-relaxed">
-            Toutes les caractéristiques techniques certifiées du modèle unique iGarden Swim Jet (1 000 W) : une solution universelle, puissante et polyvalente, <strong>compatible avec toutes les piscines</strong>.
+            Alle herstellerzertifizierten Leistungsdaten des iGarden Swim Jet (1.000 W): Eine universelle, kraftvolle und flexible Lösung – <strong>kompatibel mit allen gängigen Poolarten</strong>.
           </p>
         </div>
 
@@ -168,7 +168,7 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
             {/* Top Badge */}
             <div className="absolute -top-3.5 left-6 sm:left-8">
               <span className="px-3.5 py-1 rounded-full text-[11px] sm:text-[12px] font-extrabold uppercase tracking-wide shadow-sm bg-[#0071E3] text-white flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5" /> 1 000 W de puissance • 6 à 10 h d'autonomie
+                <Sparkles className="w-3.5 h-3.5" /> 1.000 W Spitzenleistung • 6 bis 10 Std. Akkulaufzeit
               </span>
             </div>
 
@@ -193,23 +193,23 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
                   {currentVariant.shortName}
                 </h3>
                 <p className="text-[13px] sm:text-[14px] text-gray-600 leading-relaxed mt-1">
-                  Une solution universelle et polyvalente pour votre piscine — Profitez d'une expérience de nage à contre-courant où que vous soyez.
+                  Die universelle und flexible Lösung für Ihren Pool — Genießen Sie ein erstklassiges Gegenstrom-Schwimmerlebnis zu Hause.
                 </p>
               </div>
 
               {/* Key Quick Stats */}
               <div className="grid grid-cols-3 gap-2 py-3 px-3 bg-blue-50/50 rounded-xl border border-blue-100">
                 <div className="text-center">
-                  <div className="text-[11px] font-medium text-gray-500">Puissance</div>
-                  <div className="text-[14px] sm:text-[15px] font-extrabold text-[#0071E3]">1 000 W</div>
+                  <div className="text-[11px] font-medium text-gray-500">Leistung</div>
+                  <div className="text-[14px] sm:text-[15px] font-extrabold text-[#0071E3]">1.000 W</div>
                 </div>
                 <div className="text-center border-x border-blue-200/60">
-                  <div className="text-[11px] font-medium text-gray-500">Compatibilité</div>
-                  <div className="text-[14px] sm:text-[15px] font-extrabold text-gray-900">Universelle</div>
+                  <div className="text-[11px] font-medium text-gray-500">Kompatibilität</div>
+                  <div className="text-[14px] sm:text-[15px] font-extrabold text-gray-900">Universell</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-[11px] font-medium text-gray-500">Autonomie</div>
-                  <div className="text-[14px] sm:text-[15px] font-extrabold text-gray-900">6 à 10 h</div>
+                  <div className="text-[11px] font-medium text-gray-500">Akkulaufzeit</div>
+                  <div className="text-[14px] sm:text-[15px] font-extrabold text-gray-900">6 bis 10 Std.</div>
                 </div>
               </div>
 
@@ -218,17 +218,17 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
                 <div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-[32px] sm:text-[36px] font-black text-gray-950 leading-none">
-                      {currentVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                      {currentVariant.price.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
                     </span>
                     <span className="text-[16px] text-gray-400 line-through">
-                      {currentVariant.originalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                      {currentVariant.originalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
                     </span>
                     <span className="text-[12px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-sm">
                       -{discountPercent}%
                     </span>
                   </div>
                   <div className="text-[12px] font-medium text-emerald-800 mt-1">
-                    Économie immédiate de {currentVariant.discountAmount.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €
+                    Sie sparen sofort {currentVariant.discountAmount.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €
                   </div>
                 </div>
 
@@ -242,7 +242,7 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
                   className="py-3.5 px-6 rounded-xl font-bold text-[14px] tracking-wide transition-all flex items-center justify-center gap-2 cursor-pointer uppercase shadow-md bg-[#0071E3] hover:bg-blue-700 text-white active:scale-[0.98]"
                 >
                   <Lock className="w-4 h-4 shrink-0" />
-                  <span>Commander à {currentVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 0 })} €</span>
+                  <span>Jetzt bestellen • {currentVariant.price.toLocaleString('de-DE', { minimumFractionDigits: 2 })} €</span>
                   <ArrowRight className="w-4 h-4 shrink-0" />
                 </button>
               </div>
@@ -256,14 +256,14 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
           <div className="bg-gray-900 text-white px-5 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h4 className="font-extrabold text-[16px] sm:text-[18px]">
-                Fiche technique certifiée — Swim Jet 1 000 W
+                Zertifiziertes Produktdatenblatt — Swim Jet 1.000 W
               </h4>
               <p className="text-[12px] sm:text-[13px] text-gray-300">
-                Toutes les caractéristiques d'ingénierie et de sécurité certifiées d'usine
+                Alle Konstruktions- und Sicherheitsmerkmale direkt ab Werk geprüft
               </p>
             </div>
             <div className="flex items-center gap-1.5 text-[11px] sm:text-[12px] text-emerald-400 font-semibold">
-              <Shield className="w-4 h-4 shrink-0" /> <span>Garantie 2 ans incluse</span>
+              <Shield className="w-4 h-4 shrink-0" /> <span>2 Jahre Garantie inklusive</span>
             </div>
           </div>
 
@@ -300,7 +300,7 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
           {/* Table Footer Action */}
           <div className="bg-gray-50 p-5 sm:p-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-[12px] sm:text-[14px] text-gray-600 text-center sm:text-left">
-              Livraison Colissimo 24-48h offerte • Retour sous 30 jours satisfait ou remboursé • SAV en français 7j/7
+              Kostenloser DHL Express-Versand • 30 Tage risikofreie Geld-zurück-Garantie • Deutscher Kundenservice 7 Tage/Woche
             </div>
             <button
               type="button"
@@ -312,7 +312,7 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
               className="px-6 py-3 min-h-[44px] bg-[#0071E3] hover:bg-blue-700 active:scale-[0.99] text-white rounded-xl text-[13px] sm:text-[14px] font-bold uppercase transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
             >
               <Lock className="w-3.5 h-3.5 shrink-0" />
-              <span>Commander le Swim Jet — 209,00 €</span>
+              <span>Swim Jet bestellen — 209,00 €</span>
               <ArrowRight className="w-3.5 h-3.5 shrink-0" />
             </button>
           </div>

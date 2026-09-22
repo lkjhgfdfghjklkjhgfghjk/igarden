@@ -4,18 +4,18 @@ export const WhyChooseUsSection: React.FC = () => {
   const items = [
     {
       icon: "https://eu.store.igarden.ai/cdn/shop/files/18_c3cdf571-4b47-40fa-967b-1891dc924409.svg?v=1778500400&width=120",
-      title: "Garantie de 2 ans",
-      desc: "Performances garanties pour le Swim Jet et la Power Box."
+      title: "2 Jahre Garantie",
+      desc: "Garantierte Spitzenleistung für Swim Jet und Akkueinheit."
     },
     {
       icon: "https://eu.store.igarden.ai/cdn/shop/files/Multichannel_Support.png?v=1774252270&width=120",
-      title: "Prise en charge multicanal",
-      desc: "Contactez-nous par e-mail, téléphone ou service client en ligne 24/7."
+      title: "24/7 Kundenservice",
+      desc: "Erreichen Sie uns jederzeit unkompliziert per E-Mail oder Chat."
     },
     {
       icon: "https://eu.store.igarden.ai/cdn/shop/files/Up_to_30-Day_Returns.png?v=1774252270&width=120",
-      title: "Retours jusqu'à 30 jours",
-      desc: "Les clients peuvent demander un retour dans les 30 jours suivant la réception de leur produit."
+      title: "30 Tage Rückgaberecht",
+      desc: "Testen Sie ganz ohne Risiko – mit unserer 30-tägigen Geld-zurück-Garantie ab Erhalt."
     }
   ];
 
@@ -24,7 +24,7 @@ export const WhyChooseUsSection: React.FC = () => {
       <div className="max-w-[1500px] mx-auto px-4 sm:px-14">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-[26px] sm:text-[38px] font-bold text-gray-950 font-['Figtree'] leading-tight">
-            Pourquoi igarden est le meilleur endroit pour acheter un jet de nage ?
+            Warum ist iGarden die beste Wahl für Ihre Gegenstromanlage?
           </h2>
         </div>
 

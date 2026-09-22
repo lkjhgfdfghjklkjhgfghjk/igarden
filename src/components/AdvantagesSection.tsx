@@ -8,10 +8,10 @@ export const AdvantagesSection: React.FC = () => {
         <div>
           <div className="mb-6">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree'] mb-2">
-              Maîtrisez vos tours quotidiens
+              Meistern Sie Ihre täglichen Schwimmeinheiten
             </h2>
             <p className="text-[16px] sm:text-[20px] text-gray-500 font-medium">
-              Convient pour le papillon, le style libre et la brasse.
+              Perfekt geeignet für Kraul-, Brust- und Schmetterlingsschwimmen.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export const AdvantagesSection: React.FC = () => {
         <div>
           <div className="mb-8">
             <h2 className="text-[26px] sm:text-[36px] font-bold text-gray-900 font-['Figtree']">
-              Pure joie, pure détente
+              Purer Spaß, pure Entspannung
             </h2>
           </div>
 
@@ -54,10 +54,10 @@ export const AdvantagesSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  Jeu actif pour vos animaux de compagnie
+                  Aktives Training für Ihre Haustiere
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  Offrez à vos amis à quatre pattes un entraînement rafraîchissant et à faible impact pour préserver leurs articulations.
+                  Bieten Sie Ihren vierbeinigen Freunden ein erfrischendes, gelenkschonendes Wassertraining.
                 </p>
               </div>
             </div>
@@ -78,10 +78,10 @@ export const AdvantagesSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-[20px] sm:text-[24px] font-bold text-gray-900 mb-2">
-                  Alimentez l’ambiance de fête
+                  Die beste Stimmung für jede Poolparty
                 </h3>
                 <p className="text-[15px] sm:text-[18px] text-gray-600">
-                  Transformez n'importe quel rassemblement en un événement dynamique avec un courant constant et invitant qui fait bouger tout le monde.
+                  Verwandeln Sie jeden Tag am Pool in ein lebendiges Event mit einer einladenden Strömung, die für Spaß sorgt.
                 </p>
               </div>
             </div>

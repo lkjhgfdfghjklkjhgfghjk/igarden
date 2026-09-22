@@ -61,10 +61,10 @@ export const HomeKolShowcase: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-14">
           <h2 className="text-[26px] sm:text-[34px] md:text-[40px] font-extrabold text-black tracking-tight font-['Figtree']">
-            Apprécié par les vrais utilisateurs
+            Von echten Nutzern geschätzt
           </h2>
           <p className="mt-2.5 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Découvrez tous les retours d'expérience et démonstrations authentiques de notre communauté avec les appareils iGarden.
+            Entdecken Sie authentische Erfahrungsberichte und Live-Demonstrationen unserer Community mit den Geräten von iGarden.
           </p>
         </div>
 
@@ -90,10 +90,10 @@ export const HomeKolShowcase: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Badge Vidéo */}
+                {/* Badge Video */}
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-[11px] font-medium text-white flex items-center gap-1.5 shadow-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                  Vidéo
+                  Video
                 </div>
               </div>
 
@@ -153,7 +153,7 @@ export const HomeKolShowcase: React.FC = () => {
                     setActiveVideoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : HOME_KOL_VIDEOS.length - 1))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Vidéo précédente (Flèche gauche)"
+                  title="Vorheriges Video (Pfeil links)"
                 >
                   <ArrowLeft className="w-4 h-4" />
                 </button>
@@ -165,7 +165,7 @@ export const HomeKolShowcase: React.FC = () => {
                     setActiveVideoIndex((prev) => (prev !== null && prev < HOME_KOL_VIDEOS.length - 1 ? prev + 1 : 0))
                   }
                   className="p-2 rounded-full hover:bg-white/10 text-gray-300 hover:text-white transition-colors cursor-pointer"
-                  title="Vidéo suivante (Flèche droite)"
+                  title="Nächstes Video (Pfeil rechts)"
                 >
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -173,7 +173,7 @@ export const HomeKolShowcase: React.FC = () => {
                 <button
                   onClick={() => setActiveVideoIndex(null)}
                   className="ml-2 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-                  aria-label="Fermer la vidéo"
+                  aria-label="Video schließen"
                 >
                   <X className="w-4 h-4" />
                 </button>

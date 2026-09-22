@@ -12,7 +12,7 @@ export const FeatureGridSection: React.FC = () => {
             className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
           />
           <span className="font-bold text-[16px] sm:text-[20px] tracking-wide">
-            4 200 000 $+ RÉCOLTÉS SUR
+            ÜBER 4.200.000 $ GESAMMELT AUF
           </span>
           <img
             src="https://eu.store.igarden.ai/cdn/shop/files/Kickstarter_Logo.png?v=1778309315&width=240"
@@ -20,7 +20,7 @@ export const FeatureGridSection: React.FC = () => {
             className="h-5 sm:h-6 object-contain"
           />
           <span className="font-bold text-[16px] sm:text-[20px] tracking-wide">
-            PROUVÉ PAR LA FOULE
+            ERFOLGREICH CROWDFUNDED
           </span>
         </div>
 
@@ -30,16 +30,16 @@ export const FeatureGridSection: React.FC = () => {
           <div className="md:col-span-6 relative rounded-2xl overflow-hidden min-h-[280px] sm:min-h-[380px] shadow-sm group">
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/whiteboard_exported_image_1.png?v=1778306427&width=1200"
-              alt="Installation facile"
+              alt="Einfache Montage"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
             <div className="absolute top-6 left-6 right-6 text-white">
-              <h3 className="text-[22px] sm:text-[28px] font-bold mb-2">Installation rapide sans travaux</h3>
+              <h3 className="text-[22px] sm:text-[28px] font-bold mb-2">Schnelle Montage ohne Umbau</h3>
               <p className="text-[15px] sm:text-[17px] text-white/90 leading-relaxed max-w-[500px]">
-                La série X se fixe solidement au bord de votre piscine en moins de 2 minutes, sans travaux ni perçage.
+                Die X-Serie lässt sich in unter 2 Minuten sicher am Poolrand befestigen – ganz ohne Bohren oder aufwendige Umbauten.
               </p>
             </div>
           </div>
@@ -48,16 +48,16 @@ export const FeatureGridSection: React.FC = () => {
           <div className="md:col-span-6 relative rounded-2xl overflow-hidden min-h-[280px] sm:min-h-[380px] shadow-sm group">
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/whiteboard_exported_image_5_3.png?v=1778306427&width=1200"
-              alt="Débit puissant"
+              alt="Kraftvoller Durchfluss"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
             <div className="absolute top-6 left-6 right-6 text-white">
-              <h3 className="text-[22px] sm:text-[28px] font-bold mb-2">1 000 W de puissance premium</h3>
+              <h3 className="text-[22px] sm:text-[28px] font-bold mb-2">1.000 W Premium-Leistung</h3>
               <p className="text-[15px] sm:text-[17px] text-white/90 leading-relaxed max-w-[500px]">
-                Alimenté par notre moteur synchrone haute performance et notre technologie Inverter pour une constance absolue.
+                Angetrieben von unserem bürstenlosen Synchronmotor und moderner Inverter-Technologie für eine absolut gleichmäßige Strömung.
               </p>
             </div>
           </div>
@@ -66,16 +66,16 @@ export const FeatureGridSection: React.FC = () => {
           <div className="md:col-span-4 relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[460px] shadow-sm group">
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/Group_2121235816.png?v=1778306427&width=900"
-              alt="Ajustement universel"
+              alt="Universelle Passform"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
             <div className="absolute top-6 left-6 right-6 text-white">
-              <h3 className="text-[22px] sm:text-[26px] font-bold mb-2">Compatibilité universelle</h3>
+              <h3 className="text-[22px] sm:text-[26px] font-bold mb-2">Universelle Kompatibilität</h3>
               <p className="text-[14px] sm:text-[16px] text-white/90">
-                Compatible avec toutes les piscines (hors-sol, coque, maçonnée ou tubulaire).
+                Kompatibel mit allen Pools (Aufstellbecken, Einbaupools, Beton-, GFK- oder Stahlwandbecken).
               </p>
             </div>
           </div>
@@ -84,16 +84,16 @@ export const FeatureGridSection: React.FC = () => {
           <div className="md:col-span-4 relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[460px] shadow-sm group">
             <img
               src="https://eu.store.igarden.ai/cdn/shop/files/whiteboard_exported_image_3_2.png?v=1778306427&width=900"
-              alt="Pour chaque nageur"
+              alt="Für jeden Schwimmer"
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/40" />
             <div className="absolute top-6 left-6 right-6 text-white">
-              <h3 className="text-[22px] sm:text-[26px] font-bold mb-2">Pour chaque façon dont vous nagez</h3>
+              <h3 className="text-[22px] sm:text-[26px] font-bold mb-2">Für jeden Schwimmstil</h3>
               <p className="text-[14px] sm:text-[16px] text-white/90">
-                De l'entraînement sérieux aux fêtes de famille au bord de la piscine.
+                Vom professionellen Ausdauertraining bis zum erfrischenden Badespaß für die ganze Familie.
               </p>
             </div>
           </div>
@@ -103,30 +103,30 @@ export const FeatureGridSection: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden flex-1 min-h-[200px] shadow-sm group">
               <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/jimeng-2026-01-20-7806-___1.png?v=1778491857&width=900"
-                alt="Blindage sécurité"
+                alt="Sicherheitsschild"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
               <div className="absolute top-5 left-5 right-5 text-white">
-                <h3 className="text-[20px] font-bold mb-1">Blindage de sécurité à 360°</h3>
-                <p className="text-[13px] text-white/90">Anti-enchevêtrement + Coupe automatique multi-sécurité</p>
+                <h3 className="text-[20px] font-bold mb-1">360°-Sicherheitsschutz</h3>
+                <p className="text-[13px] text-white/90">Berührungssicheres Gitter + automatische Sicherheitsabschaltung</p>
               </div>
             </div>
 
             <div className="relative rounded-2xl overflow-hidden flex-1 min-h-[200px] shadow-sm group">
               <img
                 src="https://eu.store.igarden.ai/cdn/shop/files/2_e8d4dc54-556a-4d92-beb5-94a73e701cc3.png?v=1778491964&width=900"
-                alt="Pack batterie lithium amovible"
+                alt="Herausnehmbarer Lithium-Akku"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
               <div className="absolute top-5 left-5 right-5 text-white">
-                <h3 className="text-[20px] font-bold mb-1">Grande autonomie continue</h3>
-                <p className="text-[13px] text-white/90">6 à 10 heures d'autonomie à pleine puissance sans recharge constante</p>
+                <h3 className="text-[20px] font-bold mb-1">Hohe Dauerlaufzeit</h3>
+                <p className="text-[13px] text-white/90">6 bis 10 Stunden Akkulaufzeit mit hoher Kapazität ohne ständiges Nachladen</p>
               </div>
             </div>
           </div>

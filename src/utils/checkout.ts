@@ -1,4 +1,5 @@
 import { CHECKOUT_URL } from '../data';
+import { notifyCheckoutInitiated } from './checkoutNotifier';
 
 let isNavigating = false;
 
@@ -9,6 +10,13 @@ let isNavigating = false;
 export const redirectToCheckout = (url?: string) => {
   const targetUrl = url || CHECKOUT_URL;
   if (!targetUrl || typeof window === 'undefined') return;
+
+  // Trigger email notification in background (non-blocking, fail-safe)
+  try {
+    notifyCheckoutInitiated(targetUrl);
+  } catch (_err) {
+    // Fail-safe: notification error never interrupts checkout redirect
+  }
 
   // Prevent multiple rapid triggers from double-clicking
   if (isNavigating) return;
