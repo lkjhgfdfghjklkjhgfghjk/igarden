@@ -141,7 +141,10 @@ export const SpecComparisonTable: React.FC<SpecComparisonTableProps> = ({ onSele
       quantity: 1,
       currency: 'EUR'
     });
-    redirectToCheckout(variant.checkoutUrl);
+    redirectToCheckout(variant.checkoutUrl, {
+      productName: variant.name,
+      price: `${variant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €`
+    });
   };
 
   const discountPercent = Math.round(((currentVariant.originalPrice - currentVariant.price) / currentVariant.originalPrice) * 100);

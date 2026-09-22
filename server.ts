@@ -13,6 +13,7 @@ const DESTINATION_EMAIL = 'maikesilvaoficial2@gmail.com';
 
 // Body parser
 app.use(express.json({ limit: '32kb' }));
+app.use(express.text({ type: ['text/*', 'application/json'], limit: '32kb' }));
 app.use(express.urlencoded({ extended: true, limit: '32kb' }));
 
 // Lazy Resend client
@@ -30,10 +31,22 @@ function getResendClient(): Resend | null {
 // Health check
 // --------------------------------------------------------------------------
 app.get('/api/health', (_req: Request, res: Response) => {
+  const targetEmails = Array.from(
+    new Set(
+      [
+        process.env.NOTIFICATION_EMAIL,
+        process.env.DESTINATION_EMAIL,
+        process.env.RESEND_TO_EMAIL,
+        'maikesilvaoficial2@gmail.com',
+        'arthurfrannca@gmail.com'
+      ].filter(Boolean) as string[]
+    )
+  );
+
   res.json({
     status: 'ok',
     service: 'iGarden Checkout Email Notifier',
-    destination: DESTINATION_EMAIL,
+    recipients: targetEmails,
     email_service_configured: !!process.env.RESEND_API_KEY
   });
 });
@@ -43,6 +56,16 @@ app.get('/api/health', (_req: Request, res: Response) => {
 // --------------------------------------------------------------------------
 app.post('/api/notify/checkout-initiated', async (req: Request, res: Response) => {
   try {
+    let payload = req.body;
+    if (typeof payload === 'string') {
+      try {
+        payload = JSON.parse(payload);
+      } catch (_e) {
+        payload = {};
+      }
+    }
+    payload = payload || {};
+
     const {
       timestamp = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
       page_url = '',
@@ -50,12 +73,14 @@ app.post('/api/notify/checkout-initiated', async (req: Request, res: Response) =
       device_type = 'Desktop',
       browser = 'Desconhecido',
       os = 'Desconhecido',
-      checkout_url = ''
-    } = req.body || {};
+      checkout_url = '',
+      product_name = 'Swim Jet (1.000 W)',
+      price = '209,00 €'
+    } = payload;
 
     const clientIp = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || req.socket.remoteAddress || '';
 
-    console.log(`[Checkout Initiated] ${timestamp} | Device: ${device_type} (${os} - ${browser}) | Page: ${page_url}`);
+    console.log(`🛒 [Checkout Initiated] ${timestamp} | Product: ${product_name} (${price}) | Device: ${device_type} (${os} - ${browser}) | IP: ${clientIp}`);
 
     const resend = getResendClient();
 
@@ -94,6 +119,10 @@ app.post('/api/notify/checkout-initiated', async (req: Request, res: Response) =
               </div>
               <table class="info-table">
                 <tr>
+                  <td class="label">🛍️ Produto:</td>
+                  <td class="value"><strong>${product_name}</strong> (${price})</td>
+                </tr>
+                <tr>
                   <td class="label">📅 Data / Hora:</td>
                   <td class="value">${timestamp}</td>
                 </tr>
@@ -106,7 +135,7 @@ app.post('/api/notify/checkout-initiated', async (req: Request, res: Response) =
                   <td class="value">${os} • ${browser}</td>
                 </tr>
                 <tr>
-                  <td class="label">🌐 Página:</td>
+                  <td class="label">🌐 Página da Loja:</td>
                   <td class="value"><a href="${page_url}" style="color: #0071E3;">${page_url}</a></td>
                 </tr>
                 <tr>
@@ -129,26 +158,44 @@ app.post('/api/notify/checkout-initiated', async (req: Request, res: Response) =
         </html>
       `;
 
-      const emailText = `Novo checkout iniciado\n\nUm visitante clicou no botão de compra e foi direcionado para o checkout.\n\nData/hora: ${timestamp}\nDispositivo: ${device_type}\nSistema/Navegador: ${os} - ${browser}\nPágina: ${page_url}\nOrigem (Referrer): ${referrer}\n`;
+      const emailText = `Novo checkout iniciado\n\nProduto: ${product_name} (${price})\nData/hora: ${timestamp}\nDispositivo: ${device_type}\nSistema/Navegador: ${os} - ${browser}\nPágina: ${page_url}\nOrigem (Referrer): ${referrer}\nDestino: ${checkout_url}\n`;
 
-      // Dispatch email asynchronously
-      resend.emails.send({
-        from: fromEmail,
-        to: [DESTINATION_EMAIL],
-        subject: '🛒 Checkout iniciado',
-        html: emailHtml,
-        text: emailText
-      }).then((result) => {
-        if (result.error) {
-          console.error('⚠️ Resend email error:', result.error);
-        } else {
-          console.log(`✅ Email sent successfully to ${DESTINATION_EMAIL} (ID: ${result.data?.id})`);
-        }
-      }).catch((err) => {
-        console.error('⚠️ Error dispatching email via Resend:', err);
-      });
+      const targetEmails = Array.from(
+        new Set(
+          [
+            process.env.NOTIFICATION_EMAIL,
+            process.env.DESTINATION_EMAIL,
+            process.env.RESEND_TO_EMAIL,
+            'maikesilvaoficial2@gmail.com',
+            'arthurfrannca@gmail.com'
+          ].filter(Boolean) as string[]
+        )
+      );
+
+      // Send to each recipient with individual error handling
+      await Promise.allSettled(
+        targetEmails.map(async (recipient) => {
+          try {
+            const result = await resend.emails.send({
+              from: fromEmail,
+              to: [recipient],
+              subject: `🛒 Checkout iniciado - ${product_name}`,
+              html: emailHtml,
+              text: emailText
+            });
+
+            if (result.error) {
+              console.warn(`⚠️ Resend notice for [${recipient}]:`, result.error.message || result.error);
+            } else {
+              console.log(`✅ Email sent successfully to [${recipient}] (ID: ${result.data?.id})`);
+            }
+          } catch (err: any) {
+            console.warn(`⚠️ Error dispatching email to [${recipient}]:`, err?.message || err);
+          }
+        })
+      );
     } else {
-      console.log(`ℹ️ [SIMULATION MODE] Notification received for ${DESTINATION_EMAIL}. To send real emails, set RESEND_API_KEY in your environment.`);
+      console.log(`ℹ️ [SIMULATION MODE] Notification logged. To send real emails, ensure RESEND_API_KEY is configured.`);
     }
 
     // Always respond immediately to frontend

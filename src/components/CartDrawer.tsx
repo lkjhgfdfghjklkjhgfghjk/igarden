@@ -50,7 +50,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         price: item.price
       }))
     });
-    redirectToCheckout(targetCheckoutUrl);
+    const itemTitles = items.map((i) => `${i.title} (x${i.quantity})`).join(', ');
+    redirectToCheckout(targetCheckoutUrl, {
+      productName: itemTitles || 'Panier iGarden',
+      price: `${totalPrice.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €`
+    });
   };
 
   return (

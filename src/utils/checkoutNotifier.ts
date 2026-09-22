@@ -2,7 +2,7 @@
  * Checkout Initiated Email Notification Trigger
  * 
  * Non-blocking, secure trigger that notifies backend when a visitor clicks the buy button.
- * Sends an email notification to maikesilvaoficial2@gmail.com via server-side email service.
+ * Sends an email notification to configured recipients via server-side Resend email service.
  */
 
 interface CheckoutNotificationPayload {
@@ -13,6 +13,8 @@ interface CheckoutNotificationPayload {
   browser: string;
   os: string;
   checkout_url?: string;
+  product_name?: string;
+  price?: string;
 }
 
 function detectDeviceAndBrowser() {
@@ -52,7 +54,10 @@ function detectDeviceAndBrowser() {
 /**
  * Triggers the checkout notification in the background without delaying redirection.
  */
-export function notifyCheckoutInitiated(checkoutUrl?: string): void {
+export function notifyCheckoutInitiated(
+  checkoutUrl?: string,
+  details?: { productName?: string; price?: string }
+): void {
   if (typeof window === 'undefined') return;
 
   try {
@@ -65,33 +70,38 @@ export function notifyCheckoutInitiated(checkoutUrl?: string): void {
       device_type: device,
       browser: browser,
       os: os,
-      checkout_url: checkoutUrl || ''
+      checkout_url: checkoutUrl || '',
+      product_name: details?.productName || 'Swim Jet (1.000 W)',
+      price: details?.price || '209,00 €'
     };
 
     const endpoint = '/api/notify/checkout-initiated';
     const jsonString = JSON.stringify(payload);
 
-    // 1. Try navigator.sendBeacon (ideal for button clicks and redirects)
-    let beaconSent = false;
-    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+    // 1. Fetch with keepalive (modern, reliable for background delivery during unload)
+    if (typeof fetch === 'function') {
       try {
-        const blob = new Blob([jsonString], { type: 'application/json' });
-        beaconSent = navigator.sendBeacon(endpoint, blob);
-      } catch (_err) {
-        beaconSent = false;
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: jsonString,
+          keepalive: true
+        }).catch(() => {
+          // Ignore network errors so the visitor is never blocked
+        });
+      } catch (_e) {
+        // Fallback below
       }
     }
 
-    // 2. Fallback to fetch with keepalive: true
-    if (!beaconSent && typeof fetch === 'function') {
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: jsonString,
-        keepalive: true
-      }).catch(() => {
-        // Silently ignore any network errors so the visitor is never blocked
-      });
+    // 2. Also attempt sendBeacon as backup
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+      try {
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        navigator.sendBeacon(endpoint, blob);
+      } catch (_err) {
+        // Silently continue
+      }
     }
   } catch (_e) {
     // Fail-safe: Never throw or interrupt the purchase process

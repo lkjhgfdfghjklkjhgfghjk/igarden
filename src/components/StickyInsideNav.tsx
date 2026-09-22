@@ -76,7 +76,10 @@ export const StickyInsideNav: React.FC<StickyInsideNavProps> = ({
       quantity: 1,
       currency: 'EUR'
     });
-    redirectToCheckout(selectedVariant.checkoutUrl);
+    redirectToCheckout(selectedVariant.checkoutUrl, {
+      productName: selectedVariant.name,
+      price: `${selectedVariant.price.toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €`
+    });
   };
 
   return (

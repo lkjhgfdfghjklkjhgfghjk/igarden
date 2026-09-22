@@ -7,13 +7,16 @@ let isNavigating = false;
  * Single-execution checkout redirect handler.
  * Guarantees that only ONE checkout instance opens per user click.
  */
-export const redirectToCheckout = (url?: string) => {
+export const redirectToCheckout = (
+  url?: string,
+  details?: { productName?: string; price?: string }
+) => {
   const targetUrl = url || CHECKOUT_URL;
   if (!targetUrl || typeof window === 'undefined') return;
 
   // Trigger email notification in background (non-blocking, fail-safe)
   try {
-    notifyCheckoutInitiated(targetUrl);
+    notifyCheckoutInitiated(targetUrl, details);
   } catch (_err) {
     // Fail-safe: notification error never interrupts checkout redirect
   }
@@ -37,8 +40,10 @@ export const redirectToCheckout = (url?: string) => {
     // In iframe preview, open exactly one new tab
     window.open(targetUrl, '_blank', 'noopener,noreferrer');
   } else {
-    // In regular standalone browser window, directly navigate the current window to checkout
-    window.location.href = targetUrl;
+    // In regular standalone browser window, allow network dispatch before navigation
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 100);
   }
 };
 

@@ -78,7 +78,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
       quantity: quantity,
       currency: 'EUR'
     });
-    redirectToCheckout(targetUrl);
+    redirectToCheckout(targetUrl, {
+      productName: `${selectedVariant.name} (x${quantity})`,
+      price: `${(selectedVariant.price * quantity).toLocaleString('fr-FR', { minimumFractionDigits: 2 })} €`
+    });
   };
 
   const handleVariantSelect = (variant: ProductVariant) => {
